@@ -1,0 +1,4 @@
+.ProductRedact input,
+.ProductRedact textarea {
+    margin: .25em 0;
+}

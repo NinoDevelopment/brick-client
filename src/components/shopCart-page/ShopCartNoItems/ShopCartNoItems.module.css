@@ -1,0 +1,38 @@
+.ShopCartNoItems{
+    position: relative;
+
+    min-height: 65vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*linkBack*/
+.linkBack{
+    position: absolute;
+    left: calc(var(--bs-gutter-x) * .5);;
+    top: 1em;
+}
+
+/*content*/
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*image*/
+.content img{
+    margin-bottom: 1em;
+}
+
+/*text*/
+.content h2{
+    margin-bottom: .15em;
+}
+.content p{
+    margin-bottom: 0;
+    text-align: center;
+    color: var(--bs-gray-600);
+}

@@ -1,0 +1,23 @@
+.main{
+    margin: 2em auto 4em;
+}
+
+/*title*/
+.title{
+    margin-bottom: .75em;
+    font-weight: 800;
+    color: var(--bs-dark);
+    font-family: 'Playfair Display', serif;
+}
+
+/*info*/
+.info{
+    line-height: 2;
+    color: var(--bs-gray-600);
+}
+.info b{
+    color: var(--app-primary);
+}
+.info a{
+    color: inherit;
+}

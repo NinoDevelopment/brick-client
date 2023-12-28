@@ -1,0 +1,14 @@
+/*button*/
+.clearBtn{
+    padding: .25em .75em;
+
+    background: none;
+    border-radius: 5px;
+    color: var(--bs-dark);
+    border: 1px solid var(--app-primary);
+    transition: .25s;
+}
+.clearBtn:hover{
+    color: var(--bs-white);
+    background: var(--app-primary);
+}

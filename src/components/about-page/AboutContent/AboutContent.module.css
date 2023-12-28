@@ -1,0 +1,31 @@
+.AboutContent{
+
+}
+
+/*p*/
+.AboutContent p{
+    margin: 0;
+    color: var(--bs-gray-600);
+    line-height: 1.6;
+}
+
+/*images*/
+.images{
+    margin: 3em 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.images img{
+    width: calc(50% - .5em);
+}
+
+/*media*/
+@media (max-width: 500px) {
+    .images img{
+        width: 100%;
+    }
+    .images img:first-child{
+        margin-bottom: 1em;
+    }
+}

@@ -1,0 +1,56 @@
+.PreviewBanner{
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.video{
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: inherit;
+    min-height: inherit;
+}
+
+.content{
+    color: var(--bs-white);
+    text-align: center;
+    z-index:1;
+}
+
+/*text*/
+.PreviewBanner h1{
+    margin-bottom: .25em;
+    font-size: 72px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.PreviewBanner h1 b{
+    color: var(--app-primary);
+}
+.PreviewBanner h4{
+    margin-bottom: 3em;
+    font-weight: 400;
+}
+
+/*link*/
+.PreviewBanner a{
+    padding: .65em 4em;
+    color: var(--bs-white);
+    text-decoration: none;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    border: 2px solid var(--app-primary);
+    transition: .15s;
+}
+.PreviewBanner a:hover{
+    background: var(--app-primary);
+    color: var(--bs-white);
+}

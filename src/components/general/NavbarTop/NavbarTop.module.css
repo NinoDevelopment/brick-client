@@ -1,0 +1,121 @@
+.NavbarTop{
+    --bs-navbar-padding-y: 1.5em;
+
+    width: 100%;
+
+    position: absolute;
+}
+/*scroll version*/
+.NavbarTopScroll{
+    --bs-navbar-padding-y: .5em;
+
+    background: var(--bs-white);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: .15s
+}
+
+/*container*/
+.container{
+    align-items: center;
+}
+
+/*logo*/
+.logo img{
+    width: 220px;
+}
+
+/*right block (for align)*/
+.right{
+    display: flex;
+    align-items: center;
+}
+
+/*links Container*/
+.linksContainer{
+    margin-right: 3.5em;
+}
+/*links*/
+.linksContainer a{
+    margin: 0 .25em;
+    padding: .35em .75em;
+
+    border-radius: 30px;
+    color: var(--bs-white);
+    text-decoration: none;
+    transition: .25s;
+}
+.linksContainer a:hover,
+.linksContainer a.active{
+    color: var(--bs-dark);
+    background: var(--bs-white);
+}
+
+/*openMenu*/
+.openMenu{
+    display: none;
+    width: 32px;
+    margin-left: 15px;
+}
+
+/*media*/
+@media (max-width: 1200px) {
+    /*logo*/
+    .logo img{
+        width: 160px;
+    }
+    /*links Container*/
+    .linksContainer{
+        margin-right: 1em;
+    }
+    /*links*/
+    .linksContainer a{
+        margin: 0 .125em;
+        padding: .3em .75em;
+    }
+}
+
+@media (max-width: 991px) {
+    /*logo*/
+    .logo img{
+        width: 110px;
+    }
+    /*links*/
+    .linksContainer a:nth-child(2),
+    .linksContainer a:nth-child(3){
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    /*links Container*/
+    .linksContainer{
+        margin-right: .25em;
+    }
+    /*links*/
+    .linksContainer a{
+        margin: 0 .05em;
+        padding: .3em .5em;
+    }
+    .linksContainer a:nth-child(3){
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    /*links*/
+    .linksContainer a:nth-child(4){
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    /*links and shop cart*/
+    .linksContainer{
+        display: none;
+    }
+    /*openMenu*/
+    .openMenu{
+        display: inline-block;
+    }
+}

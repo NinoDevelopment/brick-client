@@ -1,0 +1,63 @@
+.ModalConfirm{}
+
+/*modalBody*/
+.modalBody{
+    padding: 2em;
+}
+
+/*content*/
+.content{
+    margin-bottom: 1.25em;
+}
+/*content text*/
+.content h3{
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.content p{
+    margin: 0;
+}
+
+/*footer*/
+.modalBody footer{
+    display: flex;
+}
+
+/*button*/
+.modalBody footer button{
+    padding: 1em 3em;
+
+    color: var(--bs-dark);
+    background: var(--app-light);
+    border: none;
+    border-radius: 5px;
+    transition: .25s;
+}
+.modalBody footer button:hover{
+    background: var(--app-light-hover);
+}
+.modalBody footer button:first-child{
+    margin-right: .5em;
+}
+.modalBody .agree{
+    background: var(--app-primary);
+    color: var(--bs-white);
+}
+.modalBody .agree:hover{
+    background: var(--app-primary-hover);
+}
+
+/*media*/
+@media (max-width: 450px) {
+    /*footer*/
+    .modalBody footer{
+        flex-direction: column;
+    }
+    /*button*/
+    .modalBody footer button{
+        padding: .75em 2em;
+    }
+    .modalBody footer button:first-child{
+        margin: 0 0 .5em 0;
+    }
+}

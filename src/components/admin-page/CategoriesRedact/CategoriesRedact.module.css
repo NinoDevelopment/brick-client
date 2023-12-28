@@ -1,0 +1,4 @@
+.CategoriesRedact input,
+.CategoriesRedact textarea {
+    margin: .25em 0;
+}

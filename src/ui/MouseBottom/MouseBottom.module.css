@@ -1,0 +1,36 @@
+.mouse {
+    width: 24px;
+    height: 40px;
+    border: 2px solid var(--bs-white);
+    background-color: transparent;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.scroll {
+    width: 2px;
+    height: 10px;
+    background: var(--bs-white);
+    position: absolute;
+    bottom: 10px;
+    animation: scroll 1.25s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        bottom: 15px;
+    }
+
+    50% {
+        bottom: 10px;
+    }
+
+    100% {
+        bottom: 5px;
+    }
+}

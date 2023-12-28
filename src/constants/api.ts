@@ -1,0 +1,14 @@
+export const API_CATEGORY = '/category';
+export const API_PRODUCT = '/item';
+export const API_PRODUCTS_SAMPLE = (quantity:number) => `/item/sample/${quantity}`;
+export const API_ITEM_RECOMMEND = (quantity:number) => `/item/recommendations/${quantity}`;
+export const API_PRODUCT_ID = (id:string) => `/item/${id}`;
+export const API_PRODUCT_IMG = (id:string) => `/item/images/${id}`;
+export const API_CATEGORY_ITEMS = (id:string) => `/item/category/${id}`;
+export const API_ORDER_AMOUNT = '/order/amount';
+export const API_ORDER = '/order';
+export const API_ORDER_ID = (id:string) => `/order/${id}`;
+export const API_ORDER_PLATI = (id:string) => `/order/plati/${id}`;
+export const API_ORDER_COMPLETE_ID = (id:string) => `/order/complete/${id}`;
+export const API_ADMIN_AUTH = '/api/auth';
+export const API_VACANCY = '/vacancy';

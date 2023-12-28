@@ -1,0 +1,38 @@
+.CategoryProductsList {
+    margin-bottom: 3em;
+}
+
+/*container for items*/
+.itemsContainer {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/*load*/
+.loadContainer{
+    width: 100%;
+    height: 60vh;
+    margin-top: 3em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--app-light);
+    border-radius: 5px;
+}
+
+/*no item in category text*/
+.noItems{
+    min-height: 300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    color: var(--bs-gray-500);
+}

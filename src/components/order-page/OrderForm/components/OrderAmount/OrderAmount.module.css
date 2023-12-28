@@ -1,0 +1,54 @@
+.OrderAmount{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/*block*/
+.block{
+    padding: .5em 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+/*bordered block*/
+.block.border{
+    padding: .5em 0;
+    border-top: 2px solid var(--bs-gray-300);
+    border-bottom: 2px solid var(--bs-gray-300);
+}
+/*block for last price*/
+.block.itog{
+    padding: 1.65em 0;
+}
+.block p{
+    margin: 0;
+}
+.block.itog h5{
+    margin: 0;
+    font-weight: 700;
+}
+
+/*delivery alert*/
+.alertDelivery{
+    margin: 1em 0;
+    padding: 1em;
+
+    border-radius: 5px;
+    background: var(--bs-white);
+}
+.alertDelivery h5{
+    margin: 0 0 .25em 0;
+    font-weight: 700;
+    color: var(--bs-dark);
+}
+.alertDelivery h5 span{
+    color: var(--app-primary);
+}
+.alertDelivery p{
+    margin: 0;
+    line-height: 1.2;
+    color: var(--bs-gray-600);
+}

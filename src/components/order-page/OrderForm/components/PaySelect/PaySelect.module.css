@@ -1,0 +1,71 @@
+.PaySelect{
+    margin-bottom: 1.5em;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.PaySelect p,
+.PaySelect span{
+    margin: 0;
+    line-height: 1;
+}
+
+/*button*/
+.PaySelect button{
+    height: 50px;
+    margin-bottom: .4em;
+    padding: .5em 1em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--bs-dark);
+    background: var(--bs-white);
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: .25s;
+}
+.PaySelect button:disabled{
+    color: var(--app-primary);
+    border: 1px solid var(--app-primary);
+}
+.PaySelect button:last-child{
+    margin-bottom: 0;
+}
+
+/*left container in button*/
+.PaySelect button .left{
+    display: flex;
+    align-items: center;
+}
+
+/*circle*/
+.PaySelect button .circle{
+    width: 12px;
+    height: 12px;
+    margin-right: .5em;
+
+    border-radius: 50%;
+    background: none;
+    border: 1px solid var(--app-primary);
+    transition: .25s;
+}
+.PaySelect button:disabled .circle{
+    background: var(--app-primary);
+}
+
+/*image*/
+.PaySelect button img{
+    width: 20px;
+}
+
+.PaySelect p.payWarning{
+    margin-top: .25em;
+    padding: .5em 1em;
+
+    border-radius: 5px;
+    border: 1px solid  var(--app-primary);
+    text-align: center;
+}

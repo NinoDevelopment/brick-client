@@ -1,0 +1,154 @@
+.FooterContent{
+    width: 100%;
+    padding: 3em 0 4em;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.FooterContent a{
+    color: var(--bs-dark);
+    text-decoration: none;
+    transition: .25s;
+}
+.FooterContent a:hover{
+    color: var(--app-primary);
+}
+
+/*top and bottom blocks*/
+.FooterContent .top:first-child{
+    margin-bottom: 1.5em;
+}
+.FooterContent .top,
+.FooterContent .bottom{
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*top block title left*/
+.FooterContent .top h4{
+    max-width: 40%;
+    margin: 0;
+    font-weight: 700;
+    color: var(--bs-gray-600);
+}
+.FooterContent .top h4 span{
+    color: var(--app-primary);
+}
+
+/*top block container right*/
+.FooterContent .top .right{
+    display: flex;
+    align-items: center;
+}
+/*top block container right BLOCK*/
+.FooterContent .top .right .block{
+    margin-left: 3em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*top right block text*/
+.FooterContent .top .right .block p{
+    margin: 0 0 .15em 0;
+    color: var(--bs-gray-600);
+    font-weight: 400;
+}
+.FooterContent .top .right .block .links{
+    display: flex;
+    align-items: center;
+
+    font-weight: 700;
+}
+.FooterContent .top .right .block .links span{
+    margin: 0 .35em;
+}
+
+
+/*bottom block*/
+.bottom{
+    margin-top: 3em;
+    align-items: flex-end;
+}
+
+/*bottom left block*/
+.bottom .left{
+    display: flex;
+    flex-direction: column;
+}
+.bottom .left h6{
+    margin: 0;
+    line-height: 1.6;
+
+    font-weight: 400;
+    color: var(--bs-gray-600);
+}
+
+/*bottom right block*/
+.bottom .right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
+/*media*/
+@media (max-width: 1200px) {
+    .FooterContent .top:first-child{
+        margin-bottom: 2em;
+    }
+    .FooterContent .top{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    /*top block title left*/
+    .FooterContent .top h4{
+        max-width: 100%;
+        margin-bottom: .5em;
+    }
+    /*top block container right BLOCK*/
+    .FooterContent .top .right .block{
+        margin-left: 0;
+        margin-right: 2em;
+
+        align-items: flex-start;
+    }
+    /*bottom block*/
+    .bottom{
+        margin-top: 2.25em;
+    }
+}
+
+@media (max-width: 768px) {
+    .FooterContent{
+        padding: 2.25em 0 3em;
+    }
+    /*top block container right container*/
+    .FooterContent .top .right {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    /*top block container right block*/
+    .FooterContent .top .right .block{
+        margin-bottom: .5em;
+    }
+
+    /*bottom main block*/
+    .FooterContent .bottom{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    /*bottom left block*/
+    .FooterContent .bottom .left{
+        margin-bottom: 1em;
+    }
+    /*bottom right block*/
+    .bottom .right{
+        align-items: flex-start;
+    }
+}

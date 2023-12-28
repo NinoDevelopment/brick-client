@@ -1,0 +1,57 @@
+.PhoneEmailLinks{
+    width: 100%;
+    padding: 3em 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/*block*/
+.PhoneEmailLinks .block{
+    width: calc(50% - 1em);
+}
+/*text*/
+.PhoneEmailLinks .block h3{
+    color: var(--bs-gray-500);
+    margin-bottom: .05em;
+}
+.PhoneEmailLinks .block a{
+    font-size: 55px;
+    font-weight: 600;
+    color: var(--bs-dark);
+    text-decoration: none;
+    transition: .25s;
+}
+.PhoneEmailLinks .block a:hover{
+    text-decoration: underline;
+}
+
+
+/*media*/
+@media (max-width: 1200px) {
+    .PhoneEmailLinks{
+        padding: 2em 0;
+    }
+    /*block*/
+    .PhoneEmailLinks .block{
+        width: 100%;
+        margin-bottom: 2em;
+    }
+    .PhoneEmailLinks .block a{
+        font-size: 45px;
+    }
+}
+
+@media (max-width: 768px) {
+    .PhoneEmailLinks .block a{
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 500px) {
+    .PhoneEmailLinks .block a{
+        font-size: 25px;
+    }
+}

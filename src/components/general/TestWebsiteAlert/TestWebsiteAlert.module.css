@@ -1,0 +1,14 @@
+.TestWebsiteAlert{
+    width: 100%;
+    height: auto;
+    padding: .75em;
+
+   text-align: center;
+    background: var(--app-primary);
+    border-bottom-left-radius: .5em;
+    border-bottom-right-radius: .5em;
+}
+.TestWebsiteAlert h6{
+    margin: 0;
+    color: var(--bs-white);
+}

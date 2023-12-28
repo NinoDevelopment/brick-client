@@ -1,0 +1,16 @@
+.RecommendItems{
+    width: 100%;
+    margin: 3em 0 0;
+}
+
+/*title*/
+.title{
+    margin-bottom: .75em;
+    color: var(--bs-dark);
+    font-weight: 700;
+}
+
+/*content*/
+.content{
+
+}

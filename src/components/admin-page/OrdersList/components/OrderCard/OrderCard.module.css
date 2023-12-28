@@ -1,0 +1,10 @@
+.OrderCard {
+    width: calc(50% - .5em);
+    margin: 0 0 .5em 0;
+    padding: 1em;
+}
+
+.itemsContainer{
+    max-height: 250px;
+    overflow-y: auto;
+}

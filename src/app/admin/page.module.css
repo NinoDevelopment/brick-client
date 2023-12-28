@@ -1,0 +1,11 @@
+.spinnerContainer{
+    height: 65vh;
+    margin: 1em 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--app-light);
+    border-radius: 5px;
+}

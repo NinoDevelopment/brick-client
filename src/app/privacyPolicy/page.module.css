@@ -1,0 +1,27 @@
+.main{
+    margin: 2em auto;
+}
+
+/*title*/
+.title{
+    margin-bottom: .75em;
+    font-weight: 800;
+    color: var(--bs-dark);
+    font-family: 'Playfair Display', serif;
+}
+
+/*block*/
+.block{
+    margin-bottom: 3em;
+}
+/*text*/
+.block h5{
+    margin-bottom: .5em;
+
+    font-weight: 700;
+    color: var(--bs-dark);
+}
+.block p{
+    color: var(--bs-gray-600);
+    line-height: 1.6;
+}

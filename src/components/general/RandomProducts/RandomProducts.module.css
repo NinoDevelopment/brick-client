@@ -1,0 +1,56 @@
+.RandomProducts{
+    width: 100%;
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+/*title*/
+.RandomProducts h2{
+    margin-bottom: .75em;
+    font-weight: 700;
+}
+
+/*spinner*/
+.spinnerContainer{
+    width: 100%;
+    height: 300px;
+    margin: 2em 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 5px;
+    background: var(--app-light);
+}
+
+/*productsContainer*/
+.productsContainer{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/*footer*/
+.RandomProducts .btnContainer{
+    padding-top: 1.5em;
+
+    display: flex;
+    justify-content: center;
+}
+/*link*/
+.RandomProducts .btnContainer a{
+    padding: .8em 6.5%;
+
+    text-decoration: none;
+    color: var(--bs-dark);
+    font-weight: 500;
+    background: none;
+    border-radius: 5px;
+    border: 1px solid var(--app-primary);
+    transition: .25s;
+}
+.RandomProducts .btnContainer a:hover{
+    color: var(--bs-white);
+    background: var(--app-primary);
+}

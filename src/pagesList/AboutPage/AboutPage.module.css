@@ -1,0 +1,9 @@
+.main{
+  margin: 1em auto 2em;
+}
+
+.title{
+  margin-bottom: .85em;
+  font-weight: 800;
+  font-family: 'Playfair Display', serif;
+}

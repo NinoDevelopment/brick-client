@@ -1,0 +1,17 @@
+.main{
+    height: 65vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*form*/
+.main form{
+    width: 300px;
+}
+
+/*button*/
+.main form button{
+    width: 100%;
+}

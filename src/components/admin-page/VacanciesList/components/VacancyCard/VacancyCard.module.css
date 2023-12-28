@@ -1,0 +1,9 @@
+.VacancyCard{
+    width: calc(33.3% - .5em);
+    margin: 0 0 .5em 0;
+}
+
+/*title*/
+.VacancyCard h3{
+    font-weight: 800;
+}

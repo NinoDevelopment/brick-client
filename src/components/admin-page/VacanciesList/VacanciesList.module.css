@@ -1,0 +1,20 @@
+.VacanciesList{
+    width: 100%;
+    height: auto;
+}
+
+.title{
+    margin-bottom: .75em;
+    font-weight: 800;
+    color: var(--bs-dark);
+    font-family: 'Playfair Display', serif;
+}
+
+.content{
+    max-height: 95vh;
+    overflow-y: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

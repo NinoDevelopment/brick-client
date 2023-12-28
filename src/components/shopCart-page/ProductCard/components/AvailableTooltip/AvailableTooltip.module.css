@@ -1,0 +1,44 @@
+/*available*/
+.available{
+    margin: 0 0 .35em 0;
+
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+    line-height: 1;
+    font-weight: 600;
+    color: var(--app-primary);
+    transition: .25s;
+}
+.available:hover{
+    opacity: .75;
+}
+.available img{
+    width: 18px;
+    height: 18px;
+    margin-left: .35em;
+}
+
+/*tooltip*/
+.tooltip a{
+    color: var(--bs-white);
+}
+
+/*media*/
+@media (max-width: 1200px) {
+    .available img{
+        width: 15px;
+        height: 15px;
+    }
+}
+
+@media (max-width: 420px) {
+    .available{
+        font-size: 12px;
+    }
+    .available img{
+        width: 12px;
+        height: 12px;
+    }
+}

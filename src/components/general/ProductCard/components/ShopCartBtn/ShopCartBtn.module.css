@@ -1,0 +1,56 @@
+/*no active button*/
+.ShopCartBtn{
+    padding: .65em 1.25em;
+
+    white-space: nowrap;
+
+    z-index: 3;
+    border: none;
+    border-radius: 5px;
+    color: var(--app-light);
+    background: var(--app-primary);
+    transition: .25s;
+}
+.ShopCartBtn:hover{
+    background: var(--app-primary-hover);
+}
+
+/*active button*/
+.ShopCartBtnActive{
+    display: flex;
+    z-index: 3;
+}
+
+.ShopCartBtnActive button {
+    padding: .65em 1em;
+    color: var(--bs-dark);
+
+    border: none;
+    font-weight: 700;
+    background: var(--bs-white);
+    transition: .25s;
+}
+.ShopCartBtnActive button:disabled{
+    color: var(--bs-dark);
+}
+.ShopCartBtnActive button:first-child{
+    border-radius: 5px 0 0 5px;
+}
+.ShopCartBtnActive button:last-child{
+    border-radius: 0 5px 5px 0;
+}
+.ShopCartBtnActive button:first-child:hover,
+.ShopCartBtnActive button:last-child:hover{
+    color: var(--app-primary);
+}
+
+/*media*/
+@media (max-width: 1200px) {
+    /*no active button*/
+    .ShopCartBtn{
+        padding: .65em;
+    }
+    .ShopCartBtnActive button {
+        padding: .65em .85em;
+    }
+}

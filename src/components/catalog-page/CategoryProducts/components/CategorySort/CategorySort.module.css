@@ -1,0 +1,56 @@
+/*sort Container*/
+.CategorySort{
+    width: 100%;
+    margin: 60px 0 2em;
+    padding: 20px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid var(--bs-gray-300);
+}
+
+/*right container*/
+.CategorySort .right{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/*checkbox*/
+.check{
+    margin-right: 2em;
+    display: flex;
+}
+.check:last-child{
+    margin-right: 0;
+}
+.check input{
+    width: 1.1em;
+    height: 1.1em;
+    border-color: var(--bs-gray-500);
+}
+.check label{
+    margin-left: .35em;
+    margin-top: .35em;
+    line-height: 1;
+    color: var(--bs-gray-600);
+}
+.check input:checked {
+    background-color: var(--app-primary);
+    border-color: var(--app-primary);
+}
+.check input:focus {
+    border-color: var(--app-primary-25);
+    box-shadow: 0 0 0 0.25rem var(--app-primary-25);
+}
+
+/*media*/
+@media (max-width: 768px) {
+    /*sort Container*/
+    .CategorySort{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

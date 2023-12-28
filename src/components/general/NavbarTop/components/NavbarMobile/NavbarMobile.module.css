@@ -1,0 +1,61 @@
+.NavbarMobile{
+    /*vars*/
+    --bs-offcanvas-padding-y: 1.5em;
+}
+
+/*logo*/
+.logo{
+    width: 110px;
+}
+/*open menu*/
+.openMenu{
+    width: 32px;
+}
+
+/*body*/
+.body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*nav*/
+.body nav{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+/*link top*/
+.body nav a{
+    width: 100%;
+    margin-bottom: .5em;
+    padding: 1.15em 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    text-decoration: none;
+    color: var(--bs-dark);
+    background: var(--app-light);
+    border-radius: 5px;
+}
+.body nav a:nth-child(3),
+.body nav a:nth-child(4){
+    width: calc(50% - .25em);
+}
+
+/*footer*/
+.body footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.body footer a{
+    color: var(--bs-gray-600);
+    text-decoration: none;
+}
+.body footer a:first-child{
+    margin-bottom: .5em;
+}

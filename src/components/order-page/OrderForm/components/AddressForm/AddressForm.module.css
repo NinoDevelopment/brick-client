@@ -1,0 +1,45 @@
+.AddressForm{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/*form group block*/
+.block{
+    margin-bottom: 1.25em;
+
+    display: flex;
+    flex-direction: column;
+}
+.block:last-child{
+    margin-bottom: 0;
+}
+
+/*label*/
+.block label{
+    color: var(--bs-gray-600);
+}
+
+/*widths*/
+.w25{
+    width: calc(25% - .5em);
+}
+.w50{
+    width: calc(50% - .5em);
+}
+.w100{
+    width: 100%;
+}
+
+/*media*/
+@media (max-width: 991px) {
+    /*widths*/
+    .w25{
+        width: calc(50% - .5em);
+    }
+    .w50{
+        width: 100%;
+    }
+}

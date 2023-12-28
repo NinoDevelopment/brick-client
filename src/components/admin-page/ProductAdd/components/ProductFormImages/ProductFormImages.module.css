@@ -1,0 +1,42 @@
+.ProductFormImages{
+    margin: .25em 0;
+}
+
+/*images container*/
+.imagesContainer{
+    width: 100%;
+    padding: .25em;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    border-radius: .25em;
+    border: 1px solid var(--bs-gray-300);
+}
+
+/*img-block*/
+.imgBlock{
+    position: relative;
+    width: calc(25% - .3em);
+    margin: .15em;
+
+    cursor: pointer;
+}
+.imgBlock:hover button{
+    display: inline-flex;
+}
+/*img*/
+.imgBlock img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: .25em;
+}
+/*button*/
+.imgBlock button {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+
+    display: none;
+}

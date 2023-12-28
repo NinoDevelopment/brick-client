@@ -1,0 +1,39 @@
+.NotFoundContent{
+    position: relative;
+
+    width: 100%;
+    min-height: 65vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*.content*/
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*img*/
+.content img{
+    width: 65%;
+    height: auto;
+    margin: 2em auto;
+}
+
+/*text*/
+.content h5{
+    font-weight: 700;
+    color: var(--bs-dark);
+    text-align: center;
+}
+
+/*goBack link*/
+.goBack{
+    position: absolute;
+    left: calc(var(--bs-gutter-x) * .5);
+    top: 1em;
+}

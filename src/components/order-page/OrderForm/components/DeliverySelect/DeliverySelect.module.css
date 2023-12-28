@@ -1,0 +1,26 @@
+.DeliverySelect{
+    width: 100%;
+    margin-bottom: 1.5em;
+
+    display: flex;
+}
+
+/*button*/
+.DeliverySelect button{
+    width: 50%;
+    padding: .75em 0;
+
+    border: none;
+    border-bottom: 2px solid var(--bs-gray-300);
+    background: none;
+    color: var(--bs-gray-600);
+    transition: .25s;
+}
+.DeliverySelect button:hover{
+    border-bottom: 2px solid var(--bs-gray-600);
+}
+.DeliverySelect button:disabled,
+.DeliverySelect button:disabled:hover{
+    border-bottom: 2px solid var(--app-primary);
+    color: var(--app-primary);
+}

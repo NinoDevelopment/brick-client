@@ -1,15 +1,24 @@
 'use client'
 import React from 'react';
 import {Container} from "react-bootstrap";
-import AboutContent from "@/components/about-page/AboutContent/AboutContent";
 import styles from "./AboutPage.module.css";
+import PreviewBanner from "@/components/about-page/PreviewBanner/PreviewBanner";
+import ExperienceBlock from "@/components/about-page/ExperienceBlock/ExperienceBlock";
+import ControlBlock from "@/components/about-page/ControlBlock/ControlBlock";
+import ExclusiveBlock from "@/components/about-page/ExclusiveBlock/ExclusiveBlock";
 
 const AboutPage = () => {
 	return (
-		<Container className={styles.main}>
-			<h1 className={styles.title}>О компании</h1>
-			<AboutContent />
-		</Container>
+		<div className={styles.main}>
+			<PreviewBanner />
+			<Container>
+				<ExperienceBlock />
+			</Container>
+			<ControlBlock />
+			<Container>
+				<ExclusiveBlock />
+			</Container>
+		</div>
 	);
 };
 

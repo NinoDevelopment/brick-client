@@ -11,4 +11,3 @@ export const API_ORDER_ID = (id:string) => `/order/${id}`;
 export const API_ORDER_PLATI = (id:string) => `/order/plati/${id}`;
 export const API_ORDER_COMPLETE_ID = (id:string) => `/order/complete/${id}`;
 export const API_ADMIN_AUTH = '/api/auth';
-export const API_VACANCY = '/vacancy';

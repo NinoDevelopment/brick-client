@@ -1,6 +1,8 @@
 .NavbarMobile{
     /*vars*/
     --bs-offcanvas-padding-y: 1.5em;
+    --bs-offcanvas-bg: var(--bs-dark);
+    color: var(--bs-white);
 }
 
 /*logo*/
@@ -37,8 +39,7 @@
 
     text-align: center;
     text-decoration: none;
-    color: var(--bs-dark);
-    background: var(--app-light);
+    background: #272727;
     border-radius: 5px;
 }
 .body nav a:nth-child(3),

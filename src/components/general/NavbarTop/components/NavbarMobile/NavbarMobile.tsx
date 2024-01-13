@@ -37,7 +37,7 @@ const NavbarMobile: React.FC<INavbarMobile> = ({ show, handleClose }) => {
 				<img
 					onClick={handleClose}
 					className={styles.openMenu}
-					src={"/icons/menu.svg"}
+					src={"/icons/x.svg"}
 					alt={APP_TITLE}
 				/>
 			</Offcanvas.Header>

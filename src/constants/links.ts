@@ -11,7 +11,6 @@ export const LINK_ORDER_ID = (id:string) => `/order/status/${id}`;
 export const LINK_PRODUCT = (id:string) => `/product/${id}`;
 export const LINK_PRIVACY = '/privacyPolicy';
 export const LINK_REQUISITES = '/requisites';
-export const LINK_VACANCIES = '/vacancies';
 
 export const LIST_LINKS = [
 	{
@@ -29,9 +28,5 @@ export const LIST_LINKS = [
 	{
 		title: "Контакты",
 		link: LINK_CONTACTS,
-	},
-	{
-		title: "Вакансии",
-		link: LINK_VACANCIES,
-	},
+	}
 ];

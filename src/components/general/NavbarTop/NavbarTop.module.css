@@ -5,14 +5,8 @@
 
     position: absolute;
 }
-/*scroll version*/
-.NavbarTopScroll{
-    --bs-navbar-padding-y: .5em;
-
-    background: var(--bs-white);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    transition: .15s
+.NavbarTop.dark{
+    position: static;
 }
 
 /*container*/
@@ -45,10 +39,18 @@
     text-decoration: none;
     transition: .25s;
 }
+.NavbarTop.dark .linksContainer a{
+    color: var(--bs-dark);
+}
 .linksContainer a:hover,
 .linksContainer a.active{
     color: var(--bs-dark);
     background: var(--bs-white);
+}
+.NavbarTop.dark .linksContainer a:hover,
+.NavbarTop.dark .linksContainer a.active{
+    color: var(--bs-white);
+    background: var(--bs-dark);
 }
 
 /*openMenu*/

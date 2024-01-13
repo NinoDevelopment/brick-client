@@ -13,8 +13,6 @@ import {redirect} from "next/navigation";
 import {LINK_ERROR} from "@/constants/links";
 import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
 import styles from "./page.module.css";
-import VacancyAdd from "@/components/admin-page/VacancyAdd/VacancyAdd";
-import VacanciesList from "@/components/admin-page/VacanciesList/VacanciesList";
 
 const page = () => {
 
@@ -41,10 +39,6 @@ const page = () => {
 			<ProductAdd />
 			<hr className={"my-5"} />
 			<ProductsList />
-			<hr className={"my-5"} />
-			<VacancyAdd />
-			<hr className={"my-5"} />
-			<VacanciesList />
 		</Container>
 	);
 };

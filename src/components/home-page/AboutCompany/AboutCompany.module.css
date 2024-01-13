@@ -1,0 +1,45 @@
+.wrapper{
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.left,
+.right{
+   padding: 6em 4em;
+}
+
+.left{
+   width: 550px;
+   color: var(--bs-white);
+   background-color: var(--app-primary);
+   background-image: url('/other/brick-borders.svg');
+   background-size: contain;
+   background-position: bottom;
+   background-repeat: no-repeat;
+}
+.left h1{
+   margin: 0;
+   font-size: 64px;
+   font-weight: 700;
+}
+.left h4{
+   font-weight: 400;
+}
+
+.right{
+   flex: 1;
+   display: flex;
+   align-items: center;
+}
+.right h5{
+   margin: 0;
+   font-weight: 400;
+}
+
+.wrapper img.w100{
+   width: 100%;
+}
+.wrapper img.w50{
+   width: 50%;
+}

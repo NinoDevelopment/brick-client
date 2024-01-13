@@ -1,0 +1,35 @@
+.wrapper{
+   padding-top: 8em;
+   padding-bottom: 8em;
+   display: flex;
+   align-items: center;
+   gap: 4em;
+}
+
+.wrapper h1{
+   margin-bottom: 0;
+   font-size: 64px;
+   font-weight: 700;
+}
+
+.wrapper h5{
+   font-weight: 400;
+}
+h5.subtitle{
+   margin-bottom: 2.5em;
+}
+h5.text{
+   margin-bottom: 3.5em;
+}
+
+.wrapper a{
+   padding: .85em 4em;
+   text-decoration: none;
+   color: var(--bs-white);
+   background: var(--app-primary);
+   border-radius: 5px;
+}
+
+.wrapper img{
+   width: 40%;
+}

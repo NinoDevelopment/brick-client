@@ -1,0 +1,46 @@
+.wrapper{
+   display: flex;
+   color: var(--bs-white);
+}
+
+.content{
+   padding: 6em 5em;
+   flex: 1;
+   background: var(--bs-dark);
+
+   display: flex;
+   flex-direction: column;
+   gap: 2em;
+}
+
+.bgImage {
+   width: 30%;
+   min-height: 100%;
+   background-image: url('/other/house1.png');
+}
+
+.block{
+   display: flex;
+   align-items: center;
+   gap: 2em;
+}
+.block h3{
+   margin-bottom: .45em;
+   font-weight: 700;
+}
+.block h5{
+   font-weight: 400;
+}
+
+.block img{
+   width: 150px;
+   margin-right: 1.25em;
+}
+
+.imgContainer{
+   width: 150px;
+   height: 150px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}

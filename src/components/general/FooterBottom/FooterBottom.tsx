@@ -6,10 +6,12 @@ import FooterContent from "@/components/general/FooterBottom/components/FooterCo
 
 const FooterBottom = () => {
 	return (
-		<Container className={styles.FooterBottom}>
-			<FooterNav />
-			<FooterContent />
-		</Container>
+		<div className={styles.FooterBottom}>
+			<Container>
+				<FooterNav />
+				<FooterContent />
+			</Container>
+		</div>
 	);
 };
 

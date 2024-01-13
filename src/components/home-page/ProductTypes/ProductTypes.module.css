@@ -1,0 +1,27 @@
+.wrapper{
+   padding: 6em 0;
+   background: var(--bs-dark);
+   color: var(--bs-white);
+}
+
+.wrapper h1{
+   margin: 0;
+   font-size: 64px;
+   font-weight: 700;
+}
+.wrapper h1 span{
+   color: var(--app-primary);
+}
+.wrapper h5{
+   margin-bottom: 3em;
+   font-weight: 400;
+}
+
+.content{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.content img{
+   width: 33.3%;
+}

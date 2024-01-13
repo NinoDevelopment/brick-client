@@ -12,13 +12,7 @@ const Home = () => {
   return (
       <main className={styles.main}>
           <PreviewBanner />
-          <Container>
-              <RandomProducts quantity={6} title={"Вам может понравиться"} />
-          </Container>
           <AboutCompany />
-          <Container>
-              <RandomProducts quantity={3} title={"Вам может понравиться"} />
-          </Container>
           <CalcBanner />
          <ProductTypes />
          <GalleryBanner />

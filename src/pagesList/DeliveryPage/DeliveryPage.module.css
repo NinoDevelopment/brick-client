@@ -1,9 +1,18 @@
 .main{
-  margin: 1em auto 2em;
+  margin: 0 auto 2em;
 }
 
-.title{
-  margin-bottom: .85em;
-  font-weight: 800;
-  font-family: 'Playfair Display', serif;
+.info{
+  margin: 5em 0 4em;
+}
+.info h2{
+  font-size: 48px;
+  font-weight: 700;
+}
+.info h3{
+  font-size: 32px;
+  font-weight: 700;
+}
+.info h5{
+  font-weight: 400;
 }

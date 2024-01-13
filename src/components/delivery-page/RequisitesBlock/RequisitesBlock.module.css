@@ -1,0 +1,16 @@
+.wrapper{
+   padding: 0 0 2em;
+}
+
+.wrapper h3{
+   margin-bottom: .5em;
+   font-size: 32px;
+   font-weight: 700;
+}
+.wrapper h5{
+   font-weight: 400;
+}
+.wrapper h5 b{
+   color: var(--app-primary);
+   font-weight: 700;
+}

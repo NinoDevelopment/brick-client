@@ -1,0 +1,60 @@
+.wrapper{
+   padding: 5em 0;
+   background: var(--app-light);
+}
+
+.wrapper header{
+   margin-bottom: 2.5em;
+}
+.wrapper header h2{
+   margin-bottom: 0;
+   font-size: 32px;
+   font-weight: 700;
+}
+.wrapper header h5{
+   font-weight: 400;
+}
+
+.wrapper form{
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   gap: 2em;
+}
+.inputContainer{
+   width: calc(50% - 1em);
+   display: flex;
+   flex-direction: column;
+}
+.inputContainer:nth-child(3),
+.inputContainer:nth-child(4) {
+   width: 100%;
+}
+.inputContainer label{
+   margin-bottom: .35em;
+}
+.inputContainer input,
+.inputContainer textarea{
+   padding: .55em 1em;
+   background: none;
+   border-radius: .5em;
+   outline: none;
+   border: 1px solid var(--bs-gray-500);
+}
+
+.wrapper button[type="submit"]{
+   background: var(--app-primary);
+   padding: .65em 3.25em;
+   font-size: 1.25em;
+   color: var(--bs-white);
+   font-weight: 600;
+   border: none;
+   border-radius: .5em;
+   transition: .25s;
+}
+.wrapper button[type="submit"]:hover{
+   background: var(--app-primary-hover);
+}
+.wrapper button[type="submit"]:disabled{
+   background: var(--bs-gray-600);
+}

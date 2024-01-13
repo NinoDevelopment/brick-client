@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Container, Nav, Navbar} from "react-bootstrap";
 import Link from "next/link";
-import {LINK_ABOUT, LINK_HOME, LIST_LINKS} from "@/constants/links";
+import {LINK_ABOUT, LINK_CONTACTS, LINK_DELIVERY, LINK_HOME, LIST_LINKS} from "@/constants/links";
 import styles from "./NavbarTop.module.css";
 import ShopCartLink from "@/components/general/NavbarTop/components/ShopCartLink/ShopCartLink";
 import {usePathname} from "next/navigation";
@@ -14,7 +14,7 @@ const NavbarTop = () => {
 	const [showMobile, setShowMobile] = useState<boolean>(false);
 
 	const darkClass = () => {
-		if (path === LINK_ABOUT || path === '/') return '';
+		if (path === LINK_ABOUT || path === '/' || path === LINK_DELIVERY || path === LINK_CONTACTS) return '';
 		return styles.dark;
 	}
 

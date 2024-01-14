@@ -34,7 +34,7 @@
     margin: 0 .25em;
     padding: .35em .75em;
 
-    border-radius: 30px;
+    border-bottom: 2px solid transparent;
     color: var(--bs-white);
     text-decoration: none;
     transition: .25s;
@@ -44,13 +44,7 @@
 }
 .linksContainer a:hover,
 .linksContainer a.active{
-    color: var(--bs-dark);
-    background: var(--bs-white);
-}
-.NavbarTop.dark .linksContainer a:hover,
-.NavbarTop.dark .linksContainer a.active{
-    color: var(--bs-white);
-    background: var(--bs-dark);
+    border-bottom: 2px solid var(--app-primary);
 }
 
 /*openMenu*/

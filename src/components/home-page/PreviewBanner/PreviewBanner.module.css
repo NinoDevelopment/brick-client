@@ -63,3 +63,28 @@
     background: var(--app-primary);
     color: var(--bs-white);
 }
+
+/*media*/
+@media(max-width: 991px){
+    /*text*/
+    .PreviewBanner h1{
+        font-size: 48px;
+    }
+    .PreviewBanner h4{
+        font-size: 24px;
+    }
+}
+@media(max-width: 768px){
+    /*text*/
+    .PreviewBanner h1{
+        font-size: 24px;
+    }
+    .PreviewBanner h4{
+        font-size: 14px;
+    }
+
+    /*button*/
+    .PreviewBanner a{
+        font-size: 0.85rem;
+    }
+}

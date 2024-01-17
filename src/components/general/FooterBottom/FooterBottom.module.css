@@ -4,6 +4,6 @@
     display: flex;
     flex-direction: column;
 
-    background: var(--bs-dark);
+    background: var(--app-dark);
     color: var(--bs-white);
 }

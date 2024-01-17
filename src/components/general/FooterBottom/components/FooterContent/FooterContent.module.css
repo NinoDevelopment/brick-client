@@ -130,6 +130,20 @@
     }
 }
 
+@media(max-width: 991px){
+    .FooterContent .top{
+        align-items: center;
+        text-align: center;
+        gap: 1em;
+    }
+    .FooterContent .right{
+        align-items: center;
+    }
+    .FooterContent .top .right .block{
+        align-items: center;
+    }
+}
+
 @media (max-width: 768px) {
     .FooterContent{
         padding: 2.25em 0 3em;
@@ -137,11 +151,13 @@
     /*top block container right container*/
     .FooterContent .top .right {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        gap: 2.5em;
     }
     /*top block container right block*/
     .FooterContent .top .right .block{
         margin-bottom: .5em;
+        margin-right: 0;
     }
 
     /*bottom main block*/

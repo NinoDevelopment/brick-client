@@ -5,6 +5,8 @@
     /*app*/
     --app-green: #53BD00;
     --app-light: #F6F6F6;
+    --app-dark: #1E1E1E;
+    --app-secondary-dark: #272727;
     --app-light-hover: #F0F0F0;
     --app-primary: #FB8A2E;
     --app-primary-hover: #8d4a13;
@@ -13,6 +15,7 @@
     /*swiper*/
     --swiper-theme-color: #FFFFFF;
     --swiper-navigation-color: #FFFFFF;
+
 }
 
 * {

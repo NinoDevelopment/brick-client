@@ -46,8 +46,8 @@
 
         text-align: center;
         border-bottom: none;
-        color: var(--bs-dark);
-        background: var(--app-light);
+        color: var(--bs-white);
+        background: var(--app-secondary-dark);
         border-radius: 5px;
     }
     .FooterNav a:hover{

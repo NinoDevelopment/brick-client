@@ -29,9 +29,11 @@ const AboutCompany = () => {
             </h5>
          </div>
 
-         <img src={'/other/about-bg-1.png'} alt={APP_TITLE} className={styles.w100} />
-         <img src={'/other/about-bg-2.png'} alt={APP_TITLE} className={styles.w50} />
-         <img src={'/other/about-bg-3.png'} alt={APP_TITLE} className={styles.w50} />
+          <div className={styles.images}>
+              <img src={'/other/about-bg-1.png'} alt={APP_TITLE} className={styles.w100}/>
+              <img src={'/other/about-bg-2.png'} alt={APP_TITLE} className={styles.w50}/>
+              <img src={'/other/about-bg-3.png'} alt={APP_TITLE} className={styles.w50}/>
+          </div>
       </div>
    );
 };

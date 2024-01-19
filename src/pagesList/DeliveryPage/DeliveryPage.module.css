@@ -16,3 +16,23 @@
 .info h5{
   font-weight: 400;
 }
+
+/*media*/
+@media(max-width: 768px){
+  /*main*/
+  .main{
+    margin: 0 auto 1em;
+  }
+  /*content*/
+  .info h2{
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .info h3{
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .info h5{
+    font-size: 14px;
+  }
+}

@@ -44,3 +44,40 @@
    justify-content: center;
    align-items: center;
 }
+
+/*media*/
+@media(max-width: 991px){
+   /*image*/
+   .bgImage{
+      display: none;
+   }
+}
+@media(max-width: 768px){
+   /*image*/
+   .block img{
+      width: 100px;
+   }
+   /*content*/
+   .block h3{
+      font-size: 18px;
+   }
+   .block h5{
+      font-size: 14px;
+   }
+}
+@media(max-width: 550px){
+   /*content*/
+   .content{
+      padding: 5em 3em;
+   }
+   /*block*/
+   .block{
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1em;
+   }
+   .block img{
+      width: 100px;
+   }
+}

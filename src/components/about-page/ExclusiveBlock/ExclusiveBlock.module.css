@@ -12,3 +12,32 @@
 .wrapper h5{
    font-weight: 400;
 }
+
+/*media*/
+@media(max-width: 991px){
+   .wrapper{
+      flex-direction: column;
+      gap: 2em;
+   }
+}
+@media(max-width: 768px){
+   /*image*/
+   .wrapper img{
+      width: 35%;
+   }
+   /*content*/
+   .content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+   }
+   .wrapper h2{
+      font-size: 24px;
+      font-weight: 700;
+   }
+   .wrapper h5{
+      font-size: 14px;
+      font-weight: 400;
+   }
+}

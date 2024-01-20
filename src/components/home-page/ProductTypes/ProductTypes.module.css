@@ -34,6 +34,9 @@
    }
 }
 @media(max-width: 768px){
+   .wrapper{
+      padding: 2em .5em;
+   }
    .wrapper h1{
       font-size: 24px;
    }
@@ -43,12 +46,12 @@
 }
 @media(max-width: 490px){
    .content{
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 5em;
+      flex-wrap: wrap;
+      gap: 3em 10%;
    }
    .content img{
-      width: 65%;
+      width: 40%;
    }
 }

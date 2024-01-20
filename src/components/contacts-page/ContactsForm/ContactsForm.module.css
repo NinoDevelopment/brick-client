@@ -31,6 +31,10 @@
    width: 100%;
 }
 .inputContainer label{
+   max-width: 100%;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
    margin-bottom: .35em;
 }
 .inputContainer input,
@@ -57,4 +61,21 @@
 }
 .wrapper button[type="submit"]:disabled{
    background: var(--bs-gray-600);
+}
+
+/*media*/
+@media (max-width: 768px) {
+   .wrapper header h2{
+      font-size: 24px;
+   }
+   .wrapper header h5{
+      font-size: 16px;
+   }
+   .wrapper form{
+      gap: 1em;
+   }
+   .wrapper button[type="submit"]{
+      width: 100%;
+      font-size: 1em;
+   }
 }

@@ -16,15 +16,14 @@
 /*media*/
 @media(max-width: 991px){
    .wrapper{
+      padding: 4em 0;
       flex-direction: column;
-      gap: 2em;
+   }
+   .wrapper img{
+      display: none;
    }
 }
 @media(max-width: 768px){
-   /*image*/
-   .wrapper img{
-      width: 35%;
-   }
    /*content*/
    .content{
       display: flex;

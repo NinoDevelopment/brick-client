@@ -26,14 +26,6 @@ const ProductFormInputs: React.FC<IProductFormInputs> = ({ formData, setFormData
 				/>
 			</FloatingLabel>
 
-			<FloatingLabel label="Состав">
-				<FormControl
-					required as={"textarea"} rows={4}
-					value={formData?.composition}
-					onChange={e => setFormData({...formData, composition: e.target.value})}
-				/>
-			</FloatingLabel>
-
 			<FloatingLabel label="Скидка (%)">
 				<FormControl
 					min={0}
@@ -41,6 +33,14 @@ const ProductFormInputs: React.FC<IProductFormInputs> = ({ formData, setFormData
 					type={"number"}
 					value={formData?.discount || ''}
 					onChange={e => setFormData({...formData, discount: +e.target.value})}
+				/>
+			</FloatingLabel>
+
+			<FloatingLabel label="Цена за палет">
+				<FormControl
+					type={"number"}
+					value={formData?.price || ''}
+					onChange={e => setFormData({...formData, price: +e.target.value})}
 				/>
 			</FloatingLabel>
 
@@ -60,12 +60,6 @@ const ProductFormInputs: React.FC<IProductFormInputs> = ({ formData, setFormData
 				label="Показывать товар"
 				checked={formData?.show}
 				onChange={() => setFormData({...formData, show: !formData?.show})}
-			/>
-
-			<Form.Switch
-				label="Доступно только в Это Хлеб"
-				checked={formData?.onlyBread}
-				onChange={() => setFormData({...formData, onlyBread: !formData?.onlyBread})}
 			/>
 		</>
 	);

@@ -19,10 +19,6 @@ const ProductInfo: React.FC<IProductInfo> = ({ data }) => {
 				<td>Описание:</td>
 				<td>{handleCutStr(data?.description, 60) || "Без описания"}</td>
 			</tr>
-			<tr>
-				<td>Состав:</td>
-				<td>{handleCutStr(data?.composition, 60) || "Без состава"}</td>
-			</tr>
 			<tr hidden={!categories?.length}>
 				<td>Категория:</td>
 				<td>{categories?.find(elem => elem._id === data.categoryId)?.name}</td>
@@ -42,10 +38,6 @@ const ProductInfo: React.FC<IProductInfo> = ({ data }) => {
 			<tr>
 				<td>Показывать:</td>
 				<td>{!!data?.show ? "Да" : "Нет"}</td>
-			</tr>
-			<tr>
-				<td>Только в "Это хлеб":</td>
-				<td>{!!data?.onlyBread ? "Да" : "Нет"}</td>
 			</tr>
 			</tbody>
 		</Table>

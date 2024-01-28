@@ -22,20 +22,12 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
 		<div className={styles.ProductCard}>
 			<div className={styles.sliderContainer}>
 				<div className={styles.badges}>
-					<Badge className={styles.badge} bg={"light"}>
-						{data.weights.map(elem => (<p key={elem.value}>{elem.value}г<i>/</i></p>))}
-					</Badge>
-
 					<Badge className={styles.badge} hidden={!data.discount} bg={"light"}>
 						{"- " + +data.discount + "%"}
 					</Badge>
 
 					<Badge className={styles.badge} bg={"light"}>
 						{!data.available ? "Предзаказ" : "В наличии"}
-					</Badge>
-
-					<Badge hidden={!data?.onlyBread} className={styles.badge} bg={"light"}>
-						Уникально в ЭХ
 					</Badge>
 				</div>
 
@@ -48,7 +40,7 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
 						<h4>{data.name}</h4>
 					</Link>
 					<hr/>
-					<p>{data.composition}</p>
+					<p>{data.description || 'Без описания'}</p>
 				</div>
 
 				<div className={styles.btnContainer}>

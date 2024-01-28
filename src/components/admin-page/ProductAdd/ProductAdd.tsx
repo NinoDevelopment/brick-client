@@ -3,8 +3,6 @@ import styles from "./ProductAdd.module.css";
 import {Button, Form, Spinner} from "react-bootstrap";
 import {ITEM_INITIAL} from "@/constants/products";
 import {IProductWithImg} from "@/types/products";
-import ProductFormWeightPrice
-	from "@/components/admin-page/ProductAdd/components/ProductFormWeightPrice/ProductFormWeightPrice";
 import ProductFormImages from "@/components/admin-page/ProductAdd/components/ProductFormImages/ProductFormImages";
 import {API_PRODUCT} from "@/constants/api";
 import {handleRequest} from "@/functions/handleRequest";
@@ -26,16 +24,6 @@ const ProductAdd = () => {
 
 		if (!formData?.images?.length) {
 			TOAST_ERROR("Загрузите изображения товара!");
-			return;
-		}
-
-		if (!formData.weights.length) {
-			TOAST_ERROR("Выберите вес товара!");
-			return;
-		}
-
-		if (formData.weights.length > 2) {
-			TOAST_ERROR("Вы можете выбрать максимум 2 разновидности веса для товара!");
 			return;
 		}
 
@@ -67,8 +55,6 @@ const ProductAdd = () => {
 				<ProductFormInputs formData={formData} setFormData={setFormData} />
 
 				<ProductFormImages formData={formData} setFormData={setFormData} />
-
-				<ProductFormWeightPrice formData={formData} setFormData={setFormData} />
 
 				<Button disabled={load} size={"sm"} variant={"dark"} className={"w-100"} type={"submit"}>
 					{load ? <Spinner size={"sm"} /> : 'Отправить'}

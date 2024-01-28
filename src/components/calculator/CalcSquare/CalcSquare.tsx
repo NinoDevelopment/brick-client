@@ -4,6 +4,7 @@ import {handleRequest} from "@/functions/handleRequest";
 import {REQUEST_METHODS} from "@/types/general";
 import {API_CALC_PARAMS} from "@/constants/api";
 import {TOAST_ERROR} from "@/constants/toasts";
+import {Alert} from "react-bootstrap";
 
 interface InitialValues {
    wallThicknessType: 1 | 2 | 3 | 4 | 5,
@@ -29,12 +30,16 @@ const CalcSquare = () => {
 
    const [values, setValues] = useState<InitialValues>(initialValues)
    const [load, setLoad] = useState<boolean>(false)
+   const [resValue, setResValue] = useState<null | number>(null)
 
    const handleSend = (e: FormEvent) => {
       e.preventDefault();
       setLoad(true);
       handleRequest(REQUEST_METHODS.POST, API_CALC_PARAMS, values)
-         .then(res => console.log(res))
+         .then(res => {
+            setResValue(res.data)
+            setValues(initialValues)
+         })
          .catch(err => TOAST_ERROR('Ошибка рассчета! ' + err.message))
          .finally(() => setLoad(false))
    }
@@ -141,6 +146,13 @@ const CalcSquare = () => {
                />
             </div>
          </div>
+
+         {
+            resValue &&
+            <Alert variant={'info'} className={styles.alertValue}>
+               Необходимое количество кирпича по вашему запросу - <b>{resValue}шт</b>
+            </Alert>
+         }
 
          <button type={'submit'} className={styles.submit} disabled={load}>
             {load ? 'Загрузка...' : 'Рассчитать'}

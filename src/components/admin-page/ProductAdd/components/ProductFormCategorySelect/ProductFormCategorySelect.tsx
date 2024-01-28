@@ -35,7 +35,7 @@ const ProductFormCategorySelect: React.FC<ProductFormCategorySelect> = ({ formDa
 				onChange={e => setFormData({...formData, categoryId: e.target.value})}
 				value={data?.categories?.find(elem => elem._id === formData.categoryId)?._id}
 			>
-				<option hidden>Выберите категорию для товара</option>
+				<option>Выберите категорию для товара</option>
 				{
 					data.categories?.map(elem => (
 						<option key={elem._id} value={elem._id}>

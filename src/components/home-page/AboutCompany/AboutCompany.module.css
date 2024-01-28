@@ -6,24 +6,23 @@
 
 .left,
 .right{
-   padding: 6em 4em;
+   padding: 8em 4em;
 }
 
 .left{
    width: 550px;
    color: var(--bs-white);
    background-color: var(--app-primary);
-   background-image: url('/other/brick-borders.svg');
-   background-size: contain;
-   background-position: bottom;
-   background-repeat: no-repeat;
 }
 .left h1{
    margin: 0;
+   line-height: 1;
    font-size: 64px;
    font-weight: 700;
 }
 .left h4{
+   margin-bottom: 0;
+   line-height: 1;
    font-weight: 400;
 }
 
@@ -48,18 +47,19 @@
    width: 50%;
 }
 
-@media(max-width: 991px){
-   .left{
+@media(max-width: 1350px){
+   .left,
+   .right{
       width: 100%;
-      background-position: bottom right;
-      background-size: 50%;
+   }
+   .left{
+      padding: 4em 4em 2em 4em;
+   }
+   .right{
+      padding: 2em 4em 4em 4em;
    }
 }
 @media(max-width: 768px){
-   .left {
-      width: 50%;
-      background-size: contain;
-   }
    /*text*/
    .left h1{
       font-size: 24px;
@@ -70,16 +70,10 @@
    .right h5{
       font-size: 14px;
    }
-}
-@media(max-width: 595px){
-   .wrapper{
-      flex-direction: column;
-   }
-   .left, .right{
-      padding: 2em;
-   }
    .left{
-      width: 100%;
-      background-size: 35%;
+      padding: 2em 2em 1em 2em;
+   }
+   .right{
+      padding: 1em 2em 2em 2em;
    }
 }

@@ -30,16 +30,8 @@ const OrderProductItem: React.FC<IOrderProductItem> = ({ data }) => {
 				</td>
 			</tr>
 			<tr>
-				<td>Вес:</td>
-				<td>{data.weight} грамм</td>
-			</tr>
-			<tr>
 				<td>Кол-во:</td>
 				<td>{data.quantity} шт.</td>
-			</tr>
-			<tr>
-				<td>Состав:</td>
-				<td>{itemData.composition}</td>
 			</tr>
 			<tr hidden={itemData.available}>
 				<td>Предзаказ:</td>

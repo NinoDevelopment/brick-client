@@ -1,6 +1,5 @@
 export interface IShopCartItem {
 	itemId: string,
-	weight: number,
 	price: number,
 	quantity: number,
 }

@@ -43,6 +43,15 @@ h5.text{
       line-height: 100%;
       margin-bottom: 0.25em;
    }
+   .wrapper img{
+      display: none;
+   }
+   .wrapper h1{
+      margin-bottom: 0;
+   }
+   h5.subtitle{
+      margin-bottom: 1.25em;
+   }
 }
 @media(max-width: 768px){
    .wrapper{

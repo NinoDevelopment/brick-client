@@ -1,13 +1,21 @@
 import React from 'react';
 import {useGetCategories} from "@/hooks/useGetCategories";
 import styles from "./CategorySelect.module.css";
-import {Dropdown} from "react-bootstrap";
+import {Button, Dropdown} from "react-bootstrap";
 
 const CategorySelect = () => {
 
 	const { data:{categories, selected}, selectCategory } = useGetCategories();
 
 	if (!categories.length || !selected) return;
+
+	if (categories.length === 1) {
+		return (
+			<Button className={styles.toggle}>
+				{categories?.[0]?.name || 'Весь каталог'}
+			</Button>
+		)
+	}
 
 	return (
 		<Dropdown className={styles.CategorySelect}>

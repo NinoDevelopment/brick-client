@@ -19,11 +19,14 @@ const CategoryProductsList = ({selected} : {selected:string}) => {
 	const getNotAvailableItems = () => data.filter(elem => !elem.available);
 	// @ts-ignore sort sale item
 	const getAvailableItems = () => data.filter(elem => elem.available);
+	// @ts-ignore sort sale item
+	const getItemsWithDiscount = () => data.filter(elem => +elem.discount);
 
 	const getSortedData = () => {
 		if (sort === ESort.DEFAULT) return data;
 		if (sort === ESort.NOT_AVAILABLE) return getNotAvailableItems();
 		if (sort === ESort.AVAILABLE) return getAvailableItems();
+		if (sort === ESort.DISCOUNT) return getItemsWithDiscount();
 	};
 
 	if (load || !data) {
@@ -38,11 +41,7 @@ const CategoryProductsList = ({selected} : {selected:string}) => {
 		<div className={styles.CategoryProductsList}>
 
 			{/*sort component*/}
-			<CategorySort
-				sort={sort}
-				setSort={setSort}
-				data={data}
-			/>
+			<CategorySort sort={sort} setSort={setSort} data={data} />
 
 			{// products map
 				!!(getSortedData() && getSortedData()?.length) &&

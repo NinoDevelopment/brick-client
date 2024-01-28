@@ -9,23 +9,9 @@ export const MIN_ORDER_PRICE = 600;
 export const SHOPS_ADDRESSES: IShopAddress[] = [
 	{
 		id: EShopsIds.ITS_BREAD,
-		address: 'пр. Циолковского д.78 (центральный рынок), пекарня «Это Хлеб»',
-		city: 'г.Дзержинск',
+		address: 'Завод «Ковернино» | Самовывоз',
+		city: 'г.Нижний Новгород',
 		workTime: 'Ежедневно с 08:00-20:00',
-		selected: false,
-	},
-	{
-		id: EShopsIds.SHADE,
-		address: 'Гайдара 51, кафе «Шадэ»',
-		city: 'г.Дзержинск',
-		workTime: 'Ежедневно с 11:00-23:00',
-		selected: false,
-	},
-	{
-		id: EShopsIds.PEKARNYA,
-		address: 'Окская набережная 5а, «Пекарня»',
-		city: 'г.Дзержинск',
-		workTime: 'Ежедневно с 10:00-18:00',
 		selected: false,
 	},
 ];

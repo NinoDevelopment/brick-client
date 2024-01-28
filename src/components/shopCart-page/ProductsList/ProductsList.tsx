@@ -19,7 +19,7 @@ const ProductsList: React.FC<IProductCard> = ({ shopCartData }) => {
 						.sort((a, b) => a.price - b.price)
 						.map(elem => (
 						<ProductCard
-							key={elem.weight + elem.itemId}
+							key={elem.itemId}
 							data={elem}
 							shopCartData={shopCartData}
 						/>

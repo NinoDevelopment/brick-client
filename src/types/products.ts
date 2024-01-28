@@ -1,13 +1,3 @@
-export interface ISelectManyItem {
-	title: string,
-	value: number | string
-}
-
-export interface IProductPrice {
-	weight: number,
-	price: number,
-}
-
 export interface IProductImg {
 	_id: string,
 	images: string[],
@@ -18,13 +8,10 @@ export interface IProduct {
 	description: string,
 	categoryId: string,
 	discount: number,
-	prices: IProductPrice[],
-	weights: ISelectManyItem[],
-	composition: string,
+	price: number,
 	available: boolean,
 	isRecommendation: boolean,
 	show: boolean,
-	onlyBread: boolean,
 }
 
 export interface IProductId extends IProduct {

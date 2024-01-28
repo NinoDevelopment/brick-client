@@ -67,7 +67,7 @@ const OrderCard: React.FC<IOrderCard> = ({ data }) => {
 			<div hidden={!showItems} className={styles.itemsContainer}>
 				{
 					data.positions.map(elem => (
-						<OrderProductItem key={elem.itemId + elem.weight} data={elem} />
+						<OrderProductItem key={elem.itemId} data={elem} />
 					))
 				}
 			</div>

@@ -42,7 +42,7 @@ const rootReducer = combineReducers({
 });
 
 const persistConfig = {
-	key: 'root',
+	key: '@brick-client-kovernino:',
 	blacklist: ['products','categories','orders'],
 	storage: storage,
 }

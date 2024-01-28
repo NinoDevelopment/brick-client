@@ -13,14 +13,20 @@ interface ICategorySort {
 
 const CategorySort: React.FC<ICategorySort> = ({ data, sort, setSort }) => {
 	return (
-		<div hidden={!data.length} className={styles.CategorySort}>
+		<div hidden={!data} className={styles.CategorySort}>
 			<CategorySelect />
 			<div className={styles.right}>
-				<Form.Check // sale switch
+				<Form.Check // def switch
 					className={styles.check}
 					checked={sort === ESort.DEFAULT}
 					onChange={() => setSort(ESort.DEFAULT)}
 					label={"Без сортировки"}
+				/>
+				<Form.Check // discount switch
+					className={styles.check}
+					checked={sort === ESort.DISCOUNT}
+					onChange={() => setSort(sort === ESort.DISCOUNT ? ESort.DEFAULT : ESort.DISCOUNT)}
+					label={"Со скидкой"}
 				/>
 				<Form.Check // sale switch
 					className={styles.check}

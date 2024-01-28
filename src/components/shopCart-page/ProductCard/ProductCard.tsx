@@ -59,11 +59,9 @@ const ProductCard: React.FC<IProductCard> = ({ data, shopCartData }) => {
 					<Link href={LINK_PRODUCT(productData._id)}>
 						<h5>{productData.name}</h5>
 					</Link>
-					<p className={styles.weight}>{data.weight} грамм</p>
 				</div>
 
 				<ShopCartBtn
-					selected={{weight: data.weight, price: data.price}}
 					shopCartData={shopCartData}
 					product={productData}
 				/>
@@ -77,7 +75,7 @@ const ProductCard: React.FC<IProductCard> = ({ data, shopCartData }) => {
 				/>
 
 				<p>
-					{productData.prices.find(elem => elem.weight === data.weight)?.price}₽
+					{productData?.price}₽/палет
 					{!!productData.discount && <span>- {productData.discount}%</span>}
 				</p>
 			</footer>

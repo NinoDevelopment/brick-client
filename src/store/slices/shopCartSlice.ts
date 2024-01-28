@@ -10,7 +10,7 @@ const initialState:IShopCart = {
 }
 
 const checkItem = (item:IShopCartItem, payload:IShopCartItem) => {
-	return item.itemId === payload.itemId && item.weight === payload.weight;
+	return item.itemId === payload.itemId;
 }
 
 const findItem = (data:IShopCartItem[], payload:IShopCartItem) => {

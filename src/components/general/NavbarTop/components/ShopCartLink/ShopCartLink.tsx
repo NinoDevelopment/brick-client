@@ -36,7 +36,7 @@ const ShopCartLink = () => {
 				// check amountData && productsCount
 				!!(!!amountData && productsCount) &&
 				<span className={styles.price}>
-					{amountData.discountedAmount.toFixed() + "₽"}
+					{amountData?.discountedAmount?.toFixed() + "₽"}
 				</span>
 			}
 		</Link>

@@ -9,8 +9,6 @@ import {TOAST_ERROR, TOAST_SUCCESS} from "@/constants/toasts";
 import ProductFormCategorySelect
 	from "@/components/admin-page/ProductAdd/components/ProductFormCategorySelect/ProductFormCategorySelect";
 import ProductFormImages from "@/components/admin-page/ProductAdd/components/ProductFormImages/ProductFormImages";
-import ProductFormWeightPrice
-	from "@/components/admin-page/ProductAdd/components/ProductFormWeightPrice/ProductFormWeightPrice";
 import ProductFormInputs from "@/components/admin-page/ProductAdd/components/ProductFormInputs/ProductFormInputs";
 import {REQUEST_METHODS} from "@/types/general";
 
@@ -28,16 +26,6 @@ const ProductRedact: React.FC<IProductRedact> = ({ data, show, handleClose }) =>
 
 	const handleRedact = (e:FormEvent) => {
 		e.preventDefault();
-
-		if (!formData.weights.length) {
-			TOAST_ERROR("Выберите вес товара!");
-			return;
-		}
-
-		if (formData.weights.length > 2) {
-			TOAST_ERROR("Вы можете выбрать максимум 2 разновидности веса для товара!");
-			return;
-		}
 
 		if (!formData?.images?.length) {
 			TOAST_ERROR("Загрузите изображения товара!");
@@ -73,9 +61,6 @@ const ProductRedact: React.FC<IProductRedact> = ({ data, show, handleClose }) =>
 
 					{/*@ts-ignore*/}
 					<ProductFormImages formData={formData} setFormData={setFormData} />
-
-					{/*@ts-ignore*/}
-					<ProductFormWeightPrice formData={formData} setFormData={setFormData} />
 
 					<Button disabled={load} type={"submit"} size={"sm"} className={"w-100"} variant={"outline-primary"}>
 						{load ? <Spinner size={"sm"} /> : 'Отправить'}

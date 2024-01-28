@@ -1,4 +1,4 @@
-FROM node:18.16-slim AS base
+FROM node:20.2-alpine3.18 AS base
 
 # FROM --platform=amd64 node:18.16 AS base
 

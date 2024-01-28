@@ -1,48 +1,39 @@
 version: '3.9'
 services:
   app:
+    labels:
+      # Включаем traefik для текущего сервиса
+      - traefik.enable=true
+      # Объявляем порт сервиса в докере для прослушки
+      - traefik.http.services.frontend.loadbalancer.server.port=3000
+      # Настройка маршрута для фронтенда
+      - traefik.http.routers.frontend.rule=Host(`brick-nn.sbs`) && PathPrefix(`/`)
+      # Настройка для HTTPS
+      - traefik.http.routers.frontend.entrypoints=https
+      - traefik.http.routers.frontend.tls=true
+      - traefik.http.routers.frontend.tls.certresolver=le
+      # Объявляем миддлвейр редиректа с HTTP на HTTPS
+      - traefik.http.middlewares.frontend-https-redirect.redirectscheme.scheme=https
+      - traefik.http.middlewares.frontend-https-redirect.redirectscheme.permanent=true
+      # Устанавливаем миддлвейр редиректа с HTTP на HTTPS
+      - traefik.http.routers.frontend-http.middlewares=frontend-https-redirect
+      - traefik.http.routers.frontend-http.rule=Host(`brick-nn.sbs`) && PathPrefix(`/`)
+      - traefik.http.routers.frontend-http.entrypoints=http
+      # Говорим traefik использовать объявленную публичную сеть
+      - traefik.docker.network=traefik-public
+    networks:
+      - traefik-public
     restart: always
     build:
       dockerfile: Dockerfile
       context: .
       target: base
-    #    ports:
-    #      - 80:3000
+    expose:
+        - "3000"
     env_file:
       - .env
     command: ["npm", "run", "start"]
 
-  nginx:
-    restart: "${DOCKER_RESTART_POLICY:-always}"
-    env_file:
-      - .env
-    image: nginx:local
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: nginx
-      args:
-        DOMAIN: "${DOMAIN:-hleb365.ru}"
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ./nginx.virtual_host.conf:/etc/nginx/conf.d/virtual_host.conf:ro
-      - certbot-www:/var/www/certbot/:ro
-      - data-certs:/etc/nginx/ssl/:rw
-
-  certbot:
-    restart: "no"
-    image: certbot/certbot:latest
-    volumes:
-      - certbot-www:/var/www/certbot/:rw
-      - data-certs:/etc/letsencrypt/:rw
-    command: certonly --webroot -w /var/www/certbot --force-renewal -d hleb365.ru --agree-tos --email maxim.shnyagin@yandex.ru
-    depends_on:
-      - nginx
-
-volumes:
-  data-certs:
-    driver: local
-  certbot-www:
-    driver: local
+networks:
+  traefik-public:
+    external: true

@@ -31,7 +31,7 @@
     align-items: flex-end;
 }
 
-/*top block title left*/
+/*top blocks title left*/
 .FooterContent .top h4{
     max-width: 40%;
     margin: 0;
@@ -42,12 +42,12 @@
     color: var(--app-primary);
 }
 
-/*top block container right*/
+/*top blocks container right*/
 .FooterContent .top .right{
     display: flex;
     align-items: center;
 }
-/*top block container right BLOCK*/
+/*top blocks container right BLOCK*/
 .FooterContent .top .right .block{
     margin-left: 3em;
 
@@ -56,7 +56,7 @@
     align-items: center;
 }
 
-/*top right block text*/
+/*top right blocks text*/
 .FooterContent .top .right .block p{
     margin: 0 0 .15em 0;
     color: var(--bs-white);
@@ -72,13 +72,13 @@
     margin: 0 .35em;
 }
 
-/*bottom block*/
+/*bottom blocks*/
 .bottom{
     margin-top: 3em;
     align-items: flex-end;
 }
 
-/*bottom left block*/
+/*bottom left blocks*/
 .bottom .left{
     display: flex;
     flex-direction: column;
@@ -91,7 +91,7 @@
     color: var(--bs-white);
 }
 
-/*bottom right block*/
+/*bottom right blocks*/
 .bottom .right{
     display: flex;
     flex-direction: column;
@@ -112,19 +112,19 @@
         flex-direction: column;
         align-items: flex-start;
     }
-    /*top block title left*/
+    /*top blocks title left*/
     .FooterContent .top h4{
         max-width: 100%;
         margin-bottom: .5em;
     }
-    /*top block container right BLOCK*/
+    /*top blocks container right BLOCK*/
     .FooterContent .top .right .block{
         margin-left: 0;
         margin-right: 2em;
 
         align-items: flex-start;
     }
-    /*bottom block*/
+    /*bottom blocks*/
     .bottom{
         margin-top: 2.25em;
     }
@@ -148,29 +148,32 @@
     .FooterContent{
         padding: 2.25em 0 3em;
     }
-    /*top block container right container*/
+    /*top blocks container right container*/
     .FooterContent .top .right {
         flex-direction: column;
         align-items: center;
         gap: 2.5em;
     }
-    /*top block container right block*/
+    /*top blocks container right blocks*/
     .FooterContent .top .right .block{
         margin-bottom: .5em;
         margin-right: 0;
     }
 
-    /*bottom main block*/
+    /*bottom main blocks*/
     .FooterContent .bottom{
         flex-direction: column;
         align-items: flex-start;
     }
-    /*bottom left block*/
+    /*bottom left blocks*/
     .FooterContent .bottom .left{
         margin-bottom: 1em;
     }
-    /*bottom right block*/
+    /*bottom right blocks*/
     .bottom .right{
         align-items: flex-start;
+    }
+    .mapContainer{
+        width: 100%;
     }
 }

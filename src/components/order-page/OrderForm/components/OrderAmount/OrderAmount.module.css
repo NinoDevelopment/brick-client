@@ -5,7 +5,7 @@
     flex-direction: column;
 }
 
-/*block*/
+/*blocks*/
 .block{
     padding: .5em 0;
 
@@ -13,13 +13,13 @@
     justify-content: space-between;
     align-items: flex-end;
 }
-/*bordered block*/
+/*bordered blocks*/
 .block.border{
     padding: .5em 0;
     border-top: 2px solid var(--bs-gray-300);
     border-bottom: 2px solid var(--bs-gray-300);
 }
-/*block for last price*/
+/*blocks for last price*/
 .block.itog{
     padding: 1.65em 0;
 }

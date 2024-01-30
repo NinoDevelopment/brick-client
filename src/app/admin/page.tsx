@@ -13,6 +13,8 @@ import {redirect} from "next/navigation";
 import {LINK_ERROR} from "@/constants/links";
 import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
 import styles from "./page.module.css";
+import GalleryAdd from "@/components/admin-page/GalleryAdd/GalleryAdd";
+import GalleryList from "@/components/admin-page/GalleryList/GalleryList";
 
 const page = () => {
 
@@ -30,15 +32,20 @@ const page = () => {
 	if (data)
 	return (
 		<Container className={"pt-3 pb-3"}>
-			<OrdersList />
-			<hr className={"my-5"} />
-			<CategoriesAdd />
-			<hr className={"my-5"} />
-			<CategoriesList />
-			<hr className={"my-5"} />
-			<ProductAdd />
-			<hr className={"my-5"} />
-			<ProductsList />
+			<OrdersList/>
+			<hr className={"my-5"}/>
+			<CategoriesAdd/>
+			<hr className={"my-5"}/>
+			<CategoriesList/>
+			<hr className={"my-5"}/>
+			<ProductAdd/>
+			<hr className={"my-5"}/>
+			<ProductsList/>
+			<hr className={"my-5"}/>
+			<GalleryAdd/>
+			<hr className={"my-5"}/>
+			<GalleryList/>
+			<hr className={"my-5"}/>
 		</Container>
 	);
 };

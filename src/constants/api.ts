@@ -13,3 +13,5 @@ export const API_ORDER_COMPLETE_ID = (id:string) => `/order/complete/${id}`;
 export const API_ADMIN_AUTH = '/api/auth';
 export const API_CALC_PARAMS = '/calc/byParameters';
 export const API_CALC_VALUES = '/calc/byVolume';
+export const API_GALLERY = '/gallery';
+export const API_GALLERY_IMG = (id:string) => `${API_GALLERY}/images/${id}`;

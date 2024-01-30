@@ -28,6 +28,11 @@
 }
 
 /*media*/
+@media (max-width: 1200px) {
+    .FooterNav a:first-child{
+        display: none;
+    }
+}
 @media (max-width: 991px) {
     .FooterNav {
         padding-top: 2.5em;
@@ -50,11 +55,11 @@
         background: var(--app-secondary-dark);
         border-radius: 5px;
     }
+    .FooterNav a:first-child{
+        display: block;
+    }
     .FooterNav a:hover{
         border-bottom: none;
-    }
-    .FooterNav a:first-child{
-        width: 100%;
     }
     .FooterNav a.active,
     .FooterNav a.active:hover{

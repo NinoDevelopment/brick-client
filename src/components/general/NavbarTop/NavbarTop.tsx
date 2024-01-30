@@ -1,7 +1,15 @@
 import React, {useState} from 'react';
 import {Container, Nav, Navbar} from "react-bootstrap";
 import Link from "next/link";
-import {LINK_ABOUT, LINK_CALCULATOR, LINK_CONTACTS, LINK_DELIVERY, LINK_HOME, LIST_LINKS} from "@/constants/links";
+import {
+	LINK_ABOUT,
+	LINK_CALCULATOR,
+	LINK_CATALOG,
+	LINK_CONTACTS,
+	LINK_DELIVERY,
+	LINK_HOME,
+	LIST_LINKS
+} from "@/constants/links";
 import styles from "./NavbarTop.module.css";
 import ShopCartLink from "@/components/general/NavbarTop/components/ShopCartLink/ShopCartLink";
 import {usePathname} from "next/navigation";
@@ -19,6 +27,7 @@ const NavbarTop = () => {
 			path === '/' ||
 			path === LINK_DELIVERY ||
 			path === LINK_CONTACTS ||
+			path === LINK_CATALOG ||
 			path === LINK_CALCULATOR
 		) return '';
 		return styles.dark;

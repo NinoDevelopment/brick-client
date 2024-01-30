@@ -36,10 +36,7 @@ const CalcSquare = () => {
       e.preventDefault();
       setLoad(true);
       handleRequest(REQUEST_METHODS.POST, API_CALC_PARAMS, values)
-         .then(res => {
-            setResValue(res.data)
-            setValues(initialValues)
-         })
+         .then(res => setResValue(res.data))
          .catch(err => TOAST_ERROR('Ошибка рассчета! ' + err.message))
          .finally(() => setLoad(false))
    }
@@ -74,7 +71,7 @@ const CalcSquare = () => {
                   disabled={values.wallThicknessType === 4}
                   onClick={() => setValues({...values, wallThicknessType: 4})}
                />
-               <span>Кладка в 2 кирпича (толщина 500мм)</span>
+               <span>Кладка в 2 кирпича (толщина 510мм)</span>
             </div>
             <div className={styles.itemThickness}>
                <button
@@ -101,6 +98,24 @@ const CalcSquare = () => {
                />
                <span>Утолщенный (250×120×88)</span>
             </div>
+
+            <hr />
+
+            <h3>Учёт растворного шва</h3>
+            <div className={styles.itemThickness}>
+               <button
+                  disabled={!values.mortarSeamEnabled}
+                  onClick={() => setValues({...values, mortarSeamEnabled: false})}
+               />
+               <span>Без учета растворного шва</span>
+            </div>
+            <div className={styles.itemThickness}>
+               <button
+                  disabled={values.mortarSeamEnabled}
+                  onClick={() => setValues({...values, mortarSeamEnabled: true})}
+               />
+               <span>С учетом растворного шва</span>
+            </div>
          </div>
 
          <div className={`${styles.thickness} ${styles.full}`}>
@@ -120,7 +135,6 @@ const CalcSquare = () => {
                <label>Высота дверей и оконных проёмов (м)</label>
                <input
                   type="number"
-                  required
                   value={values.frameHeight || ''}
                   onChange={e => setValues({...values, frameHeight: +e.target.value})}
                />
@@ -140,7 +154,6 @@ const CalcSquare = () => {
                <label>Длина дверей и оконных проёмов (м)</label>
                <input
                   type="number"
-                  required
                   value={values.frameWidth || ''}
                   onChange={e => setValues({...values, frameWidth: +e.target.value})}
                />

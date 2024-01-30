@@ -8,7 +8,7 @@
     flex-wrap: wrap;
 }
 
-/*block*/
+/*blocks*/
 .PhoneEmailLinks .block{
     width: calc(50% - 1em);
 }
@@ -34,7 +34,7 @@
     .PhoneEmailLinks{
         padding: 2em 0;
     }
-    /*block*/
+    /*blocks*/
     .PhoneEmailLinks .block{
         width: 100%;
         margin-bottom: 2em;

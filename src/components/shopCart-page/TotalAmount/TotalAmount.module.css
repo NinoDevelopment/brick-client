@@ -15,7 +15,7 @@
     width: 100%;
 }
 
-/*block with text*/
+/*blocks with text*/
 .block{
     padding: 1.25em 0;
 
@@ -33,7 +33,7 @@
     border-bottom: 0;
 }
 
-/*text in block*/
+/*text in blocks*/
 .block h4,
 .block b,
 .block span {

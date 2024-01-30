@@ -14,7 +14,7 @@
     border: 1px solid var(--bs-gray-300);
 }
 
-/*img-block*/
+/*img-blocks*/
 .imgBlock{
     position: relative;
     width: calc(25% - .3em);

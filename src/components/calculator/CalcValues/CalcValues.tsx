@@ -28,10 +28,7 @@ const CalcValues = () => {
       e.preventDefault();
       setLoad(true)
       handleRequest(REQUEST_METHODS.POST, API_CALC_VALUES, values)
-         .then(res => {
-            setResValue(res.data)
-            setValues(initialValues)
-         })
+         .then(res => setResValue(res.data))
          .catch(err => TOAST_ERROR('Ошибка рассчета! ' + err.message))
          .finally(() => setLoad(false))
    }

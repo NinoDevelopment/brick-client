@@ -21,7 +21,7 @@ const ProductFormImages: React.FC<IProductFormImages> = ({ formData, setFormData
 	}
 
 	const handleDelete = (image:string) => {
-	    const filteredImages = formData?.images?.filter(elem => elem !== image);
+	   const filteredImages = formData?.images?.filter(elem => elem !== image);
 		setFormData({...formData, images: filteredImages})
 	}
 

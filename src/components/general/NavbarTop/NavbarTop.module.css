@@ -19,7 +19,7 @@
     width: 220px;
 }
 
-/*right block (for align)*/
+/*right blocks (for align)*/
 .right{
     display: flex;
     align-items: center;
@@ -68,6 +68,9 @@
     .linksContainer a{
         margin: 0 .125em;
         padding: .3em .75em;
+    }
+    .linksContainer a:first-child{
+        display: none;
     }
 }
 

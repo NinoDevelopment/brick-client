@@ -1,5 +1,6 @@
 export const LINK_HOME = "/";
 export const LINK_CATALOG = "/catalog";
+export const LINK_GALLERY = "/gallery";
 export const LINK_SHOP_CART = "/shopCart";
 export const LINK_ERROR = "/error";
 export const LINK_ADMIN = "/admin";
@@ -15,16 +16,20 @@ export const LINK_REQUISITES = '/requisites';
 
 export const LIST_LINKS = [
 	{
+		title: "О нас",
+		link: LINK_ABOUT,
+	},
+	{
+		title: "Магазин",
+		link: LINK_CATALOG,
+	},
+	{
 		title: "Калькулятор",
 		link: LINK_CALCULATOR,
 	},
 	{
-		title: "Каталог",
-		link: LINK_CATALOG,
-	},
-	{
-		title: "О компании",
-		link: LINK_ABOUT,
+		title: "Галерея",
+		link: LINK_GALLERY,
 	},
 	{
 		title: "Оплата и доставка",

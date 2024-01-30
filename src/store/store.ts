@@ -17,6 +17,7 @@ import categoriesSlice from "@/store/slices/categoriesSlice";
 import productsSlice from "@/store/slices/productsSlice";
 import shopCartSlice from "@/store/slices/shopCartSlice";
 import ordersSlice from "@/store/slices/ordersSlice";
+import gallerySlice from "@/store/slices/gallerySlice";
 
 const createNoopStorage = () => {
 	return {
@@ -39,11 +40,12 @@ const rootReducer = combineReducers({
 	products: productsSlice,
 	orders: ordersSlice,
 	shopCart: shopCartSlice,
+	gallery: gallerySlice,
 });
 
 const persistConfig = {
 	key: '@brick-client-kovernino:',
-	blacklist: ['products','categories','orders'],
+	blacklist: ['products','categories','orders','gallery'],
 	storage: storage,
 }
 

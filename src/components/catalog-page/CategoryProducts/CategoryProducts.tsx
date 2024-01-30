@@ -17,7 +17,7 @@ const CategoryProducts = () => {
 	}
 
 	return (
-		<div className={"CategoryProductsList"}>
+		<div className={styles.wrapper}>
 			<CategoryProductsList selected={selected} />
 		</div>
 	);

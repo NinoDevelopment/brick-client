@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './GalleryBanner.module.css';
 import Link from "next/link";
 import {APP_TITLE} from "@/constants/general";
+import {LINK_GALLERY} from "@/constants/links";
 
 const GalleryBanner = () => {
    return (
@@ -13,7 +14,7 @@ const GalleryBanner = () => {
                для вашего проекта, выберите из множества эффектных черных, красных,
                кремовых и белых кирпичей стандартной длины.
             </h5>
-            <Link href={'/'}>Перейти в галерею</Link>
+            <Link href={LINK_GALLERY}>Перейти в галерею</Link>
          </div>
 
          <img src={'/other/break-bg-1.png'} alt={APP_TITLE} />

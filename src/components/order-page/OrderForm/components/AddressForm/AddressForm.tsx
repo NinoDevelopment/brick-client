@@ -23,7 +23,7 @@ const AddressForm: React.FC<IAddressForm> = ({ formData, setFormData }) => {
 			</FormGroup>
 
 			{/*TODO: removed item*/}
-			{/*<FormGroup className={styles.block + " " + styles.w50}>*/}
+			{/*<FormGroup className={styles.blocks + " " + styles.w50}>*/}
 			{/*	<label>Название адреса</label>*/}
 			{/*	<input*/}
 			{/*		placeholder={"Название адреса"}*/}

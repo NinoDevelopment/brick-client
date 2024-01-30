@@ -3,6 +3,7 @@ import styles from './CalcBanner.module.css';
 import {Container} from "react-bootstrap";
 import Link from "next/link";
 import {APP_TITLE} from "@/constants/general";
+import {LINK_CALCULATOR} from "@/constants/links";
 
 const CalcBanner = () => {
    return (
@@ -18,7 +19,7 @@ const CalcBanner = () => {
                ваших строительных работ.
             </h5>
 
-            <Link href={'/'}>
+            <Link href={LINK_CALCULATOR}>
                Перейти к калькулятору
             </Link>
          </div>

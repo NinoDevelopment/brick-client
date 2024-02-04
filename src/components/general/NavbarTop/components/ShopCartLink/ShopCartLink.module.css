@@ -57,4 +57,7 @@
         width: 120px;
         height: 40px;
     }
+    .price{
+        font-size: 15px;
+    }
 }

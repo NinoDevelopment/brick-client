@@ -12,6 +12,7 @@ export interface IProduct {
 	available: boolean,
 	isRecommendation: boolean,
 	show: boolean,
+	color: string,
 }
 
 export interface IProductId extends IProduct {

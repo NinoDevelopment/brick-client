@@ -59,6 +59,9 @@
     flex-direction: column;
     align-items: flex-start;
 }
+.innerTop p{
+    color: var(--app-primary);
+}
 
 .content a{
     width: 100%;

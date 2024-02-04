@@ -4,7 +4,7 @@ import {IShopCartAmount, IShopCartItem} from "@/types/shopCart";
 import {API_ORDER_AMOUNT} from "@/constants/api";
 import {EDelivery, IOrderForm} from "@/types/order";
 import {REQUEST_METHODS} from "@/types/general";
-import {MIN_ORDER_PRICE} from "@/constants/general";
+import {BRICK_PACK, MIN_ORDER_PRICE} from "@/constants/general";
 import styles from "./OrderAmount.module.css";
 
 interface IOrderAmount {
@@ -26,7 +26,7 @@ const OrderAmount: React.FC<IOrderAmount> = ({ shopCartData, formData }) => {
 		return (
 			<div className={styles.OrderAmount}>
 				<div className={styles.block}>
-					<p>{productsCount} товар(ов,a)</p>
+					<p>{(productsCount / BRICK_PACK)?.toFixed()} товар(ов,a)</p>
 					<b>{(amountData?.discountedAmount).toFixed(1)}₽</b>
 				</div>
 

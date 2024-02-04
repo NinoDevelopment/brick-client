@@ -17,6 +17,12 @@
     align-items: center;
     flex-wrap: wrap;
 }
+.CategorySort .left{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5em;
+}
 
 /*checkbox*/
 .check{

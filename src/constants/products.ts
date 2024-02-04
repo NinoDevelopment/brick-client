@@ -4,6 +4,7 @@ export const ITEM_INITIAL: IProductWithImg = {
 	name: '',
 	description: '',
 	categoryId: '',
+	color: '',
 	images: [],
 	discount: 0,
 	price: 0,

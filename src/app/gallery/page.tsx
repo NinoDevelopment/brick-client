@@ -9,6 +9,7 @@ import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
 const page = () => {
 
    const { data } = useGetGallery()
+   console.log(data)
 
    return (
       <Container className={styles.wrapper}>
@@ -31,7 +32,7 @@ const page = () => {
 
             {
                !!data?.categories?.length &&
-               data?.categories?.map(elem => <GalleryItem key={elem.categoryId} data={elem} />)
+               data?.categories?.map(elem => <GalleryItem key={elem._id} data={elem} />)
             }
          </div>
       </Container>

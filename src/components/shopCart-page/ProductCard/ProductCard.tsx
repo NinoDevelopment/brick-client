@@ -13,6 +13,7 @@ import Link from "next/link";
 import {LINK_PRODUCT} from "@/constants/links";
 import AvailableTooltip from "@/components/shopCart-page/ProductCard/components/AvailableTooltip/AvailableTooltip";
 import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
+import {BRICK_PACK} from "@/constants/general";
 
 
 interface IProductCard {
@@ -25,6 +26,7 @@ const ProductCard: React.FC<IProductCard> = ({ data, shopCartData }) => {
 	const dispatch = useAppDispatch();
 	const { data:productData, error, load } = useFetch<IProductId>(API_PRODUCT_ID(data.itemId), REQUEST_METHODS.GET, {}, false);
 	const { data:images } = useFetch<IProductImg>(API_PRODUCT_IMG(data.itemId), REQUEST_METHODS.GET, {});
+	const thisItem = shopCartData.find(item => item.itemId === productData?._id);
 
 	//delete item from shop cart
 	const handleClearItem = () => {
@@ -59,6 +61,7 @@ const ProductCard: React.FC<IProductCard> = ({ data, shopCartData }) => {
 					<Link href={LINK_PRODUCT(productData._id)}>
 						<h5>{productData.name}</h5>
 					</Link>
+					<p>{BRICK_PACK} шт/палет</p>
 				</div>
 
 				<ShopCartBtn
@@ -75,7 +78,7 @@ const ProductCard: React.FC<IProductCard> = ({ data, shopCartData }) => {
 				/>
 
 				<p>
-					{productData?.price}₽/палет
+					{productData?.price}₽/шт {thisItem?.quantity && `* ${thisItem?.quantity}шт`}
 					{!!productData.discount && <span>- {productData.discount}%</span>}
 				</p>
 			</footer>

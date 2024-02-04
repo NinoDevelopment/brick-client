@@ -4,17 +4,24 @@ import {Form} from "react-bootstrap";
 import {ESort} from "@/types/general";
 import {IProductId} from "@/types/products";
 import CategorySelect from "@/components/catalog-page/CategoryProducts/components/CategorySelect/CategorySelect";
+import CategoryColorSelect
+	from "@/components/catalog-page/CategoryProducts/components/CategoryColorSelect/CategoryColorSelect";
 
 interface ICategorySort {
 	data: IProductId[],
 	sort: ESort,
 	setSort: (value: ESort) => void,
+	color: string | null,
+	setColor: (value: string | null) => void,
 }
 
-const CategorySort: React.FC<ICategorySort> = ({ data, sort, setSort }) => {
+const CategorySort: React.FC<ICategorySort> = ({ data, sort, setSort, color, setColor }) => {
 	return (
 		<div hidden={!data} className={styles.CategorySort}>
-			<CategorySelect />
+			<div className={styles.left}>
+				<CategorySelect />
+				<CategoryColorSelect color={color} setColor={setColor} />
+			</div>
 			<div className={styles.right}>
 				<Form.Check // def switch
 					className={styles.check}

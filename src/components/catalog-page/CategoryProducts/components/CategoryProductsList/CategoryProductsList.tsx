@@ -12,24 +12,26 @@ const CategoryProductsList = ({selected} : {selected:string}) => {
 
 	//sort type
 	const [sort, setSort] = useState<ESort>(ESort.DEFAULT);
+	const [color, setColor] = useState<null | string>(null);
 
 	const { data, load } = useFetch<IProductId[]>(API_CATEGORY_ITEMS(selected),REQUEST_METHODS.GET, {});
 
 	// @ts-ignore sort sale item
-	const getNotAvailableItems = () => data.filter(elem => !elem.available);
+	const getNotAvailableItems = (dataInner: Maybe<IProductId[]>) => dataInner.filter(elem => !elem.available);
 	// @ts-ignore sort sale item
-	const getAvailableItems = () => data.filter(elem => elem.available);
+	const getAvailableItems = (dataInner: Maybe<IProductId[]>) => dataInner.filter(elem => elem.available);
 	// @ts-ignore sort sale item
-	const getItemsWithDiscount = () => data.filter(elem => +elem.discount);
+	const getItemsWithDiscount = (dataInner: Maybe<IProductId[]>) => dataInner.filter(elem => +elem.discount);
 
 	const getSortedData = () => {
-		if (sort === ESort.DEFAULT) return data;
-		if (sort === ESort.NOT_AVAILABLE) return getNotAvailableItems();
-		if (sort === ESort.AVAILABLE) return getAvailableItems();
-		if (sort === ESort.DISCOUNT) return getItemsWithDiscount();
+		const colorData = color ? data?.filter(elem => elem?.color === color) : data;
+		if (sort === ESort.DEFAULT) return colorData;
+		if (sort === ESort.NOT_AVAILABLE) return getNotAvailableItems(colorData);
+		if (sort === ESort.AVAILABLE) return getAvailableItems(colorData);
+		if (sort === ESort.DISCOUNT) return getItemsWithDiscount(colorData);
 	};
 
-	if (load || !data) {
+	if (load || !getSortedData() || !data) {
 		return (
 			<div className={styles.loadContainer}>
 				<SpinnerPrimary />
@@ -41,12 +43,12 @@ const CategoryProductsList = ({selected} : {selected:string}) => {
 		<div className={styles.CategoryProductsList}>
 
 			{/*sort component*/}
-			<CategorySort sort={sort} setSort={setSort} data={data} />
+			<CategorySort sort={sort} setSort={setSort} color={color} setColor={setColor} data={data} />
 
 			{// products map
 				!!(getSortedData() && getSortedData()?.length) &&
 				<div className={styles.itemsContainer}>
-					{getSortedData()?.map(elem => <ProductCard key={elem._id} data={elem} />)}
+					{getSortedData()?.map((elem: IProductId) => <ProductCard key={elem._id} data={elem} />)}
 				</div>
 			}
 

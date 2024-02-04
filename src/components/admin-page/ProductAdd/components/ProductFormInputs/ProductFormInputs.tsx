@@ -36,11 +36,19 @@ const ProductFormInputs: React.FC<IProductFormInputs> = ({ formData, setFormData
 				/>
 			</FloatingLabel>
 
-			<FloatingLabel label="Цена за палет">
+			<FloatingLabel label="Цена за кирпич">
 				<FormControl
+					required
 					type={"number"}
 					value={formData?.price || ''}
 					onChange={e => setFormData({...formData, price: +e.target.value})}
+				/>
+			</FloatingLabel>
+
+			<FloatingLabel label="Цвет">
+				<FormControl
+					value={formData?.color || ''}
+					onChange={e => setFormData({...formData, color: e.target.value})}
 				/>
 			</FloatingLabel>
 

@@ -6,7 +6,15 @@ import {LINK_CATALOG} from "@/constants/links";
 const PreviewBanner = () => {
 	return (
 		<div className={styles.PreviewBanner}>
-			<video autoPlay muted loop className={styles.video}>
+			<video
+				playsInline
+				autoPlay
+				muted
+				loop
+				disablePictureInPicture
+				className={styles.video}
+				poster="/other/back-video.png"
+			>
 				<source src="/videos/bg-preview.mp4" type="video/mp4"/>
 			</video>
 

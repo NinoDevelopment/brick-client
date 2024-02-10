@@ -14,8 +14,9 @@ import {TOAST_ERROR} from "@/constants/toasts";
 import {handleRequest} from "@/functions/handleRequest";
 import {API_ORDER, API_ORDER_PLATI} from "@/constants/api";
 import {REQUEST_METHODS} from "@/types/general";
-import {LINK_ORDER_ID} from "@/constants/links";
+import {LINK_ISSUING_PAYMENT, LINK_ORDER_ID} from "@/constants/links";
 import {clearShopCart} from "@/store/slices/shopCartSlice";
+import Link from "next/link";
 
 const OrderForm = () => {
 
@@ -105,9 +106,15 @@ const OrderForm = () => {
 
 				<OrderAmount shopCartData={shopCartData} formData={formData}/>
 
-				<button disabled={load} type={"submit"} className={styles.submitOrder}>
-					{load ? <Spinner size={"sm"}/> : "Оформить заказ"}
-				</button>
+				{
+					formData.paymentType === EPayment.SCHET ?
+						<Link href={LINK_ISSUING_PAYMENT} className={styles.submitOrder}>
+							Далее
+						</Link> :
+						<button disabled={load} type={"submit"} className={styles.submitOrder}>
+							{load ? <Spinner size={"sm"}/> : "Оформить заказ"}
+						</button>
+				}
 			</div>
 		</Form>
 	);

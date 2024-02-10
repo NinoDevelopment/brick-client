@@ -17,6 +17,7 @@ import {PersistGate} from "redux-persist/integration/react";
 import FooterBottom from "@/components/general/FooterBottom/FooterBottom";
 import TestWebsiteAlert from "@/components/general/TestWebsiteAlert/TestWebsiteAlert";
 import useScrollTop from "@/hooks/useScrollTop";
+import {YMaps} from "@pbe/react-yandex-maps";
 
 interface IProviders {
 	children: React.ReactNode
@@ -29,11 +30,13 @@ const Providers = ({ children }:IProviders) => {
 	return (
 		<Provider store={store}>
 			<PersistGate persistor={persistedStore}>
-				<Toast />
-				{process.env.NEXT_PUBLIC_APP_TEST === "true" && <TestWebsiteAlert />}
-				<NavbarTop />
-				{children}
-				<FooterBottom />
+				<YMaps>
+					<Toast />
+					{process.env.NEXT_PUBLIC_APP_TEST === "true" && <TestWebsiteAlert />}
+					<NavbarTop />
+					{children}
+					<FooterBottom />
+				</YMaps>
 			</PersistGate>
 		</Provider>
 	);

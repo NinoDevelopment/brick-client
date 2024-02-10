@@ -1,5 +1,5 @@
 {
-  "name": "bread-online-shop-front",
+  "name": "brick-online-shop-front",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@pbe/react-yandex-maps": "^1.2.4",
+    "@pbe/react-yandex-maps": "^1.2.5",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.2.5",
     "@types/react": "18.2.9",

@@ -52,9 +52,12 @@
 
 /*button submit form*/
 .OrderForm .submitOrder{
+    display: block;
     width: 100%;
     padding: .75em 0;
 
+    text-align: center;
+    text-decoration: none;
     background: var(--app-primary);
     color: var(--bs-white);
     border: none;

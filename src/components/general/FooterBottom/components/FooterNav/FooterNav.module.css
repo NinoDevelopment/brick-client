@@ -75,8 +75,7 @@
         font-size: 14px;
     }
     .FooterNav a:nth-child(1),
-    .FooterNav a:nth-child(2),
-    .FooterNav a:nth-child(5){
+    .FooterNav a:nth-child(2){
         width: 100%;
     }
 }

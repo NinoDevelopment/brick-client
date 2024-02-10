@@ -9,7 +9,6 @@ import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
 const page = () => {
 
    const { data } = useGetGallery()
-   console.log(data)
 
    return (
       <Container className={styles.wrapper}>

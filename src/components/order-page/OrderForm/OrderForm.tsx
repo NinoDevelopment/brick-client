@@ -23,6 +23,7 @@ const OrderForm = () => {
 	const shopCartData = useAppSelector(state => state.shopCart.data);
 	const [formData, setFormData] = useState<IOrderForm>(ORDER_FORM_INITIAL(shopCartData));
 	const [load, setLoad] = useState<boolean>(false);
+	const [promocode, setPromocode] = useState<string>('')
 
 	//отправляем заказ
 	const handleSend = (e:FormEvent) => {
@@ -83,11 +84,29 @@ const OrderForm = () => {
 
 			<div className={styles.payment}>
 				<h3>Оплата</h3>
-				<PaySelect formData={formData} setFormData={setFormData} />
-				<OrderAmount shopCartData={shopCartData} formData={formData} />
+				<PaySelect formData={formData} setFormData={setFormData}/>
+
+				<div className={styles.promocodeContainer}>
+					<input
+						placeholder={'Промокод'}
+						value={promocode}
+						onChange={e => setPromocode(e.target.value)}
+					/>
+					<button
+						onClick={() => {
+							setFormData({ ...formData, promocode })
+							setPromocode('')
+						}}
+						type={'button'}
+					>
+						Применить
+					</button>
+				</div>
+
+				<OrderAmount shopCartData={shopCartData} formData={formData}/>
 
 				<button disabled={load} type={"submit"} className={styles.submitOrder}>
-					{load ? <Spinner size={"sm"} /> : "Оформить заказ"}
+					{load ? <Spinner size={"sm"}/> : "Оформить заказ"}
 				</button>
 			</div>
 		</Form>

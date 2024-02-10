@@ -6,6 +6,7 @@ export const ORDER_FORM_INITIAL = (positions:IShopCartItem[]): IOrderForm => {
 		phoneNumber: '',
 		fullName: '',
 		shopAddress: '',
+		email: '',
 		address: {
 			address: '',
 			addressName: '',
@@ -19,5 +20,6 @@ export const ORDER_FORM_INITIAL = (positions:IShopCartItem[]): IOrderForm => {
 		comment: '',
 		deliveryType: EDelivery.SELF,
 		paymentType: EPayment.ONLINE,
+		promocode: '',
 	}
 }

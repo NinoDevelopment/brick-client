@@ -39,21 +39,14 @@ const FooterContent = () => {
 							</a>
 						</div>
 					</div>
-
-					<div className={styles.block}>
-						<p>В соцсетях</p>
-						<div className={styles.links}>
-							<a href={"https://vk.com/cafe_shade"} target={"_blank"} rel={"noreferrer"}>Вконтакте</a>
-						</div>
-					</div>
 				</div>
 			</div>
 
 			<div className={styles.bottom}>
 				<div className={styles.left}>
 					<h6>
-						ООО  "КИРПИЧНЫЙ ЗАВОД КОВЕРНИНО" © 2023 <br/>
-						ОГРН 9999999999999, ИНН/КПП 9999999999/999999999
+						ООО  "КИРПИЧНЫЙ ЗАВОД КОВЕРНИНО" © 2015 <br/>
+						ОГРН 1155248001083, ИНН/КПП 5218001636/521801001
 					</h6>
 
 					<Link href={LINK_REQUISITES}>Реквизиты и юр. информация</Link>

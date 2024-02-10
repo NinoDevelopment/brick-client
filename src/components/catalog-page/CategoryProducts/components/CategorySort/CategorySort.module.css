@@ -15,12 +15,10 @@
 .CategorySort .right{
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
 }
 .CategorySort .left{
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     gap: .5em;
 }
 
@@ -53,10 +51,22 @@
 }
 
 /*media*/
+@media (max-width: 1200px) {
+
+}
 @media (max-width: 991px) {
     /*sort Container*/
+    .check{
+        display: none;
+    }
     .CategorySort{
+        flex-wrap: wrap;
+    }
+    .CategorySort .right,
+    .CategorySort .left{
+        width: 100%;
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        gap: 0;
     }
 }

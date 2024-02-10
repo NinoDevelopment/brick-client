@@ -1,11 +1,12 @@
-import React from 'react';
-import {useFetch} from "@/hooks/useFetch";
+import React, {useEffect, useState} from 'react';
 import {IShopCartAmount, IShopCartItem} from "@/types/shopCart";
 import {API_ORDER_AMOUNT} from "@/constants/api";
 import {EDelivery, IOrderForm} from "@/types/order";
 import {REQUEST_METHODS} from "@/types/general";
 import {BRICK_PACK, MIN_ORDER_PRICE} from "@/constants/general";
 import styles from "./OrderAmount.module.css";
+import {handleRequest} from "@/functions/handleRequest";
+import {TOAST_ERROR} from "@/constants/toasts";
 
 interface IOrderAmount {
 	shopCartData: IShopCartItem[],
@@ -16,11 +17,16 @@ const OrderAmount: React.FC<IOrderAmount> = ({ shopCartData, formData }) => {
 
 	//count for all products
 	const productsCount = shopCartData.reduce((count, item) => count + item.quantity,0);
+	const [amountData, setAmountData] = useState<null | IShopCartAmount>(null);
 
-	//amount data
-	const { data:amountData } = useFetch<IShopCartAmount>(API_ORDER_AMOUNT, REQUEST_METHODS.POST, {
-		positions: shopCartData
-	}, false);
+	useEffect(() => {
+		handleRequest(REQUEST_METHODS.POST, API_ORDER_AMOUNT, {
+			positions: shopCartData,
+			promocode: formData.promocode,
+		})
+			.then(res => setAmountData(res?.data || null))
+			.catch(() => TOAST_ERROR('Ошибка получения данных для оплаты!'))
+	}, [formData?.promocode, formData.positions]);
 
 	if (amountData && amountData.amountWithDelivery) {
 		return (

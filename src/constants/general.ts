@@ -21,9 +21,9 @@ export const SHOPS_ADDRESSES: IShopAddress[] = [
 // контакты
 export const CONTACTS = {
 	phone: {
-		title: "+7 (905) 190-30-90",
-		value: "+79051903090",
-		valueWS: "79051903090",
+		title: "+7 (831) 469-83-83",
+		value: "+78314698383",
+		valueWS: "78314698383",
 	},
 	email: {
 		title: "eto.hleb365@gmail.com",

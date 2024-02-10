@@ -23,15 +23,9 @@ const ShopCartBtn: React.FC<IShopCartBtn> = ({ shopCartData, product }) => {
 		price: product.price,
 	};
 
-	const handleAdd = () => {
-		// console.log(shopCartObject)
-		dispatch(addItem(shopCartObject))
-	}
+	const handleAdd = () => dispatch(addItem(shopCartObject))
 
-	const handleRemove = () => {
-		// console.log(shopCartObject)
-		dispatch(removeItem(shopCartObject))
-	}
+	const handleRemove = () => dispatch(removeItem(shopCartObject))
 
 	if (thisItem) {
 		return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import {IOrderForm} from "@/types/order";
+import {EPayment, IOrderForm} from "@/types/order";
 import styles from "./UserForm.module.css";
 
 interface IUserForm {
@@ -23,6 +23,15 @@ const UserForm: React.FC<IUserForm> = ({ formData, setFormData }) => {
 				value={formData.phoneNumber}
 				onChange={e => setFormData({...formData, phoneNumber: e.target.value})}
 				placeholder={"Номер телефона*"}
+			/>
+
+			<input
+				className={"w-100"}
+				type={"email"}
+				required={formData.paymentType === EPayment.SCHET}
+				value={formData.email}
+				onChange={e => setFormData({...formData, email: e.target.value})}
+				placeholder={`Email${formData.paymentType === EPayment.SCHET ? '*' : ''}`}
 			/>
 
 			<textarea

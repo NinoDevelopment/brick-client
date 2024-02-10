@@ -10,9 +10,6 @@ export const useGetCategories = () => {
 		if (!data.categories.length) {
 			dispatch(getCategories())
 		}
-		if (!data.selected && data.categories.length) {
-			dispatch(selectCategory(data.categories?.[0]?._id))
-		}
 	},[data.categories.length])
 
 	return {

@@ -10,6 +10,7 @@ export enum EDelivery {
 export enum EPayment {
 	CASH = 'CASH',
 	ONLINE = 'ONLINE',
+	SCHET = 'SCHET',
 }
 
 // тип сортировки для заказов
@@ -31,6 +32,7 @@ export interface IOrderAddress {
 
 export interface IOrderForm {
 	phoneNumber: string, // телефон
+	email: string, // телефон
 	fullName: string, // имя фамилия
 	address: IOrderAddress, // объект адреса
 	shopAddress?: string, // id магазина
@@ -38,6 +40,7 @@ export interface IOrderForm {
 	comment?: string, // коммент ко всему заказу
 	deliveryType: EDelivery, // тип доставки
 	paymentType: EPayment, // тип оплаты
+	promocode: string, // промокод
 }
 
 export interface IOrderFormId extends IOrderForm {

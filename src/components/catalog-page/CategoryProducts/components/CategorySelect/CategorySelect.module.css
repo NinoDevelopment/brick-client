@@ -40,7 +40,7 @@
 @media (max-width: 991px) {
     .CategorySelect{
         width: 100%;
-        margin-bottom: 1.25em;
+        margin-bottom: .75em;
     }
     /*btn*/
     .toggle{

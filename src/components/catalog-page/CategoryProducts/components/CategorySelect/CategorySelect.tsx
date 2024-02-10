@@ -1,26 +1,18 @@
 import React from 'react';
 import {useGetCategories} from "@/hooks/useGetCategories";
 import styles from "./CategorySelect.module.css";
-import {Button, Dropdown} from "react-bootstrap";
+import {Dropdown} from "react-bootstrap";
 
 const CategorySelect = () => {
 
-	const { data:{categories, selected}, selectCategory } = useGetCategories();
+	const { data: {categories, selected}, selectCategory } = useGetCategories();
 
-	if (!categories.length || !selected) return;
-
-	if (categories.length === 1) {
-		return (
-			<Button className={styles.toggle}>
-				{categories?.[0]?.name || 'Весь каталог'}
-			</Button>
-		)
-	}
+	if (!categories.length) return;
 
 	return (
 		<Dropdown className={styles.CategorySelect}>
 			<Dropdown.Toggle className={styles.toggle} id="dropdown-autoclose-true">
-				{categories.find(elem => elem._id === selected)?.name}
+				{categories.find(elem => elem._id === selected)?.name || 'Все товары'}
 			</Dropdown.Toggle>
 
 			<Dropdown.Menu>

@@ -2,6 +2,7 @@
 import React from 'react';
 import styles from "./page.module.css";
 import {Container} from "react-bootstrap";
+import {CONTACTS} from "@/constants/general";
 
 const page = () => {
 	return (
@@ -11,16 +12,14 @@ const page = () => {
 			</h1>
 
 			<h5 className={styles.info}>
-				Общество с ограниченной ответственностью «Предприятие ПАБ» <br/>
-				ФИО: <b>Слизова Татьяна Валерьевна</b> <br/>
-				Почтовый адрес: <b>606044 Дзержинск Желнино ул. Пролетарская 64</b> <br/>
-				Почта: <b><a href="mailto:casparusnn@mail.ru">casparusnn@mail.ru</a></b> <br/>
-				Номер телефона: <b><a href="tel:+79030425999">+7 903 042-59-99</a></b> <br/>
-				Расчётный счёт: <b>40702810742160001592</b> <br/>
-				Банк: <b>ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК</b> <br/>
-				ИНН: <b>524907027706</b> <br/>
-				КПП: <b>524901001</b> <br/>
-				ОГРНИП: <b>323527500075282</b> <br/>
+				ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "КИРПИЧНЫЙ ЗАВОД КОВЕРНИНО" <br/>
+				ФИО: <b>Громов Сергей Викторович</b> <br/>
+				Юридический адрес: <b>606570, Нижегородская область, Ковернинский район, деревня Черные</b> <br/>
+				Почта: <b><a href={CONTACTS.email.value}>{CONTACTS.email.title}</a></b> <br/>
+				Номер телефона: <b><a href={`tel:${CONTACTS.phone.value}`}>{CONTACTS.phone.title}</a></b> <br/>
+				ИНН: <b>5218001636</b> <br/>
+				КПП: <b>521801001</b> <br/>
+				ОГРН: <b>1155248001083</b> от 28 апреля 2015 г. <br/>
 			</h5>
 		</Container>
 	);

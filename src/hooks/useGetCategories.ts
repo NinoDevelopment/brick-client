@@ -15,6 +15,6 @@ export const useGetCategories = () => {
 	return {
 		data: data,
 		updateCategories: () => dispatch(getCategories()),
-		selectCategory: (id:string) => dispatch(selectCategory(id)),
+		selectCategory: (id: string | null) => dispatch(selectCategory(id)),
 	};
 }

@@ -4,7 +4,7 @@ import {Map, Placemark} from "@pbe/react-yandex-maps";
 
 const ContactsMap = () => {
 
-	const position = [56.228, 43.399];
+	const position = [57.142030, 43.796198];
 
 	return (
 		<Map

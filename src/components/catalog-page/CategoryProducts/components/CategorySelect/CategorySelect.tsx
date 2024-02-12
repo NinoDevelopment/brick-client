@@ -12,7 +12,7 @@ const CategorySelect = () => {
 	return (
 		<Dropdown className={styles.CategorySelect}>
 			<Dropdown.Toggle className={styles.toggle} id="dropdown-autoclose-true">
-				{categories.find(elem => elem._id === selected)?.name || 'Все товары'}
+				Тип кирпича: {categories.find(elem => elem._id === selected)?.name || 'Все товары'}
 			</Dropdown.Toggle>
 
 			<Dropdown.Menu>
@@ -29,6 +29,12 @@ const CategorySelect = () => {
 							{elem.hasSale && <span>(Скидки!)</span>}
 						</Dropdown.Item>
 					))
+				}
+				{
+					selected &&
+					<Dropdown.Item onClick={() => selectCategory(null)} className={styles.dropItem}>
+						Все товары
+					</Dropdown.Item>
 				}
 			</Dropdown.Menu>
 		</Dropdown>

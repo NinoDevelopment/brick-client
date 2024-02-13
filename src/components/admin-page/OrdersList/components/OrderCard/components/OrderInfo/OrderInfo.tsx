@@ -31,7 +31,7 @@ const OrderInfo: React.FC<IOrderInfo> = ({ data }) => {
 						<td>{data.deliveryType === EDelivery.SELF ? "Самовывоз" : "Курьер"}</td>
 					</tr>
 					<tr hidden={data.deliveryType !== EDelivery.SELF}>
-						<td>Адрес магазина:</td>
+						<td>Адрес завода:</td>
 						<td>{data.shopAddress}</td>
 					</tr>
 					<tr>

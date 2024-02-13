@@ -8,7 +8,7 @@ const ProductTypes = () => {
       <div className={styles.wrapper}>
          <Container>
             <h1>Не просто <span>кирпич</span></h1>
-            <h5>Не попробуешь – не узнаешь</h5>
+            <h5>Качество, на которое можно полагаться</h5>
 
             <div className={styles.content}>
                <img src={'/other/break-text-1.svg'} alt={APP_TITLE}/>

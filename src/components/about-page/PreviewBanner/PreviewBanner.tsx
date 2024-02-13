@@ -7,7 +7,7 @@ const PreviewBanner = () => {
       <div className={styles.wrapper}>
          <Container className={styles.content}>
             <h1>Кирпичный завод Ковернино</h1>
-            <h5>История нашей компании</h5>
+            <h5>Информация о нашей компании</h5>
          </Container>
       </div>
    );

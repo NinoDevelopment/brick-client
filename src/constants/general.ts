@@ -21,15 +21,15 @@ export const SHOPS_ADDRESSES: IShopAddress[] = [
 // контакты
 export const CONTACTS = {
 	phone: {
-		title: "+7 (831) 469-83-83",
-		value: "+78314698383",
-		valueWS: "78314698383",
+		title: "+7 (999) 071-14-41",
+		value: "+79990711441",
+		valueWS: "79990711441",
 	},
 	email: {
-		title: "eto.hleb365@gmail.com",
-		value: "eto.hleb365@gmail.com",
+		title: "kzk@gmail.com",
+		value: "kzk@gmail.com",
 	},
 	tg: {
-		nick: "batonetta"
+		nick: "leshakuzz"
 	}
 };

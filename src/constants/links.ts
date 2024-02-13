@@ -21,7 +21,7 @@ export const LIST_LINKS = [
 		link: LINK_ABOUT,
 	},
 	{
-		title: "Магазин",
+		title: "Каталог",
 		link: LINK_CATALOG,
 	},
 	{

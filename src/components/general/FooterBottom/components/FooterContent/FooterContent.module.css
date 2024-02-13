@@ -90,6 +90,11 @@
     font-weight: 400;
     color: var(--bs-white);
 }
+.bottom .left h5{
+    font-size: 12px;
+    text-decoration: underline;
+    color: var(--bs-white);
+}
 
 /*bottom right blocks*/
 .bottom .right{

@@ -107,14 +107,14 @@ const CalcSquare = () => {
                   disabled={!values.mortarSeamEnabled}
                   onClick={() => setValues({...values, mortarSeamEnabled: false})}
                />
-               <span>Без учета растворного шва</span>
+               <span>Без учета растворного шва (10мм)</span>
             </div>
             <div className={styles.itemThickness}>
                <button
                   disabled={values.mortarSeamEnabled}
                   onClick={() => setValues({...values, mortarSeamEnabled: true})}
                />
-               <span>С учетом растворного шва</span>
+               <span>С учетом растворного шва (10мм)</span>
             </div>
          </div>
 

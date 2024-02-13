@@ -32,6 +32,12 @@ const CategorySort: React.FC<ICategorySort> = ({ data, sort, setSort, color, set
 					onChange={() => setSort(sort === ESort.DISCOUNT ? ESort.DEFAULT : ESort.DISCOUNT)}
 					label={"Со скидкой"}
 				/>
+				<Form.Check // available switch
+					className={styles.check}
+					checked={sort === ESort.AVAILABLE}
+					onChange={() => setSort(sort === ESort.AVAILABLE ? ESort.DEFAULT : ESort.AVAILABLE)}
+					label={"В наличии"}
+				/>
 				<Dropdown className={stylesDropdown.CategorySelect}>
 					<Dropdown.Toggle className={stylesDropdown.toggle} id="dropdown-autoclose-true">
 						{priceSort ? priceSort === -1 ? 'По убыванию' : 'По возрастанию' : 'Сортировка по цене'}

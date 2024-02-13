@@ -38,7 +38,7 @@ const OrderForm = () => {
 
 		//check selected shop if delivery type === self
 		if (formData.deliveryType === EDelivery.SELF && !formData.shopAddress) {
-			TOAST_ERROR("Выберите магазин из которого будет совершен самовывоз!")
+			TOAST_ERROR("Выберите откуда будет совершен самовывоз!")
 			return;
 		}
 

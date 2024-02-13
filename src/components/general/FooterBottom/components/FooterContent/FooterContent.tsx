@@ -45,12 +45,14 @@ const FooterContent = () => {
 			<div className={styles.bottom}>
 				<div className={styles.left}>
 					<h6>
-						ООО  "КИРПИЧНЫЙ ЗАВОД КОВЕРНИНО" © 2015 <br/>
-						ОГРН 1155248001083, ИНН/КПП 5218001636/521801001
+						© КЗК 2024, Все права защищены, <br/>
+						Powered by maxsmith
 					</h6>
 
-					<Link href={LINK_REQUISITES}>Реквизиты и юр. информация</Link>
-					<Link href={LINK_PRIVACY}>Политика конфиденциальности</Link>
+					<h5>
+						<Link href={LINK_REQUISITES}>Реквизиты и юр. информация</Link> <br/>
+						<Link href={LINK_PRIVACY}>Политика конфиденциальности</Link>
+					</h5>
 				</div>
 
 				<div className={styles.mapContainer}>

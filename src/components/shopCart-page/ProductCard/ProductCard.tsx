@@ -61,7 +61,7 @@ const ProductCard: React.FC<IProductCard> = ({ data, shopCartData }) => {
 					<Link href={LINK_PRODUCT(productData._id)}>
 						<h5>{productData.name}</h5>
 					</Link>
-					<p>{BRICK_PACK} шт/палет</p>
+					<p>Паллет {BRICK_PACK}шт</p>
 				</div>
 
 				<ShopCartBtn

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container, Nav, Navbar} from "react-bootstrap";
 import Link from "next/link";
 import {
@@ -17,9 +17,28 @@ import {APP_TITLE} from "@/constants/general";
 import NavbarMobile from "@/components/general/NavbarTop/components/NavbarMobile/NavbarMobile";
 
 const NavbarTop = () => {
-
 	const path = usePathname();
 	const [showMobile, setShowMobile] = useState<boolean>(false);
+	const [scrolled, setScrolled] = useState<boolean>(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const scrollThresholdPercent = 0.2;
+			const scrollThreshold = window.innerHeight * scrollThresholdPercent;
+	
+			if (window.scrollY > scrollThreshold) {
+				setScrolled(true);
+			} else {
+				setScrolled(false);
+			}
+		};
+	
+		window.addEventListener('scroll', handleScroll);
+	
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
 
 	const darkClass = () => {
 		if (
@@ -34,7 +53,7 @@ const NavbarTop = () => {
 	}
 
 	return (
-		<Navbar sticky={"top"} className={`${styles.NavbarTop} ${darkClass()}`}>
+		<Navbar sticky={"top"} className={`${styles.NavbarTop} ${darkClass()} ${scrolled ? styles.scrolled : ''}`}>
 			<Container className={styles.container}>
 				<Link href={LINK_HOME} className={styles.logo}>
 					<img src={darkClass() ? "/Logo-dark.svg" : "/Logo.svg"} alt={APP_TITLE} />
@@ -67,7 +86,7 @@ const NavbarTop = () => {
 			</Container>
 
 			{/*mobile menu*/}
-			<NavbarMobile show={showMobile} handleClose={() => setShowMobile(false)} />
+			<NavbarMobile show={showMobile} handleClose={() => setShowMobile(false)} scrolled={scrolled} />
 		</Navbar>
 	);
 };

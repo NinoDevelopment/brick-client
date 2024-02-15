@@ -10,7 +10,6 @@ const CalcBanner = () => {
       <Container className={styles.wrapper}>
          <div className={styles.content}>
             <h1>Рассчитать кирпич</h1>
-
             <h5 className={styles.text}>
                Перейдите в раздел калькулятора кирпича, чтобы быстро и удобно 
                рассчитать необходимое количество материала для вашего проекта. 

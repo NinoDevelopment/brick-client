@@ -57,7 +57,7 @@ const ContactsForm = () => {
                      required
                      value={formData.name}
                      onChange={e => setFormData({ ...formData, name: e.target.value })}
-                     placeholder={'Введите'}
+                     placeholder={''}
                   />
                </div>
 
@@ -68,7 +68,7 @@ const ContactsForm = () => {
                      type={'email'}
                      value={formData.email}
                      onChange={e => setFormData({ ...formData, email: e.target.value })}
-                     placeholder={'Введите'}
+                     placeholder={''}
                   />
                </div>
 
@@ -78,7 +78,7 @@ const ContactsForm = () => {
                      required
                      value={formData.company}
                      onChange={e => setFormData({ ...formData, company: e.target.value })}
-                     placeholder={'Введите'}
+                     placeholder={''}
                   />
                </div>
 
@@ -89,7 +89,7 @@ const ContactsForm = () => {
                      required
                      value={formData.message}
                      onChange={e => setFormData({ ...formData, message: e.target.value })}
-                     placeholder={'Введите'}
+                     placeholder={''}
                   />
                </div>
 

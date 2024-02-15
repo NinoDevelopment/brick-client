@@ -1,12 +1,13 @@
 .NavbarTop{
     --bs-navbar-padding-y: 1.5em;
-
     width: 100%;
-
-    position: absolute;
+    position: fixed;
 }
 .NavbarTop.dark{
     position: static;
+}
+.NavbarTop.scrolled {
+    background: var(--app-dark);
 }
 
 /*container*/

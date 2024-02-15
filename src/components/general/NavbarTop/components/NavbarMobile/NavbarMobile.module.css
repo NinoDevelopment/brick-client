@@ -3,6 +3,11 @@
     --bs-offcanvas-padding-y: 1.5em;
     --bs-offcanvas-bg: var(--bs-dark);
     color: var(--bs-white);
+    position: fixed;
+}
+.NavbarMobile.scrolled {
+    --bs-offcanvas-bg: var(--app-dark);
+    color: var(--bs-white);
 }
 
 /*logo*/

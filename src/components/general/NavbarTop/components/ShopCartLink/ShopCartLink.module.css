@@ -1,5 +1,5 @@
 .ShopCartLink{
-    width: 150px;
+    width: 45px;
     height: 45px;
 
     display: flex;
@@ -54,7 +54,7 @@
 /*media*/
 @media (max-width: 768px) {
     .ShopCartLink{
-        width: 120px;
+        width: 40px;
         height: 40px;
     }
     .price{

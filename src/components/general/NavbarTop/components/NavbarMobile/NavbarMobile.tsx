@@ -2,16 +2,16 @@ import React from 'react';
 import styles from "./NavbarMobile.module.css";
 import {Offcanvas} from "react-bootstrap";
 import {APP_TITLE} from "@/constants/general";
-import {LINK_PRIVACY, LINK_REQUISITES, LIST_LINKS} from "@/constants/links";
+import {LIST_LINKS} from "@/constants/links";
 import {useRouter} from "next/navigation";
 
 interface INavbarMobile {
 	show: boolean,
 	handleClose: () => void,
+	scrolled: boolean
 }
 
-const NavbarMobile: React.FC<INavbarMobile> = ({ show, handleClose }) => {
-
+const NavbarMobile: React.FC<INavbarMobile> = ({ show, handleClose, scrolled }) => {
 	const router = useRouter()
 
 	const handleLink = (event:any, link:string) => {
@@ -22,7 +22,7 @@ const NavbarMobile: React.FC<INavbarMobile> = ({ show, handleClose }) => {
 
 	return (
 		<Offcanvas
-			className={styles.NavbarMobile}
+			className={`${styles.NavbarMobile} ${scrolled ? styles.scrolled : ''}`}
 			show={show}
 			onHide={handleClose}
 			placement={"end"}
@@ -55,11 +55,6 @@ const NavbarMobile: React.FC<INavbarMobile> = ({ show, handleClose }) => {
 						))
 					}
 				</nav>
-
-				<footer>
-					<a onClick={e => handleLink(e, LINK_REQUISITES)}>Реквизиты и юр. информация</a>
-					<a onClick={e => handleLink(e, LINK_PRIVACY)}>Политика конфиденциальности</a>
-				</footer>
 			</Offcanvas.Body>
 		</Offcanvas>
 	);

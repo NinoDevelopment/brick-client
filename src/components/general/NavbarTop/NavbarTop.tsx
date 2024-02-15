@@ -7,6 +7,7 @@ import {
 	LINK_CATALOG,
 	LINK_CONTACTS,
 	LINK_DELIVERY,
+	LINK_GALLERY,
 	LINK_HOME,
 	LIST_LINKS
 } from "@/constants/links";
@@ -42,12 +43,13 @@ const NavbarTop = () => {
 
 	const darkClass = () => {
 		if (
-			path === LINK_ABOUT ||
 			path === '/' ||
-			path === LINK_DELIVERY ||
-			path === LINK_CONTACTS ||
+			path === LINK_ABOUT ||
+			path === LINK_CALCULATOR ||
 			path === LINK_CATALOG ||
-			path === LINK_CALCULATOR
+			path === LINK_CONTACTS ||
+			path === LINK_DELIVERY ||
+			path === LINK_GALLERY
 		) return '';
 		return styles.dark;
 	}

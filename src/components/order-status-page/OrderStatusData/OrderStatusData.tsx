@@ -41,13 +41,13 @@ const OrderStatusData: React.FC<IOrderStatusData> = ({ data }) => {
 						Спасибо за заказ!
 						{
 							data.deliveryType === EDelivery.SELF ?
-								" Он будет ждать вас в пекарне.":
-								" Курьер скоро к вам приедет."
+								" Он будет ждать вас в пункте выдачи.":
+								" Мы скоро свяжемся с вами."
 						}
 					</h5>
 
 					<p className={styles.address}>
-						Адрес {data.deliveryType === EDelivery.SELF ? "пекарни" : "доставки"}:
+						Адрес {data.deliveryType === EDelivery.SELF ? "пункта выдачи" : "доставки"}:
 						{data.deliveryType === EDelivery.SELF ? " " + data.shopAddress : " " + data.address.address}
 						<br/>
 						Наш администратор свяжется с вами в ближайшее время

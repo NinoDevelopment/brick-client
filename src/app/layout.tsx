@@ -6,7 +6,7 @@ import {APP_TITLE} from "@/constants/general";
 export const metadata: Metadata = {
     title: APP_TITLE,
     description:
-        'Кирпичный завод Ковернино – место, где рождаются,' +
+        'Кирпичный завод Ковернино – место, где производятся,' +
         'надежные и качественные кирпичи для вашего строительства.',
     icons: {
         icon: '/favicon.ico',

@@ -5,7 +5,7 @@ const TestWebsiteAlert: React.FC = () => {
 	return (
 		<div className={styles.TestWebsiteAlert}>
 			<h6>
-				Пекарня скоро откроется, но сейчас сайт работает в тестовом режиме!
+				Сейчас сайт работает в тестовом режиме!
 			</h6>
 		</div>
 	);

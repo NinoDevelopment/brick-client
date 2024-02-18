@@ -36,6 +36,34 @@
    background: var(--app-primary-hover);
 }
 
+.promocodeContainer {
+   width: 100%;
+   margin-bottom: 30px;
+   display: flex;
+   align-items: center;
+   gap: 5px;
+}
+.promocodeContainer input {
+   width: calc(100% - 100px);
+   margin: 0;
+   padding: 10px;
+   background: none;
+   border-radius: 5px;
+   border: 1px solid var(--bs-gray-400);
+   outline: none;
+}
+.promocodeContainer button{
+   padding: 11px;
+   background: var(--app-primary);
+   border: none;
+   color: var(--bs-white);
+   border-radius: 5px;
+   transition: .15s;
+}
+.promocodeContainer button:hover{
+   background: var(--app-primary-hover);
+}
+
 @media (max-width: 991px) {
    .form,
    .form button[type="submit"]{

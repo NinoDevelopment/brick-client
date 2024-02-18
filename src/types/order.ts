@@ -43,6 +43,19 @@ export interface IOrderForm {
 	promocode: string, // промокод
 }
 
+export interface IOrderWithSchetForm extends IOrderForm{
+	schetInfo: ISchetInfo;
+}
+
+export interface ISchetInfo {
+	bankName: string;
+	bic: string;
+	correspondentAccount: string;
+	receiverAccount: string;
+	inn: string;
+	kpp: string;
+}
+
 export interface IOrderFormId extends IOrderForm {
 	_id: string,
 	_v: number,

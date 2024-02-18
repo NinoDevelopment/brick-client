@@ -2,6 +2,7 @@ import React from 'react';
 import {EDelivery, EPayment, IOrderFormId} from "@/types/order";
 import styles from "./OrderStatusData.module.css";
 import {convertDateTime} from "@/functions/convertDateTime";
+import {BRICK_PACK} from "@/constants/general";
 
 interface IOrderStatusData {
 	data: IOrderFormId,
@@ -32,8 +33,18 @@ const OrderStatusData: React.FC<IOrderStatusData> = ({ data }) => {
 								(data.paymentType === EPayment.ONLINE && !data.paid) &&
 								"Заказ ожидает оплаты ..."
 							}
+							{
+								data.paymentType === EPayment.SCHET &&
+								"Заказ отправлен на вашу почту"
+							}
 						</h3>
 						<p className={styles.date}>{convertDateTime(data.createdAt)}</p>
+						{
+							data.paymentType === EPayment.SCHET &&
+							<p className={`my-2 ${styles.date} ${styles.date}`}>
+								На вашу почту было отправлено письмо по которому вы можете произвести оплату заказа.
+							</p>
+						}
 					</header>
 
 					{/*скрываем этот блок если оплата онлайн и она еще не проведена*/}
@@ -56,7 +67,7 @@ const OrderStatusData: React.FC<IOrderStatusData> = ({ data }) => {
 
 				<div className={styles.center}>
 					<h3>{data.amount + "₽"}</h3>
-					<p>{productsCount} товар(ов,a)</p>
+					<p>{(productsCount / BRICK_PACK)?.toFixed()} товар(ов,a)</p>
 				</div>
 
 				<div className={styles.right}>
@@ -64,6 +75,7 @@ const OrderStatusData: React.FC<IOrderStatusData> = ({ data }) => {
 						{data.paymentType === EPayment.CASH && "Оплата при получении"}
 						{data.paymentType === EPayment.ONLINE && data.paid && "Оплата картой онлайн"}
 						{data.paymentType === EPayment.ONLINE && !data.paid && "Ожидание оплаты картой онлайн"}
+						{data.paymentType === EPayment.SCHET && "Ожидание оплаты счета"}
 					</h4>
 				</div>
 			</div>

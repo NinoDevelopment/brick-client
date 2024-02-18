@@ -16,3 +16,5 @@ export const API_CALC_VALUES = '/calc/byVolume';
 export const API_GALLERY = '/gallery';
 export const API_GALLERY_IMG = (id:string) => `${API_GALLERY}/images/${id}`;
 export const API_CALLME = '/callme';
+export const API_PROMOCODE = '/promocode';
+export const API_ALL_PROMOCODES= '/all-promocodes';

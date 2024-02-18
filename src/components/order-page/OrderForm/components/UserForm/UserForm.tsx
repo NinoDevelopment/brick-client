@@ -1,10 +1,10 @@
-import React from 'react';
-import {EPayment, IOrderForm} from "@/types/order";
+import React, {Dispatch, SetStateAction} from 'react';
+import {EPayment, IOrderForm, IOrderWithSchetForm} from "@/types/order";
 import styles from "./UserForm.module.css";
 
 interface IUserForm {
-	formData: IOrderForm,
-	setFormData: (data:IOrderForm) => void,
+	formData: IOrderForm | IOrderWithSchetForm,
+	setFormData: Dispatch<SetStateAction<IOrderWithSchetForm | IOrderForm>> ,
 }
 
 const UserForm: React.FC<IUserForm> = ({ formData, setFormData }) => {

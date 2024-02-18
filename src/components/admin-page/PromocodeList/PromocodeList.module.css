@@ -1,0 +1,15 @@
+.wrapper{
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1em;
+}
+
+.header{
+   width: 100%;
+}
+.header h1{
+   margin-bottom: .5em;
+   font-weight: 800;
+   color: var(--bs-dark);
+   font-family: 'Playfair Display', serif;
+}

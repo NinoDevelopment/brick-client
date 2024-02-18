@@ -15,6 +15,8 @@ import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
 import styles from "./page.module.css";
 import GalleryAdd from "@/components/admin-page/GalleryAdd/GalleryAdd";
 import GalleryList from "@/components/admin-page/GalleryList/GalleryList";
+import PromocodeAdd from "@/components/admin-page/PromocodeAdd/PromocodeAdd";
+import PromocodeList from "@/components/admin-page/PromocodeList/PromocodeList";
 
 const page = () => {
 
@@ -45,6 +47,10 @@ const page = () => {
 			<GalleryAdd/>
 			<hr className={"my-5"}/>
 			<GalleryList/>
+			<hr className={"my-5"}/>
+			<PromocodeAdd/>
+			<hr className={"my-5"}/>
+			<PromocodeList/>
 			<hr className={"my-5"}/>
 		</Container>
 	);

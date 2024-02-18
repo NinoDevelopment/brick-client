@@ -25,3 +25,9 @@ export enum ESort {
 	AVAILABLE = 'AVAILABLE',
 	DISCOUNT = 'DISCOUNT',
 }
+
+export interface IPromocode {
+	_id: string
+	code: string
+	skidka: number
+}

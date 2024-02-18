@@ -9,4 +9,14 @@
 .UserForm input{
     width: calc(50% - .5em);
     margin-bottom: 1em;
+    outline-color: var(--bs-gray-700);
+}
+
+.UserForm textarea {
+    padding: 0.5em 1em;
+    color: var(--bs-gray-600);
+    border-radius: 5px;
+    border: 1px solid var(--bs-gray-300);
+    outline-color: var(--bs-gray-700);
+    transition: .25s;
 }

@@ -74,7 +74,7 @@ const OrderInfo: React.FC<IOrderInfo> = ({ data }) => {
 				<tbody>
 					<tr>
 						<td>Адрес:</td>
-						<td>{data.address.address}</td>
+						<td>{data?.address?.address}</td>
 					</tr>
 					{/*TODO: item was removed*/}
 					{/*<tr>*/}
@@ -83,23 +83,23 @@ const OrderInfo: React.FC<IOrderInfo> = ({ data }) => {
 					{/*</tr>*/}
 					<tr>
 						<td>Комментарий к адресу:</td>
-						<td>{data.address.commentAddress || "-"}</td>
+						<td>{data?.address?.commentAddress || "-"}</td>
 					</tr>
 					<tr>
 						<td>Подъезд:</td>
-						<td>{data.address.entrance || "-"}</td>
+						<td>{data?.address?.entrance || "-"}</td>
 					</tr>
 					<tr>
 						<td>Этаж:</td>
-						<td>{data.address.floor || "-"}</td>
+						<td>{data?.address?.floor || "-"}</td>
 					</tr>
 					<tr>
 						<td>Квартира:</td>
-						<td>{data.address.flat || "-"}</td>
+						<td>{data?.address?.flat || "-"}</td>
 					</tr>
 					<tr>
 						<td>Домофон:</td>
-						<td>{data.address.intercom || "-"}</td>
+						<td>{data?.address?.intercom || "-"}</td>
 					</tr>
 				</tbody>
 			</Table>

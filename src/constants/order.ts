@@ -1,7 +1,7 @@
 import {IShopCartItem} from "@/types/shopCart";
 import {EDelivery, EPayment, IOrderForm, IOrderWithSchetForm} from "@/types/order";
 
-export const ORDER_FORM_INITIAL = (positions:IShopCartItem[]): IOrderForm => {
+export const ORDER_FORM_INITIAL = (positions:IShopCartItem[], paymentType: EPayment): IOrderForm => {
 	return {
 		phoneNumber: '',
 		fullName: '',
@@ -19,7 +19,7 @@ export const ORDER_FORM_INITIAL = (positions:IShopCartItem[]): IOrderForm => {
 		positions: positions,
 		comment: '',
 		deliveryType: EDelivery.SELF,
-		paymentType: EPayment.ONLINE,
+		paymentType: paymentType,
 		promocode: '',
 	}
 }

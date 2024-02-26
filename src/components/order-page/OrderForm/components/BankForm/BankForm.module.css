@@ -1,14 +1,14 @@
-.UserForm{
-    margin-bottom: 2em;
+.BankForm{
+    width: 100%;
 
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.UserForm header{
+.BankForm header{
     margin-bottom: 2em;
  }
- .UserForm header h2{
+ .BankForm header h2{
     margin-bottom: 0;
     font-size: 24px;
     font-weight: 700;
@@ -22,10 +22,14 @@
     flex-direction: column;
 }
 .block:last-child{
-    margin-bottom: 0;
+    margin-bottom: 1.25em;
+}
+.block:first-child{
+    margin-top: 1.25em;
 }
 
-.AddressForm textarea {
+
+.BankForm textarea {
     padding: 0.5em 1em;
     color: var(--bs-gray-600);
     border-radius: 5px;

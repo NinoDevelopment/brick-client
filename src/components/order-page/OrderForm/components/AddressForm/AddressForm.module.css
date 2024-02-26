@@ -5,6 +5,14 @@
     justify-content: space-between;
     flex-wrap: wrap;
 }
+.AddressForm header{
+    margin-bottom: 2em;
+ }
+ .AddressForm header h2{
+    margin-bottom: 0;
+    font-size: 24px;
+    font-weight: 700;
+ }
 
 /*form group blocks*/
 .block{

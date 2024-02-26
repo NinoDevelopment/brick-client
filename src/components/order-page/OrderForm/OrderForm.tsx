@@ -3,10 +3,11 @@ import styles from "./OrderForm.module.css";
 import {useAppDispatch, useAppSelector} from "@/store/store";
 import {ORDER_FORM_INITIAL} from "@/constants/order";
 import UserForm from "@/components/order-page/OrderForm/components/UserForm/UserForm";
-import {EDelivery, EPayment, IOrderForm} from "@/types/order";
+import {EDelivery, EPayment, IOrderForm, IOrderWithSchetForm} from "@/types/order";
 import {Form, Spinner} from "react-bootstrap";
 import DeliverySelect from "@/components/order-page/OrderForm/components/DeliverySelect/DeliverySelect";
 import AddressForm from "@/components/order-page/OrderForm/components/AddressForm/AddressForm";
+import BankForm from "@/components/order-page/OrderForm/components/BankForm/BankForm";
 import ShopAddress from "@/components/order-page/OrderForm/components/ShopAddress/ShopAddress";
 import PaySelect from "@/components/order-page/OrderForm/components/PaySelect/PaySelect";
 import OrderAmount from "@/components/order-page/OrderForm/components/OrderAmount/OrderAmount";
@@ -22,7 +23,9 @@ const OrderForm = () => {
 
 	const dispatch = useAppDispatch();
 	const shopCartData = useAppSelector(state => state.shopCart.data);
-	const [formData, setFormData] = useState<IOrderForm>(ORDER_FORM_INITIAL(shopCartData));
+	const [formData, setFormData] = useState<IOrderForm | IOrderWithSchetForm>(
+		ORDER_FORM_INITIAL(shopCartData, EPayment.SCHET)
+	  );
 	const [load, setLoad] = useState<boolean>(false);
 	const [promocode, setPromocode] = useState<string>('')
 
@@ -72,15 +75,10 @@ const OrderForm = () => {
 		<Form className={styles.OrderForm} onSubmit={handleSend}>
 			<div className={styles.orderFormData}>
 				<UserForm formData={formData} setFormData={setFormData} />
-				<DeliverySelect formData={formData} setFormData={setFormData} />
-				{
-					formData.deliveryType === EDelivery.COURIER &&
-					<AddressForm formData={formData} setFormData={setFormData} />
-				}
-				{
-					formData.deliveryType === EDelivery.SELF &&
-					<ShopAddress formData={formData} setFormData={setFormData} />
-				}
+				{formData.paymentType === EPayment.SCHET && <BankForm formData={formData as IOrderWithSchetForm} setFormData={setFormData} />}
+        		<DeliverySelect formData={formData} setFormData={setFormData} />
+        		{formData.deliveryType === EDelivery.COURIER && <AddressForm formData={formData} setFormData={setFormData} />}
+        		{formData.deliveryType === EDelivery.SELF && <ShopAddress formData={formData} setFormData={setFormData} />}
 			</div>
 
 			<div className={styles.payment}>
@@ -106,15 +104,9 @@ const OrderForm = () => {
 
 				<OrderAmount shopCartData={shopCartData} formData={formData}/>
 
-				{
-					formData.paymentType === EPayment.SCHET ?
-						<Link href={LINK_ISSUING_PAYMENT} className={styles.submitOrder}>
-							Далее
-						</Link> :
-						<button disabled={load} type={"submit"} className={styles.submitOrder}>
-							{load ? <Spinner size={"sm"}/> : "Оформить заказ"}
-						</button>
-				}
+				<button disabled={load} type={"submit"} className={styles.submitOrder}>
+					{load ? <Spinner size={"sm"}/> : "Оформить заказ"}
+				</button>
 			</div>
 		</Form>
 	);

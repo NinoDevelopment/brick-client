@@ -14,7 +14,7 @@ export const SHOPS_ADDRESSES: IShopAddress[] = [
 		address: 'Завод «Ковернино» | Самовывоз',
 		city: 'г.Нижний Новгород',
 		workTime: 'Ежедневно с 08:00-20:00',
-		selected: false,
+		selected: true,
 	},
 ];
 

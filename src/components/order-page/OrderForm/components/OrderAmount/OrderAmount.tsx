@@ -32,7 +32,7 @@ const OrderAmount: React.FC<IOrderAmount> = ({ shopCartData, formData }) => {
 		return (
 			<div className={styles.OrderAmount}>
 				<div className={styles.block}>
-					<p>{(productsCount / BRICK_PACK)?.toFixed()} товар(ов,a)</p>
+					<p>{(productsCount / BRICK_PACK)?.toFixed()} паллет(а)</p>
 					<b>{(amountData?.discountedAmount).toFixed(1)}₽</b>
 				</div>
 
@@ -40,7 +40,7 @@ const OrderAmount: React.FC<IOrderAmount> = ({ shopCartData, formData }) => {
 					formData.deliveryType === EDelivery.COURIER &&
 					<>
 						<div className={styles.block}>
-							<p>Доставка курьером</p>
+							<p>Доставка</p>
 							<b>{amountData.amountWithDelivery - amountData.discountedAmount}₽</b>
 						</div>
 

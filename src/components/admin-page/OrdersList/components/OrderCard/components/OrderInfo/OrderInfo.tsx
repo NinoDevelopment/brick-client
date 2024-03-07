@@ -36,7 +36,13 @@ const OrderInfo: React.FC<IOrderInfo> = ({ data }) => {
 					</tr>
 					<tr>
 						<td>Тип оплаты:</td>
-						<td>{data.paymentType === EPayment.ONLINE ? "Картой онлайн" : "При получении"}</td>
+						<td>
+							{
+								data.paymentType === EPayment.ONLINE ? "Картой онлайн" :
+								data.paymentType === EPayment.SCHET ? "Оплата по счету" :
+								"При получении"
+							}
+						</td>
 					</tr>
 					<tr>
 						<td>Статус заказа:</td>
@@ -73,33 +79,12 @@ const OrderInfo: React.FC<IOrderInfo> = ({ data }) => {
 			<Table bordered hidden={data.deliveryType !== EDelivery.COURIER}>
 				<tbody>
 					<tr>
-						<td>Адрес:</td>
+						<td>Город:</td>
 						<td>{data?.address?.address}</td>
 					</tr>
-					{/*TODO: item was removed*/}
-					{/*<tr>*/}
-					{/*	<td>Адрес (название):</td>*/}
-					{/*	<td>{data.address.addressName || "-"}</td>*/}
-					{/*</tr>*/}
 					<tr>
-						<td>Комментарий к адресу:</td>
+						<td>Адрес:</td>
 						<td>{data?.address?.commentAddress || "-"}</td>
-					</tr>
-					<tr>
-						<td>Подъезд:</td>
-						<td>{data?.address?.entrance || "-"}</td>
-					</tr>
-					<tr>
-						<td>Этаж:</td>
-						<td>{data?.address?.floor || "-"}</td>
-					</tr>
-					<tr>
-						<td>Квартира:</td>
-						<td>{data?.address?.flat || "-"}</td>
-					</tr>
-					<tr>
-						<td>Домофон:</td>
-						<td>{data?.address?.intercom || "-"}</td>
 					</tr>
 				</tbody>
 			</Table>

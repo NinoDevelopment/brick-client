@@ -18,8 +18,8 @@ const AddressForm: React.FC<IAddressForm> = ({ formData, setFormData }) => {
 				<input
 					required
 					placeholder={"Область, город*"}
-					value={formData.address.addressName}
-					onChange={e => setFormData({...formData, address: {...formData.address, addressName: e.target.value}})}
+					value={formData.address.address}
+					onChange={e => setFormData({...formData, address: {...formData.address, address: e.target.value}})}
 				/>
 			</FormGroup>
 
@@ -27,8 +27,8 @@ const AddressForm: React.FC<IAddressForm> = ({ formData, setFormData }) => {
 				<input
 					required
 					placeholder={"Адрес*"}
-					value={formData.address.address}
-					onChange={e => setFormData({...formData, address: {...formData.address, address: e.target.value}})}
+					value={formData.address.commentAddress}
+					onChange={e => setFormData({...formData, address: {...formData.address, commentAddress: e.target.value}})}
 				/>
 			</FormGroup>
 		</div>

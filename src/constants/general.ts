@@ -12,7 +12,7 @@ export const SHOPS_ADDRESSES: IShopAddress[] = [
 	{
 		id: EShopsIds.ITS_BREAD,
 		address: 'Завод «Ковернино» | Самовывоз',
-		city: 'г.Нижний Новгород',
+		city: 'Нижегородская область, Ковернинский район, деревня Черные',
 		workTime: 'Ежедневно с 08:00-20:00',
 		selected: true,
 	},
@@ -21,15 +21,15 @@ export const SHOPS_ADDRESSES: IShopAddress[] = [
 // контакты
 export const CONTACTS = {
 	phone: {
-		title: "+7 (999) 071-14-41",
-		value: "+79990711441",
-		valueWS: "79990711441",
+		title: "+7 (921) 509-24-04",
+		value: "+79215092409",
+		valueWS: "79215092409",
 	},
 	email: {
-		title: "kzk@gmail.com",
-		value: "kzk@gmail.com",
+		title: "kzkvrn@yandex.ru",
+		value: "kzkvrn@yandex.ru",
 	},
 	tg: {
-		nick: "leshakuzz"
+		nick: "kzkvrn"
 	}
 };

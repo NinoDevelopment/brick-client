@@ -15,7 +15,7 @@ const RecommendItems = () => {
 
 	return (
 		<div className={styles.RecommendItems}>
-			<h2 className={styles.title}>Попробуйте ещё</h2>
+			<h2 className={styles.title}>Рекомендуем</h2>
 
 			<div className={styles.content}>
 				{

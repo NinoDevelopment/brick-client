@@ -28,7 +28,7 @@ const TotalAmount: React.FC<ITotalAmount> = ({ shopCartData }) => {
 		<div className={styles.TotalAmount}>
 			<div className={styles.content}>
 				<div className={styles.block}>
-					<span>{(productsCount / BRICK_PACK)?.toFixed()} товар(ов,a):</span>
+					<span>{(productsCount / BRICK_PACK)?.toFixed()} паллет(а):</span>
 					<b>{data?.amount}₽</b>
 				</div>
 				<div className={styles.block}>

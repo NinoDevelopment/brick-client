@@ -27,7 +27,7 @@ const OrderStatusData: React.FC<IOrderStatusData> = ({ data }) => {
 							{// если оплата при получении или заказ оплачен то "Заказ отправлен!"
 								(data.paymentType === EPayment.CASH ||
 									(data.paymentType === EPayment.ONLINE && data.paid)) &&
-								"Заказ отправлен!"
+								"Спасибо за заказ!"
 							}
 							{// если оплата онлайн и заказ еще не оплачен то "Заказ ожидает оплаты ..."
 								(data.paymentType === EPayment.ONLINE && !data.paid) &&
@@ -35,46 +35,37 @@ const OrderStatusData: React.FC<IOrderStatusData> = ({ data }) => {
 							}
 							{
 								data.paymentType === EPayment.SCHET &&
-								"Заказ отправлен на вашу почту"
+								"Счет на оплату отправлен"
 							}
 						</h3>
-						<p className={styles.date}>{convertDateTime(data.createdAt)}</p>
-						{
-							data.paymentType === EPayment.SCHET &&
-							<p className={`my-2 ${styles.date} ${styles.date}`}>
-								На вашу почту было отправлено письмо по которому вы можете произвести оплату заказа.
-							</p>
-						}
 					</header>
 
 					{/*скрываем этот блок если оплата онлайн и она еще не проведена*/}
 					<h5 hidden={data.paymentType === EPayment.ONLINE && !data.paid}>
-						Спасибо за заказ!
 						{
 							data.deliveryType === EDelivery.SELF ?
-								" Он будет ждать вас в пункте выдачи.":
-								" Мы скоро свяжемся с вами."
+								" Он будет ждать вас в пункте выдачи":
+								" Мы скоро свяжемся с вами"
 						}
 					</h5>
 
 					<p className={styles.address}>
 						Адрес {data.deliveryType === EDelivery.SELF ? "пункта выдачи" : "доставки"}:
-						{data.deliveryType === EDelivery.SELF ? " " + data.shopAddress : " " + data.address.address}
+						{data.deliveryType === EDelivery.SELF ? " " + data.shopAddress : " " + data.address.address + ", " + data.address.commentAddress}
 						<br/>
-						Наш администратор свяжется с вами в ближайшее время
 					</p>
 				</div>
 
 				<div className={styles.center}>
 					<h3>{data.amount + "₽"}</h3>
-					<p>{(productsCount / BRICK_PACK)?.toFixed()} товар(ов,a)</p>
+					<p>{(productsCount / BRICK_PACK)?.toFixed()} паллет(а)</p>
 				</div>
 
 				<div className={styles.right}>
 					<h4>
 						{data.paymentType === EPayment.CASH && "Оплата при получении"}
-						{data.paymentType === EPayment.ONLINE && data.paid && "Оплата картой онлайн"}
-						{data.paymentType === EPayment.ONLINE && !data.paid && "Ожидание оплаты картой онлайн"}
+						{data.paymentType === EPayment.ONLINE && data.paid && "Заказ оплачен"}
+						{data.paymentType === EPayment.ONLINE && !data.paid && "Ожидание оплаты картой"}
 						{data.paymentType === EPayment.SCHET && "Ожидание оплаты счета"}
 					</h4>
 				</div>

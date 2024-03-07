@@ -40,7 +40,7 @@ const ContactsForm = () => {
 
             <header>
                <h2>Заполните форму</h2>
-               <h5>Наши специалисты свяжутся с вами в ближайшее время</h5>
+               <h5>Наши менеджеры свяжутся с вами в ближайшее время</h5>
             </header>
 
             {
@@ -52,7 +52,7 @@ const ContactsForm = () => {
 
             <form onSubmit={handleSend} hidden={sended}>
                <div className={styles.inputContainer}>
-                  <label>Как к вам обращаться</label>
+                  <label>Имя*</label>
                   <input
                      required
                      value={formData.name}
@@ -62,7 +62,7 @@ const ContactsForm = () => {
                </div>
 
                <div className={styles.inputContainer}>
-                  <label>E-mail</label>
+                  <label>E-mail*</label>
                   <input
                      required
                      type={'email'}
@@ -75,7 +75,6 @@ const ContactsForm = () => {
                <div className={styles.inputContainer}>
                   <label>Название компании</label>
                   <input
-                     required
                      value={formData.company}
                      onChange={e => setFormData({ ...formData, company: e.target.value })}
                      placeholder={''}
@@ -83,7 +82,7 @@ const ContactsForm = () => {
                </div>
 
                <div className={styles.inputContainer}>
-                  <label>Ваше сообщение</label>
+                  <label>Ваше сообщение*</label>
                   <textarea
                      rows={5}
                      required

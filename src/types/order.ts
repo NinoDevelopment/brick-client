@@ -36,6 +36,7 @@ export interface IOrderForm {
 	fullName: string, // имя фамилия
 	address: IOrderAddress, // объект адреса
 	shopAddress?: string, // id магазина
+	shopCity?: string, // адрес магазина
 	positions: IShopCartItem[], // товары массив
 	comment?: string, // коммент ко всему заказу
 	deliveryType: EDelivery, // тип доставки

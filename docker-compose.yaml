@@ -7,7 +7,7 @@ services:
       # Объявляем порт сервиса в докере для прослушки
       - traefik.http.services.frontend.loadbalancer.server.port=3000
       # Настройка маршрута для фронтенда
-      - traefik.http.routers.frontend.rule=Host(`brick-nn.sbs`) && PathPrefix(`/`)
+      - traefik.http.routers.frontend.rule=Host(`kzk.ooo`) && PathPrefix(`/`)
       # Настройка для HTTPS
       - traefik.http.routers.frontend.entrypoints=https
       - traefik.http.routers.frontend.tls=true
@@ -17,7 +17,7 @@ services:
       - traefik.http.middlewares.frontend-https-redirect.redirectscheme.permanent=true
       # Устанавливаем миддлвейр редиректа с HTTP на HTTPS
       - traefik.http.routers.frontend-http.middlewares=frontend-https-redirect
-      - traefik.http.routers.frontend-http.rule=Host(`brick-nn.sbs`) && PathPrefix(`/`)
+      - traefik.http.routers.frontend-http.rule=Host(`kzk.ooo`) && PathPrefix(`/`)
       - traefik.http.routers.frontend-http.entrypoints=http
       # Говорим traefik использовать объявленную публичную сеть
       - traefik.docker.network=traefik-public

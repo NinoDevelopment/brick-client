@@ -44,13 +44,13 @@ const OrderStatusData: React.FC<IOrderStatusData> = ({ data }) => {
 					<h5 hidden={data.paymentType === EPayment.ONLINE && !data.paid}>
 						{
 							data.deliveryType === EDelivery.SELF ?
-								" Он будет ждать вас в пункте выдачи":
+								" Он будет ждать вас":
 								" Мы скоро свяжемся с вами"
 						}
 					</h5>
 
 					<p className={styles.address}>
-						Адрес {data.deliveryType === EDelivery.SELF ? "пункта выдачи" : "доставки"}:
+						{data.deliveryType === EDelivery.SELF ? "Пункт выдачи" : "Адрес Доставки"}:
 						{data.deliveryType === EDelivery.SELF ? " " + data.shopAddress : " " + data.address.address + ", " + data.address.commentAddress}
 						<br/>
 					</p>

@@ -11,7 +11,7 @@ export const MIN_ORDER_PRICE = 600;
 export const SHOPS_ADDRESSES: IShopAddress[] = [
 	{
 		id: EShopsIds.ITS_BREAD,
-		address: 'Завод «Ковернино» | Самовывоз',
+		address: 'Завод «Ковернино»',
 		city: 'Нижегородская область, Ковернинский район, деревня Черные',
 		workTime: 'Ежедневно с 08:00-20:00',
 		selected: true,

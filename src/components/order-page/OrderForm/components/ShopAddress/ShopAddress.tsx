@@ -16,7 +16,7 @@ const ShopAddress: React.FC<IShopAddress> = ({ formData, setFormData }) => {
 					<button
 						disabled={elem.address === formData.shopAddress}
 						key={elem.address}
-						onClick={() => setFormData({...formData, shopAddress: elem.address})}
+						onClick={() => setFormData({...formData, shopAddress: elem.address, shopCity: elem.city})}
 					>
 						<h4>{elem.address}</h4>
 						<p>{elem.city}</p>

@@ -18,8 +18,8 @@ const AddressForm: React.FC<IAddressForm> = ({ formData, setFormData }) => {
 				<input
 					required
 					placeholder={"Область, город*"}
-					value={formData.address.address}
-					onChange={e => setFormData({...formData, address: {...formData.address, address: e.target.value}})}
+					value={formData.address.city}
+					onChange={e => setFormData({...formData, address: {...formData.address, city: e.target.value}})}
 				/>
 			</FormGroup>
 
@@ -27,6 +27,16 @@ const AddressForm: React.FC<IAddressForm> = ({ formData, setFormData }) => {
 				<input
 					required
 					placeholder={"Адрес*"}
+					value={formData.address.address}
+					onChange={e => setFormData({...formData, address: {...formData.address, address: e.target.value}})}
+				/>
+			</FormGroup>
+
+			<FormGroup className={styles.block + " " + styles.w100}>
+				<label>Комментарий к адресу</label>
+				<textarea
+					rows={4}
+					placeholder={"Комментарий к адресу"}
 					value={formData.address.commentAddress}
 					onChange={e => setFormData({...formData, address: {...formData.address, commentAddress: e.target.value}})}
 				/>

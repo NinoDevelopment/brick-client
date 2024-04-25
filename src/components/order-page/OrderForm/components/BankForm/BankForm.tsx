@@ -17,37 +17,19 @@ const BankForm: React.FC<IBankForm> = ({formData, setFormData}) => {
             <FormGroup className={styles.block + " " + styles.w100}>
                 <input
                     required
-                    placeholder={'Полное наименование банка*'}
+                    placeholder={'Компания*'}
                     value={formData.schetInfo?.bankName}
-                    onChange={e => setFormData({...formData, schetInfo: {...formData.schetInfo, bankName: e.target.value}})}
+                    onChange={e => setFormData({...formData, schetInfo: {...formData.schetInfo, companyName: e.target.value}})}
                 />
 			</FormGroup>
 
-			<FormGroup className={styles.block + " " + styles.w100}>
-            	<input
-               		required
-			   		placeholder={'БИК*'}
-               		value={formData.schetInfo?.bic}
-               		onChange={e => setFormData({...formData, schetInfo: {...formData.schetInfo, bic: e.target.value}})}
-            	/>
-			</FormGroup>
-
-			<FormGroup className={styles.block + " " + styles.w100}>
-            	<input
-               		required
-			   		placeholder={'Корреспондентский счёт*'}
-               		value={formData.schetInfo?.correspondentAccount}
-               		onChange={e => setFormData({...formData, schetInfo: {...formData.schetInfo, correspondentAccount: e.target.value}})}
-            	/>
-			</FormGroup>
-
-			<FormGroup className={styles.block + " " + styles.w100}>
-            	<input
-               		required
-               		placeholder={'Номер счёта получателя*'}
-               		value={formData.schetInfo?.receiverAccount}
-               		onChange={e => setFormData({...formData, schetInfo: {...formData.schetInfo, receiverAccount: e.target.value}})}
-            	/>
+            <FormGroup className={styles.block + " " + styles.w100}>
+                <input
+                    required
+                    placeholder={'Юр адрес компании*'}
+                    value={formData.schetInfo?.bankName}
+                    onChange={e => setFormData({...formData, schetInfo: {...formData.schetInfo, companyAddress: e.target.value}})}
+                />
 			</FormGroup>
 
 			<FormGroup className={styles.block + " " + styles.w100}>
@@ -67,6 +49,38 @@ const BankForm: React.FC<IBankForm> = ({formData, setFormData}) => {
                		onChange={e => setFormData({...formData, schetInfo: {...formData.schetInfo, kpp: e.target.value}})}
             	/>
             </FormGroup>
+
+            <FormGroup className={styles.block + " " + styles.w100}>
+                <input
+                    placeholder={'Полное наименование банка'}
+                    value={formData.schetInfo?.bankName}
+                    onChange={e => setFormData({...formData, schetInfo: {...formData.schetInfo, bankName: e.target.value}})}
+                />
+			</FormGroup>
+
+			<FormGroup className={styles.block + " " + styles.w100}>
+            	<input
+			   		placeholder={'БИК'}
+               		value={formData.schetInfo?.bic}
+               		onChange={e => setFormData({...formData, schetInfo: {...formData.schetInfo, bic: e.target.value}})}
+            	/>
+			</FormGroup>
+
+			<FormGroup className={styles.block + " " + styles.w100}>
+            	<input
+			   		placeholder={'Корреспондентский счёт'}
+               		value={formData.schetInfo?.correspondentAccount}
+               		onChange={e => setFormData({...formData, schetInfo: {...formData.schetInfo, correspondentAccount: e.target.value}})}
+            	/>
+			</FormGroup>
+
+			<FormGroup className={styles.block + " " + styles.w100}>
+            	<input
+               		placeholder={'Номер счёта получателя'}
+               		value={formData.schetInfo?.receiverAccount}
+               		onChange={e => setFormData({...formData, schetInfo: {...formData.schetInfo, receiverAccount: e.target.value}})}
+            	/>
+			</FormGroup>
         </div>
     );
 };

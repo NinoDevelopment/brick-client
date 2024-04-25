@@ -10,6 +10,7 @@ export const ORDER_FORM_INITIAL = (positions:IShopCartItem[], paymentType: EPaym
 		address: {
 			address: '',
 			addressName: '',
+			city: '',
 			flat: '',
 			entrance: '',
 			intercom: '',
@@ -33,6 +34,7 @@ export const ORDER_FORM_SCHET_INITIAL = (positions:IShopCartItem[]): IOrderWithS
 		address: {
 			address: '',
 			addressName: '',
+			city: '',
 			flat: '',
 			entrance: '',
 			intercom: '',
@@ -45,6 +47,8 @@ export const ORDER_FORM_SCHET_INITIAL = (positions:IShopCartItem[]): IOrderWithS
 		paymentType: EPayment.SCHET,
 		promocode: '',
 		schetInfo: {
+			companyName: '',
+			companyAddress: '',
 			bankName: '',
 			correspondentAccount: '',
 			bic: '',

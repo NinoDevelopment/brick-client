@@ -23,6 +23,7 @@ export enum EOrderSorts {
 export interface IOrderAddress {
 	address: string, // адрес
 	addressName?: string, // название адреса
+	city: string, // город
 	flat?: string, // квартира
 	entrance?: string, // подъезд
 	intercom?: string, // домофон
@@ -49,6 +50,8 @@ export interface IOrderWithSchetForm extends IOrderForm{
 }
 
 export interface ISchetInfo {
+	companyName: string;
+	companyAddress: string;
 	bankName: string;
 	bic: string;
 	correspondentAccount: string;

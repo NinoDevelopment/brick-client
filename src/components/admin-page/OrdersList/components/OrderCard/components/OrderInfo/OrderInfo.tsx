@@ -80,11 +80,11 @@ const OrderInfo: React.FC<IOrderInfo> = ({ data }) => {
 				<tbody>
 					<tr>
 						<td>Город:</td>
-						<td>{data?.address?.address}</td>
+						<td>{data?.address?.city}</td>
 					</tr>
 					<tr>
 						<td>Адрес:</td>
-						<td>{data?.address?.commentAddress || "-"}</td>
+						<td>{data?.address?.address || "-"}</td>
 					</tr>
 				</tbody>
 			</Table>

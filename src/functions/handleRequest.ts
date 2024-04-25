@@ -7,6 +7,7 @@ export const handleRequest = (method:REQUEST_METHODS, url:string, data:any): Pro
 	const options = {
 		method: method,
 		url: process.env.NEXT_PUBLIC_API_LINK + url,
+		// url: `https://${process.env.URL}/api${url}`,
 		headers: {
 			'Content-Type': 'application/json',
 			'Authorization': getAdminKey(),

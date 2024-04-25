@@ -51,7 +51,7 @@ const OrderStatusData: React.FC<IOrderStatusData> = ({ data }) => {
 
 					<p className={styles.address}>
 						{data.deliveryType === EDelivery.SELF ? "Пункт выдачи" : "Адрес Доставки"}:
-						{data.deliveryType === EDelivery.SELF ? " " + data.shopAddress : " " + data.address.address + ", " + data.address.commentAddress}
+						{data.deliveryType === EDelivery.SELF ? " " + data.shopAddress : " " + data.address.city + ", " + data.address.address}
 						<br/>
 					</p>
 				</div>

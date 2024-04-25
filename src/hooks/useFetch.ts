@@ -11,6 +11,7 @@ export const useFetch = <T>(url:string, method?:string, body?:object, interval?:
 	const options = {
 		method: method || REQUEST_METHODS.GET,
 		url: process.env.NEXT_PUBLIC_API_LINK + url,
+		// url: `https://${process.env.URL}/api${url}`,
 		headers: {
 			'Content-Type': 'application/json',
 			'Authorization': getAdminKey(),

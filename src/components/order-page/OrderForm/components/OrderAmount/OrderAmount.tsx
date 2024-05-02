@@ -33,7 +33,7 @@ const OrderAmount: React.FC<IOrderAmount> = ({ shopCartData, formData }) => {
 			<div className={styles.OrderAmount}>
 				<div className={styles.block}>
 					<p>{(productsCount / BRICK_PACK)?.toFixed()} паллет(а)</p>
-					<b>{(amountData?.discountedAmount).toFixed(1)}₽</b>
+					<b>{(amountData?.amount).toFixed(1)}₽</b>
 				</div>
 
 				{

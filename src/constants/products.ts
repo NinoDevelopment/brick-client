@@ -7,6 +7,7 @@ export const ITEM_INITIAL: IProductWithImg = {
 	color: '',
 	images: [],
 	discount: 0,
+	pack: 400,
 	price: 0,
 	available: true,
 	isRecommendation: false,

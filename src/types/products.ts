@@ -8,6 +8,7 @@ export interface IProduct {
 	description: string,
 	categoryId: string,
 	discount: number,
+	pack: number,
 	price: number,
 	available: boolean,
 	isRecommendation: boolean,

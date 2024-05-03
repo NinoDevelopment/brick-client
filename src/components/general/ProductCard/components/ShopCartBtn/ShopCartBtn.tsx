@@ -4,7 +4,6 @@ import {IProductId} from "@/types/products";
 import {useDispatch} from "react-redux";
 import {IShopCartItem} from "@/types/shopCart";
 import {addItem, removeItem} from "@/store/slices/shopCartSlice";
-import {BRICK_PACK} from "@/constants/general";
 
 interface IShopCartBtn {
 	shopCartData: IShopCartItem[],
@@ -17,10 +16,11 @@ const ShopCartBtn: React.FC<IShopCartBtn> = ({ shopCartData, product }) => {
 
 	const thisItem = shopCartData.find(item => item.itemId === product._id);
 
-	const shopCartObject:IShopCartItem = {
+	const shopCartObject : IShopCartItem = {
 		itemId: product._id,
-		quantity: (thisItem?.quantity || BRICK_PACK),
+		quantity: (thisItem?.quantity || product.pack),
 		price: product.price,
+		pack: product.pack,
 	};
 
 	const handleAdd = () => dispatch(addItem(shopCartObject))
@@ -34,7 +34,7 @@ const ShopCartBtn: React.FC<IShopCartBtn> = ({ shopCartData, product }) => {
 					-
 				</button>
 
-				<button disabled>{thisItem.quantity / BRICK_PACK}</button>
+				<button disabled>{thisItem.quantity / thisItem.pack}</button>
 
 				<button type="button" onClick={handleAdd}>
 					+

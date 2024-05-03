@@ -6,7 +6,6 @@ import {API_ORDER_AMOUNT} from "@/constants/api";
 import Link from "next/link";
 import {LINK_ORDER} from "@/constants/links";
 import {REQUEST_METHODS} from "@/types/general";
-import {BRICK_PACK} from "@/constants/general";
 
 interface ITotalAmount {
 	shopCartData: IShopCartItem[],
@@ -20,7 +19,7 @@ const TotalAmount: React.FC<ITotalAmount> = ({ shopCartData }) => {
 	}, false)
 
 	//count for all products
-	const productsCount = shopCartData.reduce((count, item) => count + item.quantity,0);
+	const totalPalletsCount = shopCartData.reduce((count, item) => count + Math.ceil(item.quantity / item.pack), 0);
 
 	//check data
 	if (data)
@@ -28,7 +27,7 @@ const TotalAmount: React.FC<ITotalAmount> = ({ shopCartData }) => {
 		<div className={styles.TotalAmount}>
 			<div className={styles.content}>
 				<div className={styles.block}>
-					<span>{(productsCount / BRICK_PACK)?.toFixed()} паллет(а):</span>
+					<span>{totalPalletsCount?.toFixed()} паллет(а):</span>
 					<b>{data?.amount}₽</b>
 				</div>
 				<div className={styles.block}>

@@ -14,7 +14,7 @@ const ProductPrice: React.FC<IProductPrice> = ({ data }) => {
 				<tbody>
 					<tr>
 						<td>Цена:</td>
-						<td>{data.price}₽/палет</td>
+						<td>{data.price}₽/шт</td>
 					</tr>
 				</tbody>
 			</Table>

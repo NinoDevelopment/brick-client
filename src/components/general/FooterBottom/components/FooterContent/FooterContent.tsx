@@ -46,7 +46,7 @@ const FooterContent = () => {
 				<div className={styles.left}>
 					<h6>
 						© КЗК 2024, Все права защищены, <br/>
-						Powered by maxsmith
+						Powered by leshakuzz
 					</h6>
 
 					<h5>

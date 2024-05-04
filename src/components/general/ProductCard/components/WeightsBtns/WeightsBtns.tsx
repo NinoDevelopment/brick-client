@@ -12,7 +12,7 @@ const WeightsBtns: React.FC<IWeightsBtns> = ({ data, discount, pack }) => {
 	return (
 		<div className={styles.WeightsBtns}>
 			<div className={styles.priceContainer}>
-				<h6>Паллет <span>{pack}</span>шт</h6>
+				<h6>Паллет из <span>{pack}</span>шт</h6>
 				<h3>
 					{!!discount ? (data / 100 * (100 - discount))?.toFixed(1) : data}₽/шт
 				</h3>

@@ -27,21 +27,26 @@ const ShopCartBtn: React.FC<IShopCartBtn> = ({ shopCartData, product }) => {
 
 	const handleRemove = () => dispatch(removeItem(shopCartObject))
 
-	if (thisItem) {
-		return (
-			<div className={styles.ShopCartBtnActive}>
-				<button type="button" onClick={handleRemove}>
-					-
-				</button>
+    if (thisItem) {
+        return (
+            <div className={styles.ShopCartBtnActive}>
+                <div>
+                    <button type="button" onClick={handleRemove}>
+                        -
+                    </button>
 
-				<button disabled>{thisItem.quantity / thisItem.pack}</button>
+                    <button disabled>{thisItem.quantity / thisItem.pack}</button>
 
-				<button type="button" onClick={handleAdd}>
-					+
-				</button>
-			</div>
-		)
-	}
+                    <button type="button" onClick={handleAdd}>
+                        +
+                    </button>
+                </div>
+                <div className={styles.QuantityInfo}>
+                    <h6>Всего <span>{thisItem.quantity}</span> шт</h6>
+                </div>
+            </div>
+        )
+    }
 
 	return (
 		<button className={styles.ShopCartBtn} type="button" onClick={handleAdd}>

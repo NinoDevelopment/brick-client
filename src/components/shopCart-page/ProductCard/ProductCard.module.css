@@ -139,13 +139,22 @@
 }
 
 @media (max-width: 420px) {
-    /*item name*/
+    .content {
+        position: relative;
+    }
+    .content::after {
+        content: '';
+        display: block;
+        height: 1em;
+    }
     .content h5{
         font-size: 16px;
     }
-    /*item weight*/
     .content .weight{
         font-size: 12px;
+    }
+    .footer p {
+        margin-top: 0.5em;
     }
 }
 

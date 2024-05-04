@@ -33,7 +33,6 @@ const AddressForm: React.FC<IAddressForm> = ({ formData, setFormData }) => {
 			</FormGroup>
 
 			<FormGroup className={styles.block + " " + styles.w100}>
-				<label>Комментарий к адресу</label>
 				<textarea
 					rows={4}
 					placeholder={"Комментарий к адресу"}

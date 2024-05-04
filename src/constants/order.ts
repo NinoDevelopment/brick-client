@@ -19,7 +19,7 @@ export const ORDER_FORM_INITIAL = (positions:IShopCartItem[], paymentType: EPaym
 		},
 		positions: positions,
 		comment: '',
-		deliveryType: EDelivery.SELF,
+		deliveryType: EDelivery.COURIER,
 		paymentType: paymentType,
 		promocode: '',
 	}

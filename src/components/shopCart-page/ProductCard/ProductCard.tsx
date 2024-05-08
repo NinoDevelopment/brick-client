@@ -13,8 +13,6 @@ import Link from "next/link";
 import {LINK_PRODUCT} from "@/constants/links";
 import AvailableTooltip from "@/components/shopCart-page/ProductCard/components/AvailableTooltip/AvailableTooltip";
 import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
-import {BRICK_PACK} from "@/constants/general";
-
 
 interface IProductCard {
 	data: IShopCartItem,
@@ -61,7 +59,7 @@ const ProductCard: React.FC<IProductCard> = ({ data, shopCartData }) => {
 					<Link href={LINK_PRODUCT(productData._id)}>
 						<h5>{productData.name}</h5>
 					</Link>
-					<p>Паллет {BRICK_PACK}шт</p>
+					<p>Паллет {productData.pack}шт</p>
 				</div>
 
 				<ShopCartBtn

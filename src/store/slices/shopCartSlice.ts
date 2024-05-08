@@ -1,6 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {IShopCartItem} from "@/types/shopCart";
-import {BRICK_PACK} from "@/constants/general";
 
 interface IShopCart {
 	data: IShopCartItem[],
@@ -25,7 +24,7 @@ export const shopCartSlice = createSlice({
 		addItem: (state, action) => { //add item
 			if (findItem(state.data, action.payload)) {
 				state.data = state.data.map(item => (
-					checkItem(item, action.payload) ? {...item, quantity: item.quantity + BRICK_PACK} : item
+					checkItem(item, action.payload) ? {...item, quantity: item.quantity + item.pack} : item
 				))
 			}else {
 				state.data = [...state.data, action.payload]
@@ -34,8 +33,8 @@ export const shopCartSlice = createSlice({
 		removeItem: (state, action) => { //delete 1 amount item
 			const findItemInner = findItem(state.data, action.payload);
 			const filteredData = state.data.filter(item => item !== findItemInner);
-			if (findItemInner && findItemInner.quantity > BRICK_PACK) {
-				state.data = [...filteredData, {...action.payload, quantity: action.payload.quantity - BRICK_PACK}]
+			if (findItemInner && findItemInner.quantity > findItemInner.pack) {
+				state.data = [...filteredData, {...action.payload, quantity: action.payload.quantity - action.payload.pack}]
 			}else {
 				state.data = filteredData;
 			}

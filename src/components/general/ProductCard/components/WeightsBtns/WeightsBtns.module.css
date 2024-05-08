@@ -1,68 +1,72 @@
-.WeightsBtns{
+.WeightsBtns {
     display: flex;
-
     z-index: 3;
+    align-self: flex-start;
 }
 
-.WeightsBtns button{
+.WeightsBtns button {
     margin-right: .25em;
     padding: .25em .75em;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     border-radius: 5px;
     border: 2px solid transparent;
     background: none;
     transition: .25s;
 }
+
 .WeightsBtns button:disabled,
-.WeightsBtns button:disabled:hover{
+.WeightsBtns button:disabled:hover {
     border: 2px solid var(--app-primary);
 }
-.WeightsBtns button:hover{
+
+.WeightsBtns button:hover {
     border: 2px solid var(--bs-gray-300);
 }
 
-/*text*/
+/* text */
 .WeightsBtns button h5,
 .WeightsBtns button p,
-.WeightsBtns h3{
+.WeightsBtns h3 {
     margin: 0;
     line-height: 1;
 }
+
 .WeightsBtns button h5,
-.WeightsBtns h3{
+.WeightsBtns h3 {
     font-weight: 700;
     color: var(--bs-dark);
 }
-.WeightsBtns button p{
+
+.WeightsBtns button p {
     color: var(--bs-gray-600);
 }
 
-/*priceContainer*/
-.priceContainer{
+/* priceContainer */
+.priceContainer {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    align-self: flex-start;
 }
-.priceContainer p{
+
+.priceContainer p {
     margin: 0;
     line-height: 1.3;
-
     font-weight: 500;
     color: var(--app-primary);
     text-decoration: line-through;
 }
+
 .priceContainer h6 {
     margin: 0;
     line-height: 1.3;
-
     font-weight: 500;
     color: var(--app-primary);
 }
-.priceContainer h6 span{
+
+.priceContainer h6 span {
     margin-right: .15em;
     font-weight: 800;
     color: var(--app-dark);

@@ -28,6 +28,10 @@ const ProductInfo: React.FC<IProductInfo> = ({ data }) => {
 				<td>{data?.discount}%</td>
 			</tr>
 			<tr>
+				<td>Кол-во на паллете:</td>
+				<td>{data?.pack}</td>
+			</tr>
+			<tr>
 				<td>Цвет:</td>
 				<td>{data?.color}</td>
 			</tr>

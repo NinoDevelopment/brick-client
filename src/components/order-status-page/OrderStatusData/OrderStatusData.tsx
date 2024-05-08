@@ -2,7 +2,6 @@ import React from 'react';
 import {EDelivery, EPayment, IOrderFormId} from "@/types/order";
 import styles from "./OrderStatusData.module.css";
 import {convertDateTime} from "@/functions/convertDateTime";
-import {BRICK_PACK} from "@/constants/general";
 
 interface IOrderStatusData {
 	data: IOrderFormId,
@@ -11,7 +10,7 @@ interface IOrderStatusData {
 const OrderStatusData: React.FC<IOrderStatusData> = ({ data }) => {
 
 	//count for all products
-	const productsCount = data.positions.reduce((count, item) => count + item.quantity,0);
+	const totalPalletsCount = data.positions.reduce((count, item) => count + Math.ceil(item.quantity / item.pack), 0);
 
 	const getTheme = () => { // цвет для текста зависит от статуса оплаты заказа
 		if (data.paymentType === EPayment.ONLINE && !data.paid) return "pending";
@@ -58,7 +57,7 @@ const OrderStatusData: React.FC<IOrderStatusData> = ({ data }) => {
 
 				<div className={styles.center}>
 					<h3>{data.amount + "₽"}</h3>
-					<p>{(productsCount / BRICK_PACK)?.toFixed()} паллет(а)</p>
+					<p>{totalPalletsCount?.toFixed()} паллет(а)</p>
 				</div>
 
 				<div className={styles.right}>

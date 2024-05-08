@@ -3,7 +3,7 @@ import {IShopCartAmount, IShopCartItem} from "@/types/shopCart";
 import {API_ORDER_AMOUNT} from "@/constants/api";
 import {EDelivery, IOrderForm} from "@/types/order";
 import {REQUEST_METHODS} from "@/types/general";
-import {BRICK_PACK, MIN_ORDER_PRICE} from "@/constants/general";
+import {MIN_ORDER_PRICE} from "@/constants/general";
 import styles from "./OrderAmount.module.css";
 import {handleRequest} from "@/functions/handleRequest";
 import {TOAST_ERROR} from "@/constants/toasts";
@@ -15,8 +15,8 @@ interface IOrderAmount {
 
 const OrderAmount: React.FC<IOrderAmount> = ({ shopCartData, formData }) => {
 
-	//count for all products
-	const productsCount = shopCartData.reduce((count, item) => count + item.quantity,0);
+	//count for all product
+	const totalPalletsCount = shopCartData.reduce((count, item) => count + Math.ceil(item.quantity / item.pack), 0);
 	const [amountData, setAmountData] = useState<null | IShopCartAmount>(null);
 
 	useEffect(() => {
@@ -32,8 +32,8 @@ const OrderAmount: React.FC<IOrderAmount> = ({ shopCartData, formData }) => {
 		return (
 			<div className={styles.OrderAmount}>
 				<div className={styles.block}>
-					<p>{(productsCount / BRICK_PACK)?.toFixed()} паллет(а)</p>
-					<b>{(amountData?.discountedAmount).toFixed(1)}₽</b>
+					<p>{totalPalletsCount?.toFixed()} паллет(а)</p>
+					<b>{(amountData?.amount).toFixed(1)}₽</b>
 				</div>
 
 				{

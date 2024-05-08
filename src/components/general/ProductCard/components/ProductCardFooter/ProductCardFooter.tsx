@@ -19,6 +19,7 @@ const ProductCardFooter: React.FC<IProductCardFooter> = ({ data }) => {
 			<WeightsBtns
 				data={data.price}
 				discount={data.discount}
+				pack={data.pack}
 			/>
 
 			<ShopCartBtn

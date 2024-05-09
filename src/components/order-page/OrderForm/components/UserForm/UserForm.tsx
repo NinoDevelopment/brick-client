@@ -62,10 +62,10 @@ const UserForm: React.FC<IUserForm> = ({ formData, setFormData }) => {
 
 			<FormGroup className={styles.block + " " + styles.w100}>
 				<input
-					required={formData.paymentType === EPayment.SCHET}
+					required
 					value={formData.email}
 					onChange={e => setFormData({...formData, email: e.target.value})}
-					placeholder={`Email${formData.paymentType === EPayment.SCHET ? '*' : ''}`}
+					placeholder={`Email*`}
 				/>
 			</FormGroup>
 

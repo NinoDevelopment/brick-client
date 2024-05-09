@@ -18,10 +18,11 @@ import {REQUEST_METHODS} from "@/types/general";
 import {LINK_ISSUING_PAYMENT, LINK_ORDER_ID} from "@/constants/links";
 import {clearShopCart} from "@/store/slices/shopCartSlice";
 import Link from "next/link";
+import {Dispatch} from 'redux';
 
 const OrderForm = () => {
 
-	const dispatch = useAppDispatch();
+	const dispatch: Dispatch<any> = useAppDispatch();
 	const shopCartData = useAppSelector(state => state.shopCart.data);
 	const [formData, setFormData] = useState<IOrderForm | IOrderWithSchetForm>(
 		ORDER_FORM_INITIAL(shopCartData, EPayment.SCHET)
@@ -46,7 +47,9 @@ const OrderForm = () => {
 		}
 
 		//check phone number
-		if (!formData.phoneNumber.match(/^[\\+]?[(]?[0-9]{3}[)]?[-\\s.]?[0-9]{3}[-\\s.]?[0-9]{4,6}$/)) {
+		console.log('formData.phoneNumber: ', formData.phoneNumber);
+		if (!formData.phoneNumber.match(/^\+?[0-9]{1,3}\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}$/)) {
+			console.log('here');
 			TOAST_ERROR("Введите телефон в формате +7(XXX)XXX-XX-XX!")
 			return;
 		}

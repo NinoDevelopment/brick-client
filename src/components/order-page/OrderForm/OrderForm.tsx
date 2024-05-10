@@ -46,7 +46,7 @@ const OrderForm = () => {
 		}
 
 		//check phone number
-		if (!formData.phoneNumber.match(/^[\\+]?[(]?[0-9]{3}[)]?[-\\s.]?[0-9]{3}[-\\s.]?[0-9]{4,6}$/)) {
+		if (!formData.phoneNumber.match(/^\+?[0-9]{1,3}\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}$/)) {
 			TOAST_ERROR("Введите телефон в формате +7(XXX)XXX-XX-XX!")
 			return;
 		}

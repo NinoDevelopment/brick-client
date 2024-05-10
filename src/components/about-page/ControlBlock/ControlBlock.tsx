@@ -38,7 +38,7 @@ const ControlBlock = () => {
                   <img src="/icons/delivery-about-icon.png" alt={APP_TITLE}/>
                </div>
                <div className={styles.inner}>
-               <h3>Поставка</h3>
+               <h3>Доставка</h3>
                   <h5>
                      Задержка поставок в лучшем случае неудобна, а в худшем — дорогостояща.
                      Как завод по производству кирпича, мы экономим ваше время и деньги.

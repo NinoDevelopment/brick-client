@@ -1,62 +1,79 @@
-.UserForm{
+.UserForm {
     margin-bottom: 2em;
-
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.UserForm header{
+
+.UserForm header {
     margin-bottom: 2em;
- }
- .UserForm header h2{
+}
+
+.UserForm header h2 {
     margin-bottom: 0;
     font-size: 24px;
     font-weight: 700;
- }
+}
 
-/*form group blocks*/
-.block{
+/* Form group blocks */
+.block {
     margin-bottom: 1.25em;
-
     display: flex;
     flex-direction: column;
 }
-.block:last-child{
+
+.block:last-child {
     margin-bottom: 0;
 }
 
-.AddressForm textarea {
+.UserForm textarea,
+.UserForm input {
     padding: 0.5em 1em;
     color: var(--bs-gray-600);
     border-radius: 5px;
     border: 1px solid var(--bs-gray-300);
     outline-color: var(--bs-gray-700);
     transition: .25s;
+    font-weight: bold;
 }
 
-/*label*/
-.block label{
+.UserForm textarea::placeholder,
+.UserForm input::placeholder {
+    font-style: italic;
+    font-weight: normal;
+}
+
+.UserForm textarea:focus::placeholder,
+.UserForm input:focus::placeholder {
+    font-style: normal;
+    font-weight: normal;
+}
+
+/* Label */
+.block label {
     color: var(--bs-gray-600);
 }
 
-/*widths*/
-.w25{
+/* Widths */
+.w25 {
     width: calc(25% - .5em);
 }
-.w50{
+
+.w50 {
     width: calc(50% - .5em);
 }
-.w100{
+
+.w100 {
     width: 100%;
 }
 
-/*media*/
+/* Media Queries */
 @media (max-width: 991px) {
-    /*widths*/
-    .w25{
+    /* Widths */
+    .w25 {
         width: calc(50% - .5em);
     }
-    .w50{
+    .w50 {
         width: 100%;
     }
 }

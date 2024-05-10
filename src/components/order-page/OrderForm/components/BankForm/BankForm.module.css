@@ -1,66 +1,83 @@
-.BankForm{
+.BankForm {
     width: 100%;
-
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
-.BankForm header{
+
+.BankForm header {
     margin-bottom: 2em;
- }
- .BankForm header h2{
+}
+
+.BankForm header h2 {
     margin-bottom: 0;
     font-size: 24px;
     font-weight: 700;
- }
+}
 
-/*form group blocks*/
-.block{
+/* Form group blocks */
+.block {
     margin-bottom: 1.25em;
-
     display: flex;
     flex-direction: column;
 }
-.block:last-child{
+
+.block:last-child {
     margin-bottom: 1.25em;
 }
-.block:first-child{
+
+.block:first-child {
     margin-top: 1.25em;
 }
 
-
-.BankForm textarea {
+/* Textarea */
+.BankForm textarea,
+.BankForm input {
     padding: 0.5em 1em;
     color: var(--bs-gray-600);
     border-radius: 5px;
     border: 1px solid var(--bs-gray-300);
     outline-color: var(--bs-gray-700);
     transition: .25s;
+    font-weight: bold;
 }
 
-/*label*/
-.block label{
+.BankForm input::placeholder {
+    font-style: italic;
+    font-weight: normal;
+}
+
+.BankForm input:focus::placeholder {
+    font-style: normal;
+    font-weight: normal;
+}
+
+/* Label */
+.block label {
     color: var(--bs-gray-600);
 }
 
-/*widths*/
-.w25{
+/* Widths */
+.w25 {
     width: calc(25% - .5em);
 }
-.w50{
+
+.w50 {
     width: calc(50% - .5em);
 }
-.w100{
+
+.w100 {
     width: 100%;
 }
 
-/*media*/
+/* Media Queries */
 @media (max-width: 991px) {
-    /*widths*/
-    .w25{
+    /* Widths */
+    .w25 {
         width: calc(50% - .5em);
     }
-    .w50{
+
+    .w50 {
         width: 100%;
     }
 }

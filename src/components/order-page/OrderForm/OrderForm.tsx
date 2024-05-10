@@ -18,11 +18,10 @@ import {REQUEST_METHODS} from "@/types/general";
 import {LINK_ISSUING_PAYMENT, LINK_ORDER_ID} from "@/constants/links";
 import {clearShopCart} from "@/store/slices/shopCartSlice";
 import Link from "next/link";
-import {Dispatch} from 'redux';
 
 const OrderForm = () => {
 
-	const dispatch: Dispatch<any> = useAppDispatch();
+	const dispatch = useAppDispatch();
 	const shopCartData = useAppSelector(state => state.shopCart.data);
 	const [formData, setFormData] = useState<IOrderForm | IOrderWithSchetForm>(
 		ORDER_FORM_INITIAL(shopCartData, EPayment.SCHET)

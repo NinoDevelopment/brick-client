@@ -21,7 +21,7 @@ const BankForm: React.FC<IBankForm> = ({ formData, setFormData }) => {
     };
 
     const fetchDadata = (query: string) => {
-        const url = 'http://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party';
+        const url = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party';
         const token = '2698f22a5b709a572fb82b24e584c938c65a6a1b';
         const options: RequestInit = {
             method: 'POST',

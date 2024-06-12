@@ -107,6 +107,9 @@ const OrderForm = () => {
 				<button disabled={load} type={"submit"} className={styles.submitOrder}>
 					{load ? <Spinner size={"sm"}/> : "Оформить заказ"}
 				</button>
+				{formData.deliveryType === EDelivery.COURIER && (
+					<p className={styles.noteTitle}>* Доставка рассчитывается и оплачивается отдельно</p>
+				)}
 			</div>
 		</Form>
 	);

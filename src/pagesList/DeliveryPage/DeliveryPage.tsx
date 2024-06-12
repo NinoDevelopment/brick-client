@@ -42,7 +42,7 @@ const DeliveryPage = () => {
           </h5>
         </div>
 
-        <div className={styles.info}>
+        {/* <div className={styles.info}>
           <h2>Зоны и тарифы доставки</h2>
           <ZonesMap />
           <div className={styles.tariffs}>
@@ -52,7 +52,7 @@ const DeliveryPage = () => {
               <li>Тариф 2: стоимость доставки 20000р</li>
             </ul>
           </div>
-        </div>
+        </div> */}
 
         <div className={styles.info}>
           <h3>Самовывоз</h3>

@@ -25,6 +25,22 @@
     margin-bottom: .75em;
     font-weight: 700;
 }
+.noteTitle {
+    margin-bottom: 0;
+    font-weight: 200;
+
+    font-size: 0.875em;
+    font-style: italic;
+    color: #555;
+    padding: 0.5em 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.note {
+    font-size: 0.75em;
+    color: #777;
+    margin-top: 0.5em;
+}
 
 
 /*input textarea in form*/

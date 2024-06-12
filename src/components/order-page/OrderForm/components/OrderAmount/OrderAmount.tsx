@@ -40,7 +40,7 @@ const OrderAmount: React.FC<IOrderAmount> = ({ shopCartData, formData }) => {
 					formData.deliveryType === EDelivery.COURIER &&
 					<>
 						<div className={styles.block}>
-							<p>Доставка</p>
+							<p>Доставка*</p>
 							<b>{amountData.amountWithDelivery - amountData.discountedAmount}₽</b>
 						</div>
 

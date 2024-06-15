@@ -26,6 +26,7 @@ const RootLayout = ({ children }: IRootLayout) => {
           name="google-site-verification"
           content="1cv20c0Qox29yvRsFToKnq3SxEG8gxiD7DR_jHy0NBs"
         />
+        <meta name="yandex-verification" content="f3553b2fcd8eadae" />
       </head>
       <body>
         <Providers>{children}</Providers>

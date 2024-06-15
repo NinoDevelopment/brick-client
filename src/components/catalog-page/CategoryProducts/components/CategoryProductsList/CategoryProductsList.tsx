@@ -24,17 +24,17 @@ const CategoryProductsList = () => {
     {},
   );
 
-  // @ts-ignore sort sale item
-  const getNotAvailableItems = (dataInner: Maybe<IProductId[]>) =>
-    dataInner.filter((elem) => !elem.available);
-  // @ts-ignore sort sale item
-  const getAvailableItems = (dataInner: Maybe<IProductId[]>) =>
-    dataInner.filter((elem) => elem.available);
-  // @ts-ignore sort sale item
-  const getItemsWithDiscount = (dataInner: Maybe<IProductId[]>) =>
-    dataInner.filter((elem) => +elem.discount);
-  // @ts-ignore filter price
-  const getSortPriceItems = (dataInner: Maybe<IProductId[]>) => {
+  // sort sale item
+  const getNotAvailableItems = (dataInner: IProductId[]) =>
+    dataInner.filter((elem: IProductId) => !elem?.available);
+  // sort sale item
+  const getAvailableItems = (dataInner: IProductId[]) =>
+    dataInner.filter((elem: IProductId) => elem?.available);
+  // sort sale item
+  const getItemsWithDiscount = (dataInner: IProductId[]) =>
+    dataInner.filter((elem: IProductId) => +elem?.discount);
+  // filter price
+  const getSortPriceItems = (dataInner: IProductId[]) => {
     if (!priceSort) return dataInner;
     if (priceSort === -1) {
       return dataInner.sort(
@@ -52,11 +52,16 @@ const CategoryProductsList = () => {
     const colorData = color
       ? data?.filter((elem) => elem?.color === color)
       : data;
-    const priceData = priceSort ? getSortPriceItems(colorData) : colorData;
+    const priceData = priceSort
+      ? getSortPriceItems(colorData as IProductId[])
+      : colorData;
     if (sort === ESort.DEFAULT) return priceData;
-    if (sort === ESort.NOT_AVAILABLE) return getNotAvailableItems(priceData);
-    if (sort === ESort.AVAILABLE) return getAvailableItems(priceData);
-    if (sort === ESort.DISCOUNT) return getItemsWithDiscount(priceData);
+    if (sort === ESort.NOT_AVAILABLE)
+      return getNotAvailableItems(priceData as IProductId[]);
+    if (sort === ESort.AVAILABLE)
+      return getAvailableItems(priceData as IProductId[]);
+    if (sort === ESort.DISCOUNT)
+      return getItemsWithDiscount(priceData as IProductId[]);
   };
 
   if (load || !getSortedData() || !data) {

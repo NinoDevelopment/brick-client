@@ -60,9 +60,9 @@ const ProductRedact: React.FC<IProductRedact> = ({
 
       <Modal.Body>
         <Form onSubmit={handleRedact}>
-          {/*@ts-ignore*/}
           <ProductFormCategorySelect
             formData={formData}
+            // @ts-expect-error
             setFormData={setFormData}
           />
 

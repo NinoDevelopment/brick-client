@@ -19,7 +19,7 @@ export const SHOPS_ADDRESSES: IShopAddress[] = [
 // контакты
 export const CONTACTS = {
   phone: {
-    title: "+7 (921) 509-24-04",
+    title: "+7 (921) 509-24-09",
     value: "+79215092409",
     valueWS: "79215092409",
   },

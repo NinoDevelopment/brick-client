@@ -1,48 +1,48 @@
-.wrapper{
-   max-width: 400px;
-   padding: 1em;
-   border: 1px solid var(--bs-gray-300);
-   border-radius: 5px;
-   display: flex;
-   flex-direction: column;
-   gap: .5em;
+.wrapper {
+  max-width: 400px;
+  padding: 1em;
+  border: 1px solid var(--bs-gray-300);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
 }
 
 /*images container*/
-.imagesContainer{
-   width: 100%;
-   padding: .25em;
+.imagesContainer {
+  width: 100%;
+  padding: 0.25em;
 
-   display: flex;
-   flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 
-   border-radius: .25em;
-   border: 1px solid var(--bs-gray-300);
+  border-radius: 0.25em;
+  border: 1px solid var(--bs-gray-300);
 }
 
 /*img-blocks*/
-.imgBlock{
-   position: relative;
-   width: calc(25% - .3em);
-   margin: .15em;
+.imgBlock {
+  position: relative;
+  width: calc(25% - 0.3em);
+  margin: 0.15em;
 
-   cursor: pointer;
+  cursor: pointer;
 }
-.imgBlock:hover button{
-   display: inline-flex;
+.imgBlock:hover button {
+  display: inline-flex;
 }
 /*img*/
 .imgBlock img {
-   width: 100%;
-   aspect-ratio: 1;
-   object-fit: cover;
-   border-radius: .25em;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 0.25em;
 }
 /*button*/
 .imgBlock button {
-   position: absolute;
-   left: 5px;
-   bottom: 5px;
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
 
-   display: none;
+  display: none;
 }

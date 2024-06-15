@@ -1,55 +1,58 @@
-import React from 'react';
+import React from "react";
 import styles from "./ProductCard.module.css";
 import SwiperNavigation from "@/ui/SwiperNavigation/SwiperNavigation";
-import {IProductId, IProductImg} from "@/types/products";
-import {useFetch} from "@/hooks/useFetch";
-import {API_PRODUCT_IMG} from "@/constants/api";
-import {REQUEST_METHODS} from "@/types/general";
+import { IProductId, IProductImg } from "@/types/products";
+import { useFetch } from "@/hooks/useFetch";
+import { API_PRODUCT_IMG } from "@/constants/api";
+import { REQUEST_METHODS } from "@/types/general";
 import ProductCardFooter from "@/components/general/ProductCard/components/ProductCardFooter/ProductCardFooter";
-import {Badge} from "react-bootstrap";
+import { Badge } from "react-bootstrap";
 import Link from "next/link";
-import {LINK_PRODUCT} from "@/constants/links";
+import { LINK_PRODUCT } from "@/constants/links";
 
 interface IProductCard {
-	data: IProductId,
+  data: IProductId;
 }
 
 const ProductCard: React.FC<IProductCard> = ({ data }) => {
+  const { data: images } = useFetch<IProductImg>(
+    API_PRODUCT_IMG(data._id),
+    REQUEST_METHODS.GET,
+    {},
+  );
 
-	const { data:images } = useFetch<IProductImg>(API_PRODUCT_IMG(data._id), REQUEST_METHODS.GET, {});
+  return (
+    <div className={styles.ProductCard}>
+      <div className={styles.sliderContainer}>
+        <div className={styles.badges}>
+          <Badge className={styles.badge} hidden={!data.discount} bg={"light"}>
+            {"- " + +data.discount + "%"}
+          </Badge>
 
-	return (
-		<div className={styles.ProductCard}>
-			<div className={styles.sliderContainer}>
-				<div className={styles.badges}>
-					<Badge className={styles.badge} hidden={!data.discount} bg={"light"}>
-						{"- " + +data.discount + "%"}
-					</Badge>
+          <Badge className={styles.badge} bg={"light"}>
+            {!data.available ? "Предзаказ" : "В наличии"}
+          </Badge>
+        </div>
 
-					<Badge className={styles.badge} bg={"light"}>
-						{!data.available ? "Предзаказ" : "В наличии"}
-					</Badge>
-				</div>
+        <SwiperNavigation images={images?.images} />
+      </div>
 
-				<SwiperNavigation images={images?.images} />
-			</div>
+      <div className={styles.content}>
+        <div className={styles.topContainer}>
+          <Link href={LINK_PRODUCT(data._id)}>
+            <h4>{data.name}</h4>
+          </Link>
+          <hr />
+          <p>{data.description || "Без описания"}</p>
+        </div>
 
-			<div className={styles.content}>
-				<div className={styles.topContainer}>
-					<Link href={LINK_PRODUCT(data._id)}>
-						<h4>{data.name}</h4>
-					</Link>
-					<hr/>
-					<p>{data.description || 'Без описания'}</p>
-				</div>
-
-				<div className={styles.btnContainer}>
-					{/*shop cart buttons*/}
-					<ProductCardFooter data={data} />
-				</div>
-			</div>
-		</div>
-	);
+        <div className={styles.btnContainer}>
+          {/*shop cart buttons*/}
+          <ProductCardFooter data={data} />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ProductCard;

@@ -1,83 +1,83 @@
-.wrapper{
-   display: flex;
-   color: var(--bs-white);
+.wrapper {
+  display: flex;
+  color: var(--bs-white);
 }
 
-.content{
-   padding: 6em 5em;
-   flex: 1;
-   background: var(--bs-dark);
+.content {
+  padding: 6em 5em;
+  flex: 1;
+  background: var(--bs-dark);
 
-   display: flex;
-   flex-direction: column;
-   gap: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
 }
 
 .bgImage {
-   width: 30%;
-   min-height: 100%;
-   background-image: url('/other/house1.png');
+  width: 30%;
+  min-height: 100%;
+  background-image: url("/other/house1.png");
 }
 
-.block{
-   display: flex;
-   align-items: center;
-   gap: 2em;
+.block {
+  display: flex;
+  align-items: center;
+  gap: 2em;
 }
-.block h3{
-   margin-bottom: .45em;
-   font-weight: 700;
+.block h3 {
+  margin-bottom: 0.45em;
+  font-weight: 700;
 }
-.block h5{
-   font-weight: 400;
-}
-
-.block img{
-   width: 150px;
-   margin-right: 1.25em;
+.block h5 {
+  font-weight: 400;
 }
 
-.imgContainer{
-   width: 150px;
-   height: 150px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+.block img {
+  width: 150px;
+  margin-right: 1.25em;
+}
+
+.imgContainer {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*media*/
-@media(max-width: 991px){
-   /*image*/
-   .bgImage{
-      display: none;
-   }
+@media (max-width: 991px) {
+  /*image*/
+  .bgImage {
+    display: none;
+  }
 }
-@media(max-width: 768px){
-   /*image*/
-   .block img{
-      width: 100px;
-   }
-   /*content*/
-   .block h3{
-      font-size: 18px;
-   }
-   .block h5{
-      font-size: 14px;
-   }
+@media (max-width: 768px) {
+  /*image*/
+  .block img {
+    width: 100px;
+  }
+  /*content*/
+  .block h3 {
+    font-size: 18px;
+  }
+  .block h5 {
+    font-size: 14px;
+  }
 }
-@media(max-width: 550px){
-   /*content*/
-   .content{
-      padding: 5em 3em;
-   }
-   /*blocks*/
-   .block{
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 1em;
-   }
-   .block img{
-      width: 100px;
-   }
+@media (max-width: 550px) {
+  /*content*/
+  .content {
+    padding: 5em 3em;
+  }
+  /*blocks*/
+  .block {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1em;
+  }
+  .block img {
+    width: 100px;
+  }
 }

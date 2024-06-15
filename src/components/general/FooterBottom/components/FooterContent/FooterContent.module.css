@@ -1,184 +1,184 @@
-.FooterContent{
-    width: 100%;
-    padding: 3em 0 4em;
+.FooterContent {
+  width: 100%;
+  padding: 3em 0 4em;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.FooterContent a{
-    color: var(--bs-white);
-    text-decoration: none;
-    transition: .25s;
+.FooterContent a {
+  color: var(--bs-white);
+  text-decoration: none;
+  transition: 0.25s;
 }
-.FooterContent a:hover{
-    color: var(--app-primary);
+.FooterContent a:hover {
+  color: var(--app-primary);
 }
 
 /*top and bottom blocks*/
-.FooterContent .top:first-child{
-    margin-bottom: 1.5em;
+.FooterContent .top:first-child {
+  margin-bottom: 1.5em;
 }
 .FooterContent .top,
-.FooterContent .bottom{
-    width: 100%;
+.FooterContent .bottom {
+  width: 100%;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.FooterContent .bottom{
-    align-items: flex-end;
+.FooterContent .bottom {
+  align-items: flex-end;
 }
 
 /*top blocks title left*/
-.FooterContent .top h4{
-    max-width: 40%;
-    margin: 0;
-    font-weight: 700;
-    color: var(--bs-white);
+.FooterContent .top h4 {
+  max-width: 40%;
+  margin: 0;
+  font-weight: 700;
+  color: var(--bs-white);
 }
-.FooterContent .top h4 span{
-    color: var(--app-primary);
+.FooterContent .top h4 span {
+  color: var(--app-primary);
 }
 
 /*top blocks container right*/
-.FooterContent .top .right{
-    display: flex;
-    align-items: center;
+.FooterContent .top .right {
+  display: flex;
+  align-items: center;
 }
 /*top blocks container right BLOCK*/
-.FooterContent .top .right .block{
-    margin-left: 3em;
+.FooterContent .top .right .block {
+  margin-left: 3em;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /*top right blocks text*/
-.FooterContent .top .right .block p{
-    margin: 0 0 .15em 0;
-    color: var(--bs-white);
-    font-weight: 400;
+.FooterContent .top .right .block p {
+  margin: 0 0 0.15em 0;
+  color: var(--bs-white);
+  font-weight: 400;
 }
-.FooterContent .top .right .block .links{
-    display: flex;
-    align-items: center;
+.FooterContent .top .right .block .links {
+  display: flex;
+  align-items: center;
 
-    font-weight: 700;
+  font-weight: 700;
 }
-.FooterContent .top .right .block .links span{
-    margin: 0 .35em;
+.FooterContent .top .right .block .links span {
+  margin: 0 0.35em;
 }
 
 /*bottom blocks*/
-.bottom{
-    margin-top: 3em;
-    align-items: flex-end;
+.bottom {
+  margin-top: 3em;
+  align-items: flex-end;
 }
 
 /*bottom left blocks*/
-.bottom .left{
-    display: flex;
-    flex-direction: column;
+.bottom .left {
+  display: flex;
+  flex-direction: column;
 }
-.bottom .left h6{
-    margin: 0 0 1em 0;
-    line-height: 1.6;
+.bottom .left h6 {
+  margin: 0 0 1em 0;
+  line-height: 1.6;
 
-    font-weight: 400;
-    color: var(--bs-white);
+  font-weight: 400;
+  color: var(--bs-white);
 }
-.bottom .left h5{
-    font-size: 12px;
-    text-decoration: underline;
-    color: var(--bs-white);
+.bottom .left h5 {
+  font-size: 12px;
+  text-decoration: underline;
+  color: var(--bs-white);
 }
 
 /*bottom right blocks*/
-.bottom .right{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+.bottom .right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
-.mapContainer{
-    width: 50%;
-    height: 200px;
+.mapContainer {
+  width: 50%;
+  height: 200px;
 }
 
 /*media*/
 @media (max-width: 1200px) {
-    .FooterContent .top:first-child{
-        margin-bottom: 2em;
-    }
-    .FooterContent .top{
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    /*top blocks title left*/
-    .FooterContent .top h4{
-        max-width: 100%;
-        margin-bottom: .5em;
-    }
-    /*top blocks container right BLOCK*/
-    .FooterContent .top .right .block{
-        margin-left: 0;
-        margin-right: 2em;
+  .FooterContent .top:first-child {
+    margin-bottom: 2em;
+  }
+  .FooterContent .top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  /*top blocks title left*/
+  .FooterContent .top h4 {
+    max-width: 100%;
+    margin-bottom: 0.5em;
+  }
+  /*top blocks container right BLOCK*/
+  .FooterContent .top .right .block {
+    margin-left: 0;
+    margin-right: 2em;
 
-        align-items: flex-start;
-    }
-    /*bottom blocks*/
-    .bottom{
-        margin-top: 2.25em;
-    }
+    align-items: flex-start;
+  }
+  /*bottom blocks*/
+  .bottom {
+    margin-top: 2.25em;
+  }
 }
 
-@media(max-width: 991px){
-    .FooterContent .top{
-        align-items: center;
-        text-align: center;
-        gap: 1em;
-    }
-    .FooterContent .right{
-        align-items: center;
-    }
-    .FooterContent .top .right .block{
-        align-items: center;
-    }
+@media (max-width: 991px) {
+  .FooterContent .top {
+    align-items: center;
+    text-align: center;
+    gap: 1em;
+  }
+  .FooterContent .right {
+    align-items: center;
+  }
+  .FooterContent .top .right .block {
+    align-items: center;
+  }
 }
 
 @media (max-width: 768px) {
-    .FooterContent{
-        padding: 2.25em 0 3em;
-    }
-    /*top blocks container right container*/
-    .FooterContent .top .right {
-        flex-direction: column;
-        align-items: center;
-        gap: 2.5em;
-    }
-    /*top blocks container right blocks*/
-    .FooterContent .top .right .block{
-        margin-bottom: .5em;
-        margin-right: 0;
-    }
+  .FooterContent {
+    padding: 2.25em 0 3em;
+  }
+  /*top blocks container right container*/
+  .FooterContent .top .right {
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5em;
+  }
+  /*top blocks container right blocks*/
+  .FooterContent .top .right .block {
+    margin-bottom: 0.5em;
+    margin-right: 0;
+  }
 
-    /*bottom main blocks*/
-    .FooterContent .bottom{
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    /*bottom left blocks*/
-    .FooterContent .bottom .left{
-        margin-bottom: 1em;
-    }
-    /*bottom right blocks*/
-    .bottom .right{
-        align-items: flex-start;
-    }
-    .mapContainer{
-        width: 100%;
-    }
+  /*bottom main blocks*/
+  .FooterContent .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  /*bottom left blocks*/
+  .FooterContent .bottom .left {
+    margin-bottom: 1em;
+  }
+  /*bottom right blocks*/
+  .bottom .right {
+    align-items: flex-start;
+  }
+  .mapContainer {
+    width: 100%;
+  }
 }

@@ -1,63 +1,63 @@
-.ShopCartLink{
-    width: 45px;
-    height: 45px;
+.ShopCartLink {
+  width: 45px;
+  height: 45px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    color: var(--bs-dark);
-    font-weight: 600;
-    text-decoration: none;
-    background: var(--app-light);
-    border-radius: 5px;
-    transition: .25s;
+  color: var(--bs-dark);
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--app-light);
+  border-radius: 5px;
+  transition: 0.25s;
 }
-.ShopCartLink:hover{
-    background: var(--app-light-hover);
+.ShopCartLink:hover {
+  background: var(--app-light-hover);
 }
 
 /*title (Корзина иконка)*/
-.title{
-    position: relative;
+.title {
+  position: relative;
 }
-.title img{
-    width: 22px;
-    height: auto;
+.title img {
+  width: 22px;
+  height: auto;
 }
 /*counter*/
-.title span{
-    position: absolute;
-    right: -7px;
-    top: -3px;
+.title span {
+  position: absolute;
+  right: -7px;
+  top: -3px;
 
-    width: 16px;
-    height: 16px;
+  width: 16px;
+  height: 16px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    border-radius: 50%;
-    background: var(--app-primary);
-    font-size: 12px;
-    color: var(--bs-white);
+  border-radius: 50%;
+  background: var(--app-primary);
+  font-size: 12px;
+  color: var(--bs-white);
 }
 
 /*price*/
-.price{
-    font-size: 17px;
-    margin-left: .75em;
-    line-height: 1;
+.price {
+  font-size: 17px;
+  margin-left: 0.75em;
+  line-height: 1;
 }
 
 /*media*/
 @media (max-width: 768px) {
-    .ShopCartLink{
-        width: 40px;
-        height: 40px;
-    }
-    .price{
-        font-size: 15px;
-    }
+  .ShopCartLink {
+    width: 40px;
+    height: 40px;
+  }
+  .price {
+    font-size: 15px;
+  }
 }

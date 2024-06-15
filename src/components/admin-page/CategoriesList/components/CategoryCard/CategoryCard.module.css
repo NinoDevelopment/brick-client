@@ -1,13 +1,13 @@
 .CategoryCard {
-    width: calc(25% - .5em);
-    margin: 0 0 .5em 0;
+  width: calc(25% - 0.5em);
+  margin: 0 0 0.5em 0;
 }
 
-.CategoryCard .img{
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
+.CategoryCard .img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
 }
 
-.CategoryCard h4{
-    font-weight: 800;
+.CategoryCard h4 {
+  font-weight: 800;
 }

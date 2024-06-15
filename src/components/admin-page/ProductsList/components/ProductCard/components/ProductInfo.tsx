@@ -1,55 +1,58 @@
-import React from 'react';
-import {IProductId} from "@/types/products";
-import {Table} from "react-bootstrap";
-import {handleCutStr} from "@/functions/handleCutStr";
-import {useGetCategories} from "@/hooks/useGetCategories";
+import React from "react";
+import { IProductId } from "@/types/products";
+import { Table } from "react-bootstrap";
+import { handleCutStr } from "@/functions/handleCutStr";
+import { useGetCategories } from "@/hooks/useGetCategories";
 
 interface IProductInfo {
-	data: IProductId,
+  data: IProductId;
 }
 
 const ProductInfo: React.FC<IProductInfo> = ({ data }) => {
+  const {
+    data: { categories },
+  } = useGetCategories();
 
-	const { data: {categories} } = useGetCategories();
-
-	return (
-		<Table bordered className={"small"}>
-			<tbody>
-			<tr>
-				<td>Описание:</td>
-				<td>{handleCutStr(data?.description, 60) || "Без описания"}</td>
-			</tr>
-			<tr hidden={!categories?.length}>
-				<td>Категория:</td>
-				<td>{categories?.find(elem => elem._id === data.categoryId)?.name}</td>
-			</tr>
-			<tr>
-				<td>Скидка:</td>
-				<td>{data?.discount}%</td>
-			</tr>
-			<tr>
-				<td>Кол-во на паллете:</td>
-				<td>{data?.pack}</td>
-			</tr>
-			<tr>
-				<td>Цвет:</td>
-				<td>{data?.color}</td>
-			</tr>
-			<tr>
-				<td>Наличие:</td>
-				<td>{!!data?.available ? "Да" : "Нет"}</td>
-			</tr>
-			<tr>
-				<td>Рекомендация:</td>
-				<td>{!!data?.isRecommendation ? "Да" : "Нет"}</td>
-			</tr>
-			<tr>
-				<td>Показывать:</td>
-				<td>{!!data?.show ? "Да" : "Нет"}</td>
-			</tr>
-			</tbody>
-		</Table>
-	);
+  return (
+    <Table bordered className={"small"}>
+      <tbody>
+        <tr>
+          <td>Описание:</td>
+          <td>{handleCutStr(data?.description, 60) || "Без описания"}</td>
+        </tr>
+        <tr hidden={!categories?.length}>
+          <td>Категория:</td>
+          <td>
+            {categories?.find((elem) => elem._id === data.categoryId)?.name}
+          </td>
+        </tr>
+        <tr>
+          <td>Скидка:</td>
+          <td>{data?.discount}%</td>
+        </tr>
+        <tr>
+          <td>Кол-во на паллете:</td>
+          <td>{data?.pack}</td>
+        </tr>
+        <tr>
+          <td>Цвет:</td>
+          <td>{data?.color}</td>
+        </tr>
+        <tr>
+          <td>Наличие:</td>
+          <td>{!!data?.available ? "Да" : "Нет"}</td>
+        </tr>
+        <tr>
+          <td>Рекомендация:</td>
+          <td>{!!data?.isRecommendation ? "Да" : "Нет"}</td>
+        </tr>
+        <tr>
+          <td>Показывать:</td>
+          <td>{!!data?.show ? "Да" : "Нет"}</td>
+        </tr>
+      </tbody>
+    </Table>
+  );
 };
 
 export default ProductInfo;

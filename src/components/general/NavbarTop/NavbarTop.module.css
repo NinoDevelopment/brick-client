@@ -1,92 +1,91 @@
-.NavbarTop{
-    --bs-navbar-padding-y: 1.5em;
-    width: 100%;
-    position: fixed;
+.NavbarTop {
+  --bs-navbar-padding-y: 1.5em;
+  width: 100%;
+  position: fixed;
 }
-.NavbarTop.dark{
-    position: static;
+.NavbarTop.dark {
+  position: static;
 }
 .NavbarTop.scrolled {
-    background: var(--app-dark);
+  background: var(--app-dark);
 }
 
 /*container*/
-.container{
-    align-items: center;
+.container {
+  align-items: center;
 }
 
 /*logo*/
-.logo img{
-    width: 220px;
+.logo img {
+  width: 220px;
 }
 
 /*right blocks (for align)*/
-.right{
-    display: flex;
-    align-items: center;
+.right {
+  display: flex;
+  align-items: center;
 }
 
 /*links Container*/
-.linksContainer{
-    margin-right: 3.5em;
+.linksContainer {
+  margin-right: 3.5em;
 }
 /*links*/
-.linksContainer a{
-    margin: 0 .25em;
-    padding: .35em .75em;
+.linksContainer a {
+  margin: 0 0.25em;
+  padding: 0.35em 0.75em;
 
-    border-bottom: 2px solid transparent;
-    color: var(--bs-white);
-    text-decoration: none;
-    transition: .25s;
+  border-bottom: 2px solid transparent;
+  color: var(--bs-white);
+  text-decoration: none;
+  transition: 0.25s;
 }
-.NavbarTop.dark .linksContainer a{
-    color: var(--bs-dark);
+.NavbarTop.dark .linksContainer a {
+  color: var(--bs-dark);
 }
 .linksContainer a:hover,
-.linksContainer a.active{
-    border-bottom: 2px solid var(--app-primary);
+.linksContainer a.active {
+  border-bottom: 2px solid var(--app-primary);
 }
 
 /*openMenu*/
-.openMenu{
-    display: none;
-    width: 32px;
-    margin-left: 15px;
+.openMenu {
+  display: none;
+  width: 32px;
+  margin-left: 15px;
 }
 
 /*media*/
 @media (max-width: 1200px) {
-    /*logo*/
-    .logo img{
-        width: 160px;
-    }
-    /*links Container*/
-    .linksContainer{
-        margin-right: 1em;
-    }
-    /*links*/
-    .linksContainer a{
-        margin: 0 .125em;
-        padding: .3em .75em;
-    }
-    .linksContainer a:first-child{
-        display: none;
-    }
+  /*logo*/
+  .logo img {
+    width: 160px;
+  }
+  /*links Container*/
+  .linksContainer {
+    margin-right: 1em;
+  }
+  /*links*/
+  .linksContainer a {
+    margin: 0 0.125em;
+    padding: 0.3em 0.75em;
+  }
+  .linksContainer a:first-child {
+    display: none;
+  }
 }
 
 @media (max-width: 991px) {
-    /*logo*/
-    .logo img{
-        width: 110px;
-    }
-    /*links*/
-    .linksContainer{
-        display: none;
-    }
-    /*menu*/
-    .openMenu{
-        display: inline-block;
-    }
+  /*logo*/
+  .logo img {
+    width: 110px;
+  }
+  /*links*/
+  .linksContainer {
+    display: none;
+  }
+  /*menu*/
+  .openMenu {
+    display: inline-block;
+  }
 }
-

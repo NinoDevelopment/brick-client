@@ -1,42 +1,42 @@
-.wrapper{
-   padding: 4em 0;
+.wrapper {
+  padding: 4em 0;
 }
 
-.title{
-   font-size: 48px;
-   font-weight: 700;
+.title {
+  font-size: 48px;
+  font-weight: 700;
 }
 
-.btnsContainer{
-   display: flex;
-   gap: 1em;
-   padding: 1em 0;
+.btnsContainer {
+  display: flex;
+  gap: 1em;
+  padding: 1em 0;
 }
-.btnsContainer button{
-   padding: .75em 3em;
-   border: none;
-   border-radius: 5px;
-   font-weight: 500;
-   background: var(--bs-light);
-   transition: .15s;
+.btnsContainer button {
+  padding: 0.75em 3em;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  background: var(--bs-light);
+  transition: 0.15s;
 }
-.btnsContainer button:disabled{
-   background: var(--app-primary);
-   color: var(--bs-white);
+.btnsContainer button:disabled {
+  background: var(--app-primary);
+  color: var(--bs-white);
 }
 
 /*media*/
 @media (max-width: 768px) {
-   .title{
-      font-size: 36px;
-   }
+  .title {
+    font-size: 36px;
+  }
 }
 @media (max-width: 479px) {
-   .title{
-      font-size: 24px;
-   }
-   .btnsContainer{
-      gap: .5em;
-      flex-direction: column;
-   }
+  .title {
+    font-size: 24px;
+  }
+  .btnsContainer {
+    gap: 0.5em;
+    flex-direction: column;
+  }
 }

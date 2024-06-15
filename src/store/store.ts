@@ -1,15 +1,15 @@
-import {configureStore, combineReducers} from "@reduxjs/toolkit";
-import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import {
-	FLUSH,
-	REHYDRATE,
-	PAUSE,
-	PERSIST,
-	PURGE,
-	REGISTER,
-	persistStore,
-	persistReducer
-} from 'redux-persist';
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  persistStore,
+  persistReducer,
+} from "redux-persist";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 
 //slices
@@ -21,46 +21,49 @@ import gallerySlice from "@/store/slices/gallerySlice";
 import promocodesSlice from "@/store/slices/promocodeSlice";
 
 const createNoopStorage = () => {
-	return {
-		getItem(_key:any) {
-			return Promise.resolve(null);
-		},
-		setItem(_key:any, value:any) {
-			return Promise.resolve(value);
-		},
-		removeItem(_key:any) {
-			return Promise.resolve();
-		},
-	};
+  return {
+    getItem(_key: any) {
+      return Promise.resolve(null);
+    },
+    setItem(_key: any, value: any) {
+      return Promise.resolve(value);
+    },
+    removeItem(_key: any) {
+      return Promise.resolve();
+    },
+  };
 };
 
-const storage = typeof window !== "undefined" ? createWebStorage("local") : createNoopStorage();
+const storage =
+  typeof window !== "undefined"
+    ? createWebStorage("local")
+    : createNoopStorage();
 
 const rootReducer = combineReducers({
-	categories: categoriesSlice,
-	products: productsSlice,
-	orders: ordersSlice,
-	shopCart: shopCartSlice,
-	gallery: gallerySlice,
-	promocodes: promocodesSlice,
+  categories: categoriesSlice,
+  products: productsSlice,
+  orders: ordersSlice,
+  shopCart: shopCartSlice,
+  gallery: gallerySlice,
+  promocodes: promocodesSlice,
 });
 
 const persistConfig = {
-	key: '@brick-client-kovernino:',
-	blacklist: ['products','categories','orders','gallery', 'promocodes'],
-	storage: storage,
-}
+  key: "@brick-client-kovernino:",
+  blacklist: ["products", "categories", "orders", "gallery", "promocodes"],
+  storage: storage,
+};
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-	reducer : persistedReducer,
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware({
-			serializableCheck: {
-				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-			},
-		}),
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export const persistedStore = persistStore(store);

@@ -1,25 +1,25 @@
 .ProductsList {
-    width: 100%;
-    padding: 2.5em 2em;
+  width: 100%;
+  padding: 2.5em 2em;
 
-    background: var(--app-light);
-    border-radius: 5px;
+  background: var(--app-light);
+  border-radius: 5px;
 }
 
-.title{
-    margin-bottom: .4em;
-    font-weight: 700;
-    color: var(--bs-dark);
+.title {
+  margin-bottom: 0.4em;
+  font-weight: 700;
+  color: var(--bs-dark);
 }
 
 /*content (items list)*/
 .content {
-    width: 100%;
+  width: 100%;
 }
 
 /*media*/
 @media (max-width: 450px) {
-    .ProductsList {
-        padding: 1.5em 1em;
-    }
+  .ProductsList {
+    padding: 1.5em 1em;
+  }
 }

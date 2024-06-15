@@ -1,150 +1,149 @@
-.OrderForm{
-    width: 100%;
-    padding: 1.75em 0 2.5em;
+.OrderForm {
+  width: 100%;
+  padding: 1.75em 0 2.5em;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 /*userAddress*/
-.orderFormData{
-    width: calc(100% - 350px - 1em);
-    max-width: 700px;
+.orderFormData {
+  width: calc(100% - 350px - 1em);
+  max-width: 700px;
 }
 
 /*payment*/
-.payment{
-    width: 350px;
-    padding: 2em;
+.payment {
+  width: 350px;
+  padding: 2em;
 
-    background: var(--app-light);
-    border-radius: 5px;
+  background: var(--app-light);
+  border-radius: 5px;
 }
-.payment h3{
-    margin-bottom: .75em;
-    font-weight: 700;
+.payment h3 {
+  margin-bottom: 0.75em;
+  font-weight: 700;
 }
 .noteTitle {
-    margin-bottom: 0;
-    font-weight: 200;
+  margin-bottom: 0;
+  font-weight: 200;
 
-    font-size: 0.875em;
-    font-style: italic;
-    color: #555;
-    padding: 0.5em 0;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+  font-size: 0.875em;
+  font-style: italic;
+  color: #555;
+  padding: 0.5em 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 .note {
-    font-size: 0.75em;
-    color: #777;
-    margin-top: 0.5em;
+  font-size: 0.75em;
+  color: #777;
+  margin-top: 0.5em;
 }
-
 
 /*input textarea in form*/
 .orderFormData input,
-.orderFormData textarea{
-    padding: .5em 1em;
+.orderFormData textarea {
+  padding: 0.5em 1em;
 
-    color: var(--bs-gray-600);
-    border-radius: 5px;
-    border: 1px solid var(--bs-gray-300);
-    outline: none;
-    transition: .25s;
+  color: var(--bs-gray-600);
+  border-radius: 5px;
+  border: 1px solid var(--bs-gray-300);
+  outline: none;
+  transition: 0.25s;
 }
 .orderFormData input::placeholder,
-.orderFormData textarea::placeholder{
-    color: var(--bs-gray-600);
+.orderFormData textarea::placeholder {
+  color: var(--bs-gray-600);
 }
 .orderFormData input:hover,
 .orderFormData input:focus,
 .orderFormData textarea:hover,
-.orderFormData textarea:focus{
-    color: var(--bs-dark);
-    border: 1px solid var(--bs-gray-600);
+.orderFormData textarea:focus {
+  color: var(--bs-dark);
+  border: 1px solid var(--bs-gray-600);
 }
 
 /*button submit form*/
-.OrderForm .submitOrder{
-    display: block;
-    width: 100%;
-    padding: .75em 0;
+.OrderForm .submitOrder {
+  display: block;
+  width: 100%;
+  padding: 0.75em 0;
 
-    text-align: center;
-    text-decoration: none;
-    background: var(--app-primary);
-    color: var(--bs-white);
-    border: none;
-    border-radius: 5px;
-    transition: .25s;
+  text-align: center;
+  text-decoration: none;
+  background: var(--app-primary);
+  color: var(--bs-white);
+  border: none;
+  border-radius: 5px;
+  transition: 0.25s;
 }
-.OrderForm .submitOrder:hover{
-    background: var(--app-primary-hover);
+.OrderForm .submitOrder:hover {
+  background: var(--app-primary-hover);
 }
 
 .promocodeContainer {
-    width: 100%;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 .promocodeContainer input {
-    width: calc(100% - 100px);
-    padding: 10px;
-    background: none;
-    border-radius: 5px;
-    border: 1px solid var(--bs-gray-400);
-    outline: none;
+  width: calc(100% - 100px);
+  padding: 10px;
+  background: none;
+  border-radius: 5px;
+  border: 1px solid var(--bs-gray-400);
+  outline: none;
 }
-.promocodeContainer button{
-    padding: 11px;
-    background: var(--app-primary);
-    border: none;
-    color: var(--bs-white);
-    border-radius: 5px;
-    transition: .15s;
+.promocodeContainer button {
+  padding: 11px;
+  background: var(--app-primary);
+  border: none;
+  color: var(--bs-white);
+  border-radius: 5px;
+  transition: 0.15s;
 }
-.promocodeContainer button:hover{
-    background: var(--app-primary-hover);
+.promocodeContainer button:hover {
+  background: var(--app-primary-hover);
 }
 
 /*media*/
 @media (max-width: 991px) {
-    /*userAddress*/
-    .orderFormData{
-        width: calc(100% - 320px - 1em);
-    }
-    /*payment*/
-    .payment{
-        width: 320px;
-    }
+  /*userAddress*/
+  .orderFormData {
+    width: calc(100% - 320px - 1em);
+  }
+  /*payment*/
+  .payment {
+    width: 320px;
+  }
 }
 
 @media (max-width: 768px) {
-    .OrderForm{
-        flex-direction: column;
-    }
-    /*payment*/
-    .orderFormData{
-        margin-bottom: 2em;
-    }
-    .orderFormData,
-    .payment{
-        width: 100%;
-    }
+  .OrderForm {
+    flex-direction: column;
+  }
+  /*payment*/
+  .orderFormData {
+    margin-bottom: 2em;
+  }
+  .orderFormData,
+  .payment {
+    width: 100%;
+  }
 }
 
 @media (max-width: 500px) {
-    /*payment*/
-    .payment{
-        padding: 1.5em 1em;
-    }
-    /*input textarea in form*/
-    .orderFormData input,
-    .orderFormData textarea{
-        padding: .5em;
-    }
+  /*payment*/
+  .payment {
+    padding: 1.5em 1em;
+  }
+  /*input textarea in form*/
+  .orderFormData input,
+  .orderFormData textarea {
+    padding: 0.5em;
+  }
 }

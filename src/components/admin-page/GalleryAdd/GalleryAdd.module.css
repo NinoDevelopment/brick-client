@@ -1,10 +1,9 @@
-.wrapper{
-
+.wrapper {
 }
 
-.header h1{
-   margin-bottom: .5em;
-   font-weight: 800;
-   color: var(--bs-dark);
-   font-family: 'Playfair Display', serif;
+.header h1 {
+  margin-bottom: 0.5em;
+  font-weight: 800;
+  color: var(--bs-dark);
+  font-family: "Playfair Display", serif;
 }

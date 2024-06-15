@@ -1,11 +1,11 @@
 export interface ICategory {
-	name: string,
-	description: string,
-	image: string,
-	hasSale: boolean,
+  name: string;
+  description: string;
+  image: string;
+  hasSale: boolean;
 }
 
 export interface ICategoryId extends ICategory {
-	_id: string,
-	_v: number,
+  _id: string;
+  _v: number;
 }

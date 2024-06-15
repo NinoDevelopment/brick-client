@@ -1,14 +1,14 @@
 const nnOblast = {
-  type: 'Feature',
+  type: "Feature",
   properties: {
-    name: 'Nizhny Novgorod Oblast',
+    name: "Nizhny Novgorod Oblast",
     cartodb_id: 62,
-    created_at: '2013-12-04T04:23:51+0100',
-    updated_at: '2013-12-04T08:17:27+0100',
-    name_latin: 'Nizhny Novgorod Oblast',
+    created_at: "2013-12-04T04:23:51+0100",
+    updated_at: "2013-12-04T08:17:27+0100",
+    name_latin: "Nizhny Novgorod Oblast",
   },
   geometry: {
-    type: 'Polygon',
+    type: "Polygon",
     coordinates: [
       [
         [55.103672, 41.795935],

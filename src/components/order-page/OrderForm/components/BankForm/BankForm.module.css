@@ -1,83 +1,83 @@
 .BankForm {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .BankForm header {
-    margin-bottom: 2em;
+  margin-bottom: 2em;
 }
 
 .BankForm header h2 {
-    margin-bottom: 0;
-    font-size: 24px;
-    font-weight: 700;
+  margin-bottom: 0;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 /* Form group blocks */
 .block {
-    margin-bottom: 1.25em;
-    display: flex;
-    flex-direction: column;
+  margin-bottom: 1.25em;
+  display: flex;
+  flex-direction: column;
 }
 
 .block:last-child {
-    margin-bottom: 1.25em;
+  margin-bottom: 1.25em;
 }
 
 .block:first-child {
-    margin-top: 1.25em;
+  margin-top: 1.25em;
 }
 
 /* Textarea */
 .BankForm textarea,
 .BankForm input {
-    padding: 0.5em 1em;
-    color: var(--bs-gray-600);
-    border-radius: 5px;
-    border: 1px solid var(--bs-gray-300);
-    outline-color: var(--bs-gray-700);
-    transition: .25s;
-    font-weight: bold;
+  padding: 0.5em 1em;
+  color: var(--bs-gray-600);
+  border-radius: 5px;
+  border: 1px solid var(--bs-gray-300);
+  outline-color: var(--bs-gray-700);
+  transition: 0.25s;
+  font-weight: bold;
 }
 
 .BankForm input::placeholder {
-    font-style: italic;
-    font-weight: normal;
+  font-style: italic;
+  font-weight: normal;
 }
 
 .BankForm input:focus::placeholder {
-    font-style: normal;
-    font-weight: normal;
+  font-style: normal;
+  font-weight: normal;
 }
 
 /* Label */
 .block label {
-    color: var(--bs-gray-600);
+  color: var(--bs-gray-600);
 }
 
 /* Widths */
 .w25 {
-    width: calc(25% - .5em);
+  width: calc(25% - 0.5em);
 }
 
 .w50 {
-    width: calc(50% - .5em);
+  width: calc(50% - 0.5em);
 }
 
 .w100 {
-    width: 100%;
+  width: 100%;
 }
 
 /* Media Queries */
 @media (max-width: 991px) {
-    /* Widths */
-    .w25 {
-        width: calc(50% - .5em);
-    }
+  /* Widths */
+  .w25 {
+    width: calc(50% - 0.5em);
+  }
 
-    .w50 {
-        width: 100%;
-    }
+  .w50 {
+    width: 100%;
+  }
 }

@@ -1,57 +1,56 @@
-.PhoneEmailLinks{
-    width: 100%;
-    padding: 8em 0;
+.PhoneEmailLinks {
+  width: 100%;
+  padding: 8em 0;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 /*blocks*/
-.PhoneEmailLinks .block{
-    width: calc(50% - 1em);
+.PhoneEmailLinks .block {
+  width: calc(50% - 1em);
 }
 /*text*/
-.PhoneEmailLinks .block h3{
-    color: var(--bs-gray-500);
-    margin-bottom: .05em;
+.PhoneEmailLinks .block h3 {
+  color: var(--bs-gray-500);
+  margin-bottom: 0.05em;
 }
-.PhoneEmailLinks .block a{
-    font-size: 55px;
-    font-weight: 600;
-    color: var(--bs-dark);
-    text-decoration: none;
-    transition: .25s;
+.PhoneEmailLinks .block a {
+  font-size: 55px;
+  font-weight: 600;
+  color: var(--bs-dark);
+  text-decoration: none;
+  transition: 0.25s;
 }
-.PhoneEmailLinks .block a:hover{
-    text-decoration: underline;
+.PhoneEmailLinks .block a:hover {
+  text-decoration: underline;
 }
-
 
 /*media*/
 @media (max-width: 1200px) {
-    .PhoneEmailLinks{
-        padding: 2em 0;
-    }
-    /*blocks*/
-    .PhoneEmailLinks .block{
-        width: 100%;
-        margin-bottom: 2em;
-    }
-    .PhoneEmailLinks .block a{
-        font-size: 45px;
-    }
+  .PhoneEmailLinks {
+    padding: 2em 0;
+  }
+  /*blocks*/
+  .PhoneEmailLinks .block {
+    width: 100%;
+    margin-bottom: 2em;
+  }
+  .PhoneEmailLinks .block a {
+    font-size: 45px;
+  }
 }
 
 @media (max-width: 768px) {
-    .PhoneEmailLinks .block a{
-        font-size: 35px;
-    }
+  .PhoneEmailLinks .block a {
+    font-size: 35px;
+  }
 }
 
 @media (max-width: 500px) {
-    .PhoneEmailLinks .block a{
-        font-size: 25px;
-    }
+  .PhoneEmailLinks .block a {
+    font-size: 25px;
+  }
 }

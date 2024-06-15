@@ -1,82 +1,81 @@
-.wrapper{
-   position: relative;
-   padding-top: 8em;
-   padding-bottom: 8em;
-   display: flex;
-   align-items: center;
-   gap: 4em;
+.wrapper {
+  position: relative;
+  padding-top: 8em;
+  padding-bottom: 8em;
+  display: flex;
+  align-items: center;
+  gap: 4em;
 }
 
-.wrapper h1{
-   margin-bottom: .5em;
-   font-size: 64px;
-   font-weight: 700;
+.wrapper h1 {
+  margin-bottom: 0.5em;
+  font-size: 64px;
+  font-weight: 700;
 }
 
-.wrapper h5{
-   font-weight: 400;
+.wrapper h5 {
+  font-weight: 400;
 }
-h5.subtitle{
-   margin-bottom: 2.5em;
+h5.subtitle {
+  margin-bottom: 2.5em;
 }
-h5.text{
-   text-align: justify;
-   margin-bottom: 3.5em;
-}
-
-.wrapper a{
-   padding: .85em 4em;
-   text-decoration: none;
-   color: var(--bs-white);
-   background: var(--app-primary);
-   border-radius: 5px;
+h5.text {
+  text-align: justify;
+  margin-bottom: 3.5em;
 }
 
-.wrapper img{
-   width: 40%;
+.wrapper a {
+  padding: 0.85em 4em;
+  text-decoration: none;
+  color: var(--bs-white);
+  background: var(--app-primary);
+  border-radius: 5px;
 }
 
-
-@media(max-width: 991px){
-   /*text*/
-   .wrapper h1{
-      font-size: 48px;
-      line-height: 100%;
-      margin-bottom: 0.25em;
-   }
-   .wrapper img{
-      display: none;
-   }
-   .wrapper h1{
-      margin-bottom: 0;
-   }
-   h5.subtitle{
-      margin-bottom: 1.25em;
-   }
+.wrapper img {
+  width: 40%;
 }
-@media(max-width: 768px){
-   .wrapper{
-      flex-direction: column;
-   }
-   /*text*/
-   .wrapper h1{
-      font-size: 24px;
-   }
-   h5.subtitle{
-      font-size: 14px;
-   }
-   h5.text{
-      font-size: 14px;
-   }
-   /*button*/
-   .wrapper a{
-      font-size: 0.85rem;
-   }
-   .wrapper img{
-      width: 80%;
-      position: absolute;
-      z-index: -15;
-      right: -50px;
-      opacity: 25%;
-   }
+
+@media (max-width: 991px) {
+  /*text*/
+  .wrapper h1 {
+    font-size: 48px;
+    line-height: 100%;
+    margin-bottom: 0.25em;
+  }
+  .wrapper img {
+    display: none;
+  }
+  .wrapper h1 {
+    margin-bottom: 0;
+  }
+  h5.subtitle {
+    margin-bottom: 1.25em;
+  }
+}
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  /*text*/
+  .wrapper h1 {
+    font-size: 24px;
+  }
+  h5.subtitle {
+    font-size: 14px;
+  }
+  h5.text {
+    font-size: 14px;
+  }
+  /*button*/
+  .wrapper a {
+    font-size: 0.85rem;
+  }
+  .wrapper img {
+    width: 80%;
+    position: absolute;
+    z-index: -15;
+    right: -50px;
+    opacity: 25%;
+  }
 }

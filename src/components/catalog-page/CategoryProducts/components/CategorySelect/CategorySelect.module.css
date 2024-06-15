@@ -1,49 +1,48 @@
-.CategorySelect{
-
+.CategorySelect {
 }
 
 /*btn*/
-.toggle{
-    --bs-btn-active-bg: var(--app-primary);
-    --bs-btn-active-border-color: var(--app-primary);
-    --bs-btn-hover-bg: var(--app-primary);
-    --bs-btn-hover-border-color: var(--app-primary);
+.toggle {
+  --bs-btn-active-bg: var(--app-primary);
+  --bs-btn-active-border-color: var(--app-primary);
+  --bs-btn-hover-bg: var(--app-primary);
+  --bs-btn-hover-border-color: var(--app-primary);
 
-    min-width: 250px;
-    padding: .5em 1.5em;
+  min-width: 250px;
+  padding: 0.5em 1.5em;
 
-    background: none;
-    color: var(--bs-dark);
-    border: 2px solid var(--app-primary);
+  background: none;
+  color: var(--bs-dark);
+  border: 2px solid var(--app-primary);
 }
-.toggle.btn.show{
-    background: var(--app-primary);
-    border: 2px solid var(--app-primary);
+.toggle.btn.show {
+  background: var(--app-primary);
+  border: 2px solid var(--app-primary);
 }
 
 /*dropItem*/
-.dropItem span{
-    margin-left: .25em;
-    color: var(--app-primary);
-    font-weight: 700;
+.dropItem span {
+  margin-left: 0.25em;
+  color: var(--app-primary);
+  font-weight: 700;
 }
 
-.dropItem:active{
-    color: var(--bs-dark);
-    background: var(--app-primary);
+.dropItem:active {
+  color: var(--bs-dark);
+  background: var(--app-primary);
 }
-.dropItem:hover{
-    background: var(--app-light);
+.dropItem:hover {
+  background: var(--app-light);
 }
 
 /*media*/
 @media (max-width: 991px) {
-    .CategorySelect{
-        width: 100%;
-        margin-bottom: .75em;
-    }
-    /*btn*/
-    .toggle{
-        width: 100%;
-    }
+  .CategorySelect {
+    width: 100%;
+    margin-bottom: 0.75em;
+  }
+  /*btn*/
+  .toggle {
+    width: 100%;
+  }
 }

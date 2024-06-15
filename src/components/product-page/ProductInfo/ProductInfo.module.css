@@ -1,93 +1,93 @@
-.ProductInfo{
-    display: flex;
-    flex-direction: column;
+.ProductInfo {
+  display: flex;
+  flex-direction: column;
 }
 
 /*header with badges*/
-.ProductInfo header{
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 1em;
+.ProductInfo header {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
 }
-.ProductInfo header span{
-    margin: 0 .5em .5em 0;
-    padding: .5em .75em;
-    background: var(--app-primary) !important;
+.ProductInfo header span {
+  margin: 0 0.5em 0.5em 0;
+  padding: 0.5em 0.75em;
+  background: var(--app-primary) !important;
 }
 
 /*weights*/
 .weights {
-    display: inline-flex;
+  display: inline-flex;
 }
-.weights p{
-    margin: 0;
+.weights p {
+  margin: 0;
 }
-.weights p span{
-    margin: 0;
-    padding: 0;
+.weights p span {
+  margin: 0;
+  padding: 0;
 }
-.weights p:last-child span{
-    display: none;
+.weights p:last-child span {
+  display: none;
 }
 
 /*content*/
-.content{
-    margin-bottom: 1.5em;
+.content {
+  margin-bottom: 1.5em;
 }
 
 /*name*/
-.ProductInfo h1{
-    margin-bottom: .6em;
+.ProductInfo h1 {
+  margin-bottom: 0.6em;
 
-    font-family: 'Playfair Display', serif;
-    font-weight: 800;
-    color: var(--bs-dark);
+  font-family: "Playfair Display", serif;
+  font-weight: 800;
+  color: var(--bs-dark);
 }
 
 /*blockContent*/
-.blockContent{
-    margin-bottom: 1em;
+.blockContent {
+  margin-bottom: 1em;
 }
-.blockContent label{
-    color: var(--bs-gray-600);
-    font-weight: bold;
+.blockContent label {
+  color: var(--bs-gray-600);
+  font-weight: bold;
 }
-.blockContent p{
-    margin: 0;
+.blockContent p {
+  margin: 0;
 
-    white-space: pre-wrap;
-    color: var(--bs-gray-600);
+  white-space: pre-wrap;
+  color: var(--bs-gray-600);
 }
 
 /*media*/
 @media (max-width: 1200px) {
-    /*name*/
-    .ProductInfo h1{
-        font-size: 30px;
-    }
+  /*name*/
+  .ProductInfo h1 {
+    font-size: 30px;
+  }
 }
 
 @media (max-width: 991px) {
-    /*header with badges*/
-    .ProductInfo header{
-        margin-bottom: .75em;
-    }
+  /*header with badges*/
+  .ProductInfo header {
+    margin-bottom: 0.75em;
+  }
 }
 
 @media (max-width: 576px) {
-    /*name*/
-    .ProductInfo h1{
-        font-size: 25px;
-    }
-    /*content*/
-    .content{
-        margin-bottom: .75em;
-    }
+  /*name*/
+  .ProductInfo h1 {
+    font-size: 25px;
+  }
+  /*content*/
+  .content {
+    margin-bottom: 0.75em;
+  }
 }
 
 @media (max-width: 360px) {
-    /*name*/
-    .ProductInfo h1{
-        font-size: 22px;
-    }
+  /*name*/
+  .ProductInfo h1 {
+    font-size: 22px;
+  }
 }

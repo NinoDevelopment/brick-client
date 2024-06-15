@@ -1,28 +1,27 @@
 /*swiper*/
-.SwiperPhoto{
-    width: 100%;
+.SwiperPhoto {
+  width: 100%;
 
-    /*vars*/
-    --swiper-navigation-size: 25px;
-    --swiper-theme-color: var(--bs-white);
+  /*vars*/
+  --swiper-navigation-size: 25px;
+  --swiper-theme-color: var(--bs-white);
 }
 
-
 /*image in swiper slide*/
-.image{
-    width: 100%;
-    aspect-ratio: 14 / 9;
-    object-fit: cover;
+.image {
+  width: 100%;
+  aspect-ratio: 14 / 9;
+  object-fit: cover;
 }
 
 /*skeleton for images*/
 .placeholder {
-    width: 100%;
-    margin-bottom: 0;
+  width: 100%;
+  margin-bottom: 0;
 
-    aspect-ratio: 14 / 9;
+  aspect-ratio: 14 / 9;
 }
-.placeholder span{
-    height: 100%;
-    border-radius: 5px;
+.placeholder span {
+  height: 100%;
+  border-radius: 5px;
 }

@@ -1,9 +1,8 @@
-'use client';
-import React from 'react';
-import styles from './DeliveryPage.module.css';
-import PreviewBanner from '@/components/delivery-page/PreviewBanner/PreviewBanner';
-import ZonesMap from '@/components/delivery-page/ZonesMap/ZonesMap'; // Импортируйте компонент карты с зонами
-import { Container } from 'react-bootstrap';
+"use client";
+import React from "react";
+import styles from "./DeliveryPage.module.css";
+import PreviewBanner from "@/components/delivery-page/PreviewBanner/PreviewBanner";
+import { Container } from "react-bootstrap";
 
 const DeliveryPage = () => {
   return (

@@ -1,9 +1,6 @@
 {
-  "extends": [
-    "next/core-web-vitals"
-  ],
-  "settings": {
-  },
+  "extends": ["next/core-web-vitals"],
+  "settings": {},
   "rules": {
     "no-unused-vars": "off",
     "react-hooks/rules-of-hooks": "off",

@@ -1,42 +1,48 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import {REQUEST_METHODS} from "@/types/general";
-import {getAdminKey} from "@/functions/getKey";
+import { REQUEST_METHODS } from "@/types/general";
+import { getAdminKey } from "@/functions/getKey";
 
-export const useFetch = <T>(url:string, method?:string, body?:object, interval?:number | false) => {
-	const [data, setData] = useState<T | null>(null);
-	const [load, setLoad] = useState<boolean>(false);
-	const [error, setError] = useState<null | string>(null);
+export const useFetch = <T>(
+  url: string,
+  method?: string,
+  body?: object,
+  interval?: number | false,
+) => {
+  const [data, setData] = useState<T | null>(null);
+  const [load, setLoad] = useState<boolean>(false);
+  const [error, setError] = useState<null | string>(null);
 
-	const options = {
-		method: method || REQUEST_METHODS.GET,
-		url: process.env.NEXT_PUBLIC_API_LINK + url,
-		// url: `https://${process.env.URL}/api${url}`,
-		headers: {
-			'Content-Type': 'application/json',
-			'Authorization': getAdminKey(),
-		},
-		data: body || {},
-	};
+  const options = {
+    method: method || REQUEST_METHODS.GET,
+    url: process.env.NEXT_PUBLIC_API_LINK + url,
+    // url: `https://${process.env.URL}/api${url}`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: getAdminKey(),
+    },
+    data: body || {},
+  };
 
-	const handleFetch = () => {
-		setLoad(true);
-		axios.request(options)
-			.then(res => setData(res.data))
-			.catch(err => setError(err.message))
-			.finally(() => setLoad(false));
-	}
+  const handleFetch = () => {
+    setLoad(true);
+    axios
+      .request(options)
+      .then((res) => setData(res.data))
+      .catch((err) => setError(err.message))
+      .finally(() => setLoad(false));
+  };
 
-	useEffect(() => {
-		if (interval) {
-			const handleInterval = setInterval(() => {
-				handleFetch()
-			}, 1000);
-			return () => clearInterval(handleInterval);
-		}else {
-			handleFetch()
-		}
-	},[JSON.stringify(options), interval])
+  useEffect(() => {
+    if (interval) {
+      const handleInterval = setInterval(() => {
+        handleFetch();
+      }, 1000);
+      return () => clearInterval(handleInterval);
+    } else {
+      handleFetch();
+    }
+  }, [JSON.stringify(options), interval]);
 
-	return { data, error, load }
-}
+  return { data, error, load };
+};

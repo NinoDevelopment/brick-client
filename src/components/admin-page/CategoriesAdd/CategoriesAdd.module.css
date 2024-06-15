@@ -1,31 +1,32 @@
-.CategoriesAdd{}
+.CategoriesAdd {
+}
 
 /*form*/
-.CategoriesAdd form{
-    width: 500px;
+.CategoriesAdd form {
+  width: 500px;
 }
 
 /*title*/
-.CategoriesAdd h1{
-    margin-bottom: .5em;
-    font-weight: 800;
-    color: var(--bs-dark);
-    font-family: 'Playfair Display', serif;
+.CategoriesAdd h1 {
+  margin-bottom: 0.5em;
+  font-weight: 800;
+  color: var(--bs-dark);
+  font-family: "Playfair Display", serif;
 }
 
 /*input*/
-.CategoriesAdd input{
-    margin: .25em 0;
+.CategoriesAdd input {
+  margin: 0.25em 0;
 }
 
 /*alert photo*/
-.alertPhoto{
-    margin: .5em 0 0;
-    padding: .5em;
+.alertPhoto {
+  margin: 0.5em 0 0;
+  padding: 0.5em;
 
-    background: var(--app-green);
-    color: var(--bs-white);
-    text-align: center;
-    font-weight: 500;
-    border: none;
+  background: var(--app-green);
+  color: var(--bs-white);
+  text-align: center;
+  font-weight: 500;
+  border: none;
 }

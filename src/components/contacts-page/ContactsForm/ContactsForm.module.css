@@ -1,99 +1,99 @@
-.wrapper{
-   padding: 5em 0;
-   background: var(--app-light);
+.wrapper {
+  padding: 5em 0;
+  background: var(--app-light);
 }
 
-.wrapper header{
-   margin-bottom: 2.5em;
+.wrapper header {
+  margin-bottom: 2.5em;
 }
-.wrapper header h2{
-   margin-bottom: 0;
-   font-size: 32px;
-   font-weight: 700;
+.wrapper header h2 {
+  margin-bottom: 0;
+  font-size: 32px;
+  font-weight: 700;
 }
-.wrapper header h5{
-   font-weight: 400;
+.wrapper header h5 {
+  font-weight: 400;
 }
 
-.wrapper form{
-   display: flex;
-   justify-content: space-between;
-   flex-wrap: wrap;
-   gap: 2em;
+.wrapper form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2em;
 }
-.inputContainer{
-   width: calc(50% - 1em);
-   display: flex;
-   flex-direction: column;
+.inputContainer {
+  width: calc(50% - 1em);
+  display: flex;
+  flex-direction: column;
 }
 .inputContainer:nth-child(3),
 .inputContainer:nth-child(4) {
-   width: 100%;
+  width: 100%;
 }
-.inputContainer label{
-   max-width: 100%;
-   white-space: nowrap;
-   overflow: hidden;
-   text-overflow: ellipsis;
-   margin-bottom: .35em;
+.inputContainer label {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.35em;
 }
 .inputContainer input,
-.inputContainer textarea{
-   padding: .55em 1em;
-   background: none;
-   border-radius: .5em;
-   outline: none;
-   border: 1px solid var(--bs-gray-500);
+.inputContainer textarea {
+  padding: 0.55em 1em;
+  background: none;
+  border-radius: 0.5em;
+  outline: none;
+  border: 1px solid var(--bs-gray-500);
 }
 
-.wrapper button[type="submit"]{
-   background: var(--app-primary);
-   padding: .65em 3.25em;
-   font-size: 1.25em;
-   color: var(--bs-white);
-   font-weight: 600;
-   border: none;
-   border-radius: .5em;
-   transition: .25s;
+.wrapper button[type="submit"] {
+  background: var(--app-primary);
+  padding: 0.65em 3.25em;
+  font-size: 1.25em;
+  color: var(--bs-white);
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5em;
+  transition: 0.25s;
 }
-.wrapper button[type="submit"]:hover{
-   background: var(--app-primary-hover);
+.wrapper button[type="submit"]:hover {
+  background: var(--app-primary-hover);
 }
-.wrapper button[type="submit"]:disabled{
-   background: var(--bs-gray-600);
+.wrapper button[type="submit"]:disabled {
+  background: var(--bs-gray-600);
 }
 
-.sendedContainer{
-   width: 100%;
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   padding: 2em;
-   border-radius: 15px;
-   border: 1px solid var(--app-primary);
+.sendedContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em;
+  border-radius: 15px;
+  border: 1px solid var(--app-primary);
 }
-.sendedContainer h2{
-   font-weight: 700;
-   text-align: center;
+.sendedContainer h2 {
+  font-weight: 700;
+  text-align: center;
 }
-.sendedContainer p{
-   margin-bottom: 0;
-   text-align: center;
+.sendedContainer p {
+  margin-bottom: 0;
+  text-align: center;
 }
 
 /*media*/
 @media (max-width: 768px) {
-   .wrapper header h2{
-      font-size: 24px;
-   }
-   .wrapper header h5{
-      font-size: 16px;
-   }
-   .wrapper form{
-      gap: 1em;
-   }
-   .wrapper button[type="submit"]{
-      width: 100%;
-      font-size: 1em;
-   }
+  .wrapper header h2 {
+    font-size: 24px;
+  }
+  .wrapper header h5 {
+    font-size: 16px;
+  }
+  .wrapper form {
+    gap: 1em;
+  }
+  .wrapper button[type="submit"] {
+    width: 100%;
+    font-size: 1em;
+  }
 }

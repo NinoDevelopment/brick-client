@@ -1,11 +1,9 @@
-'use client'
-import React from 'react';
+"use client";
+import React from "react";
 import NotFoundContent from "@/components/not-found-page/NotFoundContent/NotFoundContent";
 
 const page = () => {
-	return (
-		<NotFoundContent />
-	);
+  return <NotFoundContent />;
 };
 
-export default page ;
+export default page;

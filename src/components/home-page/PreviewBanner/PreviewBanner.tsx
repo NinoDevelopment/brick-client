@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "./PreviewBanner.module.css";
-import Link from "next/link";
-import { LINK_CATALOG } from "@/constants/links";
+import React from 'react';
+import styles from './PreviewBanner.module.css';
+import Link from 'next/link';
+import { LINK_CATALOG } from '@/constants/links';
 
 const PreviewBanner = () => {
   return (
@@ -13,9 +13,9 @@ const PreviewBanner = () => {
         loop
         disablePictureInPicture
         className={styles.video}
-        poster="/other/back-video.png"
+        poster='/other/back-video.png'
       >
-        <source src="/videos/bg-preview.mp4" type="video/mp4" />
+        <source src='/videos/bg-preview.mp4' type='video/mp4' />
       </video>
 
       <div className={styles.content}>
@@ -27,7 +27,7 @@ const PreviewBanner = () => {
           глины собственного карьера.
         </h4>
 
-        <Link href={LINK_CATALOG}>Перейти в каталог</Link>
+        <Link href={LINK_CATALOG}>Купить кирпич</Link>
       </div>
     </div>
   );

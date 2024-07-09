@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./PreviewBanner.module.css";
-import { Container } from "react-bootstrap";
+import React from 'react';
+import styles from './PreviewBanner.module.css';
+import { Container } from 'react-bootstrap';
 
 const PreviewBanner = () => {
   return (

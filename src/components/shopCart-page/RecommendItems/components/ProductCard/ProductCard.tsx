@@ -34,7 +34,7 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
           </Badge>
         </div>
 
-        <SwiperNavigation images={images?.images} />
+        <SwiperNavigation images={images?.images} name={data.name} />
       </div>
 
       <div className={styles.content}>

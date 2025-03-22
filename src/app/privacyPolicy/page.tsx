@@ -1,9 +1,7 @@
-"use client";
-import React from "react";
 import styles from "./page.module.css";
 import { Container } from "react-bootstrap";
 
-const page = () => {
+const Page = () => {
   return (
     <Container className={styles.main}>
       <h1 className={styles.title}>
@@ -269,4 +267,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

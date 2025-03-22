@@ -20,7 +20,7 @@ const PaySelect: React.FC<IPaySelect> = ({ formData, setFormData }) => {
           <div className={styles.circle} />
           <p>Картой онлайн</p>
         </div>
-        <img src="/icons/bank-card.svg" alt="online" />
+        <img src="/icons/bank-card.svg" alt="Оплата онлайн" />
       </button>
 
       <button
@@ -33,7 +33,7 @@ const PaySelect: React.FC<IPaySelect> = ({ formData, setFormData }) => {
           <div className={styles.circle} />
           <p>Выставить счет</p>
         </div>
-        <img src="/icons/schet.svg" alt="schet" />
+        <img src="/icons/schet.svg" alt="Выставить счет" />
       </button>
 
       <button
@@ -44,7 +44,7 @@ const PaySelect: React.FC<IPaySelect> = ({ formData, setFormData }) => {
           <div className={styles.circle} />
           <p>Наличные</p>
         </div>
-        <img src="/icons/cash.svg" alt="cash" />
+        <img src="/icons/cash.svg" alt="Наличные" />
       </button>
     </div>
   );

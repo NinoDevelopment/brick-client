@@ -4,14 +4,14 @@ import styles from './CatalogBanner.module.css';
 
 const CatalogBanner = () => {
   return (
-    <div className={styles.wrapper}>
-      <Container className={styles.content}>
-        <h1>Каталог</h1>
-        <h5>
-          Ознакомьтесь с нашим ассортиментом кирпичей для вашего строительства
-        </h5>
-      </Container>
-    </div>
+     <div className={styles.wrapper} itemScope itemType="https://schema.org/CollectionPage">
+        <Container className={styles.content}>
+           <h1 itemProp="name">Каталог</h1>
+           <h5 itemProp="description">
+              Ознакомьтесь с нашим ассортиментом кирпичей для вашего строительства
+           </h5>
+        </Container>
+     </div>
   );
 };
 

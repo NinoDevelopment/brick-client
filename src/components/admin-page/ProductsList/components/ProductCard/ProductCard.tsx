@@ -48,18 +48,15 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
   return (
     <>
       <Card className={styles.ProductCard}>
-        {/*SWIPER*/}
-        <SwiperNavigation images={images?.images} />
+        <SwiperNavigation images={images?.images} name={data.name} />
 
         <Card.Body>
           <Link href={LINK_PRODUCT(data._id)}>
             <Card.Title>{data.name}</Card.Title>
           </Link>
 
-          {/*INFO*/}
           <ProductInfo data={data} />
 
-          {/*PRICE AND WEIGHT*/}
           <ProductPrice data={data} />
         </Card.Body>
 

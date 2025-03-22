@@ -6,9 +6,10 @@ import { Placeholder } from "react-bootstrap";
 
 interface ISwiperNavigation {
   images: string[] | null | undefined;
+  name?: string;
 }
 
-const SwiperNavigation: React.FC<ISwiperNavigation> = ({ images }) => {
+const SwiperNavigation: React.FC<ISwiperNavigation> = ({ images, name }) => {
   //check images !== null || undefined
   if (!images) {
     return (
@@ -26,7 +27,7 @@ const SwiperNavigation: React.FC<ISwiperNavigation> = ({ images }) => {
     >
       {images?.map((elem, index) => (
         <SwiperSlide key={index}>
-          <img className={styles.image} src={elem} alt={"image"} />
+          <img className={styles.image} src={elem} alt={name || "Фото кирпича"} />
         </SwiperSlide>
       ))}
     </Swiper>

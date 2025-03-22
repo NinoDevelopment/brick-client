@@ -4,7 +4,7 @@ import styles from "./CategoryProducts.module.css";
 
 const CategoryProducts = () => {
   return (
-    <div className={styles.wrapper}>
+    <div itemScope itemType="http://schema.org/ItemList" className={styles.wrapper}>
       <CategoryProductsList />
     </div>
   );

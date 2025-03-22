@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+import {useEffect, useState} from "react";
+
 import styles from "./CategoryProductsList.module.css";
 import { useFetch } from "@/hooks/useFetch";
 import { API_CATEGORY_ITEMS, API_PRODUCT } from "@/constants/api";
@@ -63,6 +65,37 @@ const CategoryProductsList = () => {
     if (sort === ESort.DISCOUNT)
       return getItemsWithDiscount(priceData as IProductId[]);
   };
+
+  useEffect(() => {
+    // Динамически добавляем микроразметку
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.text = JSON.stringify({
+      "@context": "http://schema.org",
+      "@type": "ItemList",
+      "itemListElement": getSortedData()?.map((elem: IProductId, index: number) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "Product",
+          "name": elem.name,
+          "description": elem.description,
+          "offers": {
+            "@type": "Offer",
+            "price": elem.price,
+            "priceCurrency": "RUB",
+            "availability": elem.available ? "http://schema.org/InStock" : "http://schema.org/OutOfStock",
+          },
+        },
+      })),
+    });
+    document.head.appendChild(script);
+
+    // Очистка при размонтировании
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, [data, sort, color, priceSort]);
 
   if (load || !getSortedData() || !data) {
     return (

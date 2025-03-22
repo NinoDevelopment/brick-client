@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import styles from "./GalleryProjects.module.css";
 import { Container } from "react-bootstrap";
 import { useGetGallery } from "@/hooks/useGetGallery";

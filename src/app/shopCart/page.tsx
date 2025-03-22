@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+
 import ProductsList from "@/components/shopCart-page/ProductsList/ProductsList";
 import { useAppSelector } from "@/store/store";
 import TotalAmount from "@/components/shopCart-page/TotalAmount/TotalAmount";
@@ -11,10 +11,9 @@ import styles from "./page.module.css";
 import ShopCartNoItems from "@/components/shopCart-page/ShopCartNoItems/ShopCartNoItems";
 import RecommendItems from "@/components/shopCart-page/RecommendItems/RecommendItems";
 
-const page = () => {
+const Page = () => {
   const shopCartData = useAppSelector((state) => state.shopCart.data);
 
-  //check items in shop cart
   if (!shopCartData.length) return <ShopCartNoItems />;
 
   return (
@@ -37,4 +36,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

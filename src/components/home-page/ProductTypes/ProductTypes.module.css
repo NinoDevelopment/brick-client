@@ -24,6 +24,7 @@
 }
 .content img {
   width: 33.3%;
+  height: auto;
 }
 
 @media (max-width: 991px) {

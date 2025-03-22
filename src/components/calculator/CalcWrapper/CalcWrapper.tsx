@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+import { useState } from "react";
+
 import styles from "./CalcWrapper.module.css";
 import { Container } from "react-bootstrap";
 import CalcSquare from "@/components/calculator/CalcSquare/CalcSquare";

@@ -64,7 +64,7 @@ const ProductCard: React.FC<IProductCard> = ({ data, shopCartData }) => {
   return (
     <div className={styles.ProductCard}>
       <div className={styles.swiperContainer}>
-        <SwiperNavigation images={images?.images} />
+        <SwiperNavigation images={images?.images} name={productData.name} />
       </div>
 
       <div className={styles.content}>

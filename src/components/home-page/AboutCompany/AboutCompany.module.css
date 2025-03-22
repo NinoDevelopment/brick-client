@@ -43,9 +43,11 @@
 }
 .images .w100 {
   width: 100%;
+  height: auto;
 }
 .images .w50 {
   width: 50%;
+  height: auto;
 }
 
 @media (max-width: 1350px) {

@@ -1,5 +1,3 @@
-"use client";
-import React from "react";
 import styles from "./DeliveryPage.module.css";
 import PreviewBanner from "@/components/delivery-page/PreviewBanner/PreviewBanner";
 import { Container } from "react-bootstrap";

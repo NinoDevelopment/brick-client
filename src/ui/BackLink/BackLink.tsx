@@ -10,7 +10,7 @@ interface IBackLink {
 const BackLink: React.FC<IBackLink> = ({ link, text }) => {
   return (
     <Link href={link} className={styles.BackLink}>
-      <img src="/icons/back-arrow.svg" alt="<" />
+      <img src="/icons/back-arrow.svg" alt="Назад" />
       <span>{text}</span>
     </Link>
   );

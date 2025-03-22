@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+
 import { useParams } from "next/navigation";
 import { useFetch } from "@/hooks/useFetch";
 import { API_PRODUCT_ID, API_PRODUCT_IMG } from "@/constants/api";
@@ -14,6 +14,7 @@ import { REQUEST_METHODS } from "@/types/general";
 import BackLink from "@/ui/BackLink/BackLink";
 import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
 import RandomProducts from "@/components/general/RandomProducts/RandomProducts";
+import {useEffect} from "react";
 
 const ProductPage = () => {
   const params = useParams();
@@ -29,6 +30,33 @@ const ProductPage = () => {
     {},
   );
 
+  useEffect(() => {
+    if (data) {
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.text = JSON.stringify({
+        "@context": "http://schema.org",
+        "@type": "Product",
+        "name": data.name,
+        "description": data.description,
+        "image": images?.images?.[0],
+        "offers": {
+          "@type": "Offer",
+          "price": data.price,
+          "priceCurrency": "RUB",
+          "availability": data.available ? "http://schema.org/InStock" : "http://schema.org/OutOfStock",
+        },
+        "sku": data._id,
+      });
+      document.head.appendChild(script);
+
+      // Очистка при размонтировании
+      return () => {
+        document.head.removeChild(script);
+      };
+    }
+  }, [data, images]);
+
   if (load) {
     return (
       <Container className={styles.spinnerContainer}>
@@ -36,6 +64,7 @@ const ProductPage = () => {
       </Container>
     );
   }
+
   if (error) redirect(LINK_ERROR);
 
   if (data) {

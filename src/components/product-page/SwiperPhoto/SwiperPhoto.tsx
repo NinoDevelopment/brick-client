@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./SwiperPhoto.module.css";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -26,7 +25,7 @@ const SwiperPhoto: React.FC<ISwiperPhoto> = ({ images }) => {
     >
       {images?.map((elem, index) => (
         <SwiperSlide key={index} className={styles.slide}>
-          <img src={elem} alt="" className={styles.image} />
+          <img src={elem} alt="Фото кирпича" className={styles.image} />
         </SwiperSlide>
       ))}
     </Swiper>

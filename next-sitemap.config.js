@@ -35,8 +35,16 @@ module.exports = {
     policies: [
       {
         userAgent: '*',
-        allow: ['/'], // Разрешаем доступ ко всем страницам
-        disallow: ['/admin/auth', '/admin', '/error']
+        allow: ['/'],
+        disallow: [
+          '/admin/auth',
+          '/admin',
+          '/error',
+          '/*?utm_*',
+          '/*?etext*',
+          '/*?code*',
+          '/*?yprqee*',
+          '/*?_ym_debug*',]
       },
     ],
     // eslint-disable-next-line no-undef

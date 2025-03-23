@@ -1,0 +1,12 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin/auth
+Disallow: /admin
+Disallow: /error
+
+# Host
+Host: https://kzk.ooo
+
+# Sitemaps
+Sitemap: https://kzk.ooo/sitemap.xml

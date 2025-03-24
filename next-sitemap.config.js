@@ -44,7 +44,8 @@ module.exports = {
           '/*?etext*',
           '/*?code*',
           '/*?yprqee*',
-          '/*?_ym_debug*',]
+          '/*?_ym_debug*',
+        ]
       },
     ],
     // eslint-disable-next-line no-undef

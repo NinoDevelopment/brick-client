@@ -4,6 +4,11 @@ Allow: /
 Disallow: /admin/auth
 Disallow: /admin
 Disallow: /error
+Disallow: /*?utm_*
+Disallow: /*?etext*
+Disallow: /*?code*
+Disallow: /*?yprqee*
+Disallow: /*?_ym_debug*
 
 # Host
 Host: https://kzk.ooo

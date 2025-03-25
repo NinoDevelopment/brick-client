@@ -1,12 +1,10 @@
 /** @type {import('next-sitemap').IConfig} */
-// eslint-disable-next-line
 module.exports = {
-  // eslint-disable-next-line no-undef
   siteUrl: process.env.NEXT_PUBLIC_PROD_URL,
   generateRobotsTxt: true,
   transform: async (config, path) => {
-    if (path.startsWith('/admin') || path === '/error') {
-      return undefined
+    if (path.startsWith('/admin') || path === '/error' || path.includes('?') || path.includes('&')) {
+      return null
     }
 
     if (path === '/') {
@@ -35,20 +33,24 @@ module.exports = {
     policies: [
       {
         userAgent: '*',
-        allow: ['/'],
         disallow: [
-          '/admin/auth',
+          '/*?*',
           '/admin',
-          '/error',
-          '/*?utm_*',
-          '/*?etext*',
-          '/*?code*',
-          '/*?yprqee*',
-          '/*?_ym_debug*',
-        ]
+          '/api',
+          '/_next',
+        ],
+      },
+      {
+        userAgent: '*',
+        allow: '/',
       },
     ],
-    // eslint-disable-next-line no-undef
     additionalSitemaps: [process.env.NEXT_PUBLIC_PROD_URL + '/sitemap.xml'],
   },
+  exclude: [
+    '/admin*',
+    '/api*',
+    '/error*',
+  ],
+  autoLastmod: true,
 };

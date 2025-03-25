@@ -6,6 +6,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm ci && npm run build
+RUN apk add --no-cache --update python3 make g++ libc6-compat
+
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+RUN npm cache clean --force && npm ci
 
 CMD ["npm", "run", "start"]

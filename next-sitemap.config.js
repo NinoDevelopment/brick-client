@@ -33,16 +33,13 @@ module.exports = {
     policies: [
       {
         userAgent: '*',
+        allow: '/',
         disallow: [
           '/*?*',
           '/admin',
           '/api',
           '/_next',
         ],
-      },
-      {
-        userAgent: '*',
-        allow: '/',
       },
     ],
     additionalSitemaps: [process.env.NEXT_PUBLIC_PROD_URL + '/sitemap.xml'],

@@ -13,6 +13,9 @@ const GalleryBanner = () => {
               Откройте для себя нашу галерею идей для строительства и дизайна с использованием кирпича. Найдите
               вдохновение для вашего следующего проекта, изучая изысканные дизайны, инновационные концепции и
               качественные решения.
+              <br/> <br/>
+              Поставляем кирпич по всей Нижегородской области: Арзамас, Балахна, Богородск, Бор, Выкса.
+              Собственный автопарк для доставки.
            </h5>
            <Link href={LINK_GALLERY} itemProp="mainEntity" itemType="https://schema.org/ImageGallery">
               Перейти в галерею
@@ -22,7 +25,7 @@ const GalleryBanner = () => {
         <Image
            width={970}
            height={706}
-           src={'/other/break-bg-1.png'}
+           src="/other/break-bg-1.png"
            alt={APP_TITLE}
            itemProp="image"
         />

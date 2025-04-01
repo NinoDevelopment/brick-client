@@ -36,6 +36,8 @@ module.exports = {
         allow: '/',
         disallow: [
           '/*?*',
+          '/*?utm_*',
+          '/product/',
           '/admin',
           '/api',
           '/_next',

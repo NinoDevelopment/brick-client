@@ -44,9 +44,9 @@ const NavbarMobile: React.FC<INavbarMobile> = ({
 
       <Offcanvas.Body className={styles.body}>
         <nav>
-          <a onClick={(e) => handleLink(e, "/")}>Главная</a>
+          <a onClick={(e) => handleLink(e, "/")} itemProp="mainEntityOfPage">Главная</a>
           {LIST_LINKS.map((elem) => (
-            <a key={elem.title} onClick={(e) => handleLink(e, elem.link)}>
+            <a itemProp="mainEntityOfPage" key={elem.title} onClick={(e) => handleLink(e, elem.link)}>
               {elem.title}
             </a>
           ))}

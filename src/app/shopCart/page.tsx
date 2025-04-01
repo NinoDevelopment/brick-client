@@ -19,7 +19,7 @@ const Page = () => {
   return (
     <Container className={styles.shopCart}>
       <header className={styles.topLinks}>
-        <BackLink link={LINK_CATALOG} text={"В каталог"} />
+        <BackLink link={LINK_CATALOG} text="В каталог" />
         <ClearShopCartBtn />
       </header>
       <div className={styles.content}>

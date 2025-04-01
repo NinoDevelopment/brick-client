@@ -8,12 +8,13 @@ const CalcBanner = () => {
   return (
     <Container className={styles.wrapper}>
        <div className={styles.content}>
-          <h1 itemProp="name">Рассчитать кирпич для вашего проекта</h1>
+          <h2 itemProp="name">Рассчитать кирпич для вашего проекта</h2>
           <h5 className={styles.text} itemProp="description">
              Перейдите в раздел калькулятора, чтобы быстро и удобно рассчитать
-             необходимое количество материала для строительства. Просто укажите
+             необходимое количество кирпича для строительства. Просто укажите
              параметры строения, и наш инструмент поможет определить оптимальное
              количество кирпичей, учитывая их размеры и ваши потребности.
+             Останется только удивится нашим низким ценам и оформить доставку!
           </h5>
 
           <Link href={LINK_CALCULATOR} itemProp="potentialAction" itemType="https://schema.org/Action">
@@ -24,8 +25,8 @@ const CalcBanner = () => {
        <Image
           width={747}
           height={747}
-          src={'/other/calculator.svg'}
-          alt="Калькулятор для расчета стоимости кирпича"
+          src="/other/calculator.svg"
+          alt="Кирпич по низким ценам Нижний Новгород"
           itemProp="image"
        />
     </Container>

@@ -1,5 +1,4 @@
 import styles from "./ProductTypes.module.css";
-import { APP_TITLE } from "@/constants/general";
 import { Container } from "react-bootstrap";
 import Image from "next/image";
 
@@ -17,28 +16,31 @@ const ProductTypes = () => {
               width={483}
               height={578}
               src="/other/break-text-1.svg"
-              alt={APP_TITLE}
+              alt="Кирпич с доставкой Нижний Новогород"
               itemProp="image"
            />
            <Image
               width={542}
               height={575}
               src="/other/break-text-2.svg"
-              alt={APP_TITLE}
+              alt="Кирпич от производителя Нижний Новогород"
               itemProp="image"
            />
            <Image
               width={410}
               height={559}
               src="/other/break-text-3.svg"
-              alt={APP_TITLE}
+              alt="Кирпич по лучшей цене Нижний Новогород"
               itemProp="image"
            />
          </div>
        </Container>
 
        <meta itemProp="description"
-             content="Кирпич от Кирпичного завода Ковернино - это качество, на которое можно полагаться. Мы производим кирпичи, которые вдохновляют архитектурные проекты по всей стране."/>
+             content="Купить кирпич Нижний Новогород красный кирпич, красный керамический
+            кирпич, облицовочный кирпич, рядовой кирпич Нижний Новгород,
+            Нижегородская область, Арзамас, Балахна, Богородск, Бор, Выкса,
+            Городец, Дзержинск, Заволжье, Кстово, Павлово, Саров"/>
        <meta itemProp="brand" content="Кирпичный завод Ковернино"/>
        <meta itemProp="offers" itemType="https://schema.org/Offer" itemScope content="Купить кирпич"/>
      </div>

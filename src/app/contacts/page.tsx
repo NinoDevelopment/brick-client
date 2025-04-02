@@ -31,6 +31,9 @@ export const metadata: Metadata = {
       locale: 'ru_RU',
       type: 'website',
    },
+   alternates: {
+      canonical: process.env.NEXT_PUBLIC_PROD_URL + '/contacts'
+   }
 };
 
 const page = () => <ContactsPage />;

@@ -35,7 +35,10 @@ export const metadata: Metadata = {
   },
   icons: [
      '/favicon.svg'
-  ]
+  ],
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_PROD_URL
+  }
 };
 
 interface IRootLayout {
@@ -62,9 +65,6 @@ const RootLayout = ({ children }: IRootLayout) => {
           content='1cv20c0Qox29yvRsFToKnq3SxEG8gxiD7DR_jHy0NBs'
         />
         <meta name='yandex-verification' content='f3553b2fcd8eadae' />
-
-        {/* utm seo redirect */}
-        <link rel="canonical" href={process.env.NEXT_PUBLIC_PROD_URL} />
 
         <LdJsonScripts />
       </head>

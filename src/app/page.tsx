@@ -4,6 +4,7 @@ import CalcBanner from "@/components/home-page/CalcBanner/CalcBanner";
 import ProductTypes from "@/components/home-page/ProductTypes/ProductTypes";
 import GalleryBanner from "@/components/home-page/GalleryBanner/GalleryBanner";
 import { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
    title: 'Купить кирпич с доставкой в Нижнем Новгороде | Кирпичный завод Ковернино',
@@ -48,6 +49,26 @@ const Home = () => {
       <CalcBanner />
       <ProductTypes />
       <GalleryBanner />
+
+       {/* JSON-LD: BreadcrumbList */}
+       <Script
+          id="breadcrumbs-ld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+             __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                   {
+                      '@type': 'ListItem',
+                      position: 1,
+                      name: 'Главная',
+                      item: process.env.NEXT_PUBLIC_PROD_URL,
+                   },
+                ],
+             }),
+          }}
+       />
     </main>
   );
 };

@@ -1,5 +1,6 @@
 import ContactsPage from "@/pagesList/ContactsPage/ContactsPage";
 import { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
    title: 'Контакты, адреса или оставить заявку | Кирпичный завод Ковернино | Купить кирпич в Нижнем Новгороде',
@@ -36,6 +37,38 @@ export const metadata: Metadata = {
    }
 };
 
-const page = () => <ContactsPage />;
+const page = () => {
+   return (
+      <>
+         <ContactsPage />
+
+         {/* JSON-LD: BreadcrumbList */}
+         <Script
+            id="breadcrumbs-ld"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+               __html: JSON.stringify({
+                  '@context': 'https://schema.org',
+                  '@type': 'BreadcrumbList',
+                  itemListElement: [
+                     {
+                        '@type': 'ListItem',
+                        position: 1,
+                        name: 'Главная',
+                        item: process.env.NEXT_PUBLIC_PROD_URL,
+                     },
+                     {
+                        '@type': 'ListItem',
+                        position: 2,
+                        name: 'Контакты',
+                        item: `${process.env.NEXT_PUBLIC_PROD_URL}/contacts`,
+                     },
+                  ],
+               }),
+            }}
+         />
+      </>
+   )
+};
 
 export default page;

@@ -15,6 +15,7 @@ import BackLink from "@/ui/BackLink/BackLink";
 import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
 import RandomProducts from "@/components/general/RandomProducts/RandomProducts";
 import {useEffect} from "react";
+import Script from "next/script";
 
 const ProductPage = () => {
   const params = useParams();
@@ -83,6 +84,38 @@ const ProductPage = () => {
         </div>
 
         <RandomProducts quantity={3} />
+
+        {/* JSON-LD: BreadcrumbList */}
+        <Script
+           id="breadcrumbs-ld"
+           type="application/ld+json"
+           dangerouslySetInnerHTML={{
+             __html: JSON.stringify({
+               '@context': 'https://schema.org',
+               '@type': 'BreadcrumbList',
+               itemListElement: [
+                 {
+                   '@type': 'ListItem',
+                   position: 1,
+                   name: 'Главная',
+                   item: process.env.NEXT_PUBLIC_PROD_URL,
+                 },
+                 {
+                   '@type': 'ListItem',
+                   position: 2,
+                   name: 'Каталог кирпича',
+                   item: `${process.env.NEXT_PUBLIC_PROD_URL}/catalog`,
+                 },
+                 {
+                   '@type': 'ListItem',
+                   position: 3,
+                   name: data.name,
+                   item: `${process.env.NEXT_PUBLIC_PROD_URL}/product/${data._id}`,
+                 },
+               ],
+             }),
+           }}
+        />
       </Container>
     );
   }

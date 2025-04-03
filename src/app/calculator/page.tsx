@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import CalculatorPage from "@/pagesList/CalculatorPage/CalculatorPage";
+import Script from "next/script";
 
 export const metadata: Metadata = {
    title: 'Калькулятор кирпича | Кирпичный завод Ковернино - Рассчитайте количество кирпича для строительства',
@@ -36,6 +37,38 @@ export const metadata: Metadata = {
    }
 };
 
-const Page = () => <CalculatorPage />;
+const Page = () => {
+   return (
+      <>
+         <CalculatorPage />
+
+         {/* JSON-LD: BreadcrumbList */}
+         <Script
+            id="breadcrumbs-ld"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+               __html: JSON.stringify({
+                  '@context': 'https://schema.org',
+                  '@type': 'BreadcrumbList',
+                  itemListElement: [
+                     {
+                        '@type': 'ListItem',
+                        position: 1,
+                        name: 'Главная',
+                        item: process.env.NEXT_PUBLIC_PROD_URL,
+                     },
+                     {
+                        '@type': 'ListItem',
+                        position: 2,
+                        name: 'Калькулятор кирпича',
+                        item: `${process.env.NEXT_PUBLIC_PROD_URL}/calculator`,
+                     },
+                  ],
+               }),
+            }}
+         />
+      </>
+   )
+};
 
 export default Page;

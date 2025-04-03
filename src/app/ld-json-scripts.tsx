@@ -1,10 +1,12 @@
 import { metadata } from './layout';
+import Script from "next/script";
 
 const LdJsonScripts = () => {
   return (
     <>
       {/* JSON-LD: WebSite */}
-      <script
+      <Script
+        id="web-site-ld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -13,34 +15,39 @@ const LdJsonScripts = () => {
             url: process.env.NEXT_PUBLIC_PROD_URL,
             name: metadata.title,
             description: metadata.description,
-            potentialAction: [
+            mainEntity: [
               {
-                '@type': 'ViewAction',
+                '@type': 'SiteNavigationElement',
+                target: `${process.env.NEXT_PUBLIC_PROD_URL}`,
+                name: 'Главная страница',
+              },
+              {
+                '@type': 'SiteNavigationElement',
                 target: `${process.env.NEXT_PUBLIC_PROD_URL}/catalog`,
-                name: 'Просмотреть каталог',
+                name: 'Каталог кирпича',
               },
               {
-                '@type': 'ViewAction',
+                '@type': 'SiteNavigationElement',
                 target: `${process.env.NEXT_PUBLIC_PROD_URL}/contacts`,
-                name: 'Просмотреть контакты',
+                name: 'Контакты',
               },
               {
-                '@type': 'ViewAction',
+                '@type': 'SiteNavigationElement',
                 target: `${process.env.NEXT_PUBLIC_PROD_URL}/delivery`,
-                name: 'Узнать про оплату и доставку',
+                name: 'Оплата и доставка',
               },
               {
-                '@type': 'ViewAction',
+                '@type': 'SiteNavigationElement',
                 target: `${process.env.NEXT_PUBLIC_PROD_URL}/about`,
-                name: 'Узнать о нас',
+                name: 'О нас',
               },
               {
-                '@type': 'ViewAction',
+                '@type': 'SiteNavigationElement',
                 target: `${process.env.NEXT_PUBLIC_PROD_URL}/shopCart`,
-                name: 'Перейти в корзину',
+                name: 'Корзина',
               },
               {
-                '@type': 'ViewAction',
+                '@type': 'SiteNavigationElement',
                 target: `${process.env.NEXT_PUBLIC_PROD_URL}/calculator`,
                 name: 'Калькулятор кирпича',
               },
@@ -50,13 +57,15 @@ const LdJsonScripts = () => {
       />
 
       {/* JSON-LD: Organization */}
-      <script
+      <Script
+         id="org-ld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Organization',
-            name: 'Кирпичный завод Ковернино',
+            name: metadata.title,
+            description: metadata.description,
             url: process.env.NEXT_PUBLIC_PROD_URL,
             logo: `${process.env.NEXT_PUBLIC_PROD_URL}/favicon.ico`,
             sameAs: [
@@ -64,61 +73,27 @@ const LdJsonScripts = () => {
               'https://api.whatsapp.com/send/?phone=79215092409&text&type=phone_number&app_absent=0',
               'https://t.me/kzkvrn',
             ],
-          }),
-        }}
-      />
-
-      {/* JSON-LD: BreadcrumbList */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              {
-                '@type': 'ListItem',
-                position: 1,
-                name: 'Главная',
-                item: process.env.NEXT_PUBLIC_PROD_URL,
-              },
-              {
-                '@type': 'ListItem',
-                position: 2,
-                name: 'Каталог',
-                item: `${process.env.NEXT_PUBLIC_PROD_URL}/catalog`,
-              },
-              {
-                '@type': 'ListItem',
-                position: 3,
-                name: 'О нас',
-                item: `${process.env.NEXT_PUBLIC_PROD_URL}/about`,
-              },
-              {
-                '@type': 'ListItem',
-                position: 4,
-                name: 'Контакты',
-                item: `${process.env.NEXT_PUBLIC_PROD_URL}/contacts`,
-              },
-              {
-                '@type': 'ListItem',
-                position: 5,
-                name: 'Оплата и доставка',
-                item: `${process.env.NEXT_PUBLIC_PROD_URL}/delivery`,
-              },
-              {
-                '@type': 'ListItem',
-                position: 6,
-                name: 'Калькулятор',
-                item: `${process.env.NEXT_PUBLIC_PROD_URL}/calculator`,
-              },
-              {
-                '@type': 'ListItem',
-                position: 6,
-                name: 'Корзина',
-                item: `${process.env.NEXT_PUBLIC_PROD_URL}/shopCart`,
-              },
-            ],
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: '4.8',
+              ratingCount: '14',
+              bestRating: '5',
+              worstRating: '1',
+            },
+            contactPoint: {
+              '@type': 'ContactPoint',
+              telephone: '+7-921-509-24-09',
+              contactType: 'customer support',
+              email: 'kzkvrn@yandex.ru',
+              areaServed: 'RU',
+              availableLanguage: 'Russian',
+            },
+            keywords: [
+              'купить кирпич Нижний Новгород',
+              'доставка кирпич Нижний Новгород',
+              'кирпич от производителя Нижний Новгород',
+              'кирпич низкие цены Нижний Новгород',
+            ].join(', '),
           }),
         }}
       />

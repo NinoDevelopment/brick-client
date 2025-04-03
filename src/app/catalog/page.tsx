@@ -1,5 +1,6 @@
 import CatalogPage from "@/pagesList/CatalogPage/CatalogPage";
 import { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
    title: 'Каталог кирпича с доставкой | Нижний Новгород | Завод Ковернино',
@@ -36,6 +37,38 @@ export const metadata: Metadata = {
    }
 };
 
-const Page = () => <CatalogPage />;
+const Page = () => {
+   return (
+      <>
+         <CatalogPage />
+
+         {/* JSON-LD: BreadcrumbList */}
+         <Script
+            id="breadcrumbs-ld"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+               __html: JSON.stringify({
+                  '@context': 'https://schema.org',
+                  '@type': 'BreadcrumbList',
+                  itemListElement: [
+                     {
+                        '@type': 'ListItem',
+                        position: 1,
+                        name: 'Главная',
+                        item: process.env.NEXT_PUBLIC_PROD_URL,
+                     },
+                     {
+                        '@type': 'ListItem',
+                        position: 2,
+                        name: 'Каталог кирпича',
+                        item: `${process.env.NEXT_PUBLIC_PROD_URL}/catalog`,
+                     },
+                  ],
+               }),
+            }}
+         />
+      </>
+   )
+};
 
 export default Page;

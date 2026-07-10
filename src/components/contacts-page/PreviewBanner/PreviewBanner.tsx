@@ -7,7 +7,7 @@ const PreviewBanner = () => {
         <Container className={styles.content}>
            <h1 itemProp="name">Контакты</h1>
            <h5 itemProp="description">
-              Свяжитесь с нами, и мы ответим на интересующие Вас вопросы
+              Телефон, мессенджеры и форма заявки — ответим и поможем с заказом
            </h5>
         </Container>
      </div>

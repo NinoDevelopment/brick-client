@@ -10,8 +10,8 @@ const FooterContent = () => {
     <footer className={styles.FooterContent}>
       <div className={styles.top}>
         <h4>
-          Свяжитесь с нами, <br />
-          задайте интересующие <span>вопросы</span>
+          Есть вопросы? <br />
+          <span>Напишите</span> или позвоните
         </h4>
         <div className={styles.right}>
           <div className={styles.block}>
@@ -47,12 +47,11 @@ const FooterContent = () => {
       <div className={styles.bottom}>
         <div className={styles.left}>
           <h6>
-            © КЗК 2022-2026, Все права защищены, <br />
-            Powered by leshakuzz
+            © КЗК 2022-2026, Все права защищены
           </h6>
 
           <h5>
-            <Link href={LINK_REQUISITES}>Реквизиты и юр. информация</Link>{" "}
+            <Link href={LINK_REQUISITES}>Реквизиты</Link>{" "}
             <br />
             <Link href={LINK_PRIVACY}>Политика конфиденциальности</Link>
           </h5>

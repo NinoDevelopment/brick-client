@@ -6,7 +6,7 @@ import { CONTACTS } from "@/constants/general";
 const Page = () => {
   return (
     <Container className={styles.main}>
-      <h1 className={styles.title}>ЮРИДИЧЕСКАЯ ИНФОРМАЦИЯ И РЕКВИЗИТЫ</h1>
+      <h1 className={styles.title}>Реквизиты</h1>
 
       <h5 className={styles.info}>
         ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "КИРПИЧНЫЙ ЗАВОД КОВЕРНИНО"{" "}

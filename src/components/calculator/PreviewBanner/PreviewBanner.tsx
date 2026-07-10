@@ -8,8 +8,7 @@ const PreviewBanner = () => {
         <Container className={styles.content}>
            <h1 itemProp="name">Калькулятор</h1>
            <h5 itemProp="description">
-              Используйте наш калькулятор для точного расчета необходимого
-              количества кирпича
+              Посчитайте, сколько кирпича нужно для стен или объёма кладки
            </h5>
         </Container>
      </div>

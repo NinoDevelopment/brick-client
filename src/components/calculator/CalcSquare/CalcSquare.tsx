@@ -36,7 +36,7 @@ const CalcSquare = () => {
     setLoad(true);
     handleRequest(REQUEST_METHODS.POST, API_CALC_PARAMS, values)
       .then((res) => setResValue(res.data))
-      .catch((err) => TOAST_ERROR("Ошибка рассчета! " + err.message))
+      .catch((err) => TOAST_ERROR("Ошибка расчёта! " + err.message))
       .finally(() => setLoad(false));
   };
 

@@ -14,7 +14,7 @@ const ShopCartNoItems = () => {
       <div className={styles.content}>
         <img src="/icons/shop-cart-lg.svg" alt="Корзина пуста" />
         <h2>Корзина пуста</h2>
-        <p>Добавьте товары в корзину и повторите попытку</p>
+        <p>Перейдите в каталог и добавьте товары</p>
       </div>
     </Container>
   );

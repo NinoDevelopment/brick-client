@@ -4,6 +4,13 @@ import Script from 'next/script';
 import LdJsonScripts from "@/app/ld-json-scripts";
 import { createPageMetadata, SEO_DEFAULT } from '@/constants/seo';
 
+import './globals.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 export const metadata: Metadata = createPageMetadata(
   SEO_DEFAULT,
   process.env.NEXT_PUBLIC_PROD_URL,

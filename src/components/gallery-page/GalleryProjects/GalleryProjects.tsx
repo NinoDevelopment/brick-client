@@ -18,7 +18,7 @@ const GalleryProjects = () => {
         )}
 
         {data && !data?.categories?.length && (
-          <h5 className={styles.noItems}>Список категорий галлереи пуст!</h5>
+          <h5 className={styles.noItems}>Список категорий галереи пуст</h5>
         )}
 
         {!!data?.categories?.length &&

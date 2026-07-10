@@ -1,13 +1,5 @@
 "use client";
-//css
-import "./globals.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "react-toastify/dist/ReactToastify.css";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 
-//other
 import React from "react";
 import Toast from "@/ui/Toast/Toast";
 import { Provider } from "react-redux";

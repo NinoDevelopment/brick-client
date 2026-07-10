@@ -75,7 +75,7 @@ const OrderStatusData: React.FC<IOrderStatusData> = ({ data }) => {
             {data.paymentType === EPayment.ONLINE &&
               !data.paid &&
               "Ожидание оплаты картой"}
-            {data.paymentType === EPayment.SCHET && "Ожидание оплаты счета"}
+            {data.paymentType === EPayment.SCHET && "Ожидание оплаты счёта"}
           </h4>
         </div>
       </div>

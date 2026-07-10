@@ -39,18 +39,17 @@ const ContactsForm = () => {
      <div className={styles.wrapper} itemScope itemType="http://schema.org/ContactPage">
        <Container>
          <header>
-           <h2 itemProp="name">Заполните форму</h2>
+           <h2 itemProp="name">Оставить заявку</h2>
            <h5 itemProp="description">
-             Наши менеджеры свяжутся с вами в ближайшее время
+             Напишите вопрос или запрос — перезвоним и поможем с подбором
            </h5>
          </header>
 
          {
            <div className={styles.sendedContainer} hidden={!sended}>
-             <h2>Спасибо за вашу заявку!</h2>
+             <h2>Заявка отправлена</h2>
              <p>
-               В ближайшее время с вами свяжутся наши менеджеры, и вы сможете
-               задать им ваш вопрос.
+               Скоро свяжемся с вами, чтобы уточнить детали и ответить на вопросы.
              </p>
            </div>
          }

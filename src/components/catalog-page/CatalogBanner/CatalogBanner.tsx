@@ -6,10 +6,10 @@ const CatalogBanner = () => {
   return (
      <div className={styles.wrapper} itemScope itemType="https://schema.org/CollectionPage">
         <Container className={styles.content}>
-           <h1 itemProp="name">Каталог кирпича</h1>
+           <h1 itemProp="name">Каталог</h1>
            <h5 itemProp="description">
-              Кирпич с ценами от производителя. Доставка по Нижнему Новгороду
-              и Нижегородской области — красный, керамический, облицовочный и строительный.
+              Цены от производителя. Красный, керамический, облицовочный
+              и строительный кирпич с доставкой по Нижнему Новгороду и области.
            </h5>
         </Container>
      </div>

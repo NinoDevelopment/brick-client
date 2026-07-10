@@ -7,9 +7,9 @@ const ProductTypes = () => {
      <div className={styles.wrapper}>
        <Container>
          <h2>
-           Не просто <span>кирпич</span>
+           Кирпич <span>с завода</span>
          </h2>
-         <h5>Качество, на которое можно полагаться</h5>
+         <h5>Своя глина, своё производство, доставка по области</h5>
 
          <div className={styles.content}>
            <Image

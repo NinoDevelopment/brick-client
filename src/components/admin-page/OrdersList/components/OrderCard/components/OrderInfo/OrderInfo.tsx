@@ -39,7 +39,7 @@ const OrderInfo: React.FC<IOrderInfo> = ({ data }) => {
               {data.paymentType === EPayment.ONLINE
                 ? "Картой онлайн"
                 : data.paymentType === EPayment.SCHET
-                  ? "Оплата по счету"
+                  ? "Оплата по счёту"
                   : "При получении"}
             </td>
           </tr>

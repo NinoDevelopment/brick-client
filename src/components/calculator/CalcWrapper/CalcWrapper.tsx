@@ -12,7 +12,7 @@ const CalcWrapper = () => {
   return (
     <div className={styles.wrapper}>
       <Container>
-        <h1 className={styles.title}>Рассчитать кирпич</h1>
+        <h2 className={styles.title}>Выберите способ расчёта</h2>
 
         <div className={styles.btnsContainer}>
           <button
@@ -25,7 +25,7 @@ const CalcWrapper = () => {
             onClick={() => setSelected("volume")}
             disabled={selected === "volume"}
           >
-            По объему
+            По объёму
           </button>
         </div>
 

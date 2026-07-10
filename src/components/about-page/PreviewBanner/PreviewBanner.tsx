@@ -8,8 +8,7 @@ const PreviewBanner = () => {
         <Container className={styles.content}>
            <h1 itemProp="name">Кирпичный завод Ковернино</h1>
            <h5 itemProp="description">
-              Производим кирпич в Нижегородской области и поставляем
-              в Нижний Новгород с доставкой
+              Производство в Нижегородской области, доставка в Нижний Новгород
            </h5>
         </Container>
      </div>

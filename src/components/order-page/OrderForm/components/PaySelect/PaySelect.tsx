@@ -31,9 +31,9 @@ const PaySelect: React.FC<IPaySelect> = ({ formData, setFormData }) => {
       >
         <div className={styles.left}>
           <div className={styles.circle} />
-          <p>Выставить счет</p>
+          <p>Выставить счёт</p>
         </div>
-        <img src="/icons/schet.svg" alt="Выставить счет" />
+        <img src="/icons/schet.svg" alt="Выставить счёт" />
       </button>
 
       <button

@@ -9,6 +9,7 @@ const PreviewBanner = () => {
            autoPlay
            muted
            loop
+           preload="metadata"
            disablePictureInPicture
            className={styles.video}
            poster='/other/back-video.png'
@@ -16,18 +17,20 @@ const PreviewBanner = () => {
            <source src='/videos/bg-preview.mp4' type='video/mp4'/>
         </video>
 
+        <div className={styles.overlay} aria-hidden="true" />
+
         <div className={styles.content}>
            <h1>
               Купить <b>кирпич</b> <br/> в Нижнем Новгороде
            </h1>
            <h4>
-              Производим кирпич из глины собственного карьера <br/>
+              Производим из глины собственного карьера <br/>
               и доставляем по Нижнему Новгороду <br/>
-              и всей Нижегородской области
+              и Нижегородской области
            </h4>
 
            <Link href="/catalog">
-              Перейти в каталог
+              Смотреть каталог
            </Link>
         </div>
      </div>

@@ -8,13 +8,13 @@ const GalleryBanner = () => {
   return (
      <div className={styles.wrapper} itemScope itemType="https://schema.org/CollectionPage">
         <div className={styles.content}>
-           <h2 itemProp="name">Ищете вдохновение?</h2>
+           <h2 itemProp="name">Галерея</h2>
            <h5 itemProp="description">
-              Фото готовых объектов и нашей продукции — чтобы оценить качество
-              кирпича до заказа. Доставляем по Нижнему Новгороду и Нижегородской области.
+              Посмотрите, как выглядит наш кирпич на готовых объектах.
+              Реальные фасады и кладка — проще понять, что подойдёт вашему проекту.
            </h5>
            <Link href={LINK_GALLERY} itemProp="mainEntity" itemType="https://schema.org/ImageGallery">
-              Перейти в галерею
+              Смотреть фото
            </Link>
         </div>
 

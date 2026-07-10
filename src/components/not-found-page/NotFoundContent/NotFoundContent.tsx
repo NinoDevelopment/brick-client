@@ -12,8 +12,8 @@ const NotFoundContent = () => {
       </div>
 
       <div className={styles.content}>
-        <img alt={"Not found"} src={"/other/not-found.svg"} />
-        <h5>Ой...Такой страницы не существует...</h5>
+        <img alt="Страница не найдена" src={"/other/not-found.svg"} />
+        <h5>Такой страницы не существует</h5>
       </div>
     </Container>
   );

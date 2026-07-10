@@ -3,25 +3,39 @@
 
   width: 100%;
   height: 100vh;
+  height: 100dvh;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   overflow: hidden;
+  background-color: #1e1e1e;
 }
 
 .video {
   position: absolute;
-  left: 0;
-  top: 0;
-  min-width: 100%;
-  min-height: 100vh;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.55);
+  pointer-events: none;
 }
 
 .content {
+  position: relative;
+  z-index: 2;
   width: 100%;
   height: 100%;
+  padding: 1.5rem;
 
   display: flex;
   justify-content: center;
@@ -30,11 +44,8 @@
 
   color: var(--bs-white);
   text-align: center;
-  z-index: 1;
-  backdrop-filter: grayscale(100%) brightness(40%);
 }
 
-/*text*/
 .PreviewBanner h1 {
   margin-bottom: 0.25em;
   font-size: 72px;
@@ -49,7 +60,6 @@
   font-weight: 400;
 }
 
-/*link*/
 .PreviewBanner a {
   padding: 0.65em 4em;
   color: var(--bs-white);
@@ -64,9 +74,7 @@
   color: var(--bs-white);
 }
 
-/*media*/
 @media (max-width: 991px) {
-  /*text*/
   .PreviewBanner h1 {
     font-size: 48px;
   }
@@ -75,7 +83,6 @@
   }
 }
 @media (max-width: 768px) {
-  /*text*/
   .PreviewBanner h1 {
     font-size: 24px;
   }
@@ -83,7 +90,6 @@
     font-size: 14px;
   }
 
-  /*button*/
   .PreviewBanner a {
     font-size: 0.85rem;
   }

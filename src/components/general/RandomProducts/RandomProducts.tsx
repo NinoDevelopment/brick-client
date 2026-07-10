@@ -42,7 +42,7 @@ const RandomProducts: React.FC<IRandomProducts> = ({ title, quantity }) => {
       </div>
 
       <div className={styles.btnContainer}>
-        <Link href={LINK_CATALOG}>Перейти к каталогу</Link>
+        <Link href={LINK_CATALOG}>Смотреть каталог</Link>
       </div>
     </div>
   );

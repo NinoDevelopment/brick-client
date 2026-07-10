@@ -1,58 +1,18 @@
-'use client';
-
-import { useEffect, useRef, useState } from 'react';
 import styles from './PreviewBanner.module.css';
 import Link from 'next/link';
 
 const PreviewBanner = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [showVideo, setShowVideo] = useState(false);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    let cancelled = false;
-
-    const tryPlay = async () => {
-      try {
-        video.muted = true;
-        await video.play();
-        if (!cancelled) setShowVideo(true);
-      } catch {
-        if (!cancelled) setShowVideo(false);
-      }
-    };
-
-    const onCanPlay = () => {
-      void tryPlay();
-    };
-
-    video.addEventListener('canplay', onCanPlay);
-    video.load();
-
-    if (video.readyState >= 3) {
-      void tryPlay();
-    }
-
-    return () => {
-      cancelled = true;
-      video.removeEventListener('canplay', onCanPlay);
-    };
-  }, []);
-
   return (
     <div className={styles.PreviewBanner}>
       <video
-        ref={videoRef}
         playsInline
+        autoPlay
         muted
         loop
-        preload="auto"
+        preload="metadata"
         disablePictureInPicture
-        className={`${styles.video} ${showVideo ? styles.videoVisible : ''}`}
+        className={styles.video}
         poster="/other/back-video.png"
-        onError={() => setShowVideo(false)}
       >
         <source src="/videos/bg-preview.mp4" type="video/mp4" />
       </video>

@@ -1,0 +1,98 @@
+import { Metadata } from "next";
+
+export const SITE_NAME = "Кирпичный завод Ковернино";
+
+const OG_IMAGE = {
+  width: 252,
+  height: 94,
+};
+
+export const SEO_DEFAULT = {
+  title: `Купить кирпич в Нижнем Новгороде | ${SITE_NAME}`,
+  description:
+    "Купить кирпич в Нижнем Новгороде с доставкой от производителя. Красный, керамический, облицовочный и строительный — цены с завода Ковернино.",
+};
+
+export const SEO_HOME = SEO_DEFAULT;
+
+export const SEO_CATALOG = {
+  title: `Каталог кирпича | Купить в Нижнем Новгороде | ${SITE_NAME}`,
+  description:
+    "Каталог кирпича с ценами и характеристиками. Купить в Нижнем Новгороде с доставкой по городу и Нижегородской области.",
+};
+
+export const SEO_ABOUT = {
+  title: `О заводе | ${SITE_NAME} — производство в Нижегородской области`,
+  description:
+    "Кирпичный завод Ковернино: собственная глина, производство и доставка кирпича в Нижний Новгород и область.",
+};
+
+export const SEO_DELIVERY = {
+  title: `Доставка кирпича | Нижний Новгород и область | ${SITE_NAME}`,
+  description:
+    "Условия доставки и оплаты кирпича по Нижнему Новгороду и области: Арзамас, Балахна, Бор, Дзержинск. Зоны и сроки.",
+};
+
+export const SEO_CONTACTS = {
+  title: `Контакты | ${SITE_NAME} — купить кирпич в Нижнем Новгороде`,
+  description:
+    "Телефон, адрес завода и форма заявки. Заказать кирпич в Нижнем Новгороде с доставкой — Кирпичный завод Ковернино.",
+};
+
+export const SEO_CALCULATOR = {
+  title: `Калькулятор кирпича | ${SITE_NAME}`,
+  description:
+    "Рассчитайте количество кирпича для строительства онлайн. Калькулятор завода Ковернино — Нижний Новгород и область.",
+};
+
+export const SEO_GALLERY = {
+  title: `Галерея | ${SITE_NAME} — фото объектов и продукции`,
+  description:
+    "Фото готовых объектов и нашего кирпича. Примеры работ завода Ковернино в Нижнем Новгороде и Нижегородской области.",
+};
+
+export const SEO_ORDER = {
+  title: `Оформление заказа | ${SITE_NAME}`,
+  description:
+    "Оформите заказ кирпича с доставкой по Нижнему Новгороду и Нижегородской области. Цены от производителя.",
+};
+
+export const getProductSeo = (name: string, description?: string) => {
+  const firstLine = description?.split("\n")[0]?.trim();
+  const productDescription = firstLine
+    ? `${name} — ${firstLine}. Купить с доставкой в Нижнем Новгороде, цена от производителя.`
+    : `Купить ${name} с доставкой в Нижнем Новгороде и области. Цена от производителя — ${SITE_NAME}.`;
+
+  return {
+    title: `${name} | Купить в Нижнем Новгороде | ${SITE_NAME}`,
+    description: productDescription.slice(0, 160),
+  };
+};
+
+export const createPageMetadata = (
+  seo: { title: string; description: string },
+  canonical?: string,
+  imageAlt?: string,
+): Metadata => ({
+  title: seo.title,
+  description: seo.description,
+  openGraph: {
+    title: seo.title,
+    description: seo.description,
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_PROD_URL}/Logo-dark.svg`,
+        ...OG_IMAGE,
+        alt: imageAlt || SITE_NAME,
+      },
+    ],
+    siteName: SITE_NAME,
+    locale: "ru_RU",
+    type: "website",
+  },
+  ...(canonical && {
+    alternates: {
+      canonical,
+    },
+  }),
+});

@@ -1,14 +1,12 @@
 # *
 User-agent: *
 Allow: /
-Disallow: /admin/auth
-Disallow: /admin
-Disallow: /error
 Disallow: /*?utm_*
-Disallow: /*?etext*
-Disallow: /*?code*
-Disallow: /*?yprqee*
-Disallow: /*?_ym_debug*
+Disallow: /admin
+Disallow: /api
+Disallow: /_next
+Disallow: /shopCart
+Disallow: /order
 
 # Host
 Host: https://kzk.ooo

@@ -28,7 +28,7 @@ const Providers = ({ children }: IProviders) => {
 
   return (
     <Provider store={store}>
-      <PersistGate persistor={persistedStore}>
+      <PersistGate loading={null} persistor={persistedStore}>
         <YMaps query={{ apikey: "f1423869-80d1-4c88-8150-8643fdf24b7b" }}>
           <Toast />
           {process.env.NEXT_PUBLIC_APP_TEST === "true" && <TestWebsiteAlert />}

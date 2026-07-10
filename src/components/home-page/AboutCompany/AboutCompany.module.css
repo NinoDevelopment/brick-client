@@ -14,7 +14,8 @@
   color: var(--bs-white);
   background-color: var(--app-primary);
 }
-.left h1 {
+.left h1,
+.left h2 {
   margin: 0;
   line-height: 1;
   font-size: 64px;
@@ -31,13 +32,40 @@
   display: flex;
   flex-direction: column;
 }
-.right h5 {
+
+.right h5,
+.right .text {
   margin: 0;
   font-weight: 400;
 }
-.right > ol {
+
+.text {
+  font-size: inherit;
+  line-height: 1.6;
+}
+
+.text + .text {
   margin-top: 1em;
-  padding-left: 0;
+}
+
+.listTitle {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  font-weight: 600;
+}
+
+.list {
+  margin: 0;
+  padding-left: 1.25em;
+  line-height: 1.6;
+}
+
+.list li + li {
+  margin-top: 0.5em;
+}
+
+.list + .text {
+  margin-top: 1.5em;
 }
 
 .images {
@@ -67,13 +95,15 @@
 }
 @media (max-width: 768px) {
   /*text*/
-  .left h1 {
+  .left h1,
+  .left h2 {
     font-size: 24px;
   }
   .left h4 {
     font-size: 14px;
   }
-  .right h5 {
+  .right h5,
+  .right .text {
     font-size: 14px;
   }
   .left {

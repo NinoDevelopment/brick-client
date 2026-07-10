@@ -10,11 +10,11 @@ const ControlBlock = () => {
              <img src="/icons/search-about-icon.png" alt={APP_TITLE} itemProp="image"/>
            </div>
            <div className={styles.inner}>
-             <h3 itemProp="name">Контроль</h3>
-             <h5 itemProp="description">
-               Производственный процесс сложен, и каждый из наших кирпичей
-               проходит путь строгого контроля.
-             </h5>
+             <h3 itemProp="name">Контроль качества</h3>
+             <p className={styles.text} itemProp="description">
+               Каждая партия проходит проверку: геометрия, прочность, внешний вид.
+               Мы не отгружаем кирпич, который не соответствует нашим стандартам.
+             </p>
            </div>
          </div>
 
@@ -23,12 +23,11 @@ const ControlBlock = () => {
              <img src="/icons/brick-about-icon.png" alt={APP_TITLE} itemProp="image"/>
            </div>
            <div className={styles.inner}>
-             <h3 itemProp="name">Дизайн</h3>
-             <h5 itemProp="description">
-               Мы уделяем время, чтобы понять ваш проект. Выбор текстуры и тона
-               требует тщательного рассмотрения, и наша команда всегда готова
-               воплотить в жизнь ваш дизайн.
-             </h5>
+             <h3 itemProp="name">Подбор под проект</h3>
+             <p className={styles.text} itemProp="description">
+               Поможем выбрать тип, формат и цвет кирпича под ваши задачи —
+               несущие стены, фасад, внутренняя перегородка или отделка.
+             </p>
            </div>
          </div>
 
@@ -38,11 +37,10 @@ const ControlBlock = () => {
            </div>
            <div className={styles.inner}>
              <h3 itemProp="name">Доставка</h3>
-             <h5 itemProp="description">
-               Задержка поставок в лучшем случае неудобна, а в худшем —
-               дорогостояща. Как завод по производству кирпича, мы экономим ваше
-               время и деньги.
-             </h5>
+             <p className={styles.text} itemProp="description">
+               Собственный автопарк: привозим кирпич в Нижний Новгород и по области
+               в согласованные сроки. Стоимость и зоны доставки — на странице «Оплата и доставка».
+             </p>
            </div>
          </div>
        </div>

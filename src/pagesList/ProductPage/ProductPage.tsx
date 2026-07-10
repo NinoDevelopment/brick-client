@@ -14,51 +14,37 @@ import { REQUEST_METHODS } from "@/types/general";
 import BackLink from "@/ui/BackLink/BackLink";
 import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
 import RandomProducts from "@/components/general/RandomProducts/RandomProducts";
-import {useEffect} from "react";
 import Script from "next/script";
 
-const ProductPage = () => {
+interface IProductPage {
+  initialProduct?: IProductId;
+  initialImages?: IProductImg | null;
+}
+
+const ProductPage = ({ initialProduct, initialImages }: IProductPage) => {
   const params = useParams();
-  const { data, error, load } = useFetch<IProductId>(
-    API_PRODUCT_ID(params._id as string),
+  const productId = params._id as string;
+  const hasInitialData = Boolean(initialProduct);
+
+  const { data: fetchedProduct, error, load } = useFetch<IProductId>(
+    API_PRODUCT_ID(productId),
     REQUEST_METHODS.GET,
     {},
     false,
+    !hasInitialData,
   );
-  const { data: images } = useFetch<IProductImg>(
-    API_PRODUCT_IMG(params._id as string),
+  const { data: fetchedImages } = useFetch<IProductImg>(
+    API_PRODUCT_IMG(productId),
     REQUEST_METHODS.GET,
     {},
+    false,
+    !hasInitialData,
   );
 
-  useEffect(() => {
-    if (data) {
-      const script = document.createElement("script");
-      script.type = "application/ld+json";
-      script.text = JSON.stringify({
-        "@context": "http://schema.org",
-        "@type": "Product",
-        "name": data.name,
-        "description": data.description,
-        "image": images?.images?.[0],
-        "offers": {
-          "@type": "Offer",
-          "price": data.price,
-          "priceCurrency": "RUB",
-          "availability": data.available ? "http://schema.org/InStock" : "http://schema.org/OutOfStock",
-        },
-        "sku": data._id,
-      });
-      document.head.appendChild(script);
+  const data = fetchedProduct ?? initialProduct;
+  const images = fetchedImages ?? initialImages ?? null;
 
-      // Очистка при размонтировании
-      return () => {
-        document.head.removeChild(script);
-      };
-    }
-  }, [data, images]);
-
-  if (load) {
+  if (!hasInitialData && load) {
     return (
       <Container className={styles.spinnerContainer}>
         <SpinnerPrimary />
@@ -66,59 +52,84 @@ const ProductPage = () => {
     );
   }
 
-  if (error) redirect(LINK_ERROR);
+  if (error && !data) redirect(LINK_ERROR);
 
-  if (data) {
-    return (
-      <Container className={styles.main}>
-        <BackLink link={LINK_CATALOG} text={"В каталог"} />
+  if (!data) {
+    return null;
+  }
 
-        <div className={styles.productData}>
-          <div className={styles.sliderContainer}>
-            <SwiperPhoto images={images?.images} />
-          </div>
+  return (
+    <Container className={styles.main}>
+      <BackLink link={LINK_CATALOG} text={"В каталог"} />
 
-          <div className={styles.dataContainer}>
-            <ProductInfo data={data} />
-          </div>
+      <div className={styles.productData}>
+        <div className={styles.sliderContainer}>
+          <SwiperPhoto images={images?.images} />
         </div>
 
-        <RandomProducts quantity={3} />
+        <div className={styles.dataContainer}>
+          <ProductInfo data={data} />
+        </div>
+      </div>
 
-        {/* JSON-LD: BreadcrumbList */}
-        <Script
-           id="breadcrumbs-ld"
-           type="application/ld+json"
-           dangerouslySetInnerHTML={{
-             __html: JSON.stringify({
-               '@context': 'https://schema.org',
-               '@type': 'BreadcrumbList',
-               itemListElement: [
-                 {
-                   '@type': 'ListItem',
-                   position: 1,
-                   name: 'Главная',
-                   item: process.env.NEXT_PUBLIC_PROD_URL,
-                 },
-                 {
-                   '@type': 'ListItem',
-                   position: 2,
-                   name: 'Каталог кирпича',
-                   item: `${process.env.NEXT_PUBLIC_PROD_URL}/catalog`,
-                 },
-                 {
-                   '@type': 'ListItem',
-                   position: 3,
-                   name: data.name,
-                   item: `${process.env.NEXT_PUBLIC_PROD_URL}/product/${data._id}`,
-                 },
-               ],
-             }),
-           }}
-        />
-      </Container>
-    );
-  }
+      <RandomProducts quantity={3} />
+
+      <Script
+        id="product-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: data.name,
+            description: data.description,
+            image: images?.images?.[0],
+            offers: {
+              "@type": "Offer",
+              price: data.price,
+              priceCurrency: "RUB",
+              availability: data.available
+                ? "https://schema.org/InStock"
+                : "https://schema.org/OutOfStock",
+              url: `${process.env.NEXT_PUBLIC_PROD_URL}/product/${data._id}`,
+            },
+            sku: data._id,
+          }),
+        }}
+      />
+
+      <Script
+        id="breadcrumbs-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Главная",
+                item: process.env.NEXT_PUBLIC_PROD_URL,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Каталог кирпича",
+                item: `${process.env.NEXT_PUBLIC_PROD_URL}/catalog`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: data.name,
+                item: `${process.env.NEXT_PUBLIC_PROD_URL}/product/${data._id}`,
+              },
+            ],
+          }),
+        }}
+      />
+    </Container>
+  );
 };
 
 export default ProductPage;

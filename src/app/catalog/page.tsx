@@ -1,48 +1,21 @@
 import CatalogPage from "@/pagesList/CatalogPage/CatalogPage";
-import { Metadata } from "next";
 import Script from "next/script";
+import { fetchProducts } from "@/functions/serverFetch";
+import { createPageMetadata, SEO_CATALOG } from "@/constants/seo";
 
-export const metadata: Metadata = {
-   title: 'Каталог кирпича с доставкой | Нижний Новгород | Завод Ковернино',
-   description: 'Каталог кирпича от Кирпичного завода Ковернино. В наличии: красный, керамический, облицовочный и строительный кирпич. Выгодные цены, высокое качество и доставка по Нижнему Новгороду, Арзамасу, Балахне, Богородску, Бору и всей Нижегородской области. Выберите подходящий кирпич для вашего проекта!',
-   keywords: [
-      'каталог кирпича с доставкой Нижний Новгород',
-      'купить кирпич в Нижнем Новгороде',
-      'кирпич с доставкой в Нижнем Новгороде',
-      'керамический кирпич с доставкой Нижний Новгород',
-      'облицовочный кирпич Нижний Новгород',
-      'строительный кирпич Нижний Новгород',
-      'кирпич низкие цены Нижний Новгород',
-      'кирпич с доставкой в Дзержинск',
-      'купить кирпич оптом Нижний Новгород',
-      'кирпич для строительства в Нижнем Новгороде',
-   ],
-   openGraph: {
-      title: 'Каталог кирпича с доставкой | Нижний Новгород | Завод Ковернино',
-      description: 'Каталог кирпича от Кирпичного завода Ковернино. В наличии: красный, керамический, облицовочный и строительный кирпич. Выгодные цены, высокое качество и доставка по Нижнему Новгороду, Арзамасу, Балахне, Богородску, Бору и всей Нижегородской области. Выберите подходящий кирпич для вашего проекта!',
-      images: [
-         {
-            url: process.env.NEXT_PUBLIC_PROD_URL + '/Logo-dark.svg',
-            width: 252,
-            height: 94,
-            alt: 'Купить кирпич в Нижнем Новгороде',
-         },
-      ],
-      siteName: 'Кирпичный завод Ковернино',
-      locale: 'ru_RU',
-      type: 'website',
-   },
-   alternates: {
-      canonical: process.env.NEXT_PUBLIC_PROD_URL + '/catalog'
-   }
-};
+export const metadata = createPageMetadata(
+  SEO_CATALOG,
+  `${process.env.NEXT_PUBLIC_PROD_URL}/catalog`,
+  "Купить кирпич в Нижнем Новгороде",
+);
 
-const Page = () => {
+const Page = async () => {
+   const products = (await fetchProducts())?.filter((product) => product.show) ?? [];
+
    return (
       <>
-         <CatalogPage />
+         <CatalogPage initialProducts={products} />
 
-         {/* JSON-LD: BreadcrumbList */}
          <Script
             id="breadcrumbs-ld"
             type="application/ld+json"

@@ -8,6 +8,7 @@ export const useFetch = <T>(
   method?: string,
   body?: object,
   interval?: number | false,
+  enabled: boolean = true,
 ) => {
   const [data, setData] = useState<T | null>(null);
   const [load, setLoad] = useState<boolean>(false);
@@ -16,7 +17,6 @@ export const useFetch = <T>(
   const options = {
     method: method || REQUEST_METHODS.GET,
     url: process.env.NEXT_PUBLIC_API_LINK + url,
-    // url: `https://${process.env.URL}/api${url}`,
     headers: {
       "Content-Type": "application/json",
       Authorization: getAdminKey(),
@@ -34,6 +34,10 @@ export const useFetch = <T>(
   };
 
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
     if (interval) {
       const handleInterval = setInterval(() => {
         handleFetch();
@@ -42,7 +46,7 @@ export const useFetch = <T>(
     } else {
       handleFetch();
     }
-  }, [JSON.stringify(options), interval]);
+  }, [JSON.stringify(options), interval, enabled]);
 
   return { data, error, load };
 };

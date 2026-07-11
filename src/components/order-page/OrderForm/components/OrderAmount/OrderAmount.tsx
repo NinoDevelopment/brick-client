@@ -25,10 +25,11 @@ const OrderAmount: React.FC<IOrderAmount> = ({ shopCartData, formData }) => {
     handleRequest(REQUEST_METHODS.POST, API_ORDER_AMOUNT, {
       positions: shopCartData,
       promocode: formData.promocode,
+      deliveryType: formData.deliveryType,
     })
       .then((res) => setAmountData(res?.data || null))
       .catch(() => TOAST_ERROR("Ошибка получения данных для оплаты!"));
-  }, [formData?.promocode, formData.positions]);
+  }, [formData?.promocode, formData.positions, formData.deliveryType]);
 
   if (amountData && amountData.amountWithDelivery) {
     return (

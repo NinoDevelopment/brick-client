@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import styles from "./RandomProducts.module.css";
 import { useFetch } from "@/hooks/useFetch";
@@ -12,24 +14,33 @@ import { LINK_CATALOG } from "@/constants/links";
 interface IRandomProducts {
   title?: string;
   quantity?: number;
+  initialProducts?: IProductId[];
 }
 
-const RandomProducts: React.FC<IRandomProducts> = ({ title, quantity }) => {
-  const { data, load } = useFetch<IProductId[]>(
+const RandomProducts: React.FC<IRandomProducts> = ({
+  title,
+  quantity,
+  initialProducts,
+}) => {
+  const hasInitial = Boolean(initialProducts?.length);
+  const { data: fetched, load } = useFetch<IProductId[]>(
     API_PRODUCTS_SAMPLE(quantity || 6),
     REQUEST_METHODS.GET,
     {},
     false,
+    !hasInitial,
   );
 
-  if (load) {
+  const data = fetched ?? initialProducts;
+
+  if (!hasInitial && load) {
     return (
       <div className={styles.spinnerContainer}>
         <SpinnerPrimary />
       </div>
     );
   }
-  if (!data) return;
+  if (!data?.length) return null;
 
   return (
     <div className={styles.RandomProducts}>

@@ -14,14 +14,18 @@ import { REQUEST_METHODS } from "@/types/general";
 import BackLink from "@/ui/BackLink/BackLink";
 import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
 import RandomProducts from "@/components/general/RandomProducts/RandomProducts";
-import Script from "next/script";
 
 interface IProductPage {
   initialProduct?: IProductId;
   initialImages?: IProductImg | null;
+  initialRelatedProducts?: IProductId[];
 }
 
-const ProductPage = ({ initialProduct, initialImages }: IProductPage) => {
+const ProductPage = ({
+  initialProduct,
+  initialImages,
+  initialRelatedProducts,
+}: IProductPage) => {
   const params = useParams();
   const productId = params._id as string;
   const hasInitialData = Boolean(initialProduct);
@@ -72,62 +76,7 @@ const ProductPage = ({ initialProduct, initialImages }: IProductPage) => {
         </div>
       </div>
 
-      <RandomProducts quantity={3} />
-
-      <Script
-        id="product-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            name: data.name,
-            description: data.description,
-            image: images?.images?.[0],
-            offers: {
-              "@type": "Offer",
-              price: data.price,
-              priceCurrency: "RUB",
-              availability: data.available
-                ? "https://schema.org/InStock"
-                : "https://schema.org/OutOfStock",
-              url: `${process.env.NEXT_PUBLIC_PROD_URL}/product/${data._id}`,
-            },
-            sku: data._id,
-          }),
-        }}
-      />
-
-      <Script
-        id="breadcrumbs-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Главная",
-                item: process.env.NEXT_PUBLIC_PROD_URL,
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Каталог кирпича",
-                item: `${process.env.NEXT_PUBLIC_PROD_URL}/catalog`,
-              },
-              {
-                "@type": "ListItem",
-                position: 3,
-                name: data.name,
-                item: `${process.env.NEXT_PUBLIC_PROD_URL}/product/${data._id}`,
-              },
-            ],
-          }),
-        }}
-      />
+      <RandomProducts quantity={3} initialProducts={initialRelatedProducts} />
     </Container>
   );
 };

@@ -25,8 +25,11 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
 
   return (
     <div className={styles.ProductCard}>
-      {/*link with absolute position*/}
-      <Link href={LINK_PRODUCT(data._id)} className={styles.link} />
+      <Link
+        href={LINK_PRODUCT(data._id)}
+        className={styles.link}
+        aria-label={data.name}
+      />
 
       {/*top badges*/}
       <header>
@@ -46,7 +49,11 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
 
       {/*content*/}
       <div className={styles.content}>
-        <h4 className={styles.name}>{data.name}</h4>
+        <h4 className={styles.name}>
+          <Link href={LINK_PRODUCT(data._id)} className={styles.nameLink}>
+            {data.name}
+          </Link>
+        </h4>
         <hr />
         <p className={styles.composition}>
           {data.description || "Без описания."}

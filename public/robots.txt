@@ -4,9 +4,9 @@ Allow: /
 Disallow: /*?utm_*
 Disallow: /admin
 Disallow: /api
-Disallow: /_next
 Disallow: /shopCart
 Disallow: /order
+Disallow: /error
 
 # Host
 Host: https://kzk.ooo

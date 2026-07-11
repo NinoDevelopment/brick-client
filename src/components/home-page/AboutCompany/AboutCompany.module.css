@@ -44,6 +44,7 @@
   margin: 0;
   font-weight: 400;
   line-height: 1.65;
+  text-align: justify;
 }
 
 .text + .text {
@@ -84,6 +85,17 @@
 
 .cta {
   margin-top: 1.75em;
+}
+
+.inlineLink {
+  color: var(--app-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.inlineLink:hover {
+  color: var(--app-primary);
 }
 
 .images {

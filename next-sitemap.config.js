@@ -8,6 +8,8 @@ module.exports = {
       path === '/error' ||
       path === '/shopCart' ||
       path.startsWith('/order') ||
+      path === '/privacyPolicy' ||
+      path === '/requisites' ||
       path.includes('?') ||
       path.includes('&')
     ) {
@@ -75,9 +77,9 @@ module.exports = {
           '/*?utm_*',
           '/admin',
           '/api',
-          '/_next',
           '/shopCart',
           '/order',
+          '/error',
         ],
       },
     ],
@@ -88,6 +90,8 @@ module.exports = {
     '/error*',
     '/shopCart',
     '/order*',
+    '/privacyPolicy',
+    '/requisites',
   ],
   autoLastmod: true,
 };

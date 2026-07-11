@@ -3,9 +3,18 @@ import styles from "./page.module.css";
 import { Container } from "react-bootstrap";
 import BackLink from "@/ui/BackLink/BackLink";
 import { LINK_SHOP_CART } from "@/constants/links";
-import { createPageMetadata, SEO_ORDER } from "@/constants/seo";
+import {
+  createPageMetadata,
+  NO_INDEX_ROBOTS,
+  SEO_ORDER,
+} from "@/constants/seo";
 
-export const metadata = createPageMetadata(SEO_ORDER);
+export const metadata = createPageMetadata(
+  SEO_ORDER,
+  undefined,
+  undefined,
+  NO_INDEX_ROBOTS,
+);
 
 const Page = () => {
   return (

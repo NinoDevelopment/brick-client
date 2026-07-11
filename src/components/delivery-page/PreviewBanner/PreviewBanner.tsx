@@ -4,10 +4,10 @@ import { Container } from 'react-bootstrap';
 
 const PreviewBanner = () => {
   return (
-     <div className={styles.wrapper} itemScope itemType="http://schema.org/Organization">
+     <div className={styles.wrapper}>
         <Container className={styles.content}>
-           <h1 itemProp="name">Оплата и доставка</h1>
-           <h5 itemProp="description">
+           <h1>Оплата и доставка</h1>
+           <h5>
               Карта, счёт или наличные. Доставка по Нижнему Новгороду и области
            </h5>
         </Container>

@@ -8,14 +8,14 @@ const CalcBanner = () => {
   return (
     <Container className={styles.wrapper}>
        <div className={styles.content}>
-          <h2 itemProp="name">Калькулятор</h2>
-          <h5 className={styles.text} itemProp="description">
+          <h2>Калькулятор</h2>
+          <h5 className={styles.text}>
              Укажите размеры стен или объём кладки — калькулятор посчитает,
              сколько кирпича нужно для вашего проекта. После расчёта можно
              сразу оформить заказ.
           </h5>
 
-          <Link href={LINK_CALCULATOR} itemProp="potentialAction" itemType="https://schema.org/Action">
+          <Link href={LINK_CALCULATOR}>
              Рассчитать количество
           </Link>
        </div>
@@ -25,7 +25,6 @@ const CalcBanner = () => {
           height={747}
           src="/other/calculator.svg"
           alt="Калькулятор кирпича — расчёт количества для строительства"
-          itemProp="image"
        />
     </Container>
   );

@@ -4,11 +4,11 @@ import { Container } from 'react-bootstrap';
 
 const PreviewBanner = () => {
   return (
-     <div className={styles.wrapper} itemScope itemType="http://schema.org/WebApplication">
+     <div className={styles.wrapper}>
         <Container className={styles.content}>
-           <h1 itemProp="name">Калькулятор</h1>
-           <h5 itemProp="description">
-              Посчитайте, сколько кирпича нужно для стен или объёма кладки
+           <h1>Калькулятор кирпича</h1>
+           <h5>
+              Укажите размеры или объём — узнаете, сколько кирпича нужно для проекта
            </h5>
         </Container>
      </div>

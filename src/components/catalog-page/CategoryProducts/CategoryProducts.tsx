@@ -9,7 +9,7 @@ interface ICategoryProducts {
 
 const CategoryProducts = ({ initialProducts }: ICategoryProducts) => {
   return (
-    <div itemScope itemType="http://schema.org/ItemList" className={styles.wrapper}>
+    <div className={styles.wrapper}>
       <CategoryProductsList initialProducts={initialProducts} />
     </div>
   );

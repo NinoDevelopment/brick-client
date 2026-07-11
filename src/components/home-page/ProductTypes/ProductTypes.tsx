@@ -1,6 +1,8 @@
 import styles from "./ProductTypes.module.css";
 import { Container } from "react-bootstrap";
 import Image from "next/image";
+import Link from "next/link";
+import { LINK_CATALOG } from "@/constants/links";
 
 const ProductTypes = () => {
   return (
@@ -30,6 +32,10 @@ const ProductTypes = () => {
               src="/other/break-text-3.svg"
               alt="Кирпич по цене завода в Нижнем Новгороде"
            />
+         </div>
+
+         <div className={styles.cta}>
+           <Link href={LINK_CATALOG}>Смотреть каталог кирпича</Link>
          </div>
        </Container>
      </div>

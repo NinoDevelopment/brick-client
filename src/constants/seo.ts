@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
 export const SITE_NAME = "Кирпичный завод Ковернино";
+export const SITE_URL = process.env.NEXT_PUBLIC_PROD_URL || "https://kzk.ooo";
 
 const OG_IMAGE = {
   width: 252,
@@ -57,6 +58,28 @@ export const SEO_ORDER = {
     "Оформите заказ кирпича с доставкой по Нижнему Новгороду и Нижегородской области. Цены от производителя.",
 };
 
+export const SEO_SHOP_CART = {
+  title: `Корзина | ${SITE_NAME}`,
+  description: "Корзина заказа кирпича — Кирпичный завод Ковернино.",
+};
+
+export const SEO_PRIVACY = {
+  title: `Политика конфиденциальности | ${SITE_NAME}`,
+  description:
+    "Политика конфиденциальности и обработки персональных данных сайта Кирпичного завода Ковернино.",
+};
+
+export const SEO_REQUISITES = {
+  title: `Реквизиты | ${SITE_NAME}`,
+  description:
+    "Юридические реквизиты ООО «Кирпичный завод Ковернино»: ИНН, ОГРН, адрес и контакты.",
+};
+
+export const NO_INDEX_ROBOTS: Metadata["robots"] = {
+  index: false,
+  follow: true,
+};
+
 export const getProductSeo = (name: string, description?: string) => {
   const firstLine = description?.split("\n")[0]?.trim();
   const productDescription = firstLine
@@ -64,7 +87,7 @@ export const getProductSeo = (name: string, description?: string) => {
     : `Купить ${name} с доставкой в Нижнем Новгороде и области. Цена от производителя — ${SITE_NAME}.`;
 
   return {
-    title: `${name} | Купить в Нижнем Новгороде | ${SITE_NAME}`,
+    title: `${name} | Купить в Нижнем Новгороде`,
     description: productDescription.slice(0, 160),
   };
 };
@@ -73,26 +96,37 @@ export const createPageMetadata = (
   seo: { title: string; description: string },
   canonical?: string,
   imageAlt?: string,
-): Metadata => ({
-  title: seo.title,
-  description: seo.description,
-  openGraph: {
+  robots?: Metadata["robots"],
+): Metadata => {
+  const ogImage = {
+    url: `${SITE_URL}/Logo-dark.svg`,
+    ...OG_IMAGE,
+    alt: imageAlt || SITE_NAME,
+  };
+
+  return {
     title: seo.title,
     description: seo.description,
-    images: [
-      {
-        url: `${process.env.NEXT_PUBLIC_PROD_URL}/Logo-dark.svg`,
-        ...OG_IMAGE,
-        alt: imageAlt || SITE_NAME,
-      },
-    ],
-    siteName: SITE_NAME,
-    locale: "ru_RU",
-    type: "website",
-  },
-  ...(canonical && {
-    alternates: {
-      canonical,
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      ...(canonical && { url: canonical }),
+      images: [ogImage],
+      siteName: SITE_NAME,
+      locale: "ru_RU",
+      type: "website",
     },
-  }),
-});
+    twitter: {
+      card: "summary_large_image",
+      title: seo.title,
+      description: seo.description,
+      images: [ogImage.url],
+    },
+    ...(canonical && {
+      alternates: {
+        canonical,
+      },
+    }),
+    ...(robots && { robots }),
+  };
+};

@@ -6,7 +6,7 @@ const PreviewBanner = () => {
   return (
     <div className={styles.wrapper}>
       <Container className={styles.content}>
-        <h1>Галерея</h1>
+        <h1>Галерея объектов</h1>
         <h5>
           Фото готовых объектов и нашей продукции
         </h5>

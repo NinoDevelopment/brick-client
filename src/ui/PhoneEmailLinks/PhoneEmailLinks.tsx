@@ -5,16 +5,16 @@ import { CONTACTS } from "@/constants/general";
 const PhoneEmailLinks = () => {
   return (
      <div className={styles.PhoneEmailLinks}>
-        <div className={styles.block} itemScope itemType="http://schema.org/ContactPoint">
+        <div className={styles.block}>
            <h3>Позвонить</h3>
-           <a href={`tel:${CONTACTS.phone.value}`} itemProp="telephone">
+           <a href={`tel:${CONTACTS.phone.value}`}>
               {CONTACTS.phone.title}
            </a>
         </div>
 
-        <div className={styles.block} itemScope itemType="http://schema.org/ContactPoint">
+        <div className={styles.block}>
            <h3>Написать</h3>
-           <a href={`mailto:${CONTACTS.email.value}`} itemProp="email">
+           <a href={`mailto:${CONTACTS.email.value}`}>
               {CONTACTS.email.title}
            </a>
         </div>

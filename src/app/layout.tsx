@@ -2,7 +2,7 @@ import Providers from '@/app/providers';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import LdJsonScripts from "@/app/ld-json-scripts";
-import { createPageMetadata, SEO_DEFAULT } from '@/constants/seo';
+import { createPageMetadata, SEO_DEFAULT, SITE_URL } from '@/constants/seo';
 
 import './globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,25 +11,18 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-export const metadata: Metadata = createPageMetadata(
-  SEO_DEFAULT,
-  process.env.NEXT_PUBLIC_PROD_URL,
-);
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  ...createPageMetadata(SEO_DEFAULT),
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
+};
 
 interface IRootLayout {
   children: React.ReactNode;
 }
-
-const icons = [
-  {
-    rel: 'icon',
-    url: `/favicon.svg`,
-  },
-  {
-    rel: 'apple-touch-icon',
-    url: `/favicon.svg`,
-  },
-];
 
 const RootLayout = ({ children }: IRootLayout) => {
   return (
@@ -43,13 +36,10 @@ const RootLayout = ({ children }: IRootLayout) => {
 
         <LdJsonScripts />
       </head>
-      {icons.map((icon) => (
-         <link key={icon.rel} rel={icon.rel} href={icon.url} sizes="any" />
-      ))}
       <body>
         <Providers>{children}</Providers>
 
-        <Script id='yabdex-metrika' type='text/javascript'>
+        <Script id='yandex-metrika' type='text/javascript'>
           {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
             m[i].l=1*new Date();
             for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}

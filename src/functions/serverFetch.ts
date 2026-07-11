@@ -1,4 +1,11 @@
-import { API_PRODUCT, API_PRODUCT_ID, API_PRODUCT_IMG } from "@/constants/api";
+import {
+  API_GALLERY,
+  API_PRODUCT,
+  API_PRODUCT_ID,
+  API_PRODUCT_IMG,
+  API_PRODUCTS_SAMPLE,
+} from "@/constants/api";
+import { IGalleryItem } from "@/types/gallery";
 import { IProductId, IProductImg } from "@/types/products";
 
 const getApiUrl = (path: string) =>
@@ -28,3 +35,8 @@ export const fetchProduct = (id: string) =>
 
 export const fetchProductImages = (id: string) =>
   serverFetch<IProductImg>(API_PRODUCT_IMG(id));
+
+export const fetchGallery = () => serverFetch<IGalleryItem[]>(API_GALLERY);
+
+export const fetchProductSample = (quantity: number) =>
+  serverFetch<IProductId[]>(API_PRODUCTS_SAMPLE(quantity));

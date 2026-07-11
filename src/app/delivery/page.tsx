@@ -1,44 +1,43 @@
 import DeliveryPage from "@/pagesList/DeliveryPage/DeliveryPage";
 import Script from "next/script";
-import { createPageMetadata, SEO_DELIVERY } from "@/constants/seo";
+import { createPageMetadata, SEO_DELIVERY, SITE_URL } from "@/constants/seo";
 
 export const metadata = createPageMetadata(
   SEO_DELIVERY,
-  `${process.env.NEXT_PUBLIC_PROD_URL}/delivery`,
+  `${SITE_URL}/delivery`,
 );
 
 const Page = () => {
-   return (
-      <>
-         <DeliveryPage />
+  return (
+    <>
+      <DeliveryPage />
 
-         {/* JSON-LD: BreadcrumbList */}
-         <Script
-            id="breadcrumbs-ld"
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-               __html: JSON.stringify({
-                  '@context': 'https://schema.org',
-                  '@type': 'BreadcrumbList',
-                  itemListElement: [
-                     {
-                        '@type': 'ListItem',
-                        position: 1,
-                        name: 'Главная',
-                        item: process.env.NEXT_PUBLIC_PROD_URL,
-                     },
-                     {
-                        '@type': 'ListItem',
-                        position: 2,
-                        name: 'Доставка и оплата',
-                        item: `${process.env.NEXT_PUBLIC_PROD_URL}/delivery`,
-                     },
-                  ],
-               }),
-            }}
-         />
-      </>
-   )
+      <Script
+        id="breadcrumbs-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Главная",
+                item: SITE_URL,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Оплата и доставка",
+                item: `${SITE_URL}/delivery`,
+              },
+            ],
+          }),
+        }}
+      />
+    </>
+  );
 };
 
 export default Page;

@@ -6,14 +6,14 @@ import Image from "next/image";
 
 const GalleryBanner = () => {
   return (
-     <div className={styles.wrapper} itemScope itemType="https://schema.org/CollectionPage">
+     <div className={styles.wrapper}>
         <div className={styles.content}>
-           <h2 itemProp="name">Галерея</h2>
-           <h5 itemProp="description">
+           <h2>Галерея</h2>
+           <h5>
               Посмотрите, как выглядит наш кирпич на готовых объектах.
               Реальные фасады и кладка — проще понять, что подойдёт вашему проекту.
            </h5>
-           <Link href={LINK_GALLERY} itemProp="mainEntity" itemType="https://schema.org/ImageGallery">
+           <Link href={LINK_GALLERY}>
               Смотреть фото
            </Link>
         </div>
@@ -23,7 +23,6 @@ const GalleryBanner = () => {
            height={706}
            src="/other/break-bg-1.png"
            alt={APP_TITLE}
-           itemProp="image"
         />
      </div>
   );

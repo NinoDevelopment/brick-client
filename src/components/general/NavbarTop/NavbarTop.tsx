@@ -14,9 +14,9 @@ import {
 import styles from "./NavbarTop.module.css";
 import ShopCartLink from "@/components/general/NavbarTop/components/ShopCartLink/ShopCartLink";
 import { usePathname } from "next/navigation";
-import { APP_TITLE } from "@/constants/general";
 import NavbarMobile from "@/components/general/NavbarTop/components/NavbarMobile/NavbarMobile";
 import Script from "next/script";
+import { SITE_NAME, SITE_URL } from "@/constants/seo";
 
 const NavbarTop = () => {
   const path = usePathname();
@@ -64,11 +64,11 @@ const NavbarTop = () => {
            "@type": "SiteNavigationElement",
            "name": "Основное меню",
            "description": "Навигация по сайту Кирпичного завода Ковернино",
-           "url": "https://kzk.ooo",
+           "url": SITE_URL,
            "significantLinks": LIST_LINKS.map(link => ({
              "@type": "SiteNavigationElement",
              "name": link.title,
-             "url": `https://kzk.ooo/${link.link}`
+             "url": `${SITE_URL}${link.link}`
            }))
          })}
        </Script>
@@ -80,11 +80,10 @@ const NavbarTop = () => {
           className={`${styles.NavbarTop} ${darkClass()} ${scrolled ? styles.scrolled : ""}`}
        >
          <Container className={styles.container}>
-           <Link href={LINK_HOME} className={styles.logo} itemProp="url">
+           <Link href={LINK_HOME} className={styles.logo}>
              <img
                 src={darkClass() ? "/Logo-dark.svg" : "/Logo.svg"}
-                alt={APP_TITLE}
-                itemProp="logo"
+                alt={SITE_NAME}
              />
            </Link>
 
@@ -95,7 +94,6 @@ const NavbarTop = () => {
                      key={elem.title}
                      href={elem.link}
                      className={path === elem.link ? styles.active : ""}
-                     itemProp="mainEntityOfPage"
                   >
                     {elem.title}
                   </Link>
@@ -108,12 +106,11 @@ const NavbarTop = () => {
                 onClick={() => setShowMobile(!showMobile)}
                 className={styles.openMenu}
                 src={darkClass() ? "/icons/menu-dark.svg" : "/icons/menu.svg"}
-                alt={APP_TITLE}
+                alt="Открыть меню"
              />
            </div>
          </Container>
 
-         {/*mobile menu*/}
          <NavbarMobile
             show={showMobile}
             handleClose={() => setShowMobile(false)}

@@ -2,6 +2,18 @@ import React from "react";
 import styles from "./page.module.css";
 import { Container } from "react-bootstrap";
 import { CONTACTS } from "@/constants/general";
+import {
+  createPageMetadata,
+  NO_INDEX_ROBOTS,
+  SEO_REQUISITES,
+} from "@/constants/seo";
+
+export const metadata = createPageMetadata(
+  SEO_REQUISITES,
+  undefined,
+  undefined,
+  NO_INDEX_ROBOTS,
+);
 
 const Page = () => {
   return (

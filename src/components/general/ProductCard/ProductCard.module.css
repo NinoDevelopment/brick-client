@@ -78,6 +78,13 @@ h4.name {
   padding: 0.3em 0;
   font-weight: 800;
 }
+.nameLink {
+  color: inherit;
+  text-decoration: none;
+}
+.nameLink:hover {
+  color: inherit;
+}
 
 /*hr*/
 .content hr {

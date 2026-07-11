@@ -1,7 +1,5 @@
 import Script from "next/script";
-import { SEO_DEFAULT, SITE_NAME } from "@/constants/seo";
-
-const SITE_URL = process.env.NEXT_PUBLIC_PROD_URL;
+import { SEO_DEFAULT, SITE_NAME, SITE_URL } from "@/constants/seo";
 
 const LdJsonScripts = () => {
   return (
@@ -38,10 +36,13 @@ const LdJsonScripts = () => {
             email: "kzkvrn@yandex.ru",
             address: {
               "@type": "PostalAddress",
+              streetAddress: "деревня Черные",
               addressLocality: "Ковернино",
               addressRegion: "Нижегородская область",
+              postalCode: "606570",
               addressCountry: "RU",
             },
+            openingHours: "Mo-Su 08:00-20:00",
             areaServed: [
               {
                 "@type": "AdministrativeArea",

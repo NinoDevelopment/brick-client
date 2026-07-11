@@ -10,7 +10,6 @@ import { ESort, REQUEST_METHODS } from "@/types/general";
 import CategorySort from "@/components/catalog-page/CategoryProducts/components/CategorySort/CategorySort";
 import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
 import { useGetCategories } from "@/hooks/useGetCategories";
-import Script from "next/script";
 
 interface ICategoryProductsList {
   initialProducts?: IProductId[];
@@ -114,35 +113,6 @@ const CategoryProductsList = ({ initialProducts }: ICategoryProductsList) => {
           Список товаров для данной категории пуст
         </p>
       )}
-
-      <Script
-        id="catalog-itemlist-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            itemListElement: sortedData.map((elem: IProductId, index: number) => ({
-              "@type": "ListItem",
-              position: index + 1,
-              item: {
-                "@type": "Product",
-                name: elem.name,
-                description: elem.description,
-                url: `${process.env.NEXT_PUBLIC_PROD_URL}/product/${elem._id}`,
-                offers: {
-                  "@type": "Offer",
-                  price: elem.price,
-                  priceCurrency: "RUB",
-                  availability: elem.available
-                    ? "https://schema.org/InStock"
-                    : "https://schema.org/OutOfStock",
-                },
-              },
-            })),
-          }),
-        }}
-      />
     </div>
   );
 };

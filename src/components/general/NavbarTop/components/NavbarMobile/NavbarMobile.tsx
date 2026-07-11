@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./NavbarMobile.module.css";
 import { Offcanvas } from "react-bootstrap";
-import { APP_TITLE } from "@/constants/general";
-import { LIST_LINKS } from "@/constants/links";
+import { SITE_NAME } from "@/constants/seo";
+import { LINK_HOME, LIST_LINKS } from "@/constants/links";
 import { useRouter } from "next/navigation";
 
 interface INavbarMobile {
@@ -18,7 +18,7 @@ const NavbarMobile: React.FC<INavbarMobile> = ({
 }) => {
   const router = useRouter();
 
-  const handleLink = (event: any, link: string) => {
+  const handleLink = (event: React.MouseEvent<HTMLAnchorElement>, link: string) => {
     event.preventDefault();
     router.push(link);
     handleClose();
@@ -32,21 +32,27 @@ const NavbarMobile: React.FC<INavbarMobile> = ({
       placement={"end"}
     >
       <Offcanvas.Header>
-        <img src={"/Logo.svg"} className={styles.logo} alt={APP_TITLE} />
+        <img src={"/Logo.svg"} className={styles.logo} alt={SITE_NAME} />
 
         <img
           onClick={handleClose}
           className={styles.openMenu}
           src={"/icons/x.svg"}
-          alt={APP_TITLE}
+          alt="Закрыть меню"
         />
       </Offcanvas.Header>
 
       <Offcanvas.Body className={styles.body}>
         <nav>
-          <a onClick={(e) => handleLink(e, "/")} itemProp="mainEntityOfPage">Главная</a>
+          <a href={LINK_HOME} onClick={(e) => handleLink(e, LINK_HOME)}>
+            Главная
+          </a>
           {LIST_LINKS.map((elem) => (
-            <a itemProp="mainEntityOfPage" key={elem.title} onClick={(e) => handleLink(e, elem.link)}>
+            <a
+              href={elem.link}
+              key={elem.title}
+              onClick={(e) => handleLink(e, elem.link)}
+            >
               {elem.title}
             </a>
           ))}

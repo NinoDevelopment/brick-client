@@ -36,11 +36,11 @@ const ContactsForm = () => {
   };
 
   return (
-     <div className={styles.wrapper} itemScope itemType="http://schema.org/ContactPage">
+     <div className={styles.wrapper}>
        <Container>
          <header>
-           <h2 itemProp="name">Оставить заявку</h2>
-           <h5 itemProp="description">
+           <h2>Оставить заявку</h2>
+           <h5>
              Напишите вопрос или запрос — перезвоним и поможем с подбором
            </h5>
          </header>
@@ -54,7 +54,7 @@ const ContactsForm = () => {
            </div>
          }
 
-         <form onSubmit={handleSend} hidden={sended} itemScope itemType="http://schema.org/ContactPoint">
+         <form onSubmit={handleSend} hidden={sended}>
            <div className={styles.inputContainer}>
              <label>Имя*</label>
              <input
@@ -64,7 +64,6 @@ const ContactsForm = () => {
                    setFormData({ ...formData, name: e.target.value })
                 }
                 placeholder={""}
-                itemProp="name"
              />
            </div>
 
@@ -78,7 +77,6 @@ const ContactsForm = () => {
                    setFormData({ ...formData, email: e.target.value })
                 }
                 placeholder={""}
-                itemProp="email"
              />
            </div>
 
@@ -90,7 +88,6 @@ const ContactsForm = () => {
                    setFormData({ ...formData, company: e.target.value })
                 }
                 placeholder={""}
-                itemProp="affiliation"
              />
            </div>
 
@@ -104,7 +101,6 @@ const ContactsForm = () => {
                    setFormData({ ...formData, message: e.target.value })
                 }
                 placeholder={""}
-                itemProp="description"
              />
            </div>
 

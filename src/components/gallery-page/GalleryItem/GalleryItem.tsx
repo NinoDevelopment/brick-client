@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./GalleryItem.module.css";
 import { IGalleryItem } from "@/types/gallery";
-import { APP_TITLE } from "@/constants/general";
 import { useFetch } from "@/hooks/useFetch";
 import { IProductImg } from "@/types/products";
 import { API_GALLERY_IMG } from "@/constants/api";
@@ -27,7 +26,7 @@ const GalleryItem = ({ data }: IProps) => {
 
       <div className={styles.images}>
         {images?.images?.map((elem, idx) => (
-          <img key={idx} src={elem} alt={APP_TITLE} />
+          <img key={idx} src={elem} alt={data.name} />
         ))}
       </div>
     </div>

@@ -14,22 +14,26 @@
 /*button*/
 .PaySelect button {
   height: 50px;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.5em;
   padding: 0.5em 1em;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   color: var(--bs-dark);
   background: var(--bs-white);
   border-radius: 5px;
-  border: 1px solid transparent;
-  transition: 0.25s;
+  border: 1px solid var(--bs-gray-300);
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
+
+.PaySelect button:hover:not(:disabled) {
+  border-color: var(--bs-gray-500);
+}
+
 .PaySelect button:disabled {
   color: var(--app-primary);
-  border: 1px solid var(--app-primary);
+  border-color: var(--app-primary);
+  box-shadow: 0 0 0 3px rgba(251, 138, 46, 0.15);
 }
 .PaySelect button:last-child {
   margin-bottom: 0;

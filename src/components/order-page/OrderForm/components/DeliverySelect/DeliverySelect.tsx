@@ -1,6 +1,7 @@
 import React from "react";
 import { EDelivery, IOrderForm } from "@/types/order";
 import { SHOPS_ADDRESSES } from "@/constants/general";
+import formStyles from "@/ui/FormFields/FormFields.module.css";
 import styles from "./DeliverySelect.module.css";
 
 interface IDeliverySelect {
@@ -31,21 +32,30 @@ const DeliverySelect: React.FC<IDeliverySelect> = ({
   };
 
   return (
-    <div className={styles.DeliverySelect}>
-      <button
-        disabled={formData.deliveryType === EDelivery.SELF}
-        onClick={handleSelfPickup}
-      >
-        Самовывоз
-      </button>
+    <section className={formStyles.section}>
+      <header className={formStyles.header}>
+        <h2>Способ получения</h2>
+        <p>Самовывоз со склада или доставка курьером</p>
+      </header>
 
-      <button
-        disabled={formData.deliveryType === EDelivery.COURIER}
-        onClick={handleCourierDelivery}
-      >
-        Доставка
-      </button>
-    </div>
+      <div className={styles.DeliverySelect}>
+        <button
+          type="button"
+          disabled={formData.deliveryType === EDelivery.SELF}
+          onClick={handleSelfPickup}
+        >
+          Самовывоз
+        </button>
+
+        <button
+          type="button"
+          disabled={formData.deliveryType === EDelivery.COURIER}
+          onClick={handleCourierDelivery}
+        >
+          Доставка
+        </button>
+      </div>
+    </section>
   );
 };
 

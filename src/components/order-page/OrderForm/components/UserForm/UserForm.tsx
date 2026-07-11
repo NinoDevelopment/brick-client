@@ -1,7 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { IOrderForm, IOrderWithSchetForm } from "@/types/order";
-import styles from "./UserForm.module.css";
-import { FormGroup } from "react-bootstrap";
+import formStyles from "@/ui/FormFields/FormFields.module.css";
 
 interface IUserForm {
   formData: IOrderForm | IOrderWithSchetForm;
@@ -10,8 +9,7 @@ interface IUserForm {
 
 const UserForm: React.FC<IUserForm> = ({ formData, setFormData }) => {
   const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputElement = e.target;
-    let inputValue = inputElement.value;
+    let inputValue = e.target.value;
 
     if (inputValue.length > 16) {
       inputValue = inputValue.slice(0, 16);
@@ -38,53 +36,69 @@ const UserForm: React.FC<IUserForm> = ({ formData, setFormData }) => {
   };
 
   return (
-    <div className={styles.UserForm}>
-      <FormGroup className={styles.w100}>
-        <header>
-          <h2>Личная информация</h2>
-        </header>
-      </FormGroup>
+    <section className={formStyles.section}>
+      <header className={formStyles.header}>
+        <h2>Личная информация</h2>
+        <p>Укажите контакты для связи по заказу</p>
+      </header>
 
-      <FormGroup className={styles.block + " " + styles.w50}>
-        <input
-          required
-          placeholder={"Имя и фамилия*"}
-          value={formData.fullName}
-          onChange={(e) =>
-            setFormData({ ...formData, fullName: e.target.value })
-          }
-        />
-      </FormGroup>
+      <div className={formStyles.form}>
+        <div className={formStyles.row}>
+          <div className={formStyles.field}>
+            <label htmlFor="order-name">Имя и фамилия*</label>
+            <input
+              id="order-name"
+              required
+              value={formData.fullName}
+              onChange={(e) =>
+                setFormData({ ...formData, fullName: e.target.value })
+              }
+              placeholder="Иван Иванов"
+              autoComplete="name"
+            />
+          </div>
 
-      <FormGroup className={styles.block + " " + styles.w50}>
-        <input
-          required
-          placeholder={"Номер телефона*"}
-          value={formData.phoneNumber}
-          onChange={handlePhoneNumberChange}
-        />
-      </FormGroup>
+          <div className={formStyles.field}>
+            <label htmlFor="order-phone">Телефон*</label>
+            <input
+              id="order-phone"
+              required
+              value={formData.phoneNumber}
+              onChange={handlePhoneNumberChange}
+              placeholder="+7(XXX)XXX-XX-XX"
+              inputMode="tel"
+              autoComplete="tel"
+            />
+          </div>
+        </div>
 
-      <FormGroup className={styles.block + " " + styles.w100}>
-        <input
-          required
-          placeholder={`Email*`}
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-        />
-      </FormGroup>
+        <div className={formStyles.field}>
+          <label htmlFor="order-email">E-mail*</label>
+          <input
+            id="order-email"
+            required
+            type="email"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            placeholder="name@company.ru"
+            autoComplete="email"
+          />
+        </div>
 
-      <FormGroup className={styles.block + " " + styles.w100}>
-        <textarea
-          rows={4}
-          placeholder={"Комментарий к заказу"}
-          value={formData.comment}
-          onChange={(e) =>
-            setFormData({ ...formData, comment: e.target.value })
-          }
-        />
-      </FormGroup>
-    </div>
+        <div className={formStyles.field}>
+          <label htmlFor="order-comment">Комментарий к заказу</label>
+          <textarea
+            id="order-comment"
+            rows={4}
+            value={formData.comment}
+            onChange={(e) =>
+              setFormData({ ...formData, comment: e.target.value })
+            }
+            placeholder="Необязательно"
+          />
+        </div>
+      </div>
+    </section>
   );
 };
 

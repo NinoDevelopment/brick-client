@@ -1,0 +1,132 @@
+.section {
+  margin-bottom: 2.5em;
+}
+
+.header {
+  margin-bottom: 1.25em;
+}
+
+.header h2 {
+  margin: 0 0 0.35em;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--app-dark);
+}
+
+.header p {
+  margin: 0;
+  max-width: 36em;
+  font-size: 0.95em;
+  font-weight: 400;
+  color: var(--bs-gray-700);
+  line-height: 1.45;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25em;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+.field label {
+  margin: 0;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: var(--bs-gray-700);
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 0.7em 1em;
+  color: var(--app-dark);
+  background: var(--bs-white);
+  border: 1px solid var(--bs-gray-300);
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--bs-gray-500);
+}
+
+.field input:hover,
+.field textarea:hover,
+.field select:hover {
+  border-color: var(--bs-gray-500);
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--app-primary);
+  box-shadow: 0 0 0 3px rgba(251, 138, 46, 0.15);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 6em;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.inputRow input {
+  flex: 1;
+}
+
+.submit {
+  display: block;
+  width: 100%;
+  min-width: 12em;
+  padding: 0.75em 2em;
+  font-size: 1.05em;
+  font-weight: 600;
+  color: var(--bs-white);
+  background: var(--app-primary);
+  border: none;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.submit:hover:not(:disabled) {
+  background: var(--app-primary-hover);
+}
+
+.submit:disabled {
+  background: var(--bs-gray-500);
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .header h2 {
+    font-size: 22px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 1em;
+  }
+
+  .form {
+    gap: 1em;
+  }
+}

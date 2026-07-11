@@ -11,6 +11,7 @@ import {
   IOrderWithSchetForm,
 } from "@/types/order";
 import { Form, Spinner } from "react-bootstrap";
+import formStyles from "@/ui/FormFields/FormFields.module.css";
 import DeliverySelect from "@/components/order-page/OrderForm/components/DeliverySelect/DeliverySelect";
 import AddressForm from "@/components/order-page/OrderForm/components/AddressForm/AddressForm";
 import BankForm from "@/components/order-page/OrderForm/components/BankForm/BankForm";
@@ -115,27 +116,35 @@ const OrderForm = () => {
         <h3>Оплата</h3>
         <PaySelect formData={formData} setFormData={setFormData} />
 
-        <div className={styles.promocodeContainer}>
-          <input
-            placeholder={"Промокод"}
-            value={promocode}
-            onChange={(e) => setPromocode(e.target.value)}
-          />
-          <button
-            onClick={() => {
-              setFormData({ ...formData, promocode });
-              setPromocode("");
-            }}
-            type={"button"}
-          >
-            Применить
-          </button>
+        <div className={formStyles.field}>
+          <label htmlFor="order-promocode">Промокод</label>
+          <div className={styles.promocodeRow}>
+            <input
+              id="order-promocode"
+              placeholder="Введите промокод"
+              value={promocode}
+              onChange={(e) => setPromocode(e.target.value)}
+            />
+            <button
+              type="button"
+              onClick={() => {
+                setFormData({ ...formData, promocode });
+                setPromocode("");
+              }}
+            >
+              Применить
+            </button>
+          </div>
         </div>
 
         <OrderAmount shopCartData={shopCartData} formData={formData} />
 
-        <button disabled={load} type={"submit"} className={styles.submitOrder}>
-          {load ? <Spinner size={"sm"} /> : "Оформить заказ"}
+        <button
+          disabled={load}
+          type="submit"
+          className={formStyles.submit}
+        >
+          {load ? <Spinner size="sm" /> : "Оформить заказ"}
         </button>
         {formData.deliveryType === EDelivery.COURIER && (
           <p className={styles.noteTitle}>

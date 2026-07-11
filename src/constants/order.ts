@@ -59,11 +59,7 @@ export const ORDER_FORM_SCHET_INITIAL = (
     schetInfo: {
       companyName: "",
       companyAddress: "",
-      bankName: "",
-      correspondentAccount: "",
-      bic: "",
       kpp: "",
-      receiverAccount: "",
       inn: "",
     },
   };

@@ -52,10 +52,6 @@ export interface IOrderWithSchetForm extends IOrderForm {
 export interface ISchetInfo {
   companyName: string;
   companyAddress: string;
-  bankName: string;
-  bic: string;
-  correspondentAccount: string;
-  receiverAccount: string;
   inn: string;
   kpp: string;
 }

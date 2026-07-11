@@ -1,12 +1,12 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import styles from "./CategoryProductsList.module.css";
 import { useFetch } from "@/hooks/useFetch";
 import { API_CATEGORY_ITEMS, API_PRODUCT } from "@/constants/api";
 import { IProductId } from "@/types/products";
 import ProductCard from "@/components/general/ProductCard/ProductCard";
-import { ESort, REQUEST_METHODS } from "@/types/general";
+import { REQUEST_METHODS } from "@/types/general";
 import CategorySort from "@/components/catalog-page/CategoryProducts/components/CategorySort/CategorySort";
 import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
 import { useGetCategories } from "@/hooks/useGetCategories";
@@ -16,7 +16,8 @@ interface ICategoryProductsList {
 }
 
 const CategoryProductsList = ({ initialProducts }: ICategoryProductsList) => {
-  const [sort, setSort] = useState<ESort>(ESort.DEFAULT);
+  const [discountOnly, setDiscountOnly] = useState(false);
+  const [availableOnly, setAvailableOnly] = useState(false);
   const [color, setColor] = useState<null | string>(null);
   const [priceSort, setPriceSort] = useState<null | 1 | -1>(null);
 
@@ -34,51 +35,48 @@ const CategoryProductsList = ({ initialProducts }: ICategoryProductsList) => {
     shouldFetch,
   );
 
-  const data = fetchedData ?? initialProducts ?? null;
+  useEffect(() => {
+    setColor(null);
+  }, [selected]);
 
-  const getNotAvailableItems = (dataInner: IProductId[]) =>
-    dataInner.filter((elem: IProductId) => !elem?.available);
+  const data = useMemo(() => {
+    const raw = selected
+      ? fetchedData
+      : initialProducts?.length
+        ? initialProducts
+        : fetchedData;
 
-  const getAvailableItems = (dataInner: IProductId[]) =>
-    dataInner.filter((elem: IProductId) => elem?.available);
+    if (!raw) return null;
+    return raw.filter((product) => product.show);
+  }, [selected, fetchedData, initialProducts]);
 
-  const getItemsWithDiscount = (dataInner: IProductId[]) =>
-    dataInner.filter((elem: IProductId) => +elem?.discount);
-
-  const getSortPriceItems = (dataInner: IProductId[]) => {
-    if (!priceSort) return dataInner;
-    if (priceSort === -1) {
-      return [...dataInner].sort(
-        (a: IProductId, b: IProductId) => b.price - a.price,
-      );
-    }
-    if (priceSort === 1) {
-      return [...dataInner].sort(
-        (a: IProductId, b: IProductId) => a.price - b.price,
-      );
-    }
-    return dataInner;
-  };
-
-  const sortedData = useMemo(() => {
+  const filteredData = useMemo(() => {
     if (!data) return null;
 
-    const colorData = color
-      ? data.filter((elem) => elem?.color === color)
-      : data;
-    const priceData = priceSort
-      ? getSortPriceItems(colorData)
-      : colorData;
+    let result = [...data];
 
-    if (sort === ESort.DEFAULT) return priceData;
-    if (sort === ESort.NOT_AVAILABLE) return getNotAvailableItems(priceData);
-    if (sort === ESort.AVAILABLE) return getAvailableItems(priceData);
-    if (sort === ESort.DISCOUNT) return getItemsWithDiscount(priceData);
+    if (color) {
+      result = result.filter((elem) => elem.color === color);
+    }
+    if (discountOnly) {
+      result = result.filter((elem) => +elem.discount > 0);
+    }
+    if (availableOnly) {
+      result = result.filter((elem) => elem.available);
+    }
+    if (priceSort === -1) {
+      result.sort((a, b) => b.price - a.price);
+    }
+    if (priceSort === 1) {
+      result.sort((a, b) => a.price - b.price);
+    }
 
-    return priceData;
-  }, [data, sort, color, priceSort]);
+    return result;
+  }, [data, color, discountOnly, availableOnly, priceSort]);
 
-  if ((load && !data) || !data || !sortedData) {
+  const isLoading = Boolean(selected) ? load || !fetchedData : !data;
+
+  if (isLoading || !filteredData) {
     return (
       <div className={styles.loadContainer}>
         <SpinnerPrimary />
@@ -86,29 +84,29 @@ const CategoryProductsList = ({ initialProducts }: ICategoryProductsList) => {
     );
   }
 
-  const products = data;
-
   return (
     <div className={styles.CategoryProductsList}>
       <CategorySort
-        sort={sort}
-        setSort={setSort}
+        discountOnly={discountOnly}
+        setDiscountOnly={setDiscountOnly}
+        availableOnly={availableOnly}
+        setAvailableOnly={setAvailableOnly}
         color={color}
         setColor={setColor}
-        data={products}
+        data={data ?? []}
         priceSort={priceSort}
         setPriceSort={setPriceSort}
       />
 
-      {!!sortedData.length && (
+      {!!filteredData.length && (
         <div className={styles.itemsContainer}>
-          {sortedData.map((elem: IProductId) => (
+          {filteredData.map((elem: IProductId) => (
             <ProductCard key={elem._id} data={elem} />
           ))}
         </div>
       )}
 
-      {!sortedData.length && (
+      {!filteredData.length && (
         <p className={styles.noItems}>
           Список товаров для данной категории пуст
         </p>

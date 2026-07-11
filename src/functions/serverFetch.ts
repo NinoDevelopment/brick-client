@@ -11,11 +11,17 @@ import { IProductId, IProductImg } from "@/types/products";
 const getApiUrl = (path: string) =>
   `${process.env.NEXT_PUBLIC_API_LINK}${path}`;
 
-export async function serverFetch<T>(path: string): Promise<T | null> {
+export async function serverFetch<T>(
+  path: string,
+  options?: { cache?: RequestCache; revalidate?: number | false },
+): Promise<T | null> {
   try {
+    const cache = options?.cache;
+    const revalidate = options?.revalidate ?? 3600;
+
     const response = await fetch(getApiUrl(path), {
       headers: { "Content-Type": "application/json" },
-      next: { revalidate: 3600 },
+      ...(cache ? { cache } : { next: { revalidate } }),
     });
 
     if (!response.ok) {
@@ -34,9 +40,10 @@ export const fetchProduct = (id: string) =>
   serverFetch<IProductId>(API_PRODUCT_ID(id));
 
 export const fetchProductImages = (id: string) =>
-  serverFetch<IProductImg>(API_PRODUCT_IMG(id));
+  serverFetch<IProductImg>(API_PRODUCT_IMG(id), { cache: "no-store" });
 
-export const fetchGallery = () => serverFetch<IGalleryItem[]>(API_GALLERY);
+export const fetchGallery = () =>
+  serverFetch<IGalleryItem[]>(API_GALLERY, { cache: "no-store" });
 
 export const fetchProductSample = (quantity: number) =>
   serverFetch<IProductId[]>(API_PRODUCTS_SAMPLE(quantity));

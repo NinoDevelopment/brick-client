@@ -1,6 +1,7 @@
 import Providers from '@/app/providers';
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { Nunito_Sans, Playfair_Display } from 'next/font/google';
 import LdJsonScripts from "@/app/ld-json-scripts";
 import { createPageMetadata, SEO_DEFAULT, SITE_URL } from '@/constants/seo';
 
@@ -10,6 +11,22 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+
+const nunitoSans = Nunito_Sans({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-nunito',
+  display: 'swap',
+  preload: true,
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['400', '700', '800'],
+  variable: '--font-playfair',
+  display: 'swap',
+  preload: true,
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -26,7 +43,10 @@ interface IRootLayout {
 
 const RootLayout = ({ children }: IRootLayout) => {
   return (
-    <html lang='ru'>
+    <html
+      lang='ru'
+      className={`${nunitoSans.variable} ${playfairDisplay.variable}`}
+    >
       <head>
         <meta
           name='google-site-verification'
@@ -36,7 +56,7 @@ const RootLayout = ({ children }: IRootLayout) => {
 
         <LdJsonScripts />
       </head>
-      <body>
+      <body className={nunitoSans.className}>
         <Providers>{children}</Providers>
 
         <Script id='yandex-metrika' type='text/javascript'>

@@ -1,25 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import { Dropdown } from "react-bootstrap";
 import styles from "@/components/catalog-page/CategoryProducts/components/CategorySelect/CategorySelect.module.css";
-import { useGetProducts } from "@/hooks/useGetProducts";
+import { IProductId } from "@/types/products";
 
 interface IProps {
   color: string | null;
   setColor: (value: string | null) => void;
+  products: IProductId[];
 }
 
-const CategoryColorSelect = ({ color, setColor }: IProps) => {
-  const { data } = useGetProducts();
-  const [colorsData, setColorsData] = useState<null | string[]>(null);
+const CategoryColorSelect = ({ color, setColor, products }: IProps) => {
+  const colorsData = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          products
+            .map((elem) => elem.color)
+            .filter((value): value is string => Boolean(value)),
+        ),
+      ),
+    [products],
+  );
 
-  useEffect(() => {
-    if (!data?.products?.length) return;
-    setColorsData(
-      Array.from(new Set(data?.products?.map((elem) => elem?.color))),
-    );
-  }, [data?.products?.length]);
-
-  if (!colorsData) return;
+  if (!colorsData.length) return null;
 
   return (
     <Dropdown className={styles.CategorySelect}>

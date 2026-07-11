@@ -9,34 +9,53 @@
 
 .btnsContainer {
   display: flex;
-  gap: 1em;
+  gap: 0.5em;
   padding: 1em 0;
 }
+
 .btnsContainer button {
-  padding: 0.75em 3em;
-  border: none;
-  border-radius: 5px;
+  flex: 1;
+  max-width: 16em;
+  padding: 0.75em 1em;
+  font-size: 0.95em;
   font-weight: 500;
-  background: var(--bs-light);
-  transition: 0.15s;
-}
-.btnsContainer button:disabled {
-  background: var(--app-primary);
-  color: var(--bs-white);
+  border: 1px solid var(--bs-gray-300);
+  border-radius: 5px;
+  background: var(--bs-white);
+  color: var(--bs-gray-700);
+  transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
 }
 
-/*media*/
+.btnsContainer button:hover:not(:disabled) {
+  border-color: var(--bs-gray-500);
+}
+
+.btnsContainer button:disabled,
+.btnsContainer button:disabled:hover {
+  border-color: var(--app-primary);
+  color: var(--app-primary);
+  background: var(--bs-white);
+  box-shadow: 0 0 0 3px rgba(251, 138, 46, 0.15);
+}
+
 @media (max-width: 768px) {
   .title {
     font-size: 36px;
   }
+
+  .btnsContainer button {
+    max-width: none;
+  }
 }
+
 @media (max-width: 479px) {
   .title {
     font-size: 24px;
   }
+
   .btnsContainer {
     gap: 0.5em;
     flex-direction: column;
   }
 }
+

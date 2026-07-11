@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./CategorySort.module.css";
 import { Dropdown, Form } from "react-bootstrap";
-import { ESort } from "@/types/general";
 import { IProductId } from "@/types/products";
 import CategorySelect from "@/components/catalog-page/CategoryProducts/components/CategorySelect/CategorySelect";
 import CategoryColorSelect from "@/components/catalog-page/CategoryProducts/components/CategoryColorSelect/CategoryColorSelect";
@@ -9,8 +8,10 @@ import stylesDropdown from "../CategorySelect/CategorySelect.module.css";
 
 interface ICategorySort {
   data: IProductId[];
-  sort: ESort;
-  setSort: (value: ESort) => void;
+  discountOnly: boolean;
+  setDiscountOnly: (value: boolean) => void;
+  availableOnly: boolean;
+  setAvailableOnly: (value: boolean) => void;
   color: string | null;
   setColor: (value: string | null) => void;
   priceSort: null | 1 | -1;
@@ -19,8 +20,10 @@ interface ICategorySort {
 
 const CategorySort: React.FC<ICategorySort> = ({
   data,
-  sort,
-  setSort,
+  discountOnly,
+  setDiscountOnly,
+  availableOnly,
+  setAvailableOnly,
   color,
   setColor,
   setPriceSort,
@@ -30,23 +33,23 @@ const CategorySort: React.FC<ICategorySort> = ({
     <div hidden={!data} className={styles.CategorySort}>
       <div className={styles.left}>
         <CategorySelect />
-        <CategoryColorSelect color={color} setColor={setColor} />
+        <CategoryColorSelect
+          color={color}
+          setColor={setColor}
+          products={data}
+        />
       </div>
       <div className={styles.right}>
-        <Form.Check // discount switch
+        <Form.Check
           className={styles.check}
-          checked={sort === ESort.DISCOUNT}
-          onChange={() =>
-            setSort(sort === ESort.DISCOUNT ? ESort.DEFAULT : ESort.DISCOUNT)
-          }
+          checked={discountOnly}
+          onChange={() => setDiscountOnly(!discountOnly)}
           label={"Со скидкой"}
         />
-        <Form.Check // available switch
+        <Form.Check
           className={styles.check}
-          checked={sort === ESort.AVAILABLE}
-          onChange={() =>
-            setSort(sort === ESort.AVAILABLE ? ESort.DEFAULT : ESort.AVAILABLE)
-          }
+          checked={availableOnly}
+          onChange={() => setAvailableOnly(!availableOnly)}
           label={"В наличии"}
         />
         <Dropdown className={stylesDropdown.CategorySelect}>

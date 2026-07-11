@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { REQUEST_METHODS } from "@/types/general";
 import { getAdminKey } from "@/functions/getKey";
@@ -13,6 +13,7 @@ export const useFetch = <T>(
   const [data, setData] = useState<T | null>(null);
   const [load, setLoad] = useState<boolean>(false);
   const [error, setError] = useState<null | string>(null);
+  const prevUrlRef = useRef<string | null>(null);
 
   const options = {
     method: method || REQUEST_METHODS.GET,
@@ -26,16 +27,24 @@ export const useFetch = <T>(
 
   const handleFetch = () => {
     setLoad(true);
+    setError(null);
     axios
       .request(options)
       .then((res) => setData(res.data))
-      .catch((err) => setError(err.message))
+      .catch((err) => {
+        setError(err.message);
+      })
       .finally(() => setLoad(false));
   };
 
   useEffect(() => {
     if (!enabled) {
       return;
+    }
+
+    if (prevUrlRef.current !== options.url) {
+      setData(null);
+      prevUrlRef.current = options.url;
     }
 
     if (interval) {

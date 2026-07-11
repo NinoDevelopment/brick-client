@@ -1,56 +1,48 @@
-import React, { useState } from "react";
-import { FormGroup } from "react-bootstrap";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import { FormGroup, Spinner } from "react-bootstrap";
 import { IOrderWithSchetForm } from "@/types/order";
 import styles from "./BankForm.module.css";
+import { handleRequest } from "@/functions/handleRequest";
+import { API_ORDER_LOOKUP_INN } from "@/constants/api";
+import { REQUEST_METHODS } from "@/types/general";
+import { TOAST_ERROR } from "@/constants/toasts";
 
 interface IBankForm {
   formData: IOrderWithSchetForm;
-  setFormData: (data: IOrderWithSchetForm) => void;
+  setFormData: Dispatch<SetStateAction<IOrderWithSchetForm>>;
 }
 
 const BankForm: React.FC<IBankForm> = ({ formData, setFormData }) => {
   const [inn, setINN] = useState("");
+  const [innLoading, setInnLoading] = useState(false);
 
-  const handleINNChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value;
-    setINN(query);
-
-    if (query.length === 10) {
-      fetchDadata(query);
-    }
-  };
-
-  const fetchDadata = (query: string) => {
-    const url =
-      "https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party";
-    const token = "2698f22a5b709a572fb82b24e584c938c65a6a1b";
-    const options: RequestInit = {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: "Token " + token,
-      },
-      body: JSON.stringify({ query: query }),
-    };
-
-    fetch(url, options)
-      .then((response) => response.json())
-      .then((data) => {
-        const companyData = data.suggestions[0].data;
-        setFormData({
-          ...formData,
+  const fetchCompanyByInn = (query: string) => {
+    setInnLoading(true);
+    handleRequest(REQUEST_METHODS.POST, API_ORDER_LOOKUP_INN, { inn: query })
+      .then((res) => {
+        const { kpp, companyName, companyAddress } = res.data;
+        setFormData((prev) => ({
+          ...prev,
           schetInfo: {
-            ...formData.schetInfo,
-            kpp: companyData.kpp,
-            companyName: companyData.name.short_with_opf,
-            companyAddress: companyData.address.unrestricted_value,
+            ...prev.schetInfo,
+            kpp,
+            companyName,
+            companyAddress,
             inn: query,
           },
-        });
+        }));
       })
-      .catch((error) => console.log("error", error));
+      .catch(() => TOAST_ERROR("Не удалось найти компанию по ИНН"))
+      .finally(() => setInnLoading(false));
+  };
+
+  const handleINNChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value.replace(/\D/g, "");
+    setINN(query);
+
+    if (query.length === 10 || query.length === 12) {
+      fetchCompanyByInn(query);
+    }
   };
 
   return (
@@ -62,10 +54,12 @@ const BankForm: React.FC<IBankForm> = ({ formData, setFormData }) => {
       <FormGroup className={styles.block + " " + styles.w100}>
         <input
           required
+          inputMode="numeric"
           placeholder={"ИНН*"}
           value={inn}
           onChange={handleINNChange}
         />
+        {innLoading && <Spinner size="sm" className="ms-2" />}
       </FormGroup>
 
       <FormGroup className={styles.block + " " + styles.w100}>

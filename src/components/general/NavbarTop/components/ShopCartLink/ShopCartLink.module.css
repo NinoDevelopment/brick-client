@@ -20,6 +20,9 @@
 /*title (Корзина иконка)*/
 .title {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .title img {
   width: 22px;

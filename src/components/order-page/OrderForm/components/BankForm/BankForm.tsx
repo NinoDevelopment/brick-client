@@ -123,7 +123,7 @@ const BankForm: React.FC<IBankForm> = ({ formData, setFormData }) => {
                 };
               })
             }
-            placeholder="ООО «Пример»"
+            placeholder="ООО «Компания»"
           />
         </div>
 

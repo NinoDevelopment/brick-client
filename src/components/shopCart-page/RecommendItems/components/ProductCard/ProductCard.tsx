@@ -39,9 +39,9 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
 
       <div className={styles.content}>
         <div className={styles.topContainer}>
-          <Link href={LINK_PRODUCT(data._id)}>
-            <h4>{data.name}</h4>
-          </Link>
+          <h4>
+            <Link href={LINK_PRODUCT(data._id)}>{data.name}</Link>
+          </h4>
           <hr />
           <p>{data.description || "Без описания"}</p>
         </div>

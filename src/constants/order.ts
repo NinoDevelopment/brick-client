@@ -5,6 +5,9 @@ import {
   IOrderForm,
   IOrderWithSchetForm,
 } from "@/types/order";
+import { SHOPS_ADDRESSES } from "@/constants/general";
+
+const DEFAULT_SHOP = SHOPS_ADDRESSES[0];
 
 export const ORDER_FORM_INITIAL = (
   positions: IShopCartItem[],
@@ -13,7 +16,8 @@ export const ORDER_FORM_INITIAL = (
   return {
     phoneNumber: "",
     fullName: "",
-    shopAddress: "",
+    shopAddress: DEFAULT_SHOP?.address ?? "",
+    shopCity: DEFAULT_SHOP?.city ?? "",
     email: "",
     address: {
       address: "",
@@ -27,7 +31,7 @@ export const ORDER_FORM_INITIAL = (
     },
     positions: positions,
     comment: "",
-    deliveryType: EDelivery.COURIER,
+    deliveryType: EDelivery.SELF,
     paymentType: paymentType,
     promocode: "",
   };
@@ -39,7 +43,8 @@ export const ORDER_FORM_SCHET_INITIAL = (
   return {
     phoneNumber: "",
     fullName: "",
-    shopAddress: "",
+    shopAddress: DEFAULT_SHOP?.address ?? "",
+    shopCity: DEFAULT_SHOP?.city ?? "",
     email: "",
     address: {
       address: "",

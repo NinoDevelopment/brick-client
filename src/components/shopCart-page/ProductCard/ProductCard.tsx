@@ -70,9 +70,9 @@ const ProductCard: React.FC<IProductCard> = ({ data, shopCartData }) => {
       <div className={styles.content}>
         <div className={styles.innerTop}>
           <AvailableTooltip available={productData.available} />
-          <Link href={LINK_PRODUCT(productData._id)}>
-            <h5>{productData.name}</h5>
-          </Link>
+          <h5>
+            <Link href={LINK_PRODUCT(productData._id)}>{productData.name}</Link>
+          </h5>
           <p>Паллет {productData.pack}шт</p>
         </div>
 

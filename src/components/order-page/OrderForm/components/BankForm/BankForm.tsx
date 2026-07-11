@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { FormGroup, Spinner } from "react-bootstrap";
-import { IOrderWithSchetForm } from "@/types/order";
+import { IOrderForm, IOrderWithSchetForm } from "@/types/order";
 import styles from "./BankForm.module.css";
 import { handleRequest } from "@/functions/handleRequest";
 import { API_ORDER_LOOKUP_INN } from "@/constants/api";
@@ -9,7 +9,7 @@ import { TOAST_ERROR } from "@/constants/toasts";
 
 interface IBankForm {
   formData: IOrderWithSchetForm;
-  setFormData: Dispatch<SetStateAction<IOrderWithSchetForm>>;
+  setFormData: Dispatch<SetStateAction<IOrderForm | IOrderWithSchetForm>>;
 }
 
 const BankForm: React.FC<IBankForm> = ({ formData, setFormData }) => {
@@ -21,16 +21,19 @@ const BankForm: React.FC<IBankForm> = ({ formData, setFormData }) => {
     handleRequest(REQUEST_METHODS.POST, API_ORDER_LOOKUP_INN, { inn: query })
       .then((res) => {
         const { kpp, companyName, companyAddress } = res.data;
-        setFormData((prev) => ({
-          ...prev,
-          schetInfo: {
-            ...prev.schetInfo,
-            kpp,
-            companyName,
-            companyAddress,
-            inn: query,
-          },
-        }));
+        setFormData((prev) => {
+          const current = prev as IOrderWithSchetForm;
+          return {
+            ...current,
+            schetInfo: {
+              ...current.schetInfo,
+              kpp,
+              companyName,
+              companyAddress,
+              inn: query,
+            },
+          };
+        });
       })
       .catch(() => TOAST_ERROR("Не удалось найти компанию по ИНН"))
       .finally(() => setInnLoading(false));

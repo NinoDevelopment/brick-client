@@ -1,11 +1,14 @@
 import React from "react";
-import { EPayment, IOrderForm } from "@/types/order";
+import { EPayment, IOrderForm, IOrderWithSchetForm } from "@/types/order";
 import styles from "./PaySelect.module.css";
+import { ORDER_FORM_SCHET_INITIAL } from "@/constants/order";
 
 interface IPaySelect {
-  formData: IOrderForm;
-  setFormData: (data: IOrderForm) => void;
+  formData: IOrderForm | IOrderWithSchetForm;
+  setFormData: (data: IOrderForm | IOrderWithSchetForm) => void;
 }
+
+const emptySchetInfo = ORDER_FORM_SCHET_INITIAL([]).schetInfo;
 
 const PaySelect: React.FC<IPaySelect> = ({ formData, setFormData }) => {
   return (
@@ -26,7 +29,12 @@ const PaySelect: React.FC<IPaySelect> = ({ formData, setFormData }) => {
       <button
         disabled={formData.paymentType === EPayment.SCHET}
         onClick={() =>
-          setFormData({ ...formData, paymentType: EPayment.SCHET })
+          setFormData({
+            ...formData,
+            paymentType: EPayment.SCHET,
+            schetInfo:
+              (formData as IOrderWithSchetForm).schetInfo ?? emptySchetInfo,
+          })
         }
       >
         <div className={styles.left}>

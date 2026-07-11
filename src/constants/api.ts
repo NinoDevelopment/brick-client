@@ -9,6 +9,7 @@ export const API_PRODUCT_IMG = (id: string) => `/item/images/${id}`;
 export const API_CATEGORY_ITEMS = (id: string) => `/item/category/${id}`;
 export const API_ORDER_AMOUNT = "/order/amount";
 export const API_ORDER_LOOKUP_INN = "/order/lookup-inn";
+export const API_ORDER_LOOKUP_BIC = "/order/lookup-bic";
 export const API_ORDER = "/order";
 export const API_ORDER_ID = (id: string) => `/order/${id}`;
 export const API_ORDER_PLATI = (id: string) => `/order/plati/${id}`;

@@ -2,7 +2,7 @@
 import React, { FormEvent, useState } from "react";
 import styles from "./OrderForm.module.css";
 import { useAppDispatch, useAppSelector } from "@/store/store";
-import { ORDER_FORM_INITIAL } from "@/constants/order";
+import { ORDER_FORM_SCHET_INITIAL } from "@/constants/order";
 import UserForm from "@/components/order-page/OrderForm/components/UserForm/UserForm";
 import {
   EDelivery,
@@ -28,7 +28,7 @@ const OrderForm = () => {
   const dispatch = useAppDispatch();
   const shopCartData = useAppSelector((state) => state.shopCart.data);
   const [formData, setFormData] = useState<IOrderForm | IOrderWithSchetForm>(
-    ORDER_FORM_INITIAL(shopCartData, EPayment.SCHET),
+    ORDER_FORM_SCHET_INITIAL(shopCartData),
   );
   const [load, setLoad] = useState<boolean>(false);
   const [promocode, setPromocode] = useState<string>("");
@@ -79,9 +79,16 @@ const OrderForm = () => {
           globalThis.location.replace(LINK_ORDER_ID(res.data._id)); //редиректим на статус
         }
       })
-      .catch(() =>
-        TOAST_ERROR("Ошибка оформления заказа, пожалуйста попробуйте позже!"),
-      )
+      .catch((err) => {
+        const message = err?.response?.data?.message;
+        const detail = Array.isArray(message)
+          ? message.join("; ")
+          : typeof message === "string"
+            ? message
+            : "Ошибка оформления заказа, пожалуйста попробуйте позже!";
+        console.error("Ошибка оформления заказа:", err?.response?.data ?? err);
+        TOAST_ERROR(detail);
+      })
       .finally(() => setLoad(false));
   };
 

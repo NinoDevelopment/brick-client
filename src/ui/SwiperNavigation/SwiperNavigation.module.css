@@ -11,8 +11,10 @@
   align-items: stretch;
 }
 
-.SwiperNavigation :global(.swiper-slide) {
-  height: auto;
+.SwiperNavigation :global(.swiper-button-prev),
+.SwiperNavigation :global(.swiper-button-next) {
+  z-index: 3;
+  pointer-events: auto;
 }
 
 /*image in swiper slide*/

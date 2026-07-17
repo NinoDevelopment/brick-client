@@ -9,7 +9,19 @@
   align-items: flex-start;
 
   background: var(--app-light);
-  border-radius: 5px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ProductCard:hover {
+  border-color: rgba(251, 138, 46, 0.45);
+  box-shadow: 0 8px 24px rgba(30, 30, 30, 0.08);
+  transform: translateY(-3px);
 }
 
 /*swiper container*/
@@ -18,17 +30,23 @@
   min-width: 0;
   min-height: 140px;
   overflow: hidden;
-  border-radius: 5px 5px 0 0;
+  border-radius: 0;
   position: relative;
   z-index: 2;
 }
+
 .ProductCard .swiperContainer img {
   display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 14 / 9;
   object-fit: cover;
-  border-radius: 5px 5px 0 0;
+  border-radius: 0;
+  transition: transform 0.35s ease;
+}
+
+.ProductCard:hover .swiperContainer img {
+  transform: scale(1.03);
 }
 
 /*link*/
@@ -50,20 +68,24 @@
 
   z-index: 3;
 }
+
 .ProductCard header span {
   margin: 0 0.5em 0.5em 0;
   padding: 0.5em 1em;
   color: var(--bs-dark);
   background: var(--bs-light);
+  border-radius: 6px;
 }
 
 /*span badge with weights*/
 .weights {
   display: flex;
 }
+
 .weights p {
   margin: 0;
 }
+
 .weights p:last-child i {
   display: none;
 }
@@ -71,54 +93,80 @@
 /*content*/
 .content {
   width: 100%;
-  padding: 1.25em;
+  padding: 1.15em 1.25em 1.25em;
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
-.content p,
+
+.content > :last-child {
+  margin-top: auto;
+}
+
 .content h4 {
   width: 100%;
   margin: 0;
-
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 /*name h4*/
 h4.name {
-  padding: 0.3em 0;
+  padding: 0.15em 0 0.35em;
   font-weight: 800;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
+
 .nameLink {
   color: inherit;
   text-decoration: none;
+  transition: color 0.15s ease;
 }
+
+.ProductCard:hover .nameLink,
 .nameLink:hover {
-  color: inherit;
+  color: var(--app-primary);
 }
 
 /*hr*/
 .content hr {
+  margin: 0.55em 0 0.75em;
+  opacity: 0.35;
   border-color: var(--bs-gray-600);
 }
 
 /*composition p*/
 p.composition {
-  margin-bottom: 2em;
+  width: 100%;
+  margin: 0 0 1.25em;
   color: var(--bs-gray-600);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: unset;
 }
 
 /*media*/
 @media (max-width: 1200px) {
-  /*name h4*/
   h4.name {
-    padding: 0.15em 0;
-    font-weight: 800;
+    font-size: 1rem;
   }
-  /*composition*/
+
   .ProductCard p.composition {
     margin-bottom: 1em;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
   }
 }
 
@@ -133,14 +181,43 @@ p.composition {
   .ProductCard {
     width: 100%;
   }
+
+  .ProductCard:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: transparent;
+  }
+
+  .ProductCard:hover .swiperContainer img {
+    transform: none;
+  }
+
   .ProductCard .swiperContainer {
     min-height: 160px;
   }
+
   .ProductCard .swiperContainer img {
     aspect-ratio: 4 / 3;
   }
+
   .content {
     width: 100%;
     padding: 1em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ProductCard,
+  .ProductCard .swiperContainer img,
+  .nameLink {
+    transition: none;
+  }
+
+  .ProductCard:hover {
+    transform: none;
+  }
+
+  .ProductCard:hover .swiperContainer img {
+    transform: none;
   }
 }

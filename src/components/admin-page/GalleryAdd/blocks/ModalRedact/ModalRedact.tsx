@@ -31,15 +31,12 @@ const ModalRedact = ({ show, handleClose, data }: IProps) => {
     setLoad(true);
     handleRequest(REQUEST_METHODS.PUT, API_GALLERY, formData)
       .then(() => {
-        TOAST_SUCCESS("Категория фото успешно добавлен");
+        TOAST_SUCCESS("Категория фото успешно обновлена");
         updateGallery();
         handleClose();
       })
-      .catch(() => TOAST_ERROR("Ошибка добавления категории фото"))
-      .finally(() => {
-        setFormData(GALLERY_INITIAL);
-        setLoad(false);
-      });
+      .catch(() => TOAST_ERROR("Ошибка обновления категории фото"))
+      .finally(() => setLoad(false));
   };
 
   useEffect(() => {

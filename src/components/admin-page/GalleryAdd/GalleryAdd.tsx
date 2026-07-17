@@ -26,13 +26,11 @@ const GalleryAdd = () => {
     handleRequest(REQUEST_METHODS.POST, API_GALLERY, formData)
       .then(() => {
         TOAST_SUCCESS("Категория фото успешно добавлен");
+        setFormData(GALLERY_INITIAL);
         updateGallery();
       })
       .catch(() => TOAST_ERROR("Ошибка добавления категории фото"))
-      .finally(() => {
-        setFormData(GALLERY_INITIAL);
-        setLoad(false);
-      });
+      .finally(() => setLoad(false));
   };
 
   return (

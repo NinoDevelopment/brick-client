@@ -8,7 +8,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { IGalleryItem } from "@/types/gallery";
-import { convertToBase64 } from "@/functions/convertToBase64";
+import { compressImageToBase64 } from "@/functions/compressImageToBase64";
 import { TOAST_ERROR } from "@/constants/toasts";
 
 interface IProps {
@@ -19,29 +19,31 @@ interface IProps {
 }
 
 const GalleryForm = ({ handleSend, formData, setFormData, load }: IProps) => {
-  const handleUploadFiles = async (images: Blob[]) => {
-    if (images?.length > 8) {
+  const handleUploadFiles = async (images: FileList | null) => {
+    if (!images?.length) return;
+
+    const files = Array.from(images);
+    if (files.length > 8) {
       TOAST_ERROR("Невозможно добавить более 8 фото");
     }
-    const imagesInner: string[] = [];
-    for (let elem of images) {
-      const res = await handleSetFile(elem);
-      imagesInner.push(String(res));
+
+    try {
+      const imagesInner: string[] = [];
+      for (const file of files.slice(0, 8)) {
+        imagesInner.push(await compressImageToBase64(file));
+      }
+      setFormData({
+        ...formData,
+        images: imagesInner,
+      });
+    } catch {
+      TOAST_ERROR("Не удалось обработать фото. Попробуйте другой файл.");
     }
-    setFormData({
-      ...formData,
-      images: imagesInner?.length > 8 ? imagesInner.slice(0, 8) : imagesInner,
-    });
   };
 
   const handleDelete = (image: string) => {
     const filteredImages = formData?.images?.filter((elem) => elem !== image);
     setFormData({ ...formData, images: filteredImages });
-  };
-
-  const handleSetFile = async (file: Blob | undefined) => {
-    if (!file) return;
-    return convertToBase64(file);
   };
 
   return (
@@ -68,8 +70,10 @@ const GalleryForm = ({ handleSend, formData, setFormData, load }: IProps) => {
           max={8}
           type={"file"}
           multiple={true}
-          //@ts-ignore
-          onChange={(e) => handleUploadFiles(e.target.files)}
+          accept="image/*"
+          onChange={(e) =>
+            handleUploadFiles((e.target as HTMLInputElement).files)
+          }
         />
       </FloatingLabel>
 

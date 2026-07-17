@@ -1,6 +1,7 @@
 .wrapper {
   width: 100%;
-  height: 70vh;
+  height: 42vh;
+  min-height: 240px;
 
   display: flex;
   justify-content: center;
@@ -12,25 +13,31 @@
   background-image: url("/other/contactsPreview.png");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 .wrapper h1 {
-  font-size: 64px;
+  font-size: 48px;
   font-weight: 700;
 }
+
 .wrapper h5 {
-  font-size: 24px;
+  margin-top: 0.35em;
+  font-size: 20px;
   font-weight: 400;
 }
 
-/*media*/
 @media (max-width: 768px) {
+  .wrapper {
+    height: 36vh;
+    min-height: 200px;
+  }
+
   .wrapper h1 {
     font-size: 24px;
-    font-weight: 700;
   }
+
   .wrapper h5 {
     font-size: 14px;
-    font-weight: 400;
   }
 }

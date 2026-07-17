@@ -20,24 +20,26 @@ const GalleryProjects = ({ initialCategories }: IGalleryProjects) => {
     !categories.length && data.loading;
 
   return (
-    <Container className={styles.wrapper}>
-      <div className={styles.itemsContainer}>
-        {loading && (
-          <div className={styles.loader}>
-            <SpinnerPrimary />
-          </div>
-        )}
+    <section className={styles.wrapper}>
+      <Container>
+        <div className={styles.itemsContainer}>
+          {loading && (
+            <div className={styles.loader}>
+              <SpinnerPrimary />
+            </div>
+          )}
 
-        {!loading && !categories.length && (
-          <h5 className={styles.noItems}>Список категорий галереи пуст</h5>
-        )}
+          {!loading && !categories.length && (
+            <h5 className={styles.noItems}>Список категорий галереи пуст</h5>
+          )}
 
-        {!!categories.length &&
-          categories.map((elem) => (
-            <GalleryItem key={elem._id} data={elem} />
-          ))}
-      </div>
-    </Container>
+          {!!categories.length &&
+            categories.map((elem) => (
+              <GalleryItem key={elem._id} data={elem} />
+            ))}
+        </div>
+      </Container>
+    </section>
   );
 };
 

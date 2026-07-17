@@ -1,7 +1,6 @@
 import React from "react";
 import { useGetCategories } from "@/hooks/useGetCategories";
 import styles from "./CategorySelect.module.css";
-import { Dropdown } from "react-bootstrap";
 
 const CategorySelect = () => {
   const {
@@ -9,38 +8,29 @@ const CategorySelect = () => {
     selectCategory,
   } = useGetCategories();
 
-  if (!categories.length) return;
+  if (!categories.length) return null;
 
   return (
-    <Dropdown className={styles.CategorySelect}>
-      <Dropdown.Toggle className={styles.toggle} id="dropdown-autoclose-true">
-        Тип кирпича:{" "}
-        {categories.find((elem) => elem._id === selected)?.name || "Все"}
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        {categories
-          .filter((elem) => elem._id !== selected)
-          .map((elem) => (
-            <Dropdown.Item
-              key={elem._id}
-              onClick={() => selectCategory(elem._id)}
-              className={styles.dropItem}
-            >
-              {elem.name}
-              {elem.hasSale && <span>(Скидки!)</span>}
-            </Dropdown.Item>
-          ))}
-        {selected && (
-          <Dropdown.Item
-            onClick={() => selectCategory(null)}
-            className={styles.dropItem}
-          >
-            Показать все
-          </Dropdown.Item>
-        )}
-      </Dropdown.Menu>
-    </Dropdown>
+    <div className={styles.CategorySelect} role="group" aria-label="Тип кирпича">
+      <button
+        type="button"
+        className={`${styles.chip} ${!selected ? styles.chipActive : ""}`}
+        onClick={() => selectCategory(null)}
+      >
+        Все
+      </button>
+      {categories.map((elem) => (
+        <button
+          type="button"
+          key={elem._id}
+          className={`${styles.chip} ${selected === elem._id ? styles.chipActive : ""}`}
+          onClick={() => selectCategory(elem._id)}
+        >
+          {elem.name}
+          {elem.hasSale && <span className={styles.sale}>%</span>}
+        </button>
+      ))}
+    </div>
   );
 };
 

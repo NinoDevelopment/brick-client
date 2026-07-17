@@ -43,7 +43,7 @@ export const fetchProductImages = (id: string) =>
   serverFetch<IProductImg>(API_PRODUCT_IMG(id), { cache: "no-store" });
 
 export const fetchGallery = () =>
-  serverFetch<IGalleryItem[]>(API_GALLERY, { cache: "no-store" });
+  serverFetch<IGalleryItem[]>(API_GALLERY, { revalidate: 3600 });
 
 export const fetchProductSample = (quantity: number) =>
   serverFetch<IProductId[]>(API_PRODUCTS_SAMPLE(quantity));

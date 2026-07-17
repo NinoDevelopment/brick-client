@@ -1,14 +1,25 @@
 /*swiper*/
 .SwiperNavigation {
   width: 100%;
+  height: auto;
 
   /*vars*/
   --swiper-navigation-size: 20px;
 }
 
+.SwiperNavigation :global(.swiper-wrapper) {
+  align-items: stretch;
+}
+
+.SwiperNavigation :global(.swiper-slide) {
+  height: auto;
+}
+
 /*image in swiper slide*/
 .image {
+  display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 14 / 9;
   object-fit: cover;
 }
@@ -17,7 +28,6 @@
 .placeholder {
   width: 100%;
   margin-bottom: 0;
-
   aspect-ratio: 14 / 9;
 }
 .placeholder span {

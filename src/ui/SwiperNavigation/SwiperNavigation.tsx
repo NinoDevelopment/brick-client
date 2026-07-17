@@ -23,6 +23,8 @@ const SwiperNavigation: React.FC<ISwiperNavigation> = ({ images, name }) => {
     <Swiper
       navigation={true}
       modules={[Navigation]}
+      observer={true}
+      observeParents={true}
       className={styles.SwiperNavigation}
     >
       {images?.map((elem, index) => (

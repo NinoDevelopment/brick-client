@@ -2,7 +2,13 @@ import React from "react";
 import styles from "./FooterContent.module.css";
 import Link from "next/link";
 import { CONTACTS } from "@/constants/general";
-import { LINK_PRIVACY, LINK_REQUISITES } from "@/constants/links";
+import {
+  LINK_DELIVERY,
+  LINK_DELIVERY_CITY,
+  LINK_PRIVACY,
+  LINK_REQUISITES,
+} from "@/constants/links";
+import { DELIVERY_CITIES } from "@/constants/deliveryCities";
 import ContactsMap from "@/components/contacts-page/ContactsMap/ContactsMap";
 
 const FooterContent = () => {
@@ -44,15 +50,28 @@ const FooterContent = () => {
         </div>
       </div>
 
+      <div className={styles.cities}>
+        <p className={styles.citiesTitle}>
+          Доставка кирпича по области —{" "}
+          <Link href={LINK_DELIVERY}>все условия</Link>
+        </p>
+        <ul className={styles.citiesList}>
+          {DELIVERY_CITIES.map((city) => (
+            <li key={city.slug}>
+              <Link href={LINK_DELIVERY_CITY(city.slug)}>
+                Кирпич в {city.namePrepositional}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div className={styles.bottom}>
         <div className={styles.left}>
-          <h6>
-            © КЗК 2022-2026, Все права защищены
-          </h6>
+          <h6>© КЗК 2022-2026, Все права защищены</h6>
 
           <h5>
-            <Link href={LINK_REQUISITES}>Реквизиты</Link>{" "}
-            <br />
+            <Link href={LINK_REQUISITES}>Реквизиты</Link> <br />
             <Link href={LINK_PRIVACY}>Политика конфиденциальности</Link>
           </h5>
         </div>

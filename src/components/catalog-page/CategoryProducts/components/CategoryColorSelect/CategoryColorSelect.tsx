@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import { Dropdown } from "react-bootstrap";
 import styles from "@/components/catalog-page/CategoryProducts/components/CategorySelect/CategorySelect.module.css";
 import { IProductId } from "@/types/products";
 
@@ -25,33 +24,25 @@ const CategoryColorSelect = ({ color, setColor, products }: IProps) => {
   if (!colorsData.length) return null;
 
   return (
-    <Dropdown className={styles.CategorySelect}>
-      <Dropdown.Toggle className={styles.toggle} id="dropdown-autoclose-true">
-        Цвет кирпича: {color || "Все"}
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        {colorsData
-          .filter((elem) => elem !== color)
-          .map((elem) => (
-            <Dropdown.Item
-              key={elem}
-              onClick={() => setColor(elem)}
-              className={styles.dropItem}
-            >
-              {elem}
-            </Dropdown.Item>
-          ))}
-        {color && (
-          <Dropdown.Item
-            onClick={() => setColor(null)}
-            className={styles.dropItem}
-          >
-            Показать все
-          </Dropdown.Item>
-        )}
-      </Dropdown.Menu>
-    </Dropdown>
+    <div className={styles.CategorySelect} role="group" aria-label="Цвет кирпича">
+      <button
+        type="button"
+        className={`${styles.chip} ${!color ? styles.chipActive : ""}`}
+        onClick={() => setColor(null)}
+      >
+        Все
+      </button>
+      {colorsData.map((elem) => (
+        <button
+          type="button"
+          key={elem}
+          className={`${styles.chip} ${color === elem ? styles.chipActive : ""}`}
+          onClick={() => setColor(elem)}
+        >
+          {elem}
+        </button>
+      ))}
+    </div>
   );
 };
 

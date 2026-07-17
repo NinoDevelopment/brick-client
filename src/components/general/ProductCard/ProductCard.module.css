@@ -15,17 +15,27 @@
 /*swiper container*/
 .ProductCard .swiperContainer {
   width: 100%;
+  min-width: 0;
+  min-height: 140px;
+  overflow: hidden;
+  border-radius: 5px 5px 0 0;
+  position: relative;
+  z-index: 0;
 }
 .ProductCard .swiperContainer img {
-  /*border radius slider images*/
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 14 / 9;
+  object-fit: cover;
   border-radius: 5px 5px 0 0;
 }
 
 /*link*/
 .link {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
+  z-index: 1;
 }
 
 /*header to yop*/
@@ -62,6 +72,8 @@
 .content {
   width: 100%;
   padding: 1.25em;
+  position: relative;
+  z-index: 2;
 }
 .content p,
 .content h4 {
@@ -121,11 +133,12 @@ p.composition {
   .ProductCard {
     width: 100%;
   }
-  /*slider aspect ratio*/
-  .ProductCard .swiperContainer img {
-    aspect-ratio: 2 / 1;
+  .ProductCard .swiperContainer {
+    min-height: 160px;
   }
-  /*content*/
+  .ProductCard .swiperContainer img {
+    aspect-ratio: 4 / 3;
+  }
   .content {
     width: 100%;
     padding: 1em;

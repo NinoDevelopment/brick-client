@@ -86,31 +86,35 @@ const CategoryProductsList = ({ initialProducts }: ICategoryProductsList) => {
 
   return (
     <div className={styles.CategoryProductsList}>
-      <CategorySort
-        discountOnly={discountOnly}
-        setDiscountOnly={setDiscountOnly}
-        availableOnly={availableOnly}
-        setAvailableOnly={setAvailableOnly}
-        color={color}
-        setColor={setColor}
-        data={data ?? []}
-        priceSort={priceSort}
-        setPriceSort={setPriceSort}
-      />
+      <aside className={styles.sidebar}>
+        <CategorySort
+          discountOnly={discountOnly}
+          setDiscountOnly={setDiscountOnly}
+          availableOnly={availableOnly}
+          setAvailableOnly={setAvailableOnly}
+          color={color}
+          setColor={setColor}
+          data={data ?? []}
+          priceSort={priceSort}
+          setPriceSort={setPriceSort}
+        />
+      </aside>
 
-      {!!filteredData.length && (
-        <div className={styles.itemsContainer}>
-          {filteredData.map((elem: IProductId) => (
-            <ProductCard key={elem._id} data={elem} />
-          ))}
-        </div>
-      )}
+      <div className={styles.content}>
+        {!!filteredData.length && (
+          <div className={styles.itemsContainer}>
+            {filteredData.map((elem: IProductId) => (
+              <ProductCard key={elem._id} data={elem} />
+            ))}
+          </div>
+        )}
 
-      {!filteredData.length && (
-        <p className={styles.noItems}>
-          Список товаров для данной категории пуст
-        </p>
-      )}
+        {!filteredData.length && (
+          <p className={styles.noItems}>
+            Список товаров для данной категории пуст
+          </p>
+        )}
+      </div>
     </div>
   );
 };

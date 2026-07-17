@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import styles from "./ProductCardFooter.module.css";
 import { IProductId } from "@/types/products";
 import WeightsBtns from "@/components/general/ProductCard/components/WeightsBtns/WeightsBtns";
@@ -10,8 +12,12 @@ interface IProductCardFooter {
 }
 
 const ProductCardFooter: React.FC<IProductCardFooter> = ({ data }) => {
-  //redux data shop cart
+  const [mounted, setMounted] = useState(false);
   const shopCartData = useAppSelector((state) => state.shopCart.data);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <footer className={styles.ProductCardFooter}>
@@ -21,7 +27,10 @@ const ProductCardFooter: React.FC<IProductCardFooter> = ({ data }) => {
         pack={data.pack}
       />
 
-      <ShopCartBtn shopCartData={shopCartData} product={data} />
+      <ShopCartBtn
+        shopCartData={mounted ? shopCartData : []}
+        product={data}
+      />
     </footer>
   );
 };

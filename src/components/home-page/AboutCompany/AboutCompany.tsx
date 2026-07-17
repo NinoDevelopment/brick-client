@@ -1,7 +1,8 @@
 import styles from './AboutCompany.module.css';
 import Image from "next/image";
 import Link from "next/link";
-import { LINK_ABOUT, LINK_CATALOG, LINK_CONTACTS, LINK_DELIVERY } from "@/constants/links";
+import { LINK_ABOUT, LINK_CATALOG, LINK_CONTACTS, LINK_DELIVERY, LINK_DELIVERY_CITY } from "@/constants/links";
+import { DELIVERY_CITIES } from "@/constants/deliveryCities";
 
 const AboutCompany = () => {
   return (
@@ -16,6 +17,26 @@ const AboutCompany = () => {
              Кирпичный завод «Ковернино» — производство в Нижегородской области.
              Делаем кирпич из глины собственного карьера и доставляем напрямую
              в Нижний Новгород и по области, без посредников.
+          </p>
+
+          <p className={styles.text}>
+             Возим в{" "}
+             {DELIVERY_CITIES.map((city, index) => (
+               <span key={city.slug}>
+                 <Link
+                   href={LINK_DELIVERY_CITY(city.slug)}
+                   className={styles.inlineLink}
+                 >
+                   {city.name}
+                 </Link>
+                 {index < DELIVERY_CITIES.length - 2
+                   ? ", "
+                   : index === DELIVERY_CITIES.length - 2
+                     ? " и "
+                     : ""}
+               </span>
+             ))}
+             {" "}— подробности доставки на страницах городов.
           </p>
 
           <p className={styles.text}>

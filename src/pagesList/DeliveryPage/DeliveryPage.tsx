@@ -3,7 +3,8 @@ import PreviewBanner from "@/components/delivery-page/PreviewBanner/PreviewBanne
 import { Container } from "react-bootstrap";
 import { CONTACTS, SHOPS_ADDRESSES } from "@/constants/general";
 import Link from "next/link";
-import { LINK_CONTACTS } from "@/constants/links";
+import { LINK_CONTACTS, LINK_DELIVERY_CITY, LINK_FAQ } from "@/constants/links";
+import { DELIVERY_CITIES } from "@/constants/deliveryCities";
 
 const pickup = SHOPS_ADDRESSES[0];
 
@@ -38,15 +39,27 @@ const DeliveryPage = () => {
             и Нижегородской области — от завода до вашего объекта.
           </p>
           <p>
-            Возим в Дзержинск, Арзамас, Бор, Балахну, Кстово, Богородск,
-            Городец и другие города области. Стоимость и сроки зависят
-            от адреса и объёма заказа.
+            Стоимость и сроки зависят от адреса и объёма заказа. При
+            определённом объёме возможна бесплатная доставка — условия уточнит
+            менеджер. Перед отгрузкой согласуем дату и время приезда.
           </p>
+        </section>
+
+        <section className={styles.section}>
+          <h2>Доставка кирпича по городам области</h2>
           <p>
-            При определённом объёме заказа возможна бесплатная доставка —
-            условия уточнит менеджер. Перед отгрузкой согласуем дату
-            и время приезда.
+            Возим кирпич в основные города Нижегородской области. Откройте
+            страницу вашего города — там условия доставки и как оформить заказ:
           </p>
+          <ul className={styles.cities}>
+            {DELIVERY_CITIES.map((city) => (
+              <li key={city.slug}>
+                <Link href={LINK_DELIVERY_CITY(city.slug)}>
+                  Купить кирпич в {city.namePrepositional}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section className={styles.section}>
@@ -79,9 +92,10 @@ const DeliveryPage = () => {
         <section className={styles.section}>
           <h2>Остались вопросы?</h2>
           <p>
-            Позвоните{" "}
+            Ответы на частые вопросы — на странице{" "}
+            <Link href={LINK_FAQ}>FAQ</Link>. Или позвоните{" "}
             <a href={`tel:${CONTACTS.phone.value}`}>{CONTACTS.phone.title}</a>
-            {" "}или напишите на{" "}
+            {" "}либо напишите на{" "}
             <Link href={LINK_CONTACTS}>странице контактов</Link>
             — подскажем по оплате, срокам и стоимости доставки.
           </p>

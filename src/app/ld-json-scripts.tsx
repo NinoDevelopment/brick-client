@@ -42,6 +42,11 @@ const LdJsonScripts = () => {
               postalCode: "606570",
               addressCountry: "RU",
             },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: 57.147764,
+              longitude: 43.803196,
+            },
             openingHours: "Mo-Su 08:00-20:00",
             areaServed: [
               {

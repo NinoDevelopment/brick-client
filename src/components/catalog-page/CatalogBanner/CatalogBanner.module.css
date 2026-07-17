@@ -12,6 +12,11 @@
   background-image: url("/other/back-catalog.png");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+}
+
+.content {
+  width: 100%;
 }
 
 .wrapper h1 {
@@ -23,8 +28,11 @@
   font-weight: 400;
 }
 
-/*media*/
 @media (max-width: 768px) {
+  .wrapper {
+    height: 42vh;
+    min-height: 220px;
+  }
   .wrapper h1 {
     font-size: 24px;
     font-weight: 700;

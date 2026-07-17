@@ -1,48 +1,51 @@
 .CategorySelect {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.4em;
 }
 
-/*btn*/
-.toggle {
-  --bs-btn-active-bg: var(--app-primary);
-  --bs-btn-active-border-color: var(--app-primary);
-  --bs-btn-hover-bg: var(--app-primary);
-  --bs-btn-hover-border-color: var(--app-primary);
-
-  min-width: 250px;
-  padding: 0.5em 1.5em;
-
-  background: none;
+.chip {
+  width: 100%;
+  padding: 0.5em 0.9em;
+  border: 1.5px solid var(--bs-gray-300);
+  border-radius: 8px;
+  background: #fff;
   color: var(--bs-dark);
-  border: 2px solid var(--app-primary);
-}
-.toggle.btn.show {
-  background: var(--app-primary);
-  border: 2px solid var(--app-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.15s;
 }
 
-/*dropItem*/
-.dropItem span {
-  margin-left: 0.25em;
+.chip:hover {
+  border-color: var(--app-primary);
   color: var(--app-primary);
+}
+
+.chipActive {
+  border-color: var(--app-primary);
+  background: var(--app-primary);
+  color: #fff;
+}
+
+.chipActive:hover {
+  border-color: var(--app-primary);
+  background: var(--app-primary);
+  color: #fff;
+}
+
+.sale {
+  margin-left: 0.25em;
   font-weight: 700;
 }
 
-.dropItem:active {
-  color: var(--bs-dark);
-  background: var(--app-primary);
-}
-.dropItem:hover {
-  background: var(--app-light);
+.chipActive .sale {
+  color: #fff;
 }
 
-/*media*/
-@media (max-width: 991px) {
-  .CategorySelect {
-    width: 100%;
-    margin-bottom: 0.75em;
-  }
-  /*btn*/
-  .toggle {
-    width: 100%;
-  }
+.chip:not(.chipActive) .sale {
+  color: var(--app-primary);
 }

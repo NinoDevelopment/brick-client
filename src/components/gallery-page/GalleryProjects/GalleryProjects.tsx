@@ -11,13 +11,12 @@ interface IGalleryProjects {
 }
 
 const GalleryProjects = ({ initialCategories }: IGalleryProjects) => {
-  const { data } = useGetGallery(Boolean(initialCategories?.length));
+  const { data } = useGetGallery();
   const categories =
     data.categories.length > 0
-      ? data.categories
-      : initialCategories ?? [];
-  const loading =
-    !categories.length && data.loading;
+      ? data.categories.filter((item) => item.show)
+      : (initialCategories ?? []).filter((item) => item.show);
+  const loading = !categories.length && data.loading;
 
   return (
     <section className={styles.wrapper}>

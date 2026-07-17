@@ -8,10 +8,8 @@ export const useGetGallery = (skipFetch = false) => {
 
   useEffect(() => {
     if (skipFetch) return;
-    if (!categories.categories.length) {
-      dispatch(getGallery());
-    }
-  }, [skipFetch]);
+    dispatch(getGallery());
+  }, [skipFetch, dispatch]);
 
   return {
     data: categories,

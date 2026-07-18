@@ -25,7 +25,7 @@ const CategoryProductsList = ({ initialProducts }: ICategoryProductsList) => {
     data: { selected },
   } = useGetCategories();
 
-  const shouldFetch = Boolean(selected) || !initialProducts?.length;
+  const shouldFetch = true;
 
   const { data: fetchedData, load } = useFetch<IProductId[]>(
     selected ? API_CATEGORY_ITEMS(selected) : API_PRODUCT,
@@ -42,9 +42,7 @@ const CategoryProductsList = ({ initialProducts }: ICategoryProductsList) => {
   const data = useMemo(() => {
     const raw = selected
       ? fetchedData
-      : initialProducts?.length
-        ? initialProducts
-        : fetchedData;
+      : fetchedData ?? initialProducts;
 
     if (!raw) return null;
     return raw.filter((product) => product.show);
@@ -74,7 +72,7 @@ const CategoryProductsList = ({ initialProducts }: ICategoryProductsList) => {
     return result;
   }, [data, color, discountOnly, availableOnly, priceSort]);
 
-  const isLoading = Boolean(selected) ? load || !fetchedData : !data;
+  const isLoading = load && !data;
 
   if (isLoading || !filteredData) {
     return (

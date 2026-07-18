@@ -1,7 +1,8 @@
 import React from "react";
 import { Button, FloatingLabel, FormControl } from "react-bootstrap";
 import { IProductIdWithImg, IProductWithImg } from "@/types/products";
-import { convertToBase64 } from "@/functions/convertToBase64";
+import { compressImageToBase64 } from "@/functions/compressImageToBase64";
+import { TOAST_ERROR } from "@/constants/toasts";
 import styles from "./ProductFormImages.module.css";
 
 interface IProductFormImages {
@@ -13,23 +14,23 @@ const ProductFormImages: React.FC<IProductFormImages> = ({
   formData,
   setFormData,
 }) => {
-  const handleUploadFiles = async (images: Blob[]) => {
-    const imagesInner: string[] = [];
-    for (let elem of images) {
-      const res = await handleSetFile(elem);
-      imagesInner.push(String(res));
+  const handleUploadFiles = async (files: FileList | null) => {
+    if (!files?.length) return;
+
+    try {
+      const imagesInner: string[] = [];
+      for (const file of Array.from(files)) {
+        imagesInner.push(await compressImageToBase64(file));
+      }
+      setFormData({ ...formData, images: imagesInner });
+    } catch {
+      TOAST_ERROR("Не удалось обработать фото. Попробуйте другой файл.");
     }
-    setFormData({ ...formData, images: imagesInner });
   };
 
   const handleDelete = (image: string) => {
     const filteredImages = formData?.images?.filter((elem) => elem !== image);
     setFormData({ ...formData, images: filteredImages });
-  };
-
-  const handleSetFile = async (file: Blob | undefined) => {
-    if (!file) return;
-    return convertToBase64(file);
   };
 
   return (
@@ -38,8 +39,10 @@ const ProductFormImages: React.FC<IProductFormImages> = ({
         <FormControl
           type={"file"}
           multiple={true}
-          //@ts-ignore
-          onChange={(e) => handleUploadFiles(e.target.files)}
+          accept="image/*"
+          onChange={(e) =>
+            handleUploadFiles((e.target as HTMLInputElement).files)
+          }
         />
       </FloatingLabel>
 

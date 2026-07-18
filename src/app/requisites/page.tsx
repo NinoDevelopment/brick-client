@@ -20,38 +20,62 @@ const Page = () => {
     <Container className={styles.main}>
       <h1 className={styles.title}>Реквизиты</h1>
 
-      <h5 className={styles.info}>
+      <p className={styles.company}>
         ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «КИРПИЧНЫЙ ЗАВОД КОВЕРНИНО»
-        <br />
-        Директор: <b>Рябков Максим Николаевич</b>
-        <br />
-        Юридический адрес:{" "}
-        <b>606570, Нижегородская область, р-н Ковернинский, д. Черные</b>
-        <br />
-        Почта:{" "}
-        <b>
-          <a href={CONTACTS.email.value}>{CONTACTS.email.title}</a>
-        </b>
-        <br />
-        Телефон:{" "}
-        <b>
-          <a href={`tel:${CONTACTS.phone.value}`}>{CONTACTS.phone.title}</a>
-        </b>
-        <br />
-        ИНН: <b>5218001636</b>
-        <br />
-        КПП: <b>521801001</b>
-        <br />
-        ОГРН: <b>1155248001083</b>
-        <br />
-        Банк: <b>ФИЛИАЛ &quot;НИЖЕГОРОДСКИЙ&quot; АО &quot;АЛЬФА-БАНК&quot;</b>
-        <br />
-        БИК: <b>042202824</b>
-        <br />
-        К/с: <b>30101810200000000824</b>
-        <br />
-        Р/с: <b>40702810429050009559</b>
-      </h5>
+      </p>
+
+      <dl className={styles.list}>
+        <div className={styles.row}>
+          <dt>Директор</dt>
+          <dd>Рябков Максим Николаевич</dd>
+        </div>
+        <div className={styles.row}>
+          <dt>Юридический адрес</dt>
+          <dd>606570, Нижегородская область, р-н Ковернинский, д. Черные</dd>
+        </div>
+        <div className={styles.row}>
+          <dt>Почта</dt>
+          <dd>
+            <a href={`mailto:${CONTACTS.email.value}`}>
+              {CONTACTS.email.title}
+            </a>
+          </dd>
+        </div>
+        <div className={styles.row}>
+          <dt>Телефон</dt>
+          <dd>
+            <a href={`tel:${CONTACTS.phone.value}`}>{CONTACTS.phone.title}</a>
+          </dd>
+        </div>
+        <div className={styles.row}>
+          <dt>ИНН</dt>
+          <dd>5218001636</dd>
+        </div>
+        <div className={styles.row}>
+          <dt>КПП</dt>
+          <dd>521801001</dd>
+        </div>
+        <div className={styles.row}>
+          <dt>ОГРН</dt>
+          <dd>1155248001083</dd>
+        </div>
+        <div className={styles.row}>
+          <dt>Банк</dt>
+          <dd>ФИЛИАЛ «НИЖЕГОРОДСКИЙ» АО «АЛЬФА-БАНК»</dd>
+        </div>
+        <div className={styles.row}>
+          <dt>БИК</dt>
+          <dd>042202824</dd>
+        </div>
+        <div className={styles.row}>
+          <dt>К/с</dt>
+          <dd>30101810200000000824</dd>
+        </div>
+        <div className={styles.row}>
+          <dt>Р/с</dt>
+          <dd>40702810429050009559</dd>
+        </div>
+      </dl>
     </Container>
   );
 };

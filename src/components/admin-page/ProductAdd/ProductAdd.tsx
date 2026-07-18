@@ -11,6 +11,7 @@ import ProductFormCategorySelect from "@/components/admin-page/ProductAdd/compon
 import { useGetProducts } from "@/hooks/useGetProducts";
 import ProductFormInputs from "@/components/admin-page/ProductAdd/components/ProductFormInputs/ProductFormInputs";
 import { REQUEST_METHODS } from "@/types/general";
+import { buildProductPayload } from "@/functions/buildProductPayload";
 
 const ProductAdd = () => {
   const { updateProducts } = useGetProducts();
@@ -31,16 +32,14 @@ const ProductAdd = () => {
     }
 
     setLoad(true);
-    handleRequest(REQUEST_METHODS.POST, API_PRODUCT, formData)
+    handleRequest(REQUEST_METHODS.POST, API_PRODUCT, buildProductPayload(formData))
       .then(() => {
         TOAST_SUCCESS("Товар успешно добавлен");
+        setFormData(ITEM_INITIAL);
         updateProducts();
       })
       .catch(() => TOAST_ERROR("Ошибка добавления товара"))
-      .finally(() => {
-        setFormData(ITEM_INITIAL);
-        setLoad(false);
-      });
+      .finally(() => setLoad(false));
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { IProductIdWithImg } from "@/types/products";
 import { Button, Form, Modal, Spinner } from "react-bootstrap";
 import { useGetProducts } from "@/hooks/useGetProducts";
@@ -10,6 +10,8 @@ import ProductFormCategorySelect from "@/components/admin-page/ProductAdd/compon
 import ProductFormImages from "@/components/admin-page/ProductAdd/components/ProductFormImages/ProductFormImages";
 import ProductFormInputs from "@/components/admin-page/ProductAdd/components/ProductFormInputs/ProductFormInputs";
 import { REQUEST_METHODS } from "@/types/general";
+import { buildProductPayload } from "@/functions/buildProductPayload";
+import { compressImageList } from "@/functions/compressImageToBase64";
 
 interface IProductRedact {
   data: IProductIdWithImg;
@@ -26,7 +28,11 @@ const ProductRedact: React.FC<IProductRedact> = ({
   const { updateProducts } = useGetProducts();
   const [load, setLoad] = useState<boolean>(false);
 
-  const handleRedact = (e: FormEvent) => {
+  useEffect(() => {
+    setFormData(data);
+  }, [data]);
+
+  const handleRedact = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!formData?.images?.length) {
@@ -35,16 +41,21 @@ const ProductRedact: React.FC<IProductRedact> = ({
     }
 
     setLoad(true);
-    handleRequest(REQUEST_METHODS.PUT, API_PRODUCT, formData)
-      .then(() => {
-        TOAST_SUCCESS("Товар успешно изменен");
-        updateProducts();
-      })
-      .catch(() => TOAST_ERROR("Ошибка изменения товара"))
-      .finally(() => {
-        setLoad(false);
-        handleClose();
-      });
+    try {
+      const images = await compressImageList(formData.images);
+      await handleRequest(
+        REQUEST_METHODS.PUT,
+        API_PRODUCT,
+        buildProductPayload({ ...formData, images }),
+      );
+      TOAST_SUCCESS("Товар успешно изменен");
+      updateProducts();
+      handleClose();
+    } catch {
+      TOAST_ERROR("Ошибка изменения товара");
+    } finally {
+      setLoad(false);
+    }
   };
 
   return (

@@ -5,10 +5,11 @@ import { handleRequest } from "@/functions/handleRequest";
 import { REQUEST_METHODS } from "@/types/general";
 import { API_CALC_VALUES } from "@/constants/api";
 import { TOAST_ERROR } from "@/constants/toasts";
-import { Alert } from "react-bootstrap";
+import { CalcBrickType, CalcResult } from "@/types/calc";
+import CalcResultAlert from "@/components/calculator/CalcResultAlert/CalcResultAlert";
 
 interface InitialValues {
-  brickType: 1 | 2;
+  brickType: CalcBrickType;
   bricklayingVolume: number;
   mortarSeamEnabled: boolean;
 }
@@ -22,13 +23,13 @@ const initialValues: InitialValues = {
 const CalcValues = () => {
   const [values, setValues] = useState<InitialValues>(initialValues);
   const [load, setLoad] = useState<boolean>(false);
-  const [resValue, setResValue] = useState<null | number>(null);
+  const [result, setResult] = useState<CalcResult | null>(null);
 
   const handleSend = (e: FormEvent) => {
     e.preventDefault();
     setLoad(true);
     handleRequest(REQUEST_METHODS.POST, API_CALC_VALUES, values)
-      .then((res) => setResValue(res.data))
+      .then((res) => setResult(res.data))
       .catch((err) => TOAST_ERROR("Ошибка расчёта! " + err.message))
       .finally(() => setLoad(false));
   };
@@ -45,7 +46,7 @@ const CalcValues = () => {
             disabled={!values.mortarSeamEnabled}
             onClick={() => setValues({ ...values, mortarSeamEnabled: false })}
           />
-          <span>Без учета растворного шва (10мм)</span>
+          <span>Без учёта растворного шва (10 мм)</span>
         </div>
         <div className={styles.itemThickness}>
           <button
@@ -53,7 +54,7 @@ const CalcValues = () => {
             disabled={values.mortarSeamEnabled}
             onClick={() => setValues({ ...values, mortarSeamEnabled: true })}
           />
-          <span>С учетом растворного шва (10мм)</span>
+          <span>С учётом растворного шва (10 мм)</span>
         </div>
       </div>
 
@@ -67,7 +68,7 @@ const CalcValues = () => {
             disabled={values.brickType === 1}
             onClick={() => setValues({ ...values, brickType: 1 })}
           />
-          <span>Одинарный (250×120×65)</span>
+          <span>1НФ одинарный (250×120×65)</span>
         </div>
         <div className={styles.itemThickness}>
           <button
@@ -75,7 +76,15 @@ const CalcValues = () => {
             disabled={values.brickType === 2}
             onClick={() => setValues({ ...values, brickType: 2 })}
           />
-          <span>Утолщенный (250×120×88)</span>
+          <span>1,4НФ утолщённый (250×120×88)</span>
+        </div>
+        <div className={styles.itemThickness}>
+          <button
+            type="button"
+            disabled={values.brickType === 3}
+            onClick={() => setValues({ ...values, brickType: 3 })}
+          />
+          <span>2,1НФ (250×120×140)</span>
         </div>
       </div>
 
@@ -104,11 +113,7 @@ const CalcValues = () => {
         </div>
       </div>
 
-      {resValue !== null && (
-        <Alert variant={"info"} className={styles.alertValue}>
-          Необходимое количество кирпича по вашему запросу - <b>{resValue}шт</b>
-        </Alert>
-      )}
+      {result && <CalcResultAlert result={result} />}
 
       <button type="submit" className={formStyles.submit} disabled={load}>
         {load ? "Загрузка..." : "Рассчитать"}

@@ -5,11 +5,12 @@ import { handleRequest } from "@/functions/handleRequest";
 import { REQUEST_METHODS } from "@/types/general";
 import { API_CALC_PARAMS } from "@/constants/api";
 import { TOAST_ERROR } from "@/constants/toasts";
-import { Alert } from "react-bootstrap";
+import { CalcBrickType, CalcResult } from "@/types/calc";
+import CalcResultAlert from "@/components/calculator/CalcResultAlert/CalcResultAlert";
 
 interface InitialValues {
   wallThicknessType: 1 | 2 | 3 | 4 | 5;
-  brickType: 1 | 2;
+  brickType: CalcBrickType;
   wallHeight: number;
   wallLength: number;
   frameHeight: number;
@@ -30,13 +31,13 @@ const initialValues: InitialValues = {
 const CalcSquare = () => {
   const [values, setValues] = useState<InitialValues>(initialValues);
   const [load, setLoad] = useState<boolean>(false);
-  const [resValue, setResValue] = useState<null | number>(null);
+  const [result, setResult] = useState<CalcResult | null>(null);
 
   const handleSend = (e: FormEvent) => {
     e.preventDefault();
     setLoad(true);
     handleRequest(REQUEST_METHODS.POST, API_CALC_PARAMS, values)
-      .then((res) => setResValue(res.data))
+      .then((res) => setResult(res.data))
       .catch((err) => TOAST_ERROR("Ошибка расчёта! " + err.message))
       .finally(() => setLoad(false));
   };
@@ -99,7 +100,7 @@ const CalcSquare = () => {
             disabled={values.brickType === 1}
             onClick={() => setValues({ ...values, brickType: 1 })}
           />
-          <span>Одинарный (250×120×65)</span>
+          <span>1НФ одинарный (250×120×65)</span>
         </div>
         <div className={styles.itemThickness}>
           <button
@@ -107,7 +108,15 @@ const CalcSquare = () => {
             disabled={values.brickType === 2}
             onClick={() => setValues({ ...values, brickType: 2 })}
           />
-          <span>Утолщенный (250×120×88)</span>
+          <span>1,4НФ утолщённый (250×120×88)</span>
+        </div>
+        <div className={styles.itemThickness}>
+          <button
+            type="button"
+            disabled={values.brickType === 3}
+            onClick={() => setValues({ ...values, brickType: 3 })}
+          />
+          <span>2,1НФ (250×120×140)</span>
         </div>
 
         <hr className={styles.divider} />
@@ -121,7 +130,7 @@ const CalcSquare = () => {
             disabled={!values.mortarSeamEnabled}
             onClick={() => setValues({ ...values, mortarSeamEnabled: false })}
           />
-          <span>Без учета растворного шва (10мм)</span>
+          <span>Без учёта растворного шва (10 мм)</span>
         </div>
         <div className={styles.itemThickness}>
           <button
@@ -129,14 +138,17 @@ const CalcSquare = () => {
             disabled={values.mortarSeamEnabled}
             onClick={() => setValues({ ...values, mortarSeamEnabled: true })}
           />
-          <span>С учетом растворного шва (10мм)</span>
+          <span>С учётом растворного шва (10 мм)</span>
         </div>
       </div>
 
       <div className={`${styles.thickness} ${styles.full}`}>
         <header className={formStyles.header}>
           <h2>Размеры строения</h2>
-          <p>Укажите размеры стен и проёмов в метрах</p>
+          <p>
+            Размеры в метрах. Для нескольких окон и дверей укажите среднюю
+            высоту проёмов и сумму их ширин — так получится суммарная площадь.
+          </p>
         </header>
 
         <div className={formStyles.form}>
@@ -159,7 +171,7 @@ const CalcSquare = () => {
 
             <div className={formStyles.field}>
               <label htmlFor="calc-frame-height">
-                Высота дверей и оконных проёмов (м)
+                Средняя высота проёмов (м)
               </label>
               <input
                 id="calc-frame-height"
@@ -194,7 +206,7 @@ const CalcSquare = () => {
 
             <div className={formStyles.field}>
               <label htmlFor="calc-frame-width">
-                Длина дверей и оконных проёмов (м)
+                Сумма ширин всех проёмов (м)
               </label>
               <input
                 id="calc-frame-width"
@@ -212,11 +224,7 @@ const CalcSquare = () => {
         </div>
       </div>
 
-      {resValue !== null && (
-        <Alert variant={"info"} className={styles.alertValue}>
-          Необходимое количество кирпича по вашему запросу - <b>{resValue}шт</b>
-        </Alert>
-      )}
+      {result && <CalcResultAlert result={result} />}
 
       <button type="submit" className={formStyles.submit} disabled={load}>
         {load ? "Загрузка..." : "Рассчитать"}

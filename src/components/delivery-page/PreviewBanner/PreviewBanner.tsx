@@ -1,17 +1,26 @@
-import React from 'react';
-import styles from './PreviewBanner.module.css';
-import { Container } from 'react-bootstrap';
+import React, { ReactNode } from "react";
+import styles from "./PreviewBanner.module.css";
+import { Container } from "react-bootstrap";
 
-const PreviewBanner = () => {
+interface IPreviewBanner {
+  title?: string;
+  subtitle?: string;
+  children?: ReactNode;
+}
+
+const PreviewBanner = ({
+  title = "Оплата и доставка",
+  subtitle = "Карта, счёт или наличные. Доставка по Нижнему Новгороду и области",
+  children,
+}: IPreviewBanner) => {
   return (
-     <div className={styles.wrapper}>
-        <Container className={styles.content}>
-           <h1>Оплата и доставка</h1>
-           <h5>
-              Карта, счёт или наличные. Доставка по Нижнему Новгороду и области
-           </h5>
-        </Container>
-     </div>
+    <div className={styles.wrapper}>
+      <Container className={styles.content}>
+        {children}
+        <h1>{title}</h1>
+        <h5>{subtitle}</h5>
+      </Container>
+    </div>
   );
 };
 

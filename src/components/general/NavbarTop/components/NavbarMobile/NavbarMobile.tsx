@@ -18,7 +18,10 @@ const NavbarMobile: React.FC<INavbarMobile> = ({
 }) => {
   const router = useRouter();
 
-  const handleLink = (event: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+  const handleLink = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    link: string,
+  ) => {
     event.preventDefault();
     router.push(link);
     handleClose();
@@ -31,15 +34,17 @@ const NavbarMobile: React.FC<INavbarMobile> = ({
       onHide={handleClose}
       placement={"end"}
     >
-      <Offcanvas.Header>
+      <Offcanvas.Header className={styles.header} closeButton={false}>
         <img src={"/Logo.svg"} className={styles.logo} alt={SITE_NAME} />
 
-        <img
+        <button
+          type="button"
           onClick={handleClose}
-          className={styles.openMenu}
-          src={"/icons/x.svg"}
-          alt="Закрыть меню"
-        />
+          className={styles.closeMenu}
+          aria-label="Закрыть меню"
+        >
+          <img src={"/icons/x.svg"} alt="" />
+        </button>
       </Offcanvas.Header>
 
       <Offcanvas.Body className={styles.body}>

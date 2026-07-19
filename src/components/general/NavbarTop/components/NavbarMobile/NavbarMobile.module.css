@@ -1,67 +1,117 @@
 .NavbarMobile {
-  /*vars*/
-  --bs-offcanvas-padding-y: 1.5em;
+  --bs-offcanvas-padding-x: 1.25em;
+  --bs-offcanvas-padding-y: 1.25em;
   --bs-offcanvas-bg: var(--bs-dark);
   color: var(--bs-white);
   position: fixed;
 }
+
 .NavbarMobile.scrolled {
   --bs-offcanvas-bg: var(--app-dark);
   color: var(--bs-white);
 }
 
-/*logo*/
-.logo {
-  width: 110px;
-}
-/*open menu*/
-.openMenu {
-  width: 32px;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  padding-bottom: 0.75em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/*body*/
+.logo {
+  width: 110px;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.closeMenu {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  margin-left: auto;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.closeMenu:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.closeMenu img {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
 .body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-top: 1.25em;
 }
 
-/*nav*/
 .body nav {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 0.5em;
 }
-/*link top*/
+
 .body nav a {
   width: 100%;
-  margin-bottom: 0.5em;
-  padding: 1em 0;
+  margin: 0;
+  padding: 0.95em 1em;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  color: var(--bs-white);
+  font-weight: 500;
   text-align: center;
   text-decoration: none;
   background: #272727;
-  border-radius: 5px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
 }
+
+.body nav a:hover,
+.body nav a:focus-visible {
+  color: var(--bs-white);
+  border-color: var(--app-primary);
+  background: rgba(255, 255, 255, 0.04);
+  outline: none;
+}
+
 .body nav a:nth-child(3),
 .body nav a:nth-child(4) {
   width: calc(50% - 0.25em);
 }
 
-/*footer*/
 .body footer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .body footer a {
   color: var(--bs-gray-600);
   text-decoration: none;
 }
+
 .body footer a:first-child {
   margin-bottom: 0.5em;
 }

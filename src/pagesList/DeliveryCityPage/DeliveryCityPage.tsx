@@ -1,12 +1,19 @@
 import styles from "./DeliveryCityPage.module.css";
+import PreviewBanner from "@/components/delivery-page/PreviewBanner/PreviewBanner";
 import { Container } from "react-bootstrap";
 import Link from "next/link";
 import {
   DELIVERY_CITIES,
   DeliveryCity,
 } from "@/constants/deliveryCities";
-import { LINK_CATALOG, LINK_CONTACTS, LINK_DELIVERY, LINK_DELIVERY_CITY } from "@/constants/links";
+import {
+  LINK_CATALOG,
+  LINK_CONTACTS,
+  LINK_DELIVERY,
+  LINK_DELIVERY_CITY,
+} from "@/constants/links";
 import { CONTACTS } from "@/constants/general";
+import bannerStyles from "@/components/delivery-page/PreviewBanner/PreviewBanner.module.css";
 
 type Props = {
   city: DeliveryCity;
@@ -17,19 +24,16 @@ const DeliveryCityPage = ({ city }: Props) => {
 
   return (
     <div className={styles.main}>
-      <div className={styles.banner}>
-        <Container className={styles.bannerContent}>
-          <p className={styles.breadcrumb}>
-            <Link href={LINK_DELIVERY}>Оплата и доставка</Link>
-            <span aria-hidden="true"> / </span>
-            <span>{city.name}</span>
-          </p>
-          <h1>Купить кирпич в {city.namePrepositional}</h1>
-          <h5>
-            Доставка с завода Ковернино — {city.distanceHint}
-          </h5>
-        </Container>
-      </div>
+      <PreviewBanner
+        title={`Купить кирпич в ${city.namePrepositional}`}
+        subtitle={`Доставка с завода Ковернино — ${city.distanceHint}`}
+      >
+        <p className={bannerStyles.breadcrumb}>
+          <Link href={LINK_DELIVERY}>Оплата и доставка</Link>
+          <span aria-hidden="true"> / </span>
+          <span>{city.name}</span>
+        </p>
+      </PreviewBanner>
 
       <Container className={styles.content}>
         <section className={styles.section}>

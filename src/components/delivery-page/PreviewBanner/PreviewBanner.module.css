@@ -12,23 +12,46 @@
   background-image: url("/other/deliveryPreview.png");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+}
+
+.content {
+  width: 100%;
+}
+
+.breadcrumb {
+  margin: 0 0 1em;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.breadcrumb a {
+  color: var(--bs-white);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .wrapper h1 {
   font-size: 64px;
   font-weight: 700;
 }
+
 .wrapper h5 {
   font-size: 24px;
   font-weight: 400;
 }
 
-/*media*/
 @media (max-width: 768px) {
+  .breadcrumb {
+    font-size: 0.85rem;
+    margin-bottom: 0.75em;
+  }
+
   .wrapper h1 {
     font-size: 24px;
     font-weight: 700;
   }
+
   .wrapper h5 {
     font-size: 14px;
     font-weight: 400;

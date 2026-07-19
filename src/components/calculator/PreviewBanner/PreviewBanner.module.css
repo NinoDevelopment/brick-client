@@ -12,6 +12,11 @@
   background-image: url("/other/calc-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+}
+
+.content {
+  width: 100%;
 }
 
 .wrapper h1 {

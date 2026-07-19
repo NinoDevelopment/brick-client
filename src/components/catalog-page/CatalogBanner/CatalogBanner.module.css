@@ -23,20 +23,18 @@
   font-size: 64px;
   font-weight: 700;
 }
+
 .wrapper h5 {
   font-size: 24px;
   font-weight: 400;
 }
 
 @media (max-width: 768px) {
-  .wrapper {
-    height: 42vh;
-    min-height: 220px;
-  }
   .wrapper h1 {
     font-size: 24px;
     font-weight: 700;
   }
+
   .wrapper h5 {
     font-size: 14px;
     font-weight: 400;

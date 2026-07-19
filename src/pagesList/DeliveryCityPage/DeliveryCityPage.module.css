@@ -2,61 +2,19 @@
   margin: 0 auto 3em;
 }
 
-.banner {
-  width: 100%;
-  min-height: 50vh;
-  display: flex;
-  align-items: center;
-  color: var(--bs-white);
-  background-image: url("/other/deliveryPreview.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
-.bannerContent {
-  padding: 4em 0;
-}
-
-.breadcrumb {
-  margin: 0 0 1em;
-  font-size: 0.95rem;
-  opacity: 0.9;
-}
-
-.breadcrumb a {
-  color: var(--bs-white);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.banner h1 {
-  margin: 0 0 0.4em;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.15;
-}
-
-.banner h5 {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 400;
-  max-width: 40rem;
-}
-
 .content {
   max-width: 860px;
 }
 
 .section {
-  margin: 3.5em 0;
+  margin: 4em 0;
 }
 
 .section h2 {
   margin: 0 0 0.75em;
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .section p {
@@ -112,28 +70,12 @@
     margin: 0 auto 1.5em;
   }
 
-  .banner {
-    min-height: 36vh;
-  }
-
-  .bannerContent {
-    padding: 2.5em 0;
-  }
-
-  .banner h1 {
-    font-size: 24px;
-  }
-
-  .banner h5 {
-    font-size: 14px;
-  }
-
   .section {
-    margin: 2.25em 0;
+    margin: 2.5em 0;
   }
 
   .section h2 {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .section p,

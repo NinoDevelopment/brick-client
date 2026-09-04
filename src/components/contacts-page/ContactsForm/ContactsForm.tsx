@@ -1,12 +1,13 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
+import { type SubmitEvent, useState } from "react";
 import styles from "./ContactsForm.module.css";
 import { Container, Spinner } from "react-bootstrap";
 import { handleRequest } from "@/functions/handleRequest";
 import { REQUEST_METHODS } from "@/types/general";
 import { API_CALLME, API_ORDER } from "@/constants/api";
 import { TOAST_ERROR } from "@/constants/toasts";
+import PdConsentCheckbox from "@/components/general/PdConsentCheckbox/PdConsentCheckbox";
 
 const PHONE_REGEX = /^\+?[0-9]{1,3}\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}$/;
 
@@ -20,6 +21,7 @@ const ContactsForm = () => {
   });
   const [sended, setSended] = useState(false);
   const [load, setLoad] = useState(false);
+  const [pdConsent, setPdConsent] = useState(false);
 
   const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let inputValue = e.target.value;
@@ -48,11 +50,16 @@ const ContactsForm = () => {
     setFormData({ ...formData, phoneNumber: formattedValue });
   };
 
-  const handleSend = (e: FormEvent) => {
+  const handleSend = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!formData.phoneNumber.match(PHONE_REGEX)) {
       TOAST_ERROR("Введите телефон в формате +7(XXX)XXX-XX-XX!");
+      return;
+    }
+
+    if (!pdConsent) {
+      TOAST_ERROR("Подтвердите согласие на обработку персональных данных");
       return;
     }
 
@@ -165,6 +172,12 @@ const ContactsForm = () => {
                 placeholder="Кратко опишите запрос"
               />
             </div>
+
+            <PdConsentCheckbox
+              id="contact-pd-consent"
+              checked={pdConsent}
+              onChange={setPdConsent}
+            />
 
             <button
               type="submit"

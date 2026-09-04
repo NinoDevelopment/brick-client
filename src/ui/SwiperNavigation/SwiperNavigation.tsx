@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SwiperNavigation.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation } from "swiper/modules";
 import { Placeholder } from "react-bootstrap";
 
 interface ISwiperNavigation {

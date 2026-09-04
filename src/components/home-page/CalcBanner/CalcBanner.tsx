@@ -25,6 +25,7 @@ const CalcBanner = () => {
           height={747}
           src="/other/calculator.svg"
           alt="Калькулятор кирпича — расчёт количества для строительства"
+          className={styles.image}
        />
     </Container>
   );

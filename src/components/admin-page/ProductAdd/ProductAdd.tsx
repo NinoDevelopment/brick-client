@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { type SubmitEvent, useState } from "react";
 import styles from "./ProductAdd.module.css";
 import { Button, Form, Spinner } from "react-bootstrap";
 import { ITEM_INITIAL } from "@/constants/products";
@@ -18,7 +18,7 @@ const ProductAdd = () => {
   const [formData, setFormData] = useState<IProductWithImg>(ITEM_INITIAL);
   const [load, setLoad] = useState<boolean>(false);
 
-  const handleSend = (e: FormEvent) => {
+  const handleSend = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!formData?.images?.length) {

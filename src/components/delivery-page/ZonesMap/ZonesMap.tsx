@@ -1,18 +1,37 @@
-import React from "react";
+"use client";
+
 import { YMaps, Map, Polygon, Placemark } from "@pbe/react-yandex-maps";
+import { FACTORY_COORDS, YANDEX_MAPS_API_KEY } from "@/constants/operator";
+import { useCookieConsent } from "@/hooks/useCookieConsent";
+import { openCookieBanner } from "@/functions/cookieConsent";
 import "./ZonesMap.module.css";
 import nnOblast from "./nn.geojson.js";
 
 const ZonesMap = () => {
+  const { analytics, hydrated } = useCookieConsent();
   const mapState = {
     center: [56.326887, 44.005986],
     zoom: 7,
   };
 
-  const placemarkPosition = [57.147764, 43.803196];
+  const placemarkPosition = [FACTORY_COORDS.lat, FACTORY_COORDS.lon];
+
+  if (!hydrated || !analytics) {
+    return (
+      <div className="map-container">
+        <p>
+          Карта зоны доставки загружается после согласия на аналитические
+          cookies.
+        </p>
+        <button type="button" onClick={openCookieBanner}>
+          Настройки cookies
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <YMaps query={{ apikey: "f1423869-80d1-4c88-8150-8643fdf24b7b" }}>
+    <YMaps query={{ apikey: YANDEX_MAPS_API_KEY, lang: "ru_RU" }}>
       <div className="map-container">
         <Map defaultState={mapState} width="100%" height="600px">
           <Placemark

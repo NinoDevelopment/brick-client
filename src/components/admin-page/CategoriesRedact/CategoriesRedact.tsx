@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { type SubmitEvent, useState } from "react";
 import { ICategoryId } from "@/types/categories";
 import { Button, Form, FormControl, Modal, Spinner } from "react-bootstrap";
 import { handleRequest } from "@/functions/handleRequest";
@@ -23,7 +23,7 @@ const CategoriesRedact: React.FC<ICategoriesRedact> = ({
   const [formData, setFormData] = useState<ICategoryId>(data);
   const [load, setLoad] = useState<boolean>(false);
 
-  const handleRedact = (e: FormEvent) => {
+  const handleRedact = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setLoad(true);

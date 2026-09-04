@@ -10,7 +10,7 @@ import { notFound } from "next/navigation";
 import Script from "next/script";
 
 interface IPage {
-  params: { city: string };
+  params: Promise<{ city: string }>;
 }
 
 export function generateStaticParams() {
@@ -18,7 +18,8 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: IPage): Promise<Metadata> {
-  const city = getDeliveryCity(params.city);
+  const { city: citySlug } = await params;
+  const city = getDeliveryCity(citySlug);
 
   if (!city) {
     return {
@@ -33,8 +34,9 @@ export async function generateMetadata({ params }: IPage): Promise<Metadata> {
   );
 }
 
-const Page = ({ params }: IPage) => {
-  const city = getDeliveryCity(params.city);
+const Page = async ({ params }: IPage) => {
+  const { city: citySlug } = await params;
+  const city = getDeliveryCity(citySlug);
 
   if (!city) {
     notFound();

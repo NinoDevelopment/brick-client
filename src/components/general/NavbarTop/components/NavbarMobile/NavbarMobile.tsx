@@ -32,7 +32,8 @@ const NavbarMobile: React.FC<INavbarMobile> = ({
       className={`${styles.NavbarMobile} ${scrolled ? styles.scrolled : ""}`}
       show={show}
       onHide={handleClose}
-      placement={"end"}
+      placement="end"
+      restoreFocus={false}
     >
       <Offcanvas.Header className={styles.header} closeButton={false}>
         <img src={"/Logo.svg"} className={styles.logo} alt={SITE_NAME} />

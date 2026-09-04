@@ -1,5 +1,5 @@
 "use client";
-import React, { FormEvent, useState } from "react";
+import React, { type SubmitEvent, useState } from "react";
 import styles from "./page.module.css";
 import {
   Button,
@@ -18,7 +18,7 @@ const page = () => {
   const [load, setLoad] = useState<boolean>(false);
 
   //send form
-  const handleSend = (e: FormEvent) => {
+  const handleSend = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     globalThis.localStorage.setItem("key", key);
     setLoad(true);

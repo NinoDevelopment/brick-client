@@ -1,5 +1,5 @@
 import styles from "./SwiperPhoto.module.css";
-import { Navigation, Pagination } from "swiper";
+import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Placeholder } from "react-bootstrap";
 

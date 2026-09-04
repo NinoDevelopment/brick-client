@@ -1,0 +1,30 @@
+.label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65em;
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  font-weight: 400;
+  color: var(--bs-gray-700);
+  cursor: pointer;
+}
+
+.input {
+  flex-shrink: 0;
+  width: 1.1em;
+  height: 1.1em;
+  margin-top: 0.15em;
+  accent-color: var(--app-primary);
+  cursor: pointer;
+}
+
+.label a {
+  color: var(--app-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.label a:hover {
+  text-decoration: underline;
+}

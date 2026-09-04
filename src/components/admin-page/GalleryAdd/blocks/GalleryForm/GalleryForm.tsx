@@ -1,4 +1,4 @@
-import React, { Dispatch, FormEvent, SetStateAction } from "react";
+import React, { Dispatch, type SubmitEvent, SetStateAction } from "react";
 import styles from "./GalleryForm.module.css";
 import {
   Button,
@@ -12,7 +12,7 @@ import { compressImageToBase64 } from "@/functions/compressImageToBase64";
 import { TOAST_ERROR } from "@/constants/toasts";
 
 interface IProps {
-  handleSend: (e: FormEvent) => void;
+  handleSend: (e: SubmitEvent<HTMLFormElement>) => void;
   formData: IGalleryItem;
   setFormData: Dispatch<SetStateAction<IGalleryItem>>;
   load: boolean;

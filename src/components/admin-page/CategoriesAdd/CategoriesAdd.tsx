@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { type SubmitEvent, useState } from "react";
 import {
   Alert,
   Button,
@@ -32,7 +32,7 @@ const CategoriesAdd = () => {
       );
   };
 
-  const handleSend = (e: FormEvent) => {
+  const handleSend = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!formData.image) {

@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { type SubmitEvent, useState } from "react";
 import styles from "../CalcSquare/CalcSquare.module.css";
 import formStyles from "@/ui/FormFields/FormFields.module.css";
 import { handleRequest } from "@/functions/handleRequest";
@@ -25,7 +25,7 @@ const CalcValues = () => {
   const [load, setLoad] = useState<boolean>(false);
   const [result, setResult] = useState<CalcResult | null>(null);
 
-  const handleSend = (e: FormEvent) => {
+  const handleSend = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoad(true);
     handleRequest(REQUEST_METHODS.POST, API_CALC_VALUES, values)

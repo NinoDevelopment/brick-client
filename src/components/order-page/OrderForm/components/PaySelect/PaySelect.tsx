@@ -10,50 +10,70 @@ interface IPaySelect {
 
 const emptySchetInfo = ORDER_FORM_SCHET_INITIAL([]).schetInfo;
 
+const OPTIONS = [
+  {
+    type: EPayment.ONLINE,
+    title: "Картой онлайн",
+    hint: "Оплата сразу на сайте",
+    icon: "/icons/bank-card.svg",
+    alt: "Оплата онлайн",
+  },
+  {
+    type: EPayment.SCHET,
+    title: "Выставить счёт",
+    hint: "Для юридических лиц",
+    icon: "/icons/schet.svg",
+    alt: "Выставить счёт",
+  },
+  {
+    type: EPayment.CASH,
+    title: "Наличные",
+    hint: "При получении заказа",
+    icon: "/icons/cash.svg",
+    alt: "Наличные",
+  },
+] as const;
+
 const PaySelect: React.FC<IPaySelect> = ({ formData, setFormData }) => {
+  const selectPayment = (type: EPayment) => {
+    if (type === EPayment.SCHET) {
+      setFormData({
+        ...formData,
+        paymentType: EPayment.SCHET,
+        schetInfo:
+          (formData as IOrderWithSchetForm).schetInfo ?? emptySchetInfo,
+      });
+      return;
+    }
+
+    const { schetInfo: _schetInfo, ...rest } = formData as IOrderWithSchetForm;
+    setFormData({ ...rest, paymentType: type });
+  };
+
   return (
-    <div className={styles.PaySelect}>
-      <button
-        disabled={formData.paymentType === EPayment.ONLINE}
-        onClick={() =>
-          setFormData({ ...formData, paymentType: EPayment.ONLINE })
-        }
-      >
-        <div className={styles.left}>
-          <div className={styles.circle} />
-          <p>Картой онлайн</p>
-        </div>
-        <img src="/icons/bank-card.svg" alt="Оплата онлайн" />
-      </button>
+    <div className={styles.PaySelect} role="group" aria-label="Способ оплаты">
+      {OPTIONS.map((option) => {
+        const selected = formData.paymentType === option.type;
 
-      <button
-        disabled={formData.paymentType === EPayment.SCHET}
-        onClick={() =>
-          setFormData({
-            ...formData,
-            paymentType: EPayment.SCHET,
-            schetInfo:
-              (formData as IOrderWithSchetForm).schetInfo ?? emptySchetInfo,
-          })
-        }
-      >
-        <div className={styles.left}>
-          <div className={styles.circle} />
-          <p>Выставить счёт</p>
-        </div>
-        <img src="/icons/schet.svg" alt="Выставить счёт" />
-      </button>
-
-      <button
-        disabled={formData.paymentType === EPayment.CASH}
-        onClick={() => setFormData({ ...formData, paymentType: EPayment.CASH })}
-      >
-        <div className={styles.left}>
-          <div className={styles.circle} />
-          <p>Наличные</p>
-        </div>
-        <img src="/icons/cash.svg" alt="Наличные" />
-      </button>
+        return (
+          <button
+            key={option.type}
+            type="button"
+            className={`${styles.option} ${selected ? styles.selected : ""}`}
+            aria-pressed={selected}
+            onClick={() => selectPayment(option.type)}
+          >
+            <span className={styles.iconWrap}>
+              <img src={option.icon} alt="" aria-hidden="true" />
+            </span>
+            <span className={styles.text}>
+              <span className={styles.title}>{option.title}</span>
+              <span className={styles.hint}>{option.hint}</span>
+            </span>
+            <span className={styles.radio} aria-hidden="true" />
+          </button>
+        );
+      })}
     </div>
   );
 };

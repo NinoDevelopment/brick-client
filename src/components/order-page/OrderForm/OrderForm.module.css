@@ -8,22 +8,27 @@
 }
 
 .orderFormData {
-  width: calc(100% - 350px - 1em);
+  width: calc(100% - 380px - 1em);
   max-width: 700px;
 }
 
 .payment {
-  width: 350px;
-  padding: 2em;
-  background: var(--app-light);
-  border-radius: 5px;
+  width: 380px;
+  padding: 1.5em;
+  background: var(--bs-white);
+  border: 1px solid rgba(30, 30, 30, 0.08);
+  border-radius: 12px;
+  position: sticky;
+  top: 6rem;
+  align-self: flex-start;
 }
 
 .payment h3 {
   margin: 0 0 1em;
-  font-size: 22px;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--app-dark);
+  letter-spacing: -0.01em;
 }
 
 .noteTitle {
@@ -33,6 +38,10 @@
   font-style: normal;
   color: var(--bs-gray-700);
   line-height: 1.45;
+}
+
+.consent {
+  margin: 1.15em 0 1em;
 }
 
 .promocodeRow {
@@ -45,11 +54,11 @@
   flex: 1;
   padding: 0.7em 1em;
   color: var(--app-dark);
-  background: var(--bs-white);
-  border: 1px solid var(--bs-gray-300);
-  border-radius: 5px;
+  background: var(--app-light);
+  border: 1px solid transparent;
+  border-radius: 8px;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
 .promocodeRow input::placeholder {
@@ -57,36 +66,39 @@
 }
 
 .promocodeRow input:hover {
-  border-color: var(--bs-gray-500);
+  border-color: var(--bs-gray-400);
+  background: var(--bs-white);
 }
 
 .promocodeRow input:focus {
+  background: var(--bs-white);
   border-color: var(--app-primary);
   box-shadow: 0 0 0 3px rgba(251, 138, 46, 0.15);
 }
 
 .promocodeRow button {
-  padding: 0.7em 1.25em;
+  padding: 0.7em 1.15em;
   font-weight: 600;
-  background: var(--app-primary);
+  background: var(--app-dark);
   border: none;
   color: var(--bs-white);
-  border-radius: 5px;
+  border-radius: 8px;
   transition: background 0.2s;
   white-space: nowrap;
 }
 
 .promocodeRow button:hover {
-  background: var(--app-primary-hover);
+  background: var(--app-secondary-dark);
 }
 
 @media (max-width: 991px) {
   .orderFormData {
-    width: calc(100% - 320px - 1em);
+    width: calc(100% - 340px - 1em);
   }
 
   .payment {
-    width: 320px;
+    width: 340px;
+    top: 5rem;
   }
 }
 
@@ -102,12 +114,13 @@
 
   .payment {
     width: 100%;
+    position: static;
   }
 }
 
 @media (max-width: 500px) {
   .payment {
-    padding: 1.5em 1em;
+    padding: 1.25em 1em;
   }
 
   .promocodeRow {

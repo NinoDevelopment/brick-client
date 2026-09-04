@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { type SubmitEvent, useState } from "react";
 import styles from "./GalleryAdd.module.css";
 import { GALLERY_INITIAL } from "@/constants/gallery";
 import { IGalleryItem } from "@/types/gallery";
@@ -14,7 +14,7 @@ const GalleryAdd = () => {
   const [formData, setFormData] = useState<IGalleryItem>(GALLERY_INITIAL);
   const [load, setLoad] = useState<boolean>(false);
 
-  const handleSend = (e: FormEvent) => {
+  const handleSend = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!formData.images.length) {

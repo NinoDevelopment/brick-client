@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { type SubmitEvent, useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useGetGallery } from "@/hooks/useGetGallery";
 import { IGalleryItem } from "@/types/gallery";
@@ -20,7 +20,7 @@ const ModalRedact = ({ show, handleClose, data }: IProps) => {
   const [formData, setFormData] = useState<IGalleryItem>(data);
   const [load, setLoad] = useState<boolean>(false);
 
-  const handleSend = (e: FormEvent) => {
+  const handleSend = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!formData.images.length) {

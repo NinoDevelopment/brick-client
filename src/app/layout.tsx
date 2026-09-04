@@ -1,6 +1,6 @@
 import Providers from '@/app/providers';
 import type { Metadata } from 'next';
-import Script from 'next/script';
+import type { ReactNode } from 'react';
 import { Nunito_Sans, Playfair_Display } from 'next/font/google';
 import LdJsonScripts from "@/app/ld-json-scripts";
 import { createPageMetadata, SEO_DEFAULT, SITE_URL } from '@/constants/seo';
@@ -38,13 +38,14 @@ export const metadata: Metadata = {
 };
 
 interface IRootLayout {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const RootLayout = ({ children }: IRootLayout) => {
   return (
     <html
       lang='ru'
+      data-scroll-behavior='smooth'
       className={`${nunitoSans.variable} ${playfairDisplay.variable}`}
     >
       <head>
@@ -58,30 +59,6 @@ const RootLayout = ({ children }: IRootLayout) => {
       </head>
       <body className={nunitoSans.className}>
         <Providers>{children}</Providers>
-
-        <Script id='yandex-metrika' type='text/javascript'>
-          {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-            ym(97580805, "init", {
-               clickmap:true,
-               trackLinks:true,
-               accurateTrackBounce:true
-            });`}
-        </Script>
-
-        <noscript>
-          <div>
-            <img
-              src='https://mc.yandex.ru/watch/97580805'
-              style={{ position: 'absolute', left: '-9999px' }}
-              alt=''
-            />
-          </div>
-        </noscript>
       </body>
     </html>
   );

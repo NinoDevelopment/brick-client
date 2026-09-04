@@ -18,6 +18,8 @@ import NavbarMobile from "@/components/general/NavbarTop/components/NavbarMobile
 import Script from "next/script";
 import { SITE_NAME, SITE_URL } from "@/constants/seo";
 
+const MOBILE_MAX_WIDTH = 991;
+
 const isHeroPage = (path: string) => {
   if (
     path === LINK_HOME ||
@@ -39,29 +41,40 @@ const isHeroPage = (path: string) => {
 
 const NavbarTop = () => {
   const path = usePathname();
-  const [showMobile, setShowMobile] = useState<boolean>(false);
-  const [scrolled, setScrolled] = useState<boolean>(false);
+  const [showMobile, setShowMobile] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const hero = isHeroPage(path);
   const light = !hero;
+
+  useEffect(() => {
+    setShowMobile(false);
+  }, [path]);
+
+  useEffect(() => {
+    const media = window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH}px)`);
+    const syncMobile = () => {
+      setIsMobile(media.matches);
+      if (!media.matches) {
+        setShowMobile(false);
+      }
+    };
+
+    syncMobile();
+    media.addEventListener("change", syncMobile);
+    return () => media.removeEventListener("change", syncMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollThresholdPercent = 0.2;
       const scrollThreshold = window.innerHeight * scrollThresholdPercent;
-
-      if (window.scrollY > scrollThreshold) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > scrollThreshold);
     };
 
     handleScroll();
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [path]);
 
   const showDarkAssets = light;
@@ -87,7 +100,8 @@ const NavbarTop = () => {
       <Navbar
         role="navigation"
         aria-label="Основное меню"
-        sticky={"top"}
+        expand="lg"
+        fixed={hero ? "top" : undefined}
         className={`${styles.NavbarTop} ${light ? styles.light : ""} ${showScrolled ? styles.scrolled : ""}`}
       >
         <Container className={styles.container}>
@@ -99,35 +113,47 @@ const NavbarTop = () => {
           </Link>
 
           <div className={styles.right}>
-            <Nav className={styles.linksContainer}>
-              {LIST_LINKS.map((elem) => (
-                <Link
-                  key={elem.title}
-                  href={elem.link}
-                  className={path === elem.link ? styles.active : ""}
-                >
-                  {elem.title}
-                </Link>
-              ))}
-            </Nav>
+            {isMobile === false && (
+              <Nav className={styles.linksContainer}>
+                {LIST_LINKS.map((elem) => (
+                  <Link
+                    key={elem.title}
+                    href={elem.link}
+                    className={path === elem.link ? styles.active : ""}
+                  >
+                    {elem.title}
+                  </Link>
+                ))}
+              </Nav>
+            )}
 
             <ShopCartLink />
 
-            <img
-              onClick={() => setShowMobile(!showMobile)}
-              className={styles.openMenu}
-              src={showDarkAssets ? "/icons/menu-dark.svg" : "/icons/menu.svg"}
-              alt="Открыть меню"
-            />
+            {isMobile === true && (
+              <button
+                type="button"
+                onClick={() => setShowMobile(true)}
+                className={styles.openMenu}
+                aria-label="Открыть меню"
+                aria-expanded={showMobile}
+              >
+                <img
+                  src={
+                    showDarkAssets ? "/icons/menu-dark.svg" : "/icons/menu.svg"
+                  }
+                  alt=""
+                />
+              </button>
+            )}
           </div>
         </Container>
-
-        <NavbarMobile
-          show={showMobile}
-          handleClose={() => setShowMobile(false)}
-          scrolled={showScrolled}
-        />
       </Navbar>
+
+      <NavbarMobile
+        show={Boolean(isMobile && showMobile)}
+        handleClose={() => setShowMobile(false)}
+        scrolled={showScrolled}
+      />
     </>
   );
 };

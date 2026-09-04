@@ -2,8 +2,9 @@
   --bs-offcanvas-padding-x: 1.25em;
   --bs-offcanvas-padding-y: 1.25em;
   --bs-offcanvas-bg: var(--bs-dark);
+  --bs-offcanvas-width: min(100vw - 2rem, 22rem);
   color: var(--bs-white);
-  position: fixed;
+  z-index: 1045;
 }
 
 .NavbarMobile.scrolled {

@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./page.module.css";
 import { Container } from "react-bootstrap";
 import { CONTACTS } from "@/constants/general";
+import { OPERATOR } from "@/constants/operator";
 import {
   createPageMetadata,
   NO_INDEX_ROBOTS,
@@ -21,17 +22,17 @@ const Page = () => {
       <h1 className={styles.title}>Реквизиты</h1>
 
       <p className={styles.company}>
-        ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «КИРПИЧНЫЙ ЗАВОД КОВЕРНИНО»
+        {OPERATOR.fullName.toUpperCase()}
       </p>
 
       <dl className={styles.list}>
         <div className={styles.row}>
           <dt>Директор</dt>
-          <dd>Рябков Максим Николаевич</dd>
+          <dd>{OPERATOR.director}</dd>
         </div>
         <div className={styles.row}>
           <dt>Юридический адрес</dt>
-          <dd>606570, Нижегородская область, р-н Ковернинский, д. Черные</dd>
+          <dd>{OPERATOR.address}</dd>
         </div>
         <div className={styles.row}>
           <dt>Почта</dt>
@@ -49,15 +50,15 @@ const Page = () => {
         </div>
         <div className={styles.row}>
           <dt>ИНН</dt>
-          <dd>5218001636</dd>
+          <dd>{OPERATOR.inn}</dd>
         </div>
         <div className={styles.row}>
           <dt>КПП</dt>
-          <dd>521801001</dd>
+          <dd>{OPERATOR.kpp}</dd>
         </div>
         <div className={styles.row}>
           <dt>ОГРН</dt>
-          <dd>1155248001083</dd>
+          <dd>{OPERATOR.ogrn}</dd>
         </div>
         <div className={styles.row}>
           <dt>Банк</dt>

@@ -1,52 +1,50 @@
 .NavbarTop {
   --bs-navbar-padding-y: 1.5em;
   width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1030;
+  background-color: transparent;
+  transition: background-color 0.25s ease;
 }
 
 .NavbarTop.light {
-  background: #fff;
+  position: static;
+  background-color: #fff;
   border-bottom: 1px solid rgba(30, 30, 30, 0.08);
 }
 
 .NavbarTop.scrolled {
-  background: var(--app-dark);
+  background-color: var(--app-dark);
+  border-bottom: none;
 }
 
-/*container*/
 .container {
   align-items: center;
 }
 
-/*logo*/
 .logo img {
   width: 220px;
 }
 
-/*right blocks (for align)*/
 .right {
   display: flex;
   align-items: center;
+  margin-left: auto;
 }
 
-/*links Container*/
 .linksContainer {
   margin-right: 3.5em;
+  flex-direction: row !important;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
-/*links*/
 .linksContainer a {
   margin: 0 0.25em;
   padding: 0.35em 0.75em;
-
   border-bottom: 2px solid transparent;
   color: var(--bs-white);
   text-decoration: none;
   transition: 0.25s;
+  white-space: nowrap;
 }
 
 .NavbarTop.light .linksContainer a {
@@ -58,14 +56,25 @@
   border-bottom: 2px solid var(--app-primary);
 }
 
-/*openMenu*/
 .openMenu {
-  display: none;
-  width: 32px;
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
   margin-left: 15px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
 }
 
-/*media*/
+.openMenu img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
 @media (max-width: 1200px) {
   .logo img {
     width: 160px;
@@ -88,13 +97,5 @@
 @media (max-width: 991px) {
   .logo img {
     width: 110px;
-  }
-
-  .linksContainer {
-    display: none;
-  }
-
-  .openMenu {
-    display: inline-block;
   }
 }

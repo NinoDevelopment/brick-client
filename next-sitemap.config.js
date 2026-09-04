@@ -33,6 +33,7 @@ module.exports = {
       pathName === '/shopCart' ||
       pathName.startsWith('/order') ||
       pathName === '/privacyPolicy' ||
+      pathName === '/consent' ||
       pathName === '/requisites' ||
       pathName.includes('?') ||
       pathName.includes('&')
@@ -148,6 +149,7 @@ module.exports = {
     '/shopCart',
     '/order*',
     '/privacyPolicy',
+    '/consent',
     '/requisites',
   ],
   autoLastmod: true,

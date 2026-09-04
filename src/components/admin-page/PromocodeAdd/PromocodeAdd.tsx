@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { type SubmitEvent, useState } from "react";
 import styles from "./PromocodeAdd.module.css";
 import { Button, Form, FormControl, Spinner } from "react-bootstrap";
 import { handleRequest } from "@/functions/handleRequest";
@@ -15,7 +15,7 @@ const PromocodeAdd = () => {
     skidka: 0,
   });
 
-  const handleSend = (e: FormEvent) => {
+  const handleSend = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (+value.skidka >= 100 || +value.skidka < 1) {

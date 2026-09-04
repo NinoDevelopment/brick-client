@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { type SubmitEvent, useEffect, useState } from "react";
 import { IProductIdWithImg } from "@/types/products";
 import { Button, Form, Modal, Spinner } from "react-bootstrap";
 import { useGetProducts } from "@/hooks/useGetProducts";
@@ -32,7 +32,7 @@ const ProductRedact: React.FC<IProductRedact> = ({
     setFormData(data);
   }, [data]);
 
-  const handleRedact = async (e: FormEvent) => {
+  const handleRedact = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!formData?.images?.length) {

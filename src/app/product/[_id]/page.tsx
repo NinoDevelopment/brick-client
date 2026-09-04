@@ -15,7 +15,7 @@ import {
 } from "@/constants/seo";
 
 interface IPage {
-  params: { _id: string };
+  params: Promise<{ _id: string }>;
 }
 
 const getSchemaImage = (image?: string) => {
@@ -25,7 +25,8 @@ const getSchemaImage = (image?: string) => {
 };
 
 export async function generateMetadata({ params }: IPage): Promise<Metadata> {
-  const product = await fetchProduct(params._id);
+  const { _id } = await params;
+  const product = await fetchProduct(_id);
 
   if (!product) {
     return {
@@ -37,15 +38,16 @@ export async function generateMetadata({ params }: IPage): Promise<Metadata> {
 
   return createPageMetadata(
     seo,
-    `${SITE_URL}/product/${params._id}`,
+    `${SITE_URL}/product/${_id}`,
     product.name,
   );
 }
 
 const Page = async ({ params }: IPage) => {
+  const { _id } = await params;
   const [product, images, relatedProducts] = await Promise.all([
-    fetchProduct(params._id),
-    fetchProductImages(params._id),
+    fetchProduct(_id),
+    fetchProductImages(_id),
     fetchProductSample(3),
   ]);
 
@@ -53,7 +55,7 @@ const Page = async ({ params }: IPage) => {
     notFound();
   }
 
-  const productUrl = `${SITE_URL}/product/${params._id}`;
+  const productUrl = `${SITE_URL}/product/${_id}`;
   const schemaImage = getSchemaImage(images?.images?.[0]);
   const related =
     relatedProducts?.filter(

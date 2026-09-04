@@ -3,6 +3,7 @@ import styles from "./FooterContent.module.css";
 import Link from "next/link";
 import { CONTACTS } from "@/constants/general";
 import {
+  LINK_CONSENT,
   LINK_DELIVERY,
   LINK_DELIVERY_CITY,
   LINK_PRIVACY,
@@ -10,6 +11,7 @@ import {
 } from "@/constants/links";
 import { DELIVERY_CITIES } from "@/constants/deliveryCities";
 import ContactsMap from "@/components/contacts-page/ContactsMap/ContactsMap";
+import CookieSettingsButton from "@/components/general/CookieSettingsButton/CookieSettingsButton";
 
 const FooterContent = () => {
   return (
@@ -72,7 +74,11 @@ const FooterContent = () => {
 
           <h5>
             <Link href={LINK_REQUISITES}>Реквизиты</Link> <br />
-            <Link href={LINK_PRIVACY}>Политика конфиденциальности</Link>
+            <Link href={LINK_PRIVACY}>Политика обработки персональных данных</Link>
+            <br />
+            <Link href={LINK_CONSENT}>Согласие на обработку ПДн</Link>
+            <br />
+            <CookieSettingsButton />
           </h5>
         </div>
 

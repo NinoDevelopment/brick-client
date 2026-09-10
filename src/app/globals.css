@@ -1,25 +1,110 @@
 :root {
-  /*app*/
   --app-green: #53bd00;
   --app-light: #f6f6f6;
+  --app-canvas: #f6f6f6;
+  --app-surface: #ffffff;
   --app-dark: #1e1e1e;
   --app-secondary-dark: #272727;
   --app-light-hover: #f0f0f0;
   --app-primary: #fb8a2e;
-  --app-primary-hover: #8d4a13;
+  --app-primary-hover: #e07a28;
   --app-primary-25: rgba(251, 138, 46, 0.25);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --app-font: var(--font-nunito, "Nunito Sans"), sans-serif;
 
-  /*swiper*/
+  --bs-font-sans-serif: var(--app-font);
+  --bs-body-font-family: var(--app-font);
+  --bs-body-font-weight: 400;
+  --bs-heading-color: var(--app-dark);
+  --bs-body-color: var(--app-dark);
+
   --swiper-theme-color: #ffffff;
   --swiper-navigation-color: #ffffff;
 }
 
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+.navbar,
+.offcanvas,
+.btn,
+.nav-link,
+button,
+input,
+select,
+textarea {
+  font-family: var(--app-font);
+}
+
 body {
-  font-family: var(--font-nunito), "Nunito Sans", sans-serif;
   font-variant-numeric: lining-nums;
   font-feature-settings: "lnum" 1;
+  background: var(--app-canvas);
+  color: var(--app-dark);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--app-dark);
+  font-weight: 700;
 }
 
 html {
   height: 100%;
+}
+
+.app-btn,
+.app-btn-outline {
+  display: inline-block;
+  padding: 0.85em 2em;
+  font-family: var(--app-font);
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-align: center;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--app-primary);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.app-btn {
+  color: var(--app-surface);
+  background: var(--app-primary);
+}
+
+.app-btn:hover {
+  color: var(--app-surface);
+  background: var(--app-primary-hover);
+  border-color: var(--app-primary-hover);
+}
+
+.app-btn-outline {
+  color: var(--app-dark);
+  background: transparent;
+}
+
+.app-btn-outline:hover {
+  color: var(--app-surface);
+  background: var(--app-primary);
+  border-color: var(--app-primary);
+}
+
+@media (max-width: 768px) {
+  .app-btn,
+  .app-btn-outline {
+    font-size: 1rem;
+    padding: 0.8em 1.5em;
+  }
 }

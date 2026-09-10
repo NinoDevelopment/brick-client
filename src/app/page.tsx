@@ -10,6 +10,13 @@ export const metadata = createPageMetadata(SEO_HOME, SITE_URL);
 const Home = () => {
   return (
     <main>
+      <link
+        rel="preload"
+        as="video"
+        href="/videos/bg-preview.mp4"
+        type="video/mp4"
+      />
+      <link rel="preload" as="image" href="/other/back-video.png" />
       <PreviewBanner />
       <AboutCompany />
       <CalcBanner />

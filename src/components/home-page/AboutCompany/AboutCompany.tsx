@@ -9,7 +9,7 @@ const AboutCompany = () => {
      <div className={styles.wrapper}>
        <div className={styles.left}>
          <h2>О нас</h2>
-         <h4>Давайте знакомиться</h4>
+         <p className={styles.lead}>Давайте знакомиться</p>
        </div>
 
        <div className={styles.right}>

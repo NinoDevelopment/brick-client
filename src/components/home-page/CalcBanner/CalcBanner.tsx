@@ -9,13 +9,13 @@ const CalcBanner = () => {
     <Container className={styles.wrapper}>
        <div className={styles.content}>
           <h2>Калькулятор</h2>
-          <h5 className={styles.text}>
+          <p className={styles.text}>
              Укажите размеры стен или объём кладки — калькулятор посчитает,
              сколько кирпича нужно для вашего проекта. После расчёта можно
              сразу оформить заказ.
-          </h5>
+          </p>
 
-          <Link href={LINK_CALCULATOR}>
+          <Link href={LINK_CALCULATOR} className="app-btn">
              Рассчитать количество
           </Link>
        </div>

@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./FooterContent.module.css";
 import Link from "next/link";
 import { CONTACTS } from "@/constants/general";
+import { SITE_NAME } from "@/constants/seo";
 import {
   LINK_CONSENT,
   LINK_DELIVERY,
@@ -70,7 +71,9 @@ const FooterContent = () => {
 
       <div className={styles.bottom}>
         <div className={styles.left}>
-          <h6>© КЗК 2022-2026, Все права защищены</h6>
+          <p className={styles.copy}>
+            © {new Date().getFullYear()} {SITE_NAME}
+          </p>
 
           <h5>
             <Link href={LINK_REQUISITES}>Реквизиты</Link> <br />

@@ -1,11 +1,11 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
 import { useFetch } from "@/hooks/useFetch";
 import { API_PRODUCT_ID, API_PRODUCT_IMG } from "@/constants/api";
 import { Container } from "react-bootstrap";
 import { LINK_CATALOG, LINK_ERROR } from "@/constants/links";
-import { redirect } from "next/navigation";
 import { IProductId, IProductImg } from "@/types/products";
 import SwiperPhoto from "@/components/product-page/SwiperPhoto/SwiperPhoto";
 import ProductInfo from "@/components/product-page/ProductInfo/ProductInfo";
@@ -26,6 +26,7 @@ const ProductPage = ({
   initialImages,
   initialRelatedProducts,
 }: IProductPage) => {
+  const router = useRouter();
   const params = useParams();
   const productId = params._id as string;
   const hasInitialData = Boolean(initialProduct);
@@ -48,15 +49,19 @@ const ProductPage = ({
   const data = fetchedProduct ?? initialProduct;
   const images = fetchedImages ?? initialImages ?? null;
 
-  if (!hasInitialData && load) {
+  useEffect(() => {
+    if (error && !data) {
+      router.replace(LINK_ERROR);
+    }
+  }, [error, data, router]);
+
+  if ((!hasInitialData && load) || (error && !data)) {
     return (
       <Container className={styles.spinnerContainer}>
         <SpinnerPrimary />
       </Container>
     );
   }
-
-  if (error && !data) redirect(LINK_ERROR);
 
   if (!data) {
     return null;

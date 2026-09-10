@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { LINK_SHOP_CART } from "@/constants/links";
 import Link from "next/link";
-import { useAppSelector } from "@/store/store";
+import { persistedStore, useAppSelector } from "@/store/store";
 import styles from "./ShopCartLink.module.css";
 import { APP_TITLE } from "@/constants/general";
 
 const ShopCartLink = () => {
-  const [mounted, setMounted] = useState(false);
+  const [rehydrated, setRehydrated] = useState(false);
   const shopCartData = useAppSelector((state) => state.shopCart.data);
 
   useEffect(() => {
-    setMounted(true);
+    if (persistedStore.getState().bootstrapped) {
+      setRehydrated(true);
+      return;
+    }
+
+    const unsubscribe = persistedStore.subscribe(() => {
+      if (persistedStore.getState().bootstrapped) {
+        setRehydrated(true);
+      }
+    });
+
+    return unsubscribe;
   }, []);
 
   const totalPalletsCount = shopCartData.reduce(
@@ -18,7 +29,7 @@ const ShopCartLink = () => {
     0,
   );
 
-  const showCount = mounted && totalPalletsCount > 0;
+  const showCount = rehydrated && totalPalletsCount > 0;
 
   return (
     <Link href={LINK_SHOP_CART} className={styles.ShopCartLink}>

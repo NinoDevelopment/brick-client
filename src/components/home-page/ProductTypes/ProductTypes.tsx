@@ -11,31 +11,35 @@ const ProductTypes = () => {
          <h2>
            Кирпич <span>с завода</span>
          </h2>
-         <h5>Своя глина, своё производство, доставка по области</h5>
+         <p className={styles.lead}>
+           Своя глина, своё производство, доставка по области
+         </p>
 
          <div className={styles.content}>
            <Image
-              width={483}
-              height={578}
+              width={410}
+              height={475}
               src="/other/break-text-1.svg"
-              alt="Кирпич с доставкой в Нижнем Новгороде"
-           />
-           <Image
-              width={542}
-              height={575}
-              src="/other/break-text-2.svg"
-              alt="Кирпич от производителя в Нижнем Новгороде"
+              alt="Утолщённый и одинарный кирпич с доставкой в Нижнем Новгороде"
            />
            <Image
               width={410}
-              height={559}
+              height={475}
+              src="/other/break-text-2.svg"
+              alt="Кирпич ручной формовки длинного формата с доставкой в Нижнем Новгороде"
+           />
+           <Image
+              width={410}
+              height={475}
               src="/other/break-text-3.svg"
-              alt="Кирпич по цене завода в Нижнем Новгороде"
+              alt="Облицовочный кирпич разных оттенков с доставкой в Нижнем Новгороде"
            />
          </div>
 
          <div className={styles.cta}>
-           <Link href={LINK_CATALOG}>Смотреть каталог кирпича</Link>
+           <Link href={LINK_CATALOG} className="app-btn">
+             Смотреть каталог кирпича
+           </Link>
          </div>
        </Container>
      </div>

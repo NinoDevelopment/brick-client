@@ -38,19 +38,3 @@
   display: flex;
   justify-content: center;
 }
-/*link*/
-.RandomProducts .btnContainer a {
-  padding: 0.8em 6.5%;
-
-  text-decoration: none;
-  color: var(--bs-dark);
-  font-weight: 500;
-  background: none;
-  border-radius: 5px;
-  border: 1px solid var(--app-primary);
-  transition: 0.25s;
-}
-.RandomProducts .btnContainer a:hover {
-  color: var(--bs-white);
-  background: var(--app-primary);
-}

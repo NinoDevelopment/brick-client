@@ -39,7 +39,6 @@
 .ProductInfo h1 {
   margin-bottom: 0.6em;
 
-  font-family: var(--font-playfair), "Playfair Display", serif;
   font-weight: 800;
   line-height: 1.25;
   font-variant-numeric: lining-nums;

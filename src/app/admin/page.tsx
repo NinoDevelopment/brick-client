@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import CategoriesAdd from "@/components/admin-page/CategoriesAdd/CategoriesAdd";
 import ProductAdd from "@/components/admin-page/ProductAdd/ProductAdd";
 import CategoriesList from "@/components/admin-page/CategoriesList/CategoriesList";
@@ -9,7 +9,7 @@ import { Container } from "react-bootstrap";
 import { useFetch } from "@/hooks/useFetch";
 import { API_ADMIN_AUTH } from "@/constants/api";
 import { REQUEST_METHODS } from "@/types/general";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { LINK_ERROR } from "@/constants/links";
 import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
 import styles from "./page.module.css";
@@ -19,6 +19,7 @@ import PromocodeAdd from "@/components/admin-page/PromocodeAdd/PromocodeAdd";
 import PromocodeList from "@/components/admin-page/PromocodeList/PromocodeList";
 
 const page = () => {
+  const router = useRouter();
   const { data, error, load } = useFetch<boolean>(
     API_ADMIN_AUTH,
     REQUEST_METHODS.POST,
@@ -26,8 +27,13 @@ const page = () => {
     false,
   );
 
-  if (error) redirect(LINK_ERROR);
-  if (load) {
+  useEffect(() => {
+    if (error) {
+      router.replace(LINK_ERROR);
+    }
+  }, [error, router]);
+
+  if (error || load) {
     return (
       <Container className={styles.spinnerContainer}>
         <SpinnerPrimary />

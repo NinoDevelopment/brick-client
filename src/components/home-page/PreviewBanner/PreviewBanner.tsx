@@ -9,7 +9,7 @@ const PreviewBanner = () => {
         autoPlay
         muted
         loop
-        preload="metadata"
+        preload="auto"
         disablePictureInPicture
         className={styles.video}
         poster="/other/back-video.png"
@@ -29,7 +29,9 @@ const PreviewBanner = () => {
           и Нижегородской области
         </h4>
 
-        <Link href="/catalog">Смотреть каталог</Link>
+        <Link href="/catalog" className="app-btn">
+          Смотреть каталог
+        </Link>
       </div>
     </div>
   );

@@ -3,12 +3,17 @@
   width: 100%;
   background-color: transparent;
   transition: background-color 0.25s ease;
+  z-index: 1030;
 }
 
 .NavbarTop.light {
-  position: static;
-  background-color: #fff;
+  background-color: var(--app-surface);
   border-bottom: 1px solid rgba(30, 30, 30, 0.08);
+}
+
+.offset {
+  height: 5.5rem;
+  flex-shrink: 0;
 }
 
 .NavbarTop.scrolled {
@@ -17,24 +22,36 @@
 }
 
 .container {
+  display: flex;
   align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.logo {
+  flex-shrink: 0;
 }
 
 .logo img {
+  display: block;
   width: 220px;
+  height: auto;
 }
 
 .right {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
   margin-left: auto;
 }
 
 .linksContainer {
+  display: flex;
   margin-right: 3.5em;
   flex-direction: row !important;
-  align-items: center;
   flex-wrap: nowrap;
+  flex-shrink: 0;
+  align-items: center;
 }
 
 .linksContainer a {
@@ -42,6 +59,7 @@
   padding: 0.35em 0.75em;
   border-bottom: 2px solid transparent;
   color: var(--bs-white);
+  font-family: var(--app-font);
   text-decoration: none;
   transition: 0.25s;
   white-space: nowrap;

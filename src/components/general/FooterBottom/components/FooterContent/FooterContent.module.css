@@ -112,10 +112,10 @@
   display: flex;
   flex-direction: column;
 }
-.bottom .left h6 {
+.bottom .left .copy {
   margin: 0 0 1em 0;
   line-height: 1.6;
-
+  font-size: 0.95rem;
   font-weight: 400;
   color: var(--bs-white);
 }

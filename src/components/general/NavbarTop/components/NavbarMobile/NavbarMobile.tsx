@@ -34,6 +34,7 @@ const NavbarMobile: React.FC<INavbarMobile> = ({
       onHide={handleClose}
       placement="end"
       restoreFocus={false}
+      data-bs-theme="dark"
     >
       <Offcanvas.Header className={styles.header} closeButton={false}>
         <img src={"/Logo.svg"} className={styles.logo} alt={SITE_NAME} />

@@ -2,15 +2,18 @@
   position: relative;
 
   width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
   height: 100vh;
   height: 100dvh;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 
   overflow: hidden;
-  background-color: #1e1e1e;
+  background-color: var(--app-dark);
   background-image: url('/other/back-video.png');
   background-size: cover;
   background-position: center;
@@ -45,40 +48,29 @@
   align-items: center;
   flex-direction: column;
 
-  color: #ffffff;
+  color: var(--app-surface);
   text-align: center;
 }
 
 .PreviewBanner h1 {
   margin-bottom: 0.25em;
+  font-family: var(--app-font);
   font-size: 72px;
-  font-weight: 800;
-  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.1;
   color: #ffffff;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.7);
 }
 .PreviewBanner h1 b {
-  color: #fb8a2e;
+  color: var(--app-primary);
+  font-weight: 700;
 }
 .PreviewBanner h4 {
   margin-bottom: 3em;
+  font-family: var(--app-font);
   font-weight: 400;
   color: #ffffff;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
-}
-
-.PreviewBanner a {
-  padding: 0.65em 4em;
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 1.25rem;
-  border-radius: 5px;
-  border: 2px solid #fb8a2e;
-  transition: 0.15s;
-}
-.PreviewBanner a:hover {
-  background: #fb8a2e;
-  color: #ffffff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
 }
 
 @media (max-width: 991px) {
@@ -86,18 +78,14 @@
     font-size: 48px;
   }
   .PreviewBanner h4 {
-    font-size: 24px;
+    font-size: 22px;
   }
 }
 @media (max-width: 768px) {
   .PreviewBanner h1 {
-    font-size: 24px;
+    font-size: 32px;
   }
   .PreviewBanner h4 {
-    font-size: 14px;
-  }
-
-  .PreviewBanner a {
-    font-size: 0.85rem;
+    font-size: 16px;
   }
 }

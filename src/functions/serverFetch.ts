@@ -34,19 +34,15 @@ export async function serverFetch<T>(
   }
 }
 
-export const fetchProducts = () =>
-  serverFetch<IProductId[]>(API_PRODUCT, { cache: "no-store" });
+export const fetchProducts = () => serverFetch<IProductId[]>(API_PRODUCT);
 
 export const fetchProduct = (id: string) =>
-  serverFetch<IProductId>(API_PRODUCT_ID(id), { cache: "no-store" });
+  serverFetch<IProductId>(API_PRODUCT_ID(id));
 
 export const fetchProductImages = (id: string) =>
-  serverFetch<IProductImg>(API_PRODUCT_IMG(id), { cache: "no-store" });
+  serverFetch<IProductImg>(API_PRODUCT_IMG(id));
 
-export const fetchGallery = () =>
-  serverFetch<IGalleryItem[]>(API_GALLERY, { cache: "no-store" });
+export const fetchGallery = () => serverFetch<IGalleryItem[]>(API_GALLERY);
 
 export const fetchProductSample = (quantity: number) =>
-  serverFetch<IProductId[]>(API_PRODUCTS_SAMPLE(quantity), {
-    cache: "no-store",
-  });
+  serverFetch<IProductId[]>(API_PRODUCTS_SAMPLE(quantity));

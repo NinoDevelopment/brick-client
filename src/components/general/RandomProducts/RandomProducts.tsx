@@ -53,7 +53,9 @@ const RandomProducts: React.FC<IRandomProducts> = ({
       </div>
 
       <div className={styles.btnContainer}>
-        <Link href={LINK_CATALOG}>Смотреть каталог</Link>
+        <Link href={LINK_CATALOG} className="app-btn-outline">
+          Смотреть каталог
+        </Link>
       </div>
     </div>
   );

@@ -9,11 +9,11 @@ const GalleryBanner = () => {
      <div className={styles.wrapper}>
         <div className={styles.content}>
            <h2>Галерея</h2>
-           <h5>
+           <p className={styles.text}>
               Посмотрите, как выглядит наш кирпич на готовых объектах.
               Реальные фасады и кладка — проще понять, что подойдёт вашему проекту.
-           </h5>
-           <Link href={LINK_GALLERY}>
+           </p>
+           <Link href={LINK_GALLERY} className="app-btn">
               Смотреть фото
            </Link>
         </div>

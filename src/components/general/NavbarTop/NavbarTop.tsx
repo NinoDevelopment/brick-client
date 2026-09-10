@@ -101,7 +101,7 @@ const NavbarTop = () => {
         role="navigation"
         aria-label="Основное меню"
         expand="lg"
-        fixed={hero ? "top" : undefined}
+        fixed="top"
         className={`${styles.NavbarTop} ${light ? styles.light : ""} ${showScrolled ? styles.scrolled : ""}`}
       >
         <Container className={styles.container}>
@@ -148,6 +148,8 @@ const NavbarTop = () => {
           </div>
         </Container>
       </Navbar>
+
+      {light && <div className={styles.offset} aria-hidden="true" />}
 
       <NavbarMobile
         show={Boolean(isMobile && showMobile)}

@@ -45,7 +45,7 @@
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
 }
 
-.wrapper h5 {
+.lead {
   font-size: 20px;
   font-weight: 400;
   font-family: var(--app-font);
@@ -64,7 +64,7 @@
     font-weight: 700;
   }
 
-  .wrapper h5 {
+  .lead {
     font-size: 16px;
     font-weight: 400;
   }

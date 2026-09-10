@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { IProductId, IProductImg } from "@/types/products";
 import SwiperNavigation from "@/ui/SwiperNavigation/SwiperNavigation";
@@ -26,7 +28,7 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
   return (
     <div className={styles.ProductCard}>
       <Link
-        href={LINK_PRODUCT(data._id)}
+        href={LINK_PRODUCT(data)}
         className={styles.link}
         aria-label={data.name}
       />
@@ -49,11 +51,11 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
 
       {/*content*/}
       <div className={styles.content}>
-        <h4 className={styles.name}>
-          <Link href={LINK_PRODUCT(data._id)} className={styles.nameLink}>
+        <h3 className={styles.name}>
+          <Link href={LINK_PRODUCT(data)} className={styles.nameLink}>
             {data.name}
           </Link>
-        </h4>
+        </h3>
         <hr />
         <p className={styles.composition}>
           {data.description || "Без описания."}

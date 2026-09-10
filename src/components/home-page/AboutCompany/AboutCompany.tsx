@@ -1,7 +1,7 @@
 import styles from './AboutCompany.module.css';
 import Image from "next/image";
 import Link from "next/link";
-import { LINK_ABOUT, LINK_CATALOG, LINK_CONTACTS, LINK_DELIVERY, LINK_DELIVERY_CITY } from "@/constants/links";
+import { LINK_ABOUT, LINK_CATALOG, LINK_CATALOG_CATEGORY, LINK_CONTACTS, LINK_DELIVERY, LINK_DELIVERY_CITY } from "@/constants/links";
 import { DELIVERY_CITIES } from "@/constants/deliveryCities";
 
 const AboutCompany = () => {
@@ -44,18 +44,35 @@ const AboutCompany = () => {
              <Link href={LINK_CATALOG} className={styles.inlineLink}>
                каталоге
              </Link>
-             {" "}— красный, керамический, облицовочный и строительный кирпич
-             для частного и коммерческого строительства.
+             {" "}—{" "}
+             <Link href={LINK_CATALOG_CATEGORY("ryadovoy")} className={styles.inlineLink}>
+               рядовой
+             </Link>
+             {" "}и{" "}
+             <Link href={LINK_CATALOG_CATEGORY("oblitsovochnyy")} className={styles.inlineLink}>
+               облицовочный
+             </Link>
+             {" "}керамический кирпич для частного и коммерческого строительства.
           </p>
 
           <ol className={styles.list}>
-             <li>Красный кирпич — для несущих стен и наружной кладки</li>
+             <li>
+               <Link href={LINK_CATALOG_CATEGORY("ryadovoy")} className={styles.inlineLink}>
+                 Рядовой кирпич
+               </Link>
+               {" "}— для несущих стен и наружной кладки
+             </li>
              <li>Керамический — прочный, морозостойкий, экологичный</li>
-             <li>Облицовочный — для фасадов и декоративной отделки</li>
+             <li>
+               <Link href={LINK_CATALOG_CATEGORY("oblitsovochnyy")} className={styles.inlineLink}>
+                 Облицовочный
+               </Link>
+               {" "}— для фасадов и декоративной отделки
+             </li>
              <li>Строительный — надёжный вариант по цене от завода</li>
           </ol>
 
-          <h5 className={styles.subtitle}>Почему выбирают наш кирпич?</h5>
+          <p className={styles.subtitle}>Почему выбирают наш кирпич?</p>
 
           <ol className={styles.list}>
              <li>Собственная глина и полный цикл производства</li>
@@ -87,21 +104,21 @@ const AboutCompany = () => {
             width={1920}
             height={705}
             src={'/other/about-bg-1.png'}
-            alt="Облицовочный кирпич с доставкой в Нижнем Новгороде"
+            alt="Кладка облицовочного кирпича на объекте"
             className={styles.w100}
          />
          <Image
             width={960}
             height={706}
             src={'/other/about-bg-2.png'}
-            alt="Облицовочный кирпич от производителя в Нижнем Новгороде"
+            alt="Облицовочный кирпич завода Ковернино"
             className={styles.w50}
          />
          <Image
             width={960}
             height={706}
             src={'/other/about-bg-3.png'}
-            alt="Строительный кирпич с доставкой от производителя в Нижнем Новгороде"
+            alt="Рядовой строительный кирпич с завода"
             className={styles.w50}
          />
        </div>

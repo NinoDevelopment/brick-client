@@ -1,7 +1,10 @@
 import CatalogPage from "@/pagesList/CatalogPage/CatalogPage";
-import Script from "next/script";
-import { fetchProducts } from "@/functions/serverFetch";
+import JsonLd from "@/components/general/JsonLd/JsonLd";
+import { fetchCategories, fetchProducts } from "@/functions/serverFetch";
 import { createPageMetadata, SEO_CATALOG, SITE_URL } from "@/constants/seo";
+import { breadcrumbJsonLd, productListJsonLd } from "@/functions/jsonLd";
+
+export const revalidate = 60;
 
 export const metadata = createPageMetadata(
   SEO_CATALOG,
@@ -10,66 +13,25 @@ export const metadata = createPageMetadata(
 );
 
 const Page = async () => {
-  const products =
-    (await fetchProducts())?.filter((product) => product.show) ?? [];
+  const [allProducts, categories] = await Promise.all([
+    fetchProducts(),
+    fetchCategories(),
+  ]);
+  const products = allProducts?.filter((product) => product.show) ?? [];
 
   return (
     <>
-      <CatalogPage initialProducts={products} />
+      <CatalogPage initialProducts={products} categories={categories ?? []} />
 
-      <Script
+      <JsonLd
         id="breadcrumbs-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Главная",
-                item: SITE_URL,
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Каталог кирпича",
-                item: `${SITE_URL}/catalog`,
-              },
-            ],
-          }),
-        }}
+        data={breadcrumbJsonLd([
+          { name: "Главная", item: SITE_URL },
+          { name: "Каталог кирпича", item: `${SITE_URL}/catalog` },
+        ])}
       />
 
-      <Script
-        id="catalog-itemlist-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            itemListElement: products.map((elem, index) => ({
-              "@type": "ListItem",
-              position: index + 1,
-              item: {
-                "@type": "Product",
-                name: elem.name,
-                description: elem.description,
-                url: `${SITE_URL}/product/${elem._id}`,
-                offers: {
-                  "@type": "Offer",
-                  price: elem.price,
-                  priceCurrency: "RUB",
-                  availability: elem.available
-                    ? "https://schema.org/InStock"
-                    : "https://schema.org/OutOfStock",
-                },
-              },
-            })),
-          }),
-        }}
-      />
+      <JsonLd id="catalog-itemlist-ld" data={productListJsonLd(products)} />
     </>
   );
 };

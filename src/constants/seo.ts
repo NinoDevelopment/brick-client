@@ -3,9 +3,10 @@ import { Metadata } from "next";
 export const SITE_NAME = "Кирпичный завод Ковернино";
 export const SITE_URL = process.env.NEXT_PUBLIC_PROD_URL || "https://kzk.ooo";
 
-const OG_IMAGE = {
-  width: 252,
-  height: 94,
+export const OG_IMAGE = {
+  url: `${SITE_URL}/og/og-cover.jpg`,
+  width: 1200,
+  height: 630,
 };
 
 export const SEO_DEFAULT = {
@@ -111,8 +112,9 @@ export const createPageMetadata = (
   robots?: Metadata["robots"],
 ): Metadata => {
   const ogImage = {
-    url: `${SITE_URL}/Logo-dark.svg`,
-    ...OG_IMAGE,
+    url: OG_IMAGE.url,
+    width: OG_IMAGE.width,
+    height: OG_IMAGE.height,
     alt: imageAlt || SITE_NAME,
   };
 

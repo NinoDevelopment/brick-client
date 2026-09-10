@@ -7,7 +7,11 @@ import {
 import { createPageMetadata, SITE_URL } from "@/constants/seo";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Script from "next/script";
+import JsonLd from "@/components/general/JsonLd/JsonLd";
+import { breadcrumbJsonLd } from "@/functions/jsonLd";
+import { fetchProducts } from "@/functions/serverFetch";
+
+export const revalidate = 60;
 
 interface IPage {
   params: Promise<{ city: string }>;
@@ -42,39 +46,25 @@ const Page = async ({ params }: IPage) => {
     notFound();
   }
 
+  const products =
+    (await fetchProducts())
+      ?.filter((product) => product.show)
+      .slice(0, 3) ?? [];
+
   return (
     <>
-      <DeliveryCityPage city={city} />
+      <DeliveryCityPage city={city} products={products} />
 
-      <Script
+      <JsonLd
         id="breadcrumbs-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Главная",
-                item: SITE_URL,
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Оплата и доставка",
-                item: `${SITE_URL}/delivery`,
-              },
-              {
-                "@type": "ListItem",
-                position: 3,
-                name: city.name,
-                item: `${SITE_URL}/delivery/${city.slug}`,
-              },
-            ],
-          }),
-        }}
+        data={breadcrumbJsonLd([
+          { name: "Главная", item: SITE_URL },
+          { name: "Оплата и доставка", item: `${SITE_URL}/delivery` },
+          {
+            name: city.name,
+            item: `${SITE_URL}/delivery/${city.slug}`,
+          },
+        ])}
       />
     </>
   );

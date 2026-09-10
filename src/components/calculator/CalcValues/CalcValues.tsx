@@ -38,7 +38,7 @@ const CalcValues = () => {
     <form className={styles.wrapper} onSubmit={handleSend}>
       <div className={styles.thickness}>
         <header className={formStyles.header}>
-          <h2>Учёт растворного шва</h2>
+          <h3>Учёт растворного шва</h3>
         </header>
         <div className={styles.itemThickness}>
           <button
@@ -60,7 +60,7 @@ const CalcValues = () => {
 
       <div className={styles.thickness}>
         <header className={formStyles.header}>
-          <h2>Размер кирпича</h2>
+          <h3>Размер кирпича</h3>
         </header>
         <div className={styles.itemThickness}>
           <button
@@ -90,7 +90,7 @@ const CalcValues = () => {
 
       <div className={`${styles.thickness} ${styles.full}`}>
         <header className={formStyles.header}>
-          <h2>Объём кладки</h2>
+          <h3>Объём кладки</h3>
           <p>Укажите объём кирпичной кладки в кубометрах</p>
         </header>
 

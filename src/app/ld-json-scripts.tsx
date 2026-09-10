@@ -1,5 +1,5 @@
 import Script from "next/script";
-import { SEO_DEFAULT, SITE_NAME, SITE_URL } from "@/constants/seo";
+import { OG_IMAGE, SEO_DEFAULT, SITE_NAME, SITE_URL } from "@/constants/seo";
 
 const LdJsonScripts = () => {
   return (
@@ -25,13 +25,13 @@ const LdJsonScripts = () => {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
+            "@type": ["LocalBusiness", "Manufacturer"],
             name: SITE_NAME,
             description:
               "Производство и продажа кирпича с доставкой в Нижний Новгород и Нижегородскую область.",
             url: SITE_URL,
             logo: `${SITE_URL}/Logo-dark.svg`,
-            image: `${SITE_URL}/other/back-video.png`,
+            image: OG_IMAGE.url,
             telephone: "+7-921-509-24-09",
             email: "kzkvrn@yandex.ru",
             address: {
@@ -59,19 +59,9 @@ const LdJsonScripts = () => {
               { "@type": "City", name: "Саров" },
               { "@type": "City", name: "Бор" },
               { "@type": "City", name: "Кстово" },
-              { "@type": "City", name: "Павлово" },
-              { "@type": "City", name: "Выкса" },
               { "@type": "City", name: "Балахна" },
-              { "@type": "City", name: "Заволжье" },
               { "@type": "City", name: "Богородск" },
               { "@type": "City", name: "Городец" },
-              { "@type": "City", name: "Кулебаки" },
-              { "@type": "City", name: "Семёнов" },
-              { "@type": "City", name: "Лысково" },
-              { "@type": "City", name: "Шахунья" },
-              { "@type": "City", name: "Чкаловск" },
-              { "@type": "City", name: "Навашино" },
-              { "@type": "City", name: "Первомайск" },
               { "@type": "City", name: "Ковернино" },
             ],
             sameAs: [

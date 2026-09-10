@@ -4,6 +4,7 @@ import Link from "next/link";
 import { CONTACTS } from "@/constants/general";
 import { SITE_NAME } from "@/constants/seo";
 import {
+  LINK_CATALOG_CATEGORY,
   LINK_CONSENT,
   LINK_DELIVERY,
   LINK_DELIVERY_CITY,
@@ -18,10 +19,10 @@ const FooterContent = () => {
   return (
     <footer className={styles.FooterContent}>
       <div className={styles.top}>
-        <h4>
+        <p className={styles.ctaTitle}>
           Есть вопросы? <br />
           <span>Напишите</span> или позвоните
-        </h4>
+        </p>
         <div className={styles.right}>
           <div className={styles.block}>
             <p>По телефону</p>
@@ -54,6 +55,22 @@ const FooterContent = () => {
       </div>
 
       <div className={styles.cities}>
+        <p className={styles.citiesTitle}>Каталог кирпича</p>
+        <ul className={styles.citiesList}>
+          <li>
+            <Link href={LINK_CATALOG_CATEGORY("ryadovoy")}>
+              Рядовой кирпич
+            </Link>
+          </li>
+          <li>
+            <Link href={LINK_CATALOG_CATEGORY("oblitsovochnyy")}>
+              Облицовочный кирпич
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      <div className={styles.cities}>
         <p className={styles.citiesTitle}>
           Доставка кирпича по области —{" "}
           <Link href={LINK_DELIVERY}>все условия</Link>
@@ -75,14 +92,14 @@ const FooterContent = () => {
             © {new Date().getFullYear()} {SITE_NAME}
           </p>
 
-          <h5>
+          <div className={styles.legal}>
             <Link href={LINK_REQUISITES}>Реквизиты</Link> <br />
             <Link href={LINK_PRIVACY}>Политика обработки персональных данных</Link>
             <br />
             <Link href={LINK_CONSENT}>Согласие на обработку ПДн</Link>
             <br />
             <CookieSettingsButton />
-          </h5>
+          </div>
         </div>
 
         <div className={styles.mapContainer}>

@@ -51,7 +51,7 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
         <SwiperNavigation images={images?.images} name={data.name} />
 
         <Card.Body>
-          <Link href={LINK_PRODUCT(data._id)}>
+          <Link href={LINK_PRODUCT(data)}>
             <Card.Title>{data.name}</Card.Title>
           </Link>
 

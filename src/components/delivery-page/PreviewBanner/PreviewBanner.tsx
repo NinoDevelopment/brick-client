@@ -18,7 +18,7 @@ const PreviewBanner = ({
       <Container className={styles.content}>
         {children}
         <h1>{title}</h1>
-        <h5>{subtitle}</h5>
+        <p className={styles.lead}>{subtitle}</p>
       </Container>
     </div>
   );

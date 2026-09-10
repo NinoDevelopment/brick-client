@@ -7,9 +7,9 @@ const PreviewBanner = () => {
     <div className={styles.wrapper}>
       <Container className={styles.content}>
         <h1>Галерея объектов</h1>
-        <h5>
+        <p className={styles.lead}>
           Фото готовых объектов и нашей продукции
-        </h5>
+        </p>
       </Container>
     </div>
   );

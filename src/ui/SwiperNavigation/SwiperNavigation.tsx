@@ -3,6 +3,7 @@ import styles from "./SwiperNavigation.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { Placeholder } from "react-bootstrap";
+import ProductImage from "@/ui/ProductImage/ProductImage";
 
 interface ISwiperNavigation {
   images: string[] | null | undefined;
@@ -29,7 +30,11 @@ const SwiperNavigation: React.FC<ISwiperNavigation> = ({ images, name }) => {
     >
       {images?.map((elem, index) => (
         <SwiperSlide key={index}>
-          <img className={styles.image} src={elem} alt={name || "Фото кирпича"} />
+          <ProductImage
+            className={styles.image}
+            src={elem}
+            alt={name || "Фото кирпича"}
+          />
         </SwiperSlide>
       ))}
     </Swiper>

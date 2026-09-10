@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useFetch } from "@/hooks/useFetch";
 import { API_PRODUCT_ID, API_PRODUCT_IMG } from "@/constants/api";
 import { Container } from "react-bootstrap";
@@ -19,31 +19,36 @@ interface IProductPage {
   initialProduct?: IProductId;
   initialImages?: IProductImg | null;
   initialRelatedProducts?: IProductId[];
+  categoryName?: string;
+  categorySlug?: string;
+  catalogHref?: string;
 }
 
 const ProductPage = ({
   initialProduct,
   initialImages,
   initialRelatedProducts,
+  categoryName,
+  categorySlug,
+  catalogHref = LINK_CATALOG,
 }: IProductPage) => {
   const router = useRouter();
-  const params = useParams();
-  const productId = params._id as string;
+  const productId = initialProduct?._id;
   const hasInitialData = Boolean(initialProduct);
 
   const { data: fetchedProduct, error, load } = useFetch<IProductId>(
-    API_PRODUCT_ID(productId),
+    API_PRODUCT_ID(productId || ""),
     REQUEST_METHODS.GET,
     {},
     false,
-    !hasInitialData,
+    !hasInitialData && Boolean(productId),
   );
   const { data: fetchedImages } = useFetch<IProductImg>(
-    API_PRODUCT_IMG(productId),
+    API_PRODUCT_IMG(productId || ""),
     REQUEST_METHODS.GET,
     {},
     false,
-    !hasInitialData,
+    Boolean(productId) && initialImages == null,
   );
 
   const data = fetchedProduct ?? initialProduct;
@@ -69,15 +74,19 @@ const ProductPage = ({
 
   return (
     <Container className={styles.main}>
-      <BackLink link={LINK_CATALOG} text={"В каталог"} />
+      <BackLink link={catalogHref} text={"В каталог"} />
 
       <div className={styles.productData}>
         <div className={styles.sliderContainer}>
-          <SwiperPhoto images={images?.images} />
+          <SwiperPhoto images={images?.images} name={data.name} />
         </div>
 
         <div className={styles.dataContainer}>
-          <ProductInfo data={data} />
+          <ProductInfo
+            data={data}
+            categoryName={categoryName}
+            categorySlug={categorySlug}
+          />
         </div>
       </div>
 

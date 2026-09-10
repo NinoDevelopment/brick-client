@@ -1,11 +1,14 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./CategorySort.module.css";
 import { IProductId } from "@/types/products";
 import CategorySelect from "@/components/catalog-page/CategoryProducts/components/CategorySelect/CategorySelect";
 import CategoryColorSelect from "@/components/catalog-page/CategoryProducts/components/CategoryColorSelect/CategoryColorSelect";
-import { useGetCategories } from "@/hooks/useGetCategories";
+import { CATALOG_CATEGORIES } from "@/constants/catalogCategories";
+import { LINK_CATALOG } from "@/constants/links";
+import { CatalogCategoryRef } from "@/functions/serverFetch";
 
 interface ICategorySort {
   data: IProductId[];
@@ -17,6 +20,8 @@ interface ICategorySort {
   setColor: (value: string | null) => void;
   priceSort: null | 1 | -1;
   setPriceSort: (value: null | 1 | -1) => void;
+  categorySlug?: string | null;
+  categories?: CatalogCategoryRef[];
 }
 
 const CategorySort: React.FC<ICategorySort> = ({
@@ -29,21 +34,19 @@ const CategorySort: React.FC<ICategorySort> = ({
   setColor,
   setPriceSort,
   priceSort,
+  categorySlug = null,
+  categories,
 }) => {
   const [open, setOpen] = useState(false);
-
-  const {
-    data: { categories, selected },
-    selectCategory,
-  } = useGetCategories();
+  const router = useRouter();
 
   const hasColors = useMemo(
     () => data.some((elem) => Boolean(elem.color)),
     [data],
   );
 
-  const selectedCategoryName = categories.find(
-    (elem) => elem._id === selected,
+  const selectedCategoryName = CATALOG_CATEGORIES.find(
+    (elem) => elem.slug === categorySlug,
   )?.name;
 
   const activeFilters = useMemo(() => {
@@ -53,7 +56,7 @@ const CategorySort: React.FC<ICategorySort> = ({
       items.push({
         key: "category",
         label: selectedCategoryName,
-        clear: () => selectCategory(null),
+        clear: () => router.push(LINK_CATALOG),
       });
     }
     if (color) {
@@ -99,7 +102,7 @@ const CategorySort: React.FC<ICategorySort> = ({
     discountOnly,
     availableOnly,
     priceSort,
-    selectCategory,
+    router,
     setColor,
     setDiscountOnly,
     setAvailableOnly,
@@ -107,11 +110,13 @@ const CategorySort: React.FC<ICategorySort> = ({
   ]);
 
   const resetAll = () => {
-    selectCategory(null);
     setColor(null);
     setDiscountOnly(false);
     setAvailableOnly(false);
     setPriceSort(null);
+    if (categorySlug) {
+      router.push(LINK_CATALOG);
+    }
   };
 
   const activeCount = activeFilters.length;
@@ -164,7 +169,10 @@ const CategorySort: React.FC<ICategorySort> = ({
         <div className={styles.row}>
           <p className={styles.label}>Тип</p>
           <div className={styles.chips}>
-            <CategorySelect />
+            <CategorySelect
+              categorySlug={categorySlug}
+              categories={categories}
+            />
           </div>
         </div>
 

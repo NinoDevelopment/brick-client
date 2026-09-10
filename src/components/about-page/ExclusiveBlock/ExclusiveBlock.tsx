@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ExclusiveBlock.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import { LINK_CATALOG, LINK_DELIVERY } from "@/constants/links";
+import { LINK_CATALOG, LINK_CATALOG_CATEGORY, LINK_DELIVERY } from "@/constants/links";
 
 const ExclusiveBlock = () => {
   return (
@@ -16,7 +16,11 @@ const ExclusiveBlock = () => {
            формовка и обжиг на заводе в Ковернинском районе.
          </p>
          <p className={styles.text}>
-           В ассортименте — красный, керамический, облицовочный и строительный кирпич.
+           В ассортименте —{" "}
+           <Link href={LINK_CATALOG_CATEGORY("ryadovoy")}>рядовой</Link>
+           {" "}и{" "}
+           <Link href={LINK_CATALOG_CATEGORY("oblitsovochnyy")}>облицовочный</Link>
+           {" "}кирпич.
            Покупаете напрямую у производителя:{" "}
            <Link href={LINK_CATALOG}>каталог с ценами</Link>
            {" "}и{" "}

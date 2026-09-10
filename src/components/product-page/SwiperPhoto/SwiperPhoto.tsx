@@ -2,12 +2,14 @@ import styles from "./SwiperPhoto.module.css";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Placeholder } from "react-bootstrap";
+import ProductImage from "@/ui/ProductImage/ProductImage";
 
 interface ISwiperPhoto {
   images: string[] | null | undefined;
+  name?: string;
 }
 
-const SwiperPhoto: React.FC<ISwiperPhoto> = ({ images }) => {
+const SwiperPhoto: React.FC<ISwiperPhoto> = ({ images, name }) => {
   if (!images) {
     return (
       <Placeholder as={"div"} animation="glow" className={styles.placeholder}>
@@ -25,7 +27,11 @@ const SwiperPhoto: React.FC<ISwiperPhoto> = ({ images }) => {
     >
       {images?.map((elem, index) => (
         <SwiperSlide key={index} className={styles.slide}>
-          <img src={elem} alt="Фото кирпича" className={styles.image} />
+          <ProductImage
+            src={elem}
+            alt={name || "Фото кирпича"}
+            className={styles.image}
+          />
         </SwiperSlide>
       ))}
     </Swiper>

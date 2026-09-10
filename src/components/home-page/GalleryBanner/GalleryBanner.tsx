@@ -1,6 +1,5 @@
 import styles from './GalleryBanner.module.css';
 import Link from 'next/link';
-import { APP_TITLE } from '@/constants/general';
 import { LINK_GALLERY } from '@/constants/links';
 import Image from "next/image";
 
@@ -22,7 +21,7 @@ const GalleryBanner = () => {
            width={970}
            height={706}
            src="/other/break-bg-1.png"
-           alt={APP_TITLE}
+           alt="Готовый фасад из кирпича завода Ковернино"
         />
      </div>
   );

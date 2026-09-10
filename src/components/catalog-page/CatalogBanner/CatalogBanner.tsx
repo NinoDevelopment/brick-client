@@ -1,18 +1,26 @@
-import React from 'react';
-import { Container } from 'react-bootstrap';
-import styles from './CatalogBanner.module.css';
+import React, { ReactNode } from "react";
+import { Container } from "react-bootstrap";
+import styles from "./CatalogBanner.module.css";
 
-const CatalogBanner = () => {
+interface ICatalogBanner {
+  title?: string;
+  subtitle?: string;
+  children?: ReactNode;
+}
+
+const CatalogBanner = ({
+  title = "Каталог кирпича",
+  subtitle = "Цены от производителя. Рядовой и облицовочный кирпич с доставкой по Нижнему Новгороду и области.",
+  children,
+}: ICatalogBanner) => {
   return (
-     <div className={styles.wrapper}>
-        <Container className={styles.content}>
-           <h1>Каталог кирпича</h1>
-           <h5>
-              Цены от производителя. Красный, керамический, облицовочный
-              и строительный кирпич с доставкой по Нижнему Новгороду и области.
-           </h5>
-        </Container>
-     </div>
+    <div className={styles.wrapper}>
+      <Container className={styles.content}>
+        {children}
+        <h1>{title}</h1>
+        <p className={styles.lead}>{subtitle}</p>
+      </Container>
+    </div>
   );
 };
 

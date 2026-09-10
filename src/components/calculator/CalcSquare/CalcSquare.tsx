@@ -46,7 +46,7 @@ const CalcSquare = () => {
     <form className={styles.wrapper} onSubmit={handleSend}>
       <div className={styles.thickness}>
         <header className={formStyles.header}>
-          <h2>Толщина кладки</h2>
+          <h3>Толщина кладки</h3>
         </header>
         <div className={styles.itemThickness}>
           <button
@@ -92,7 +92,7 @@ const CalcSquare = () => {
 
       <div className={styles.thickness}>
         <header className={formStyles.header}>
-          <h2>Размер кирпича</h2>
+          <h3>Размер кирпича</h3>
         </header>
         <div className={styles.itemThickness}>
           <button
@@ -122,7 +122,7 @@ const CalcSquare = () => {
         <hr className={styles.divider} />
 
         <header className={formStyles.header}>
-          <h2>Учёт растворного шва</h2>
+          <h3>Учёт растворного шва</h3>
         </header>
         <div className={styles.itemThickness}>
           <button
@@ -144,7 +144,7 @@ const CalcSquare = () => {
 
       <div className={`${styles.thickness} ${styles.full}`}>
         <header className={formStyles.header}>
-          <h2>Размеры строения</h2>
+          <h3>Размеры строения</h3>
           <p>
             Размеры в метрах. Для нескольких окон и дверей укажите среднюю
             высоту проёмов и сумму их ширин — так получится суммарная площадь.

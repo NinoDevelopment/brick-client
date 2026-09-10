@@ -6,9 +6,9 @@ const PreviewBanner = () => {
      <div className={styles.wrapper}>
         <Container className={styles.content}>
            <h1>Контакты</h1>
-           <h5>
+           <p className={styles.lead}>
               Телефон, мессенджеры и форма заявки — ответим и поможем с заказом
-           </h5>
+           </p>
         </Container>
      </div>
   );

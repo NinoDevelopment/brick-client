@@ -7,9 +7,9 @@ const PreviewBanner = () => {
      <div className={styles.wrapper}>
         <Container className={styles.content}>
            <h1>Калькулятор кирпича</h1>
-           <h5>
+           <p className={styles.lead}>
               Укажите размеры или объём — узнаете, сколько кирпича нужно для проекта
-           </h5>
+           </p>
         </Container>
      </div>
   );

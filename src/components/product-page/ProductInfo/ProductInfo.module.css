@@ -70,6 +70,23 @@
   color: var(--bs-gray-600);
 }
 
+.seoText {
+  margin: 0 0 1em;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--bs-gray-700);
+}
+
+.seoText a {
+  color: var(--app-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.seoText a:hover {
+  text-decoration: underline;
+}
+
 /*media*/
 @media (max-width: 1200px) {
   /*name*/

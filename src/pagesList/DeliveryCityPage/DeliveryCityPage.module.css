@@ -3,7 +3,7 @@
 }
 
 .content {
-  max-width: 860px;
+  max-width: 1100px;
 }
 
 .section {
@@ -55,6 +55,19 @@
   list-style: none;
 }
 
+.products {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25em;
+  margin: 1.25em 0;
+}
+
+.products > * {
+  width: 100% !important;
+  max-width: 100%;
+  margin-bottom: 0;
+}
+
 .section a {
   color: var(--app-primary);
   text-decoration: none;
@@ -85,6 +98,10 @@
   }
 
   .cities {
+    grid-template-columns: 1fr;
+  }
+
+  .products {
     grid-template-columns: 1fr;
   }
 }

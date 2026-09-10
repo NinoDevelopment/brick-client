@@ -105,13 +105,12 @@
   margin-top: auto;
 }
 
-.content h4 {
+.content h3 {
   width: 100%;
   margin: 0;
 }
 
-/*name h4*/
-h4.name {
+h3.name {
   padding: 0.15em 0 0.35em;
   font-weight: 800;
   font-size: 1.05rem;

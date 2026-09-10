@@ -28,7 +28,7 @@ const OrderProductItem: React.FC<IOrderProductItem> = ({ data }) => {
         <tr>
           <td>Товар:</td>
           <td className={"fw-bold"}>
-            <Link href={LINK_PRODUCT(itemData._id)}>{itemData.name}</Link>
+            <Link href={LINK_PRODUCT(itemData)}>{itemData.name}</Link>
           </td>
         </tr>
         <tr>

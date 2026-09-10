@@ -1,0 +1,45 @@
+.seo {
+  max-width: 860px;
+  margin: 0 auto 4em;
+}
+
+.seo h2 {
+  margin: 0 0 0.75em;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.seo p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+.seo p + p {
+  margin-top: 1em;
+}
+
+.seo a {
+  color: var(--app-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.seo a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .seo {
+    margin-bottom: 2.5em;
+  }
+
+  .seo h2 {
+    font-size: 22px;
+  }
+
+  .seo p {
+    font-size: 14px;
+  }
+}

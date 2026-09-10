@@ -7,19 +7,24 @@ import {
   DeliveryCity,
 } from "@/constants/deliveryCities";
 import {
+  LINK_CALCULATOR,
   LINK_CATALOG,
+  LINK_CATALOG_CATEGORY,
   LINK_CONTACTS,
   LINK_DELIVERY,
   LINK_DELIVERY_CITY,
 } from "@/constants/links";
 import { CONTACTS } from "@/constants/general";
 import bannerStyles from "@/components/delivery-page/PreviewBanner/PreviewBanner.module.css";
+import { IProductId } from "@/types/products";
+import ProductCard from "@/components/general/ProductCard/ProductCard";
 
 type Props = {
   city: DeliveryCity;
+  products?: IProductId[];
 };
 
-const DeliveryCityPage = ({ city }: Props) => {
+const DeliveryCityPage = ({ city, products = [] }: Props) => {
   const otherCities = DELIVERY_CITIES.filter((item) => item.slug !== city.slug);
 
   return (
@@ -37,36 +42,46 @@ const DeliveryCityPage = ({ city }: Props) => {
 
       <Container className={styles.content}>
         <section className={styles.section}>
-          <h2>Доставка кирпича в {city.namePrepositional}</h2>
+          <h2>Доставка кирпича в {city.nameAccusative}</h2>
+          {city.paragraphs.map((text) => (
+            <p key={text.slice(0, 40)}>{text}</p>
+          ))}
+          <p>{city.districts}</p>
           <p>
-            Кирпичный завод «Ковернино» производит кирпич из глины собственного
-            карьера и доставляет его в {city.namePrepositional} своим
-            транспортом — напрямую с завода, без посредников.
-          </p>
-          <p>{city.note}</p>
-          <p>{city.extra}</p>
-          <p>
-            В каталоге — красный, керамический, облицовочный и строительный
-            кирпич для частных домов, фасадов и коммерческого строительства.
-            Цены — от производителя.
+            В каталоге —{" "}
+            <Link href={LINK_CATALOG_CATEGORY("ryadovoy")}>рядовой</Link> и{" "}
+            <Link href={LINK_CATALOG_CATEGORY("oblitsovochnyy")}>
+              облицовочный
+            </Link>{" "}
+            кирпич. Цены — от производителя. Расход можно прикинуть в{" "}
+            <Link href={LINK_CALCULATOR}>калькуляторе</Link>.
           </p>
         </section>
+
+        {!!products.length && (
+          <section className={styles.section}>
+            <h2>Кирпич с доставкой в {city.nameAccusative}</h2>
+            <div className={styles.products}>
+              {products.map((product) => (
+                <ProductCard key={product._id} data={product} />
+              ))}
+            </div>
+            <p>
+              Все позиции — в{" "}
+              <Link href={LINK_CATALOG}>каталоге кирпича</Link>.
+            </p>
+          </section>
+        )}
 
         <section className={styles.section}>
           <h2>Как заказать</h2>
           <ul className={styles.list}>
-            <li>
-              Выберите кирпич в{" "}
-              <Link href={LINK_CATALOG}>каталоге</Link> или позвоните менеджеру
-            </li>
-            <li>
-              Согласуем объём, адрес в {city.namePrepositional}, дату и стоимость
-              доставки
-            </li>
-            <li>Оплата — картой онлайн, по счёту или при получении</li>
+            {city.how.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
           <p>
-            По вопросам доставки в {city.namePrepositional} звоните{" "}
+            По вопросам доставки в {city.nameAccusative} звоните{" "}
             <a href={`tel:${CONTACTS.phone.value}`}>{CONTACTS.phone.title}</a>{" "}
             или напишите на{" "}
             <Link href={LINK_CONTACTS}>странице контактов</Link>.

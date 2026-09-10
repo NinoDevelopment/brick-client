@@ -9,7 +9,7 @@ const PreviewBanner = () => {
         autoPlay
         muted
         loop
-        preload="auto"
+        preload="metadata"
         disablePictureInPicture
         className={styles.video}
         poster="/other/back-video.png"
@@ -23,11 +23,11 @@ const PreviewBanner = () => {
         <h1>
           Купить <b>кирпич</b> <br /> в Нижнем Новгороде
         </h1>
-        <h4>
+        <p className={styles.lead}>
           Производим из глины собственного карьера <br />
           и доставляем по Нижнему Новгороду <br />
           и Нижегородской области
-        </h4>
+        </p>
 
         <Link href="/catalog" className="app-btn">
           Смотреть каталог

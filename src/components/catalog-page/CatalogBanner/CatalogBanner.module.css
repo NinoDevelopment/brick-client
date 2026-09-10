@@ -25,6 +25,18 @@
   width: 100%;
 }
 
+.breadcrumb {
+  margin: 0 0 1em;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.breadcrumb a {
+  color: var(--app-surface);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .wrapper h1 {
   font-size: 48px;
   font-weight: 700;
@@ -33,7 +45,7 @@
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
 }
 
-.wrapper h5 {
+.lead {
   font-size: 20px;
   font-weight: 400;
   font-family: var(--app-font);
@@ -42,12 +54,17 @@
 }
 
 @media (max-width: 768px) {
+  .breadcrumb {
+    font-size: 0.85rem;
+    margin-bottom: 0.75em;
+  }
+
   .wrapper h1 {
     font-size: 32px;
     font-weight: 700;
   }
 
-  .wrapper h5 {
+  .lead {
     font-size: 16px;
     font-weight: 400;
   }

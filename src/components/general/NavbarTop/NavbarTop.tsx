@@ -26,6 +26,7 @@ const isHeroPage = (path: string) => {
     path === LINK_ABOUT ||
     path === LINK_CALCULATOR ||
     path === LINK_CATALOG ||
+    path.startsWith(`${LINK_CATALOG}/`) ||
     path === LINK_CONTACTS ||
     path === LINK_GALLERY
   ) {
@@ -119,7 +120,12 @@ const NavbarTop = () => {
                   <Link
                     key={elem.title}
                     href={elem.link}
-                    className={path === elem.link ? styles.active : ""}
+                    className={
+                      path === elem.link ||
+                      (elem.link !== LINK_HOME && path.startsWith(`${elem.link}/`))
+                        ? styles.active
+                        : ""
+                    }
                   >
                     {elem.title}
                   </Link>

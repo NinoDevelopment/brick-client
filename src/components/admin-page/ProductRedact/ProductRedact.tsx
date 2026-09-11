@@ -11,7 +11,8 @@ import ProductFormImages from "@/components/admin-page/ProductAdd/components/Pro
 import ProductFormInputs from "@/components/admin-page/ProductAdd/components/ProductFormInputs/ProductFormInputs";
 import { REQUEST_METHODS } from "@/types/general";
 import { buildProductPayload } from "@/functions/buildProductPayload";
-import { compressImageList } from "@/functions/compressImageToBase64";
+import { useEntityImages } from "@/hooks/useEntityImages";
+import { resolveEntityImages } from "@/functions/uploadMedia";
 
 interface IProductRedact {
   data: IProductIdWithImg;
@@ -27,22 +28,29 @@ const ProductRedact: React.FC<IProductRedact> = ({
   const [formData, setFormData] = useState<IProductIdWithImg>(data);
   const { updateProducts } = useGetProducts();
   const [load, setLoad] = useState<boolean>(false);
+  const imagesState = useEntityImages(data.images ?? []);
 
   useEffect(() => {
     setFormData(data);
+    imagesState.sync(data.images ?? []);
   }, [data]);
 
   const handleRedact = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!formData?.images?.length) {
+    if (!imagesState.previews.length) {
       TOAST_ERROR("Загрузите изображения товара!");
       return;
     }
 
     setLoad(true);
     try {
-      const images = await compressImageList(formData.images);
+      const images = await resolveEntityImages(
+        "items",
+        formData._id,
+        imagesState.previews,
+        imagesState.takePendingFiles(),
+      );
       await handleRequest(
         REQUEST_METHODS.PUT,
         API_PRODUCT,
@@ -80,8 +88,12 @@ const ProductRedact: React.FC<IProductRedact> = ({
           {/*@ts-ignore*/}
           <ProductFormInputs formData={formData} setFormData={setFormData} />
 
-          {/*@ts-ignore*/}
-          <ProductFormImages formData={formData} setFormData={setFormData} />
+          <ProductFormImages
+            images={imagesState.previews}
+            name={formData.name}
+            onAddFiles={imagesState.addFiles}
+            onRemove={imagesState.remove}
+          />
 
           <Button
             disabled={load}

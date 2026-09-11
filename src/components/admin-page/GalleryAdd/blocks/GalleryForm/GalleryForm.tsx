@@ -8,44 +8,26 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { IGalleryItem } from "@/types/gallery";
-import { compressImageToBase64 } from "@/functions/compressImageToBase64";
-import { TOAST_ERROR } from "@/constants/toasts";
 
 interface IProps {
   handleSend: (e: SubmitEvent<HTMLFormElement>) => void;
   formData: IGalleryItem;
   setFormData: Dispatch<SetStateAction<IGalleryItem>>;
   load: boolean;
+  images: string[];
+  onAddFiles: (files: FileList | null) => void;
+  onRemoveImage: (image: string) => void;
 }
 
-const GalleryForm = ({ handleSend, formData, setFormData, load }: IProps) => {
-  const handleUploadFiles = async (images: FileList | null) => {
-    if (!images?.length) return;
-
-    const files = Array.from(images);
-    if (files.length > 8) {
-      TOAST_ERROR("Невозможно добавить более 8 фото");
-    }
-
-    try {
-      const imagesInner: string[] = [];
-      for (const file of files.slice(0, 8)) {
-        imagesInner.push(await compressImageToBase64(file));
-      }
-      setFormData({
-        ...formData,
-        images: imagesInner,
-      });
-    } catch {
-      TOAST_ERROR("Не удалось обработать фото. Попробуйте другой файл.");
-    }
-  };
-
-  const handleDelete = (image: string) => {
-    const filteredImages = formData?.images?.filter((elem) => elem !== image);
-    setFormData({ ...formData, images: filteredImages });
-  };
-
+const GalleryForm = ({
+  handleSend,
+  formData,
+  setFormData,
+  load,
+  images,
+  onAddFiles,
+  onRemoveImage,
+}: IProps) => {
   return (
     <form onSubmit={handleSend} className={styles.wrapper}>
       <FloatingLabel label={"Название"}>
@@ -72,22 +54,19 @@ const GalleryForm = ({ handleSend, formData, setFormData, load }: IProps) => {
           multiple={true}
           accept="image/*"
           onChange={(e) =>
-            handleUploadFiles((e.target as HTMLInputElement).files)
+            onAddFiles((e.target as HTMLInputElement).files)
           }
         />
       </FloatingLabel>
 
-      <div
-        hidden={!formData?.images?.length}
-        className={styles.imagesContainer}
-      >
-        {formData?.images?.map((elem) => (
+      <div hidden={!images.length} className={styles.imagesContainer}>
+        {images.map((elem) => (
           <div className={styles.imgBlock} key={elem}>
             <img src={elem} alt={formData.name} />
             <Button
               size={"sm"}
               variant={"danger"}
-              onClick={() => handleDelete(elem)}
+              onClick={() => onRemoveImage(elem)}
             >
               Удалить
             </Button>
@@ -95,7 +74,7 @@ const GalleryForm = ({ handleSend, formData, setFormData, load }: IProps) => {
         ))}
       </div>
 
-      <Form.Check // prettier-ignore
+      <Form.Check
         className={"my-2"}
         type="switch"
         label="Показывать"

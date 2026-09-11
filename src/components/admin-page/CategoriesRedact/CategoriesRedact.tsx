@@ -1,4 +1,4 @@
-import React, { type SubmitEvent, useState } from "react";
+import React, { type SubmitEvent, useEffect, useState } from "react";
 import { ICategoryId } from "@/types/categories";
 import { Button, Form, FormControl, Modal, Spinner } from "react-bootstrap";
 import { handleRequest } from "@/functions/handleRequest";
@@ -7,6 +7,8 @@ import { TOAST_ERROR, TOAST_SUCCESS } from "@/constants/toasts";
 import { useGetCategories } from "@/hooks/useGetCategories";
 import styles from "./CategoriesRedact.module.css";
 import { REQUEST_METHODS } from "@/types/general";
+import { useEntityImages } from "@/hooks/useEntityImages";
+import { resolveEntityImages } from "@/functions/uploadMedia";
 
 interface ICategoriesRedact {
   data: ICategoryId;
@@ -22,21 +24,50 @@ const CategoriesRedact: React.FC<ICategoriesRedact> = ({
   const { updateCategories } = useGetCategories();
   const [formData, setFormData] = useState<ICategoryId>(data);
   const [load, setLoad] = useState<boolean>(false);
+  const imagesState = useEntityImages(data.image ? [data.image] : []);
 
-  const handleRedact = (e: SubmitEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    setFormData(data);
+    imagesState.sync(data.image ? [data.image] : []);
+  }, [data]);
+
+  const handleFileUpload = (file: File | undefined) => {
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      TOAST_ERROR("Ошибка конвертации, выберите другое изображение.");
+      return;
+    }
+    imagesState.addFiles([file], { max: 1, replace: true });
+  };
+
+  const handleRedact = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!imagesState.previews.length) {
+      TOAST_ERROR("Загрузите изображение для категории!");
+      return;
+    }
+
     setLoad(true);
-    handleRequest(REQUEST_METHODS.PUT, API_CATEGORY, formData)
-      .then(() => {
-        TOAST_SUCCESS("Категория успешно изменена");
-        updateCategories();
-      })
-      .catch(() => TOAST_ERROR("Ошибка изменения категории"))
-      .finally(() => {
-        setLoad(false);
-        handleClose();
+    try {
+      const [image] = await resolveEntityImages(
+        "categories",
+        formData._id,
+        imagesState.previews,
+        imagesState.takePendingFiles(),
+      );
+      await handleRequest(REQUEST_METHODS.PUT, API_CATEGORY, {
+        ...formData,
+        image,
       });
+      TOAST_SUCCESS("Категория успешно изменена");
+      updateCategories();
+      handleClose();
+    } catch {
+      TOAST_ERROR("Ошибка изменения категории");
+    } finally {
+      setLoad(false);
+    }
   };
 
   return (
@@ -69,7 +100,23 @@ const CategoriesRedact: React.FC<ICategoriesRedact> = ({
             }
           />
 
-          <Form.Check // prettier-ignore
+          <FormControl
+            type={"file"}
+            accept="image/*"
+            onChange={(e) =>
+              handleFileUpload((e.target as HTMLInputElement).files?.[0])
+            }
+          />
+
+          {imagesState.previews[0] ? (
+            <img
+              className={styles.preview}
+              src={imagesState.previews[0]}
+              alt={formData.name}
+            />
+          ) : null}
+
+          <Form.Check
             className={"my-2"}
             type="switch"
             label="Распродажа в категории"

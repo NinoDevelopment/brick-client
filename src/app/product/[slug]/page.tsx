@@ -1,6 +1,7 @@
 import ProductPage from "@/pagesList/ProductPage/ProductPage";
 import {
   fetchCategories,
+  fetchProductImages,
   fetchProducts,
   fetchProductSample,
 } from "@/functions/serverFetch";
@@ -66,9 +67,10 @@ const Page = async ({ params }: IPage) => {
   }
 
   const product = resolved.product;
-  const [relatedProducts, categories] = await Promise.all([
+  const [relatedProducts, categories, productImages] = await Promise.all([
     fetchProductSample(3),
     fetchCategories(),
+    fetchProductImages(product._id),
   ]);
 
   const related =
@@ -91,13 +93,17 @@ const Page = async ({ params }: IPage) => {
     <>
       <ProductPage
         initialProduct={product}
+        initialImages={productImages}
         initialRelatedProducts={related}
         categoryName={categoryName}
         categorySlug={categorySlug}
         catalogHref={catalogHref}
       />
 
-      <JsonLd id="product-ld" data={productJsonLd(product)} />
+      <JsonLd
+        id="product-ld"
+        data={productJsonLd(product, productImages?.images)}
+      />
 
       <JsonLd
         id="breadcrumbs-ld"

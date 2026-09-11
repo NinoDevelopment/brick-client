@@ -74,8 +74,9 @@ export const fetchProduct = cache((id: string) =>
   serverFetch<IProductId>(API_PRODUCT_ID(id)),
 );
 
-export const fetchProductImages = (id: string) =>
-  serverFetch<IProductImg>(API_PRODUCT_IMG(id));
+export const fetchProductImages = cache((id: string) =>
+  serverFetch<IProductImg>(API_PRODUCT_IMG(id)),
+);
 
 export const fetchGallery = () => serverFetch<IGalleryItem[]>(API_GALLERY);
 

@@ -12,16 +12,19 @@ import { useGetProducts } from "@/hooks/useGetProducts";
 import ProductFormInputs from "@/components/admin-page/ProductAdd/components/ProductFormInputs/ProductFormInputs";
 import { REQUEST_METHODS } from "@/types/general";
 import { buildProductPayload } from "@/functions/buildProductPayload";
+import { useEntityImages } from "@/hooks/useEntityImages";
+import { resolveEntityImages } from "@/functions/uploadMedia";
 
 const ProductAdd = () => {
   const { updateProducts } = useGetProducts();
   const [formData, setFormData] = useState<IProductWithImg>(ITEM_INITIAL);
   const [load, setLoad] = useState<boolean>(false);
+  const imagesState = useEntityImages();
 
-  const handleSend = (e: SubmitEvent<HTMLFormElement>) => {
+  const handleSend = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!formData?.images?.length) {
+    if (!imagesState.previews.length) {
       TOAST_ERROR("Загрузите изображения товара!");
       return;
     }
@@ -32,14 +35,33 @@ const ProductAdd = () => {
     }
 
     setLoad(true);
-    handleRequest(REQUEST_METHODS.POST, API_PRODUCT, buildProductPayload(formData))
-      .then(() => {
-        TOAST_SUCCESS("Товар успешно добавлен");
-        setFormData(ITEM_INITIAL);
-        updateProducts();
-      })
-      .catch(() => TOAST_ERROR("Ошибка добавления товара"))
-      .finally(() => setLoad(false));
+    try {
+      const created = await handleRequest(
+        REQUEST_METHODS.POST,
+        API_PRODUCT,
+        buildProductPayload({ ...formData, images: [] }),
+      );
+      const id = created.data._id as string;
+      const images = await resolveEntityImages(
+        "items",
+        id,
+        imagesState.previews,
+        imagesState.takePendingFiles(),
+      );
+      await handleRequest(
+        REQUEST_METHODS.PUT,
+        API_PRODUCT,
+        buildProductPayload({ ...formData, _id: id, images }),
+      );
+      TOAST_SUCCESS("Товар успешно добавлен");
+      setFormData(ITEM_INITIAL);
+      imagesState.sync([]);
+      updateProducts();
+    } catch {
+      TOAST_ERROR("Ошибка добавления товара");
+    } finally {
+      setLoad(false);
+    }
   };
 
   return (
@@ -54,7 +76,12 @@ const ProductAdd = () => {
 
         <ProductFormInputs formData={formData} setFormData={setFormData} />
 
-        <ProductFormImages formData={formData} setFormData={setFormData} />
+        <ProductFormImages
+          images={imagesState.previews}
+          name={formData.name}
+          onAddFiles={imagesState.addFiles}
+          onRemove={imagesState.remove}
+        />
 
         <Button
           disabled={load}

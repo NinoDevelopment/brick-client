@@ -6,19 +6,21 @@ import ProductCard from "@/components/admin-page/ProductsList/components/Product
 const ProductsList = () => {
   const { data } = useGetProducts();
 
-  if (!data.products.length) return;
-
   return (
     <div className={styles.ProductsList}>
-      <h1 className={styles.title}>
-        Список товаров ({data.loading ? "Обновление..." : data.products.length})
-      </h1>
+      <h2 className={styles.title}>
+        Товары ({data.loading ? "Обновление..." : data.products.length})
+      </h2>
 
-      <div className={styles.content}>
-        {data?.products?.map((elem) => (
-          <ProductCard key={elem._id} data={elem} />
-        ))}
-      </div>
+      {!data.products.length ? (
+        <p className={styles.empty}>Товаров пока нет</p>
+      ) : (
+        <div className={styles.content}>
+          {data.products.map((elem) => (
+            <ProductCard key={elem._id} data={elem} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

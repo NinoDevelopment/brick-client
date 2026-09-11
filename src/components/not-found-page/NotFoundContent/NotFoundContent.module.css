@@ -27,7 +27,7 @@
 /*text*/
 .content h1 {
   font-weight: 700;
-  color: var(--bs-dark);
+  color: var(--app-dark);
   text-align: center;
 }
 

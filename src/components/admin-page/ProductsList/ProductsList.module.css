@@ -1,20 +1,28 @@
 .ProductsList {
   width: 100%;
-  height: auto;
 }
 
 .title {
   margin-bottom: 0.75em;
-  font-weight: 800;
-  color: var(--bs-dark);
-  font-family: var(--font-playfair), "Playfair Display", serif;
 }
 
 .content {
-  max-height: 95vh;
-  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1em;
+}
 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.empty {
+  margin: 0;
+  padding: 2.5em 1em;
+  text-align: center;
+  background: var(--app-surface);
+  border: 1px dashed rgba(30, 30, 30, 0.16);
+  border-radius: var(--radius-md);
 }

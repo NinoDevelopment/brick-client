@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { REQUEST_METHODS } from "@/types/general";
 import { getAdminKey } from "@/functions/getKey";
+import { getBrowserApiLink } from "@/functions/getBrowserApiLink";
 
 const getCache = new Map<string, { data: unknown; at: number }>();
 const GET_TTL_MS = 5 * 60 * 1000;
@@ -16,7 +17,7 @@ export const useFetch = <T>(
   enabled: boolean = true,
 ) => {
   const requestMethod = method || REQUEST_METHODS.GET;
-  const requestUrl = process.env.NEXT_PUBLIC_API_LINK + url;
+  const requestUrl = getBrowserApiLink() + url;
   const isGet = requestMethod === REQUEST_METHODS.GET;
   const key = cacheKey(requestMethod, requestUrl);
   const cachedInitial =

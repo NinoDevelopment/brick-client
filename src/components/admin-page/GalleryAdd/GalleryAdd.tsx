@@ -70,7 +70,7 @@ const GalleryAdd = () => {
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
-        <h1>Добавить категорию в галерею</h1>
+        <h2>Новый альбом</h2>
       </header>
 
       <GalleryForm

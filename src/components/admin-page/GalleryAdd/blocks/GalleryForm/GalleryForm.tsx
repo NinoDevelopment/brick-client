@@ -81,7 +81,7 @@ const GalleryForm = ({
         defaultChecked={formData.show}
         onChange={() => setFormData({ ...formData, show: !formData.show })}
       />
-      <Button size={"sm"} type={"submit"} disabled={load}>
+      <Button size={"sm"} variant="dark" type={"submit"} disabled={load}>
         {load ? <Spinner size={"sm"} /> : "Отправить"}
       </Button>
     </form>

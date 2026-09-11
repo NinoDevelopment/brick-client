@@ -1,6 +1,5 @@
 .CategoryCard {
-  width: calc(25% - 0.5em);
-  margin: 0 0 0.5em 0;
+  height: 100%;
 }
 
 .CategoryCard .img {
@@ -9,5 +8,7 @@
 }
 
 .CategoryCard h4 {
-  font-weight: 800;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--app-dark);
 }

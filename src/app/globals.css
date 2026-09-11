@@ -108,3 +108,102 @@ html {
     padding: 0.8em 1.5em;
   }
 }
+
+.admin-scope h2 {
+  margin: 0 0 0.75em;
+  font-family: var(--app-font);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--app-dark);
+}
+
+.admin-scope .form-control,
+.admin-scope .form-select {
+  color: var(--app-dark);
+  background: var(--app-surface);
+  border: 1px solid rgba(30, 30, 30, 0.14);
+  border-radius: var(--radius-sm);
+}
+
+.admin-scope .form-control:focus,
+.admin-scope .form-select:focus {
+  color: var(--app-dark);
+  border-color: var(--app-primary);
+  box-shadow: 0 0 0 3px rgba(251, 138, 46, 0.15);
+}
+
+.admin-scope .form-floating > .form-control {
+  height: calc(3.5rem + 2px);
+}
+
+.admin-scope .card {
+  background: var(--app-surface);
+  border: 1px solid rgba(30, 30, 30, 0.08);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.admin-scope .card-footer {
+  background: var(--app-light);
+  border-top: 1px solid rgba(30, 30, 30, 0.06);
+}
+
+.admin-scope .table {
+  --bs-table-bg: transparent;
+  --bs-table-border-color: rgba(30, 30, 30, 0.08);
+  margin-bottom: 1em;
+  font-size: 0.95rem;
+}
+
+.admin-scope .table td {
+  color: var(--app-dark);
+  vertical-align: top;
+}
+
+.admin-scope .btn {
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+}
+
+.admin-scope .btn-dark {
+  background: var(--app-dark);
+  border-color: var(--app-dark);
+}
+
+.admin-scope .btn-dark:hover,
+.admin-scope .btn-dark:focus {
+  background: var(--app-secondary-dark);
+  border-color: var(--app-secondary-dark);
+}
+
+.admin-scope .btn-primary {
+  background: var(--app-primary);
+  border-color: var(--app-primary);
+}
+
+.admin-scope .btn-primary:hover,
+.admin-scope .btn-primary:focus {
+  background: var(--app-primary-hover);
+  border-color: var(--app-primary-hover);
+}
+
+.admin-scope .btn-light {
+  color: var(--app-dark);
+  background: var(--app-light);
+  border-color: rgba(30, 30, 30, 0.1);
+}
+
+.admin-scope .btn-success {
+  background: var(--app-green);
+  border-color: var(--app-green);
+}
+
+.admin-scope .form-check-input:checked {
+  background-color: var(--app-primary);
+  border-color: var(--app-primary);
+}
+
+.admin-scope .badge {
+  font-weight: 600;
+}

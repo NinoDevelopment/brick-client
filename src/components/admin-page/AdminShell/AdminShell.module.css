@@ -1,0 +1,94 @@
+.shell {
+  min-height: 70vh;
+  padding: 2em 0 4em;
+}
+
+.inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.top {
+  margin-bottom: 1.5em;
+}
+
+.kicker {
+  margin: 0 0 0.2em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--app-primary);
+}
+
+.top h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--app-dark);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin-bottom: 1.75em;
+  padding: 0.35em;
+  background: var(--app-surface);
+  border: 1px solid rgba(30, 30, 30, 0.08);
+  border-radius: var(--radius-md);
+}
+
+.tab,
+.tabActive {
+  appearance: none;
+  margin: 0;
+  padding: 0.65em 1.1em;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--app-dark);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.tab:hover {
+  background: var(--app-light-hover);
+}
+
+.tabActive {
+  background: var(--app-dark);
+  color: #fff;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+@media (max-width: 768px) {
+  .shell {
+    padding: 1.25em 0 3em;
+  }
+
+  .top h1 {
+    font-size: 1.6rem;
+  }
+
+  .tab,
+  .tabActive {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 0.7em 0.75em;
+    font-size: 0.88rem;
+  }
+}

@@ -71,7 +71,7 @@ const CategoriesAdd = () => {
 
   return (
     <div className={styles.CategoriesAdd}>
-      <h1>Добавить категорию</h1>
+      <h2>Новая категория</h2>
 
       <Form onSubmit={handleSend}>
         <FloatingLabel label={"Название"}>

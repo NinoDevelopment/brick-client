@@ -1,17 +1,77 @@
 .main {
-  height: 65vh;
-
+  min-height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 2em 1rem;
 }
 
-/*form*/
-.main form {
-  width: 300px;
-}
-
-/*button*/
-.main form button {
+.card {
   width: 100%;
+  max-width: 420px;
+  padding: 2.25em 2em;
+  display: flex;
+  flex-direction: column;
+  background: var(--app-surface);
+  border: 1px solid rgba(30, 30, 30, 0.08);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 40px rgba(30, 30, 30, 0.06);
+}
+
+.kicker {
+  margin: 0 0 0.25em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--app-primary);
+}
+
+.card h1 {
+  margin: 0 0 1.5em;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--app-dark);
+}
+
+.label {
+  margin: 0 0 0.4em;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--app-dark);
+}
+
+.input {
+  width: 100%;
+  margin-bottom: 1.25em;
+  padding: 0.75em 1em;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--app-dark);
+  background: var(--app-surface);
+  border: 1px solid rgba(30, 30, 30, 0.16);
+  border-radius: var(--radius-sm);
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--app-primary);
+  box-shadow: 0 0 0 3px rgba(251, 138, 46, 0.15);
+}
+
+.error {
+  margin: -0.5em 0 1em;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: #b42318;
+}
+
+.card :global(.app-btn) {
+  width: 100%;
+}
+
+.card :global(.app-btn:disabled) {
+  opacity: 0.7;
+  cursor: wait;
 }

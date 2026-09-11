@@ -1,65 +1,64 @@
 "use client";
 import React, { type SubmitEvent, useState } from "react";
 import styles from "./page.module.css";
-import {
-  Button,
-  FloatingLabel,
-  Form,
-  FormControl,
-  Spinner,
-} from "react-bootstrap";
 import { handleRequest } from "@/functions/handleRequest";
 import { REQUEST_METHODS } from "@/types/general";
 import { API_ADMIN_AUTH } from "@/constants/api";
-import { LINK_ADMIN, LINK_ERROR } from "@/constants/links";
+import { LINK_ADMIN } from "@/constants/links";
 
-const page = () => {
+const Page = () => {
   const [key, setKey] = useState<string>("");
   const [load, setLoad] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
-  //send form
   const handleSend = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError("");
     globalThis.localStorage.setItem("key", key);
     setLoad(true);
     handleRequest(REQUEST_METHODS.POST, API_ADMIN_AUTH, {})
       .then((res) => {
         if (res.data === true) {
           globalThis.location.replace(LINK_ADMIN);
-        } else {
-          globalThis.localStorage.removeItem("key");
-          globalThis.location.replace(LINK_ERROR);
+          return;
         }
+        globalThis.localStorage.removeItem("key");
+        setError("Ключ не принят. Проверьте значение и попробуйте снова.");
       })
       .catch(() => {
         globalThis.localStorage.removeItem("key");
-        globalThis.location.replace(LINK_ERROR);
+        setError("Не удалось войти. Проверьте ключ и соединение с API.");
       })
       .finally(() => {
         setLoad(false);
-        setKey("");
       });
   };
 
   return (
     <div className={styles.main}>
-      <Form onSubmit={handleSend}>
-        <FloatingLabel label={"Введите ключ"}>
-          <FormControl
-            required
-            className={"w-100 mb-2"}
-            value={key}
-            onChange={(e) => setKey(e.target.value)}
-            placeholder="Введите ключ"
-          />
-
-          <Button disabled={load} variant={"dark"} type={"submit"}>
-            {load ? <Spinner size={"sm"} /> : "Далее"}
-          </Button>
-        </FloatingLabel>
-      </Form>
+      <form className={styles.card} onSubmit={handleSend}>
+        <p className={styles.kicker}>Служебный раздел</p>
+        <h1>Вход в админку</h1>
+        <label className={styles.label} htmlFor="admin-key">
+          Ключ доступа
+        </label>
+        <input
+          id="admin-key"
+          className={styles.input}
+          type="password"
+          required
+          autoComplete="current-password"
+          value={key}
+          onChange={(e) => setKey(e.target.value)}
+          placeholder="Введите ключ"
+        />
+        {error ? <p className={styles.error}>{error}</p> : null}
+        <button className="app-btn" disabled={load} type="submit">
+          {load ? "Проверка…" : "Войти"}
+        </button>
+      </form>
     </div>
   );
 };
 
-export default page;
+export default Page;

@@ -7,6 +7,7 @@ export const LINK_GALLERY = "/gallery";
 export const LINK_SHOP_CART = "/shopCart";
 export const LINK_ERROR = "/error";
 export const LINK_ADMIN = "/admin";
+export const LINK_ADMIN_AUTH = "/admin/auth";
 export const LINK_ORDER = "/order";
 export const LINK_ABOUT = "/about";
 export const LINK_DELIVERY = "/delivery";

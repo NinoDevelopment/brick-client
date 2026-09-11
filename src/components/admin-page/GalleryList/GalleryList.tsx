@@ -7,19 +7,19 @@ const GalleryList = () => {
   const { data } = useGetGallery();
 
   if (!data?.categories) {
-    return <h5 className={styles.noItems}>Загрузка галереи...</h5>;
+    return <p className={styles.noItems}>Загрузка галереи...</p>;
   }
 
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
-        <h1>
-          Галерея ({data.loading ? "Обновление..." : data.categories.length})
-        </h1>
+        <h2>
+          Альбомы ({data.loading ? "Обновление..." : data.categories.length})
+        </h2>
       </header>
 
-      {!data?.categories?.length && (
-        <h5 className={styles.noItems}>Список пуст!</h5>
+      {!data.categories.length && (
+        <p className={styles.noItems}>Альбомов пока нет</p>
       )}
 
       <div className={styles.content}>

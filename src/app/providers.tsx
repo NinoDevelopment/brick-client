@@ -10,6 +10,7 @@ import TestWebsiteAlert from "@/components/general/TestWebsiteAlert/TestWebsiteA
 import CookieBanner from "@/components/general/CookieBanner/CookieBanner";
 import YandexMetrika from "@/components/general/YandexMetrika/YandexMetrika";
 import useScrollTop from "@/hooks/useScrollTop";
+import { usePathname } from "next/navigation";
 
 interface IProviders {
   children: React.ReactNode;
@@ -17,6 +18,8 @@ interface IProviders {
 
 const Providers = ({ children }: IProviders) => {
   useScrollTop();
+  const pathname = usePathname();
+  const isAdmin = pathname.startsWith("/admin");
 
   return (
     <Provider store={store}>
@@ -24,8 +27,8 @@ const Providers = ({ children }: IProviders) => {
       {process.env.NEXT_PUBLIC_APP_TEST === "true" && <TestWebsiteAlert />}
       <NavbarTop />
       {children}
-      <FooterBottom />
-      <CookieBanner />
+      {!isAdmin && <FooterBottom />}
+      {!isAdmin && <CookieBanner />}
       <YandexMetrika />
     </Provider>
   );

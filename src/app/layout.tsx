@@ -1,7 +1,7 @@
 import Providers from '@/app/providers';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { Nunito_Sans, Playfair_Display } from 'next/font/google';
+import { Nunito_Sans } from 'next/font/google';
 import LdJsonScripts from "@/app/ld-json-scripts";
 import { createPageMetadata, SEO_DEFAULT, SITE_URL } from '@/constants/seo';
 
@@ -18,14 +18,6 @@ const nunitoSans = Nunito_Sans({
   variable: '--font-nunito',
   display: 'swap',
   preload: true,
-});
-
-const playfairDisplay = Playfair_Display({
-  subsets: ['latin', 'cyrillic'],
-  weight: ['400', '700', '800'],
-  variable: '--font-playfair',
-  display: 'swap',
-  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -50,7 +42,7 @@ const RootLayout = ({ children }: IRootLayout) => {
     <html
       lang='ru'
       data-scroll-behavior='smooth'
-      className={`${nunitoSans.variable} ${playfairDisplay.variable}`}
+      className={nunitoSans.variable}
     >
       <body className={nunitoSans.className}>
         <LdJsonScripts />

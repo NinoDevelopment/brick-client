@@ -1,19 +1,25 @@
-.wrapper {
+.header h2 {
+  margin-bottom: 0.75em;
 }
 
-.header h1 {
-  margin-bottom: 0.5em;
-  font-weight: 800;
-  color: var(--bs-dark);
-  font-family: var(--font-playfair), "Playfair Display", serif;
-}
-
-h5.noItems {
-  color: var(--bs-gray-600);
+.noItems {
+  margin: 0;
+  padding: 2.5em 1em;
+  text-align: center;
+  color: var(--app-dark);
+  background: var(--app-surface);
+  border: 1px dashed rgba(30, 30, 30, 0.16);
+  border-radius: var(--radius-md);
 }
 
 .content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1em;
+}
+
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { API_MEDIA_UPLOAD } from "@/constants/api";
 import { getAdminKey } from "@/functions/getKey";
+import { getBrowserApiLink } from "@/functions/getBrowserApiLink";
 
 export type MediaEntity = "items" | "gallery" | "categories";
 
@@ -19,7 +20,7 @@ export const uploadMediaFiles = async (
   }
 
   const response = await axios.post<{ urls: string[] }>(
-    `${process.env.NEXT_PUBLIC_API_LINK}${API_MEDIA_UPLOAD}`,
+    `${getBrowserApiLink()}${API_MEDIA_UPLOAD}`,
     data,
     {
       headers: {

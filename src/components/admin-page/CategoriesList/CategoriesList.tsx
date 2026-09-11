@@ -6,20 +6,22 @@ import { useGetCategories } from "@/hooks/useGetCategories";
 const CategoriesList = () => {
   const { data } = useGetCategories();
 
-  if (!data.categories.length) return;
-
   return (
     <div className={styles.CategoriesList}>
-      <h1 className={styles.title}>
-        Список категорий (
+      <h2 className={styles.title}>
+        Категории (
         {data.loading ? "Обновление..." : data.categories.length})
-      </h1>
+      </h2>
 
-      <div className={styles.content}>
-        {data.categories?.map((elem) => (
-          <CategoryCard key={elem._id} data={elem} />
-        ))}
-      </div>
+      {!data.categories.length ? (
+        <p className={styles.empty}>Категорий пока нет</p>
+      ) : (
+        <div className={styles.content}>
+          {data.categories.map((elem) => (
+            <CategoryCard key={elem._id} data={elem} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

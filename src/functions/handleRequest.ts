@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { REQUEST_METHODS } from "@/types/general";
 import { getAdminKey } from "@/functions/getKey";
+import { getBrowserApiLink } from "@/functions/getBrowserApiLink";
 
 export const handleRequest = (
   method: REQUEST_METHODS,
@@ -9,7 +10,7 @@ export const handleRequest = (
 ): Promise<AxiosResponse> => {
   const options = {
     method: method,
-    url: process.env.NEXT_PUBLIC_API_LINK + url,
+    url: getBrowserApiLink() + url,
     // url: `https://${process.env.URL}/api${url}`,
     headers: {
       "Content-Type": "application/json",

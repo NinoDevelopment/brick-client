@@ -66,7 +66,7 @@ const ProductAdd = () => {
 
   return (
     <div className={styles.ProductAdd}>
-      <h1 className={styles.title}>Добавить товар</h1>
+      <h2 className={styles.title}>Новый товар</h2>
 
       <Form onSubmit={handleSend}>
         <ProductFormCategorySelect

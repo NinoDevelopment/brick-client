@@ -48,7 +48,7 @@ const PromocodeAdd = () => {
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
-        <h1>Добавление промокода</h1>
+        <h2>Новый промокод</h2>
       </header>
 
       <Form onSubmit={handleSend}>
@@ -65,7 +65,7 @@ const PromocodeAdd = () => {
           placeholder={"Введите скидку"}
           required
         />
-        <Button type="submit" disabled={load}>
+        <Button type="submit" variant="dark" disabled={load}>
           {load ? <Spinner size={"sm"} /> : "Отправить"}
         </Button>
       </Form>

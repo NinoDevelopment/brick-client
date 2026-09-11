@@ -65,15 +65,15 @@
   font-size: 1.75rem;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--bs-dark);
+  color: var(--app-dark);
 }
 
 .description {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 400;
-  line-height: 1.5;
-  color: var(--bs-gray-600);
+  line-height: 1.7;
+  color: var(--app-dark);
 }
 
 .thumbs {
@@ -219,7 +219,7 @@
   }
 
   .description {
-    font-size: 0.95rem;
+    font-size: 14px;
   }
 
   .thumbs {

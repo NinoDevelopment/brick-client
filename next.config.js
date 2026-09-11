@@ -26,6 +26,15 @@ const nextConfig = {
       { source: "/favicon.svg", headers: staticMediaCache },
     ];
   },
+  async rewrites() {
+    const api = process.env.NEXT_PUBLIC_API_LINK || "https://kzk.ooo/api";
+    return [
+      {
+        source: "/api-proxy/:path*",
+        destination: `${api.replace(/\/$/, "")}/:path*`,
+      },
+    ];
+  },
   async redirects() {
     return [
       {

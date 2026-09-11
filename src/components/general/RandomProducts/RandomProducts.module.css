@@ -7,7 +7,10 @@
 /*title*/
 .RandomProducts h2 {
   margin-bottom: 0.75em;
+  font-size: 40px;
   font-weight: 700;
+  line-height: 1.15;
+  color: var(--app-dark);
 }
 
 /*spinner*/
@@ -37,4 +40,10 @@
 
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .RandomProducts h2 {
+    font-size: 24px;
+  }
 }

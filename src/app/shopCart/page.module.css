@@ -1,7 +1,7 @@
 /*page with items*/
 .shopCart {
   min-height: 60vh;
-  margin: 1.25em auto 3em;
+  margin: 3.5em auto 3em;
 }
 
 /*top content*/
@@ -27,7 +27,7 @@
 /*sticky amount container*/
 .amount {
   position: sticky;
-  top: 1em;
+  top: 7rem;
   width: 350px;
 }
 

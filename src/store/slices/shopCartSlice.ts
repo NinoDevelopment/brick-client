@@ -50,7 +50,6 @@ export const shopCartSlice = createSlice({
       }
     },
     clearItem: (state, action) => {
-      //delete all amount item
       state.data = state.data.filter(
         (item) => item !== findItem(state.data, action.payload),
       );

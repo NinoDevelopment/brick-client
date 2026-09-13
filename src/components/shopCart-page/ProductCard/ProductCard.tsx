@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./ProductCard.module.css";
 import { IShopCartItem } from "@/types/shopCart";
 import { useFetch } from "@/hooks/useFetch";
@@ -40,16 +40,16 @@ const ProductCard: React.FC<IProductCard> = ({ data, shopCartData }) => {
     (item) => item.itemId === productData?._id,
   );
 
-  //delete item from shop cart
   const handleClearItem = () => {
     dispatch(clearItem(data));
   };
 
-  //если при получении товара вылетает ошибка то удаляем его из корзины
-  if (error) {
-    handleClearItem();
-    return;
-  }
+  useEffect(() => {
+    if (!error) return;
+    dispatch(clearItem(data));
+  }, [error, data, dispatch]);
+
+  if (error) return null;
 
   if (load) {
     return (
@@ -59,7 +59,7 @@ const ProductCard: React.FC<IProductCard> = ({ data, shopCartData }) => {
     );
   }
 
-  if (!productData) return;
+  if (!productData) return null;
 
   return (
     <div className={styles.ProductCard}>

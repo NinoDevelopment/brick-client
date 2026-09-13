@@ -10,8 +10,7 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "eslint .",
-    "test": "node --experimental-strip-types --test src/functions/*.spec.ts"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@pbe/react-yandex-maps": "^1.2.5",

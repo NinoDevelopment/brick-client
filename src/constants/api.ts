@@ -10,10 +10,12 @@ export const API_CATEGORY_ITEMS = (id: string) => `/item/category/${id}`;
 export const API_ORDER_AMOUNT = "/order/amount";
 export const API_ORDER_LOOKUP_INN = "/order/lookup-inn";
 export const API_ORDER = "/order";
-export const API_ORDER_ID = (id: string) => `/order/${id}`;
+export const API_ORDER_ID = (id: string, token: string) =>
+  `/order/${id}?token=${encodeURIComponent(token)}`;
 export const API_ORDER_PLATI = (id: string) => `/order/plati/${id}`;
 export const API_ORDER_COMPLETE_ID = (id: string) => `/order/complete/${id}`;
 export const API_ADMIN_AUTH = "/api/auth";
+export const API_ADMIN_LOGOUT = "/api/logout";
 export const API_CALC_PARAMS = "/calc/byParameters";
 export const API_CALC_VALUES = "/calc/byVolume";
 export const API_GALLERY = "/gallery";

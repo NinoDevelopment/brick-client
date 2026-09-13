@@ -173,12 +173,21 @@ const OrderForm = () => {
     setLoad(true);
     handleRequest(REQUEST_METHODS.POST, API_ORDER, buildOrderPayload(formData))
       .then((res) => {
+        const orderId = res.data._id as string;
+        const accessToken = res.data.accessToken as string | undefined;
+        if (!orderId || !accessToken) {
+          TOAST_ERROR(
+            "Ошибка оформления заказа, пожалуйста попробуйте позже!",
+          );
+          return;
+        }
+        const statusUrl = LINK_ORDER_ID(orderId, accessToken);
         if (res.data.paymentType === EPayment.ONLINE) {
-          handleRequest(REQUEST_METHODS.POST, API_ORDER_PLATI(res.data._id), {})
+          handleRequest(REQUEST_METHODS.POST, API_ORDER_PLATI(orderId), {})
             .then((resInner) => {
               dispatch(clearShopCart());
               globalThis.open(resInner.data.confirmationURL, "_blank");
-              globalThis.location.replace(LINK_ORDER_ID(res.data._id));
+              globalThis.location.replace(statusUrl);
             })
             .catch(() =>
               TOAST_ERROR(
@@ -187,7 +196,7 @@ const OrderForm = () => {
             );
         } else {
           dispatch(clearShopCart());
-          globalThis.location.replace(LINK_ORDER_ID(res.data._id));
+          globalThis.location.replace(statusUrl);
         }
       })
       .catch((err) => {

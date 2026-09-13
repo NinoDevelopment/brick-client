@@ -1,5 +1,5 @@
 import FaqPage from "@/pagesList/FaqPage/FaqPage";
-import Script from "next/script";
+import JsonLd from "@/components/general/JsonLd/JsonLd";
 import { createPageMetadata, SEO_FAQ, SITE_URL } from "@/constants/seo";
 import { FAQ_ITEMS } from "@/constants/faq";
 
@@ -10,47 +10,41 @@ const Page = () => {
     <>
       <FaqPage />
 
-      <Script
+      <JsonLd
         id="faq-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: FAQ_ITEMS.map((item) => ({
-              "@type": "Question",
-              name: item.question,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: item.answer,
-              },
-            })),
-          }),
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_ITEMS.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
         }}
       />
 
-      <Script
+      <JsonLd
         id="breadcrumbs-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Главная",
-                item: SITE_URL,
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Частые вопросы",
-                item: `${SITE_URL}/faq`,
-              },
-            ],
-          }),
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Главная",
+              item: SITE_URL,
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Частые вопросы",
+              item: `${SITE_URL}/faq`,
+            },
+          ],
         }}
       />
     </>

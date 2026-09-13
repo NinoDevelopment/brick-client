@@ -1,5 +1,5 @@
 "use client";
-import React, { type SubmitEvent, useState } from "react";
+import React, { type SubmitEvent, useEffect, useState } from "react";
 import styles from "./page.module.css";
 import { handleRequest } from "@/functions/handleRequest";
 import { REQUEST_METHODS } from "@/types/general";
@@ -11,22 +11,23 @@ const Page = () => {
   const [load, setLoad] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
+  useEffect(() => {
+    window.localStorage.removeItem("key");
+  }, []);
+
   const handleSend = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
-    globalThis.localStorage.setItem("key", key);
     setLoad(true);
-    handleRequest(REQUEST_METHODS.POST, API_ADMIN_AUTH, {})
+    handleRequest(REQUEST_METHODS.POST, API_ADMIN_AUTH, {}, key)
       .then((res) => {
         if (res.data === true) {
           globalThis.location.replace(LINK_ADMIN);
           return;
         }
-        globalThis.localStorage.removeItem("key");
         setError("Ключ не принят. Проверьте значение и попробуйте снова.");
       })
       .catch(() => {
-        globalThis.localStorage.removeItem("key");
         setError("Не удалось войти. Проверьте ключ и соединение с API.");
       })
       .finally(() => {

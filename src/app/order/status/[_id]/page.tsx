@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import React, { Suspense, useEffect, useState } from "react";
+import { useParams, useSearchParams } from "next/navigation";
 import { useFetch } from "@/hooks/useFetch";
 import { API_ORDER_ID } from "@/constants/api";
 import { REQUEST_METHODS } from "@/types/general";
@@ -12,14 +12,19 @@ import BackLink from "@/ui/BackLink/BackLink";
 import styles from "./page.module.css";
 import PhoneEmailLinks from "@/ui/PhoneEmailLinks/PhoneEmailLinks";
 
-const page = () => {
+const OrderStatusContent = () => {
   const params = useParams();
+  const searchParams = useSearchParams();
   const [interval, setInterval] = useState<false | number>(false);
-  const { data, load } = useFetch<IOrderFormId>(
-    API_ORDER_ID(params._id as string),
+  const orderId = typeof params._id === "string" ? params._id : "";
+  const token = searchParams.get("token") ?? "";
+  const canFetch = Boolean(orderId && token);
+  const { data, load, error } = useFetch<IOrderFormId>(
+    canFetch ? API_ORDER_ID(orderId, token) : "",
     REQUEST_METHODS.GET,
     {},
     interval,
+    canFetch,
   );
 
   useEffect(() => {
@@ -33,14 +38,27 @@ const page = () => {
 
   if (load && !interval) return <Spinner />;
 
-  if (data)
+  if (!canFetch || error || !data)
     return (
       <Container className={styles.main}>
         <BackLink link={LINK_HOME} text={"На главную"} />
-        <OrderStatusData data={data} />
-        <PhoneEmailLinks />
+        <p>Заказ не найден</p>
       </Container>
     );
+
+  return (
+    <Container className={styles.main}>
+      <BackLink link={LINK_HOME} text={"На главную"} />
+      <OrderStatusData data={data} />
+      <PhoneEmailLinks />
+    </Container>
+  );
 };
+
+const page = () => (
+  <Suspense fallback={<Spinner />}>
+    <OrderStatusContent />
+  </Suspense>
+);
 
 export default page;

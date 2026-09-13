@@ -15,7 +15,7 @@ import styles from "./NavbarTop.module.css";
 import ShopCartLink from "@/components/general/NavbarTop/components/ShopCartLink/ShopCartLink";
 import { usePathname } from "next/navigation";
 import NavbarMobile from "@/components/general/NavbarTop/components/NavbarMobile/NavbarMobile";
-import Script from "next/script";
+import JsonLd from "@/components/general/JsonLd/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/constants/seo";
 
 const MOBILE_MAX_WIDTH = 991;
@@ -83,8 +83,9 @@ const NavbarTop = () => {
 
   return (
     <>
-      <Script type="application/ld+json" id="navigation-meta">
-        {JSON.stringify({
+      <JsonLd
+        id="navigation-meta"
+        data={{
           "@context": "https://schema.org",
           "@type": "SiteNavigationElement",
           name: "Основное меню",
@@ -95,8 +96,8 @@ const NavbarTop = () => {
             name: link.title,
             url: `${SITE_URL}${link.link}`,
           })),
-        })}
-      </Script>
+        }}
+      />
 
       <Navbar
         role="navigation"

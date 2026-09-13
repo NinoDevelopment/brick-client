@@ -1,6 +1,5 @@
 import axios from "axios";
 import { API_MEDIA_UPLOAD } from "@/constants/api";
-import { getAdminKey } from "@/functions/getKey";
 import { getBrowserApiLink } from "@/functions/getBrowserApiLink";
 
 export type MediaEntity = "items" | "gallery" | "categories";
@@ -23,9 +22,7 @@ export const uploadMediaFiles = async (
     `${getBrowserApiLink()}${API_MEDIA_UPLOAD}`,
     data,
     {
-      headers: {
-        Authorization: getAdminKey() ?? "",
-      },
+      withCredentials: true,
     },
   );
 

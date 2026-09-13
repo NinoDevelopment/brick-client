@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { REQUEST_METHODS } from "@/types/general";
-import { getAdminKey } from "@/functions/getKey";
 import { getBrowserApiLink } from "@/functions/getBrowserApiLink";
 
 const getCache = new Map<string, { data: unknown; at: number }>();
 const GET_TTL_MS = 5 * 60 * 1000;
 
 const cacheKey = (method: string, url: string) => `${method}:${url}`;
+
+const isFreshCache = (at: number) => Date.now() - at < GET_TTL_MS;
 
 export const useFetch = <T>(
   url: string,
@@ -37,9 +38,9 @@ export const useFetch = <T>(
     url: requestUrl,
     headers: {
       "Content-Type": "application/json",
-      Authorization: getAdminKey(),
     },
     data: body || {},
+    withCredentials: true,
   };
 
   const handleFetch = (silent = false) => {
@@ -69,9 +70,7 @@ export const useFetch = <T>(
     }
 
     const cached = isGet ? getCache.get(key) : undefined;
-    const fresh = Boolean(
-      cached && Date.now() - cached.at < GET_TTL_MS,
-    );
+    const fresh = Boolean(cached && isFreshCache(cached.at));
 
     if (prevUrlRef.current !== options.url) {
       prevUrlRef.current = options.url;

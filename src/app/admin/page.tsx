@@ -6,7 +6,7 @@ import CategoriesList from "@/components/admin-page/CategoriesList/CategoriesLis
 import ProductsList from "@/components/admin-page/ProductsList/ProductsList";
 import OrdersList from "@/components/admin-page/OrdersList/OrdersList";
 import { useFetch } from "@/hooks/useFetch";
-import { API_ADMIN_AUTH } from "@/constants/api";
+import { API_ADMIN_AUTH, API_ADMIN_LOGOUT } from "@/constants/api";
 import { REQUEST_METHODS } from "@/types/general";
 import { useRouter } from "next/navigation";
 import { LINK_ADMIN_AUTH } from "@/constants/links";
@@ -20,32 +20,24 @@ import AdminShell, {
   ADMIN_TABS,
   type AdminTabId,
 } from "@/components/admin-page/AdminShell/AdminShell";
-import { getAdminKey } from "@/functions/getKey";
+import { handleRequest } from "@/functions/handleRequest";
 
 const TAB_STORAGE_KEY = "admin-tab";
 
 const isAdminTab = (value: string | null): value is AdminTabId =>
   ADMIN_TABS.some((tab) => tab.id === value);
 
+const clearAdminSession = () =>
+  handleRequest(REQUEST_METHODS.POST, API_ADMIN_LOGOUT, {}).catch(() => undefined);
+
 const Page = () => {
   const router = useRouter();
-  const [allowed, setAllowed] = useState(false);
   const { data, error, load } = useFetch<boolean>(
     API_ADMIN_AUTH,
     REQUEST_METHODS.POST,
     {},
-    false,
-    allowed,
   );
   const [tab, setTab] = useState<AdminTabId>("orders");
-
-  useEffect(() => {
-    if (!getAdminKey()) {
-      router.replace(LINK_ADMIN_AUTH);
-      return;
-    }
-    setAllowed(true);
-  }, [router]);
 
   useEffect(() => {
     const saved = sessionStorage.getItem(TAB_STORAGE_KEY);
@@ -53,14 +45,21 @@ const Page = () => {
   }, []);
 
   useEffect(() => {
-    if (error) {
+    if (!error) return;
+    void clearAdminSession().finally(() => {
       router.replace(LINK_ADMIN_AUTH);
-    }
+    });
   }, [error, router]);
 
   const handleTab = (id: AdminTabId) => {
     setTab(id);
     sessionStorage.setItem(TAB_STORAGE_KEY, id);
+  };
+
+  const handleLogout = () => {
+    void clearAdminSession().finally(() => {
+      router.replace(LINK_ADMIN_AUTH);
+    });
   };
 
   if (error || load) {
@@ -74,7 +73,7 @@ const Page = () => {
   if (!data) return null;
 
   return (
-    <AdminShell active={tab} onChange={handleTab}>
+    <AdminShell active={tab} onChange={handleTab} onLogout={handleLogout}>
       {tab === "orders" && <OrdersList />}
       {tab === "categories" && (
         <>

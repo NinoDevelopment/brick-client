@@ -1,23 +1,25 @@
 import axios, { AxiosResponse } from "axios";
 import { REQUEST_METHODS } from "@/types/general";
-import { getAdminKey } from "@/functions/getKey";
 import { getBrowserApiLink } from "@/functions/getBrowserApiLink";
 
 export const handleRequest = (
   method: REQUEST_METHODS,
   url: string,
-  data: any,
+  data: unknown,
+  authKey?: string,
 ): Promise<AxiosResponse> => {
-  const options = {
-    method: method,
-    url: getBrowserApiLink() + url,
-    // url: `https://${process.env.URL}/api${url}`,
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: getAdminKey(),
-    },
-    data: data,
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
   };
+  if (authKey) {
+    headers.Authorization = authKey;
+  }
 
-  return axios.request(options);
+  return axios.request({
+    method,
+    url: getBrowserApiLink() + url,
+    headers,
+    data,
+    withCredentials: true,
+  });
 };

@@ -14,7 +14,8 @@ export const LINK_DELIVERY = "/delivery";
 export const LINK_DELIVERY_CITY = (slug: string) => `/delivery/${slug}`;
 export const LINK_CONTACTS = "/contacts";
 export const LINK_CALCULATOR = "/calculator";
-export const LINK_ORDER_ID = (id: string) => `/order/status/${id}`;
+export const LINK_ORDER_ID = (id: string, token: string) =>
+  `/order/status/${id}?token=${encodeURIComponent(token)}`;
 export const LINK_PRODUCT = (product: { _id: string; name: string }) =>
   `/product/${getProductSlug(product)}`;
 export const LINK_PRIVACY = "/privacyPolicy";

@@ -13,16 +13,22 @@ export type AdminTabId = (typeof ADMIN_TABS)[number]["id"];
 interface IAdminShell {
   active: AdminTabId;
   onChange: (id: AdminTabId) => void;
+  onLogout: () => void;
   children: React.ReactNode;
 }
 
-const AdminShell = ({ active, onChange, children }: IAdminShell) => {
+const AdminShell = ({ active, onChange, onLogout, children }: IAdminShell) => {
   return (
     <div className={`admin-scope ${styles.shell}`}>
       <div className={styles.inner}>
         <header className={styles.top}>
-          <p className={styles.kicker}>Кирпичный завод Ковернино</p>
-          <h1>Админ-панель</h1>
+          <div>
+            <p className={styles.kicker}>Кирпичный завод Ковернино</p>
+            <h1>Админ-панель</h1>
+          </div>
+          <button type="button" className={styles.logout} onClick={onLogout}>
+            Выйти
+          </button>
         </header>
 
         <nav className={styles.nav} aria-label="Разделы админки">

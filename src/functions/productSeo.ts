@@ -21,12 +21,6 @@ const specValue = (
   return value?.trim() || undefined;
 };
 
-const lowerName = (name: string) => {
-  const trimmed = name.trim();
-  if (!trimmed) return trimmed;
-  return trimmed.charAt(0).toLowerCase() + trimmed.slice(1);
-};
-
 const categoryKind = (categoryName?: string) => {
   const value = categoryName?.trim().toLowerCase();
   if (!value) return undefined;
@@ -85,6 +79,97 @@ export const getMinProductUnitPrice = (products: ProductSeoSource[]) => {
   }
 
   return min;
+};
+
+const nameWithoutBrick = (name: string) =>
+  name.trim().replace(/^кирпич\s+/i, "");
+
+export const getProductFormatLabel = (product: ProductSeoSource) => {
+  const fromSpec = specValue(product.description, "Формат");
+  if (fromSpec) return fromSpec;
+
+  const match = product.name.match(/(\d+(?:,\d+)?)\s*NF/i);
+  return match ? `${match[1]} NF` : undefined;
+};
+
+export const getProductBodyType = (product: ProductSeoSource) => {
+  const traits = nameTraits(product.name);
+  if (traits.solid) return "полнотелый";
+  if (traits.hollow) return "пустотелый";
+  return undefined;
+};
+
+export const getProductMarkLabel = (product: ProductSeoSource) =>
+  specValue(product.description, "Марка по прочности");
+
+const commercialProductLabel = (
+  product: ProductSeoSource,
+  categoryName?: string,
+) => {
+  const kind = categoryKind(categoryName);
+  const typeWord =
+    kind === "facing" ? "облицовочный" : kind === "row" ? "рядовой" : undefined;
+  const tail = nameWithoutBrick(product.name);
+  if (typeWord) return `${typeWord} кирпич ${tail}`;
+  return product.name.trim();
+};
+
+export const getCategoryAvailability = (products: ProductSeoSource[]) => {
+  const formats: string[] = [];
+  const seenFormats = new Set<string>();
+  const bodyTypes: string[] = [];
+  const seenBodies = new Set<string>();
+
+  for (const product of products) {
+    const format = getProductFormatLabel(product);
+    if (format) {
+      const key = format.toLowerCase().replace(/\s+/g, "");
+      if (!seenFormats.has(key)) {
+        seenFormats.add(key);
+        formats.push(format);
+      }
+    }
+
+    const body = getProductBodyType(product);
+    if (body && !seenBodies.has(body)) {
+      seenBodies.add(body);
+      bodyTypes.push(body);
+    }
+  }
+
+  formats.sort((left, right) => left.localeCompare(right, "ru"));
+  bodyTypes.sort((left, right) => {
+    if (left === "полнотелый") return -1;
+    if (right === "полнотелый") return 1;
+    return left.localeCompare(right, "ru");
+  });
+
+  return {
+    formats,
+    bodyTypes,
+    minPrice: getMinProductUnitPrice(products),
+  };
+};
+
+export const formatCategoryAvailability = (
+  availability: ReturnType<typeof getCategoryAvailability>,
+) => {
+  const parts: string[] = [];
+  if (availability.formats.length) {
+    parts.push(`форматы ${availability.formats.join(", ")}`);
+  }
+  if (availability.bodyTypes.length === 2) {
+    parts.push("полнотелый и пустотелый");
+  } else if (availability.bodyTypes.length === 1) {
+    parts.push(availability.bodyTypes[0]);
+  }
+  if (availability.minPrice !== undefined) {
+    parts.push(
+      `цена от ${formatProductPrice(availability.minPrice)} ₽/шт`,
+    );
+  }
+  if (!parts.length) return undefined;
+  return `Сейчас в наличии: ${parts.join("; ")}.`;
 };
 
 export const getCategorySeo = (
@@ -165,8 +250,9 @@ export const getProductCopy = (
   categoryName?: string,
 ) => {
   const purpose = useCase(product.name, categoryName);
+  const label = commercialProductLabel(product, categoryName);
   const intro = [
-    `${product.name} — ${categoryPhrase(categoryName)} завода Ковернино${
+    `${label.charAt(0).toUpperCase()}${label.slice(1)} — ${categoryPhrase(categoryName)} завода Ковернино${
       purpose ? ` ${purpose}` : ""
     }.`,
     colorNote(product),
@@ -197,15 +283,18 @@ export const getProductSeo = (
   categoryName?: string,
 ) => {
   const unitPrice = getProductUnitPrice(product);
+  const label = commercialProductLabel(product, categoryName);
+  const mark = getProductMarkLabel(product);
+  const markBit =
+    mark && !label.toLowerCase().includes(mark.toLowerCase())
+      ? `, ${mark}`
+      : "";
+  const heading = `Купить ${label}${markBit}`;
   const title = unitPrice
-    ? `${product.name} | ${formatProductPrice(unitPrice)} ₽/шт`
-    : `${product.name} | Купить с завода Ковернино`;
+    ? `${heading} | ${formatProductPrice(unitPrice)} ₽/шт`
+    : `${heading} | завод Ковернино`;
 
-  const kind = categoryKind(categoryName);
-  const typeWord =
-    kind === "facing" ? "облицовочный " : kind === "row" ? "рядовой " : "";
   const size = specValue(product.description, "Размер");
-  const mark = specValue(product.description, "Марка по прочности");
   const specBits = [
     size,
     mark ? `марка ${mark}` : undefined,
@@ -219,16 +308,14 @@ export const getProductSeo = (
   ].filter((item): item is string => Boolean(item));
 
   const specPart = specBits.length ? `: ${specBits.join(", ")}` : "";
-  const head = (typePrefix: string) =>
-    `Купить ${typePrefix}${lowerName(product.name)} с завода Ковернино${specPart}.`;
+  const head = `Купить ${label} с завода Ковернино${specPart}.`;
   const offer = offerBits.length ? `${offerBits.join(", ")}.` : "";
   const delivery = "Доставка в Нижний Новгород и область.";
 
   const candidates = [
-    [head(typeWord), offer, delivery],
-    [head(""), offer, delivery],
-    [head(typeWord), offer],
-    [head(""), offer],
+    [head, offer, delivery],
+    [`${heading}.`, offer, delivery],
+    [head, offer],
   ]
     .map((parts) => parts.filter(Boolean).join(" "))
     .filter(Boolean);
@@ -236,5 +323,5 @@ export const getProductSeo = (
   const description =
     candidates.find((text) => text.length <= 160) ?? clipMeta(candidates[0]);
 
-  return { title, description };
+  return { title, description, h1: heading };
 };

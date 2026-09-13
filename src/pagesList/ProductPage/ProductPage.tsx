@@ -28,6 +28,7 @@ interface IProductPage {
   categoryName?: string;
   categorySlug?: string;
   catalogHref?: string;
+  heading?: string;
 }
 
 const ProductPage = ({
@@ -37,6 +38,7 @@ const ProductPage = ({
   categoryName,
   categorySlug,
   catalogHref = LINK_CATALOG,
+  heading,
 }: IProductPage) => {
   const router = useRouter();
   const productId = initialProduct?._id;
@@ -109,6 +111,7 @@ const ProductPage = ({
             data={data}
             categoryName={categoryName}
             categorySlug={categorySlug}
+            heading={heading}
           />
         </div>
       </div>

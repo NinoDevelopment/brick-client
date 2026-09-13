@@ -10,7 +10,8 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/general/JsonLd/JsonLd";
 import { breadcrumbJsonLd } from "@/functions/jsonLd";
-import { fetchProducts } from "@/functions/serverFetch";
+import { fetchCategories, fetchProducts } from "@/functions/serverFetch";
+import { getFeaturedDeliveryProducts } from "@/functions/relatedProducts";
 
 export const revalidate = 60;
 
@@ -47,10 +48,15 @@ const Page = async ({ params }: IPage) => {
     notFound();
   }
 
-  const products =
-    (await fetchProducts())
-      ?.filter((product) => product.show)
-      .slice(0, 3) ?? [];
+  const [allProducts, categories] = await Promise.all([
+    fetchProducts(),
+    fetchCategories(),
+  ]);
+  const products = getFeaturedDeliveryProducts(
+    allProducts ?? [],
+    categories ?? [],
+    3,
+  );
 
   return (
     <>

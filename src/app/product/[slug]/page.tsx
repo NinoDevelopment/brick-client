@@ -93,6 +93,7 @@ const Page = async ({ params }: IPage) => {
     ? `/catalog/${categorySlug}`
     : "/catalog";
   const productUrl = `${SITE_URL}/product/${canonicalSlug}`;
+  const seo = getProductSeo(product, categoryName);
 
   return (
     <>
@@ -103,6 +104,7 @@ const Page = async ({ params }: IPage) => {
         categoryName={categoryName}
         categorySlug={categorySlug}
         catalogHref={catalogHref}
+        heading={seo.h1}
       />
 
       <JsonLd

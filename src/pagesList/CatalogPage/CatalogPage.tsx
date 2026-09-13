@@ -2,6 +2,7 @@ import CategoryProducts from "@/components/catalog-page/CategoryProducts/Categor
 import { Container } from "react-bootstrap";
 import CatalogBanner from "@/components/catalog-page/CatalogBanner/CatalogBanner";
 import CatalogIntro from "@/components/catalog-page/CatalogIntro/CatalogIntro";
+import introStyles from "@/components/catalog-page/CatalogIntro/CatalogIntro.module.css";
 import { IProductId } from "@/types/products";
 import { CatalogCategoryRef } from "@/functions/serverFetch";
 import { CATALOG_INTRO } from "@/constants/catalogCategories";
@@ -19,6 +20,7 @@ interface ICatalogPage {
   introParagraphs?: string[];
   introSections?: { heading: string; paragraphs: string[] }[];
   categories?: CatalogCategoryRef[];
+  availability?: { text: string };
 }
 
 const CatalogPage = ({
@@ -31,6 +33,7 @@ const CatalogPage = ({
   introParagraphs = CATALOG_INTRO.paragraphs,
   introSections,
   categories,
+  availability,
 }: ICatalogPage) => {
   return (
     <>
@@ -44,6 +47,12 @@ const CatalogPage = ({
         ) : null}
       </CatalogBanner>
       <Container>
+        {availability?.text ? (
+          <section className={introStyles.availability}>
+            <h2>В наличии</h2>
+            <p>{availability.text}</p>
+          </section>
+        ) : null}
         <CategoryProducts
           initialProducts={initialProducts}
           categorySlug={categorySlug}

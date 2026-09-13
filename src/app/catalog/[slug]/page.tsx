@@ -3,7 +3,7 @@ import JsonLd from "@/components/general/JsonLd/JsonLd";
 import { fetchCategories, fetchProducts, CatalogCategoryRef } from "@/functions/serverFetch";
 import { createPageMetadata, SITE_URL } from "@/constants/seo";
 import { breadcrumbJsonLd, productListJsonLd } from "@/functions/jsonLd";
-import { getCategorySeo } from "@/functions/productSeo";
+import { getCategorySeo, formatCategoryAvailability, getCategoryAvailability } from "@/functions/productSeo";
 import {
   CATALOG_CATEGORIES,
   CatalogCategory,
@@ -61,9 +61,10 @@ export async function generateMetadata({ params }: IPage): Promise<Metadata> {
     category,
     apiCategories,
   );
+  const inStockProducts = products.filter((product) => product.available);
 
   return createPageMetadata(
-    getCategorySeo(category, products),
+    getCategorySeo(category, inStockProducts),
     `${SITE_URL}/catalog/${category.slug}`,
     category.h1,
   );
@@ -90,6 +91,10 @@ const Page = async ({ params }: IPage) => {
     category,
     apiCategories,
   );
+  const inStockProducts = products.filter((product) => product.available);
+  const availabilityText = formatCategoryAvailability(
+    getCategoryAvailability(inStockProducts),
+  );
 
   return (
     <>
@@ -103,6 +108,9 @@ const Page = async ({ params }: IPage) => {
         introParagraphs={[]}
         introSections={category.sections}
         categories={apiCategories ?? []}
+        availability={
+          availabilityText ? { text: availabilityText } : undefined
+        }
       />
 
       <JsonLd

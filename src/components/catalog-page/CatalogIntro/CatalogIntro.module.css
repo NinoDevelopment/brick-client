@@ -33,6 +33,27 @@
   margin-top: 0;
 }
 
+.availability {
+  max-width: 860px;
+  margin: 1.5em auto 0;
+  padding: 0;
+}
+
+.availability h2 {
+  margin: 0 0 0.5em;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--app-dark);
+}
+
+.availability p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--app-dark);
+}
+
 .section p + p {
   margin-top: 1em;
 }
@@ -48,6 +69,18 @@
   }
 
   .intro p {
+    font-size: 14px;
+  }
+
+  .availability {
+    margin-top: 1em;
+  }
+
+  .availability h2 {
+    font-size: 22px;
+  }
+
+  .availability p {
     font-size: 14px;
   }
 }

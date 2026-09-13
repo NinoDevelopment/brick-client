@@ -16,12 +16,14 @@ interface IProductInfo {
   data: IProductId;
   categoryName?: string;
   categorySlug?: string;
+  heading?: string;
 }
 
 const ProductInfo: React.FC<IProductInfo> = ({
   data,
   categoryName,
   categorySlug,
+  heading,
 }) => {
   const copy = getProductCopy(data, categoryName);
   const category = categorySlug
@@ -36,7 +38,7 @@ const ProductInfo: React.FC<IProductInfo> = ({
       </header>
 
       <div className={styles.content}>
-        <h1>{data.name}</h1>
+        <h1>{heading || data.name}</h1>
 
         <ProductSpecs description={data.description} />
 

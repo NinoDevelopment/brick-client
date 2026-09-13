@@ -81,3 +81,67 @@ export const getRelatedProducts = (
       return left.name.localeCompare(right.name, "ru");
     })
     .slice(0, limit);
+
+const isSolid = (product: IProductId) =>
+  product.name.toLowerCase().includes("полнотел");
+
+const isHollow = (product: IProductId) =>
+  product.name.toLowerCase().includes("пустотел");
+
+export const getFeaturedDeliveryProducts = (
+  products: IProductId[],
+  categories: { _id: string; name: string }[],
+  limit = 3,
+) => {
+  const visible = products.filter((product) => product.show);
+  if (!visible.length || limit <= 0) return [];
+
+  const facingIds = new Set(
+    categories
+      .filter((category) => category.name.toLowerCase().includes("облицовоч"))
+      .map((category) => category._id),
+  );
+  const rowIds = new Set(
+    categories
+      .filter((category) => category.name.toLowerCase().includes("рядов"))
+      .map((category) => category._id),
+  );
+
+  const score = (product: IProductId) => {
+    const format = formatKey(product) ?? "";
+    let value = 0;
+    if (product.available) value += 5;
+    if (isSolid(product)) value += 20;
+    if (facingIds.has(product.categoryId)) value += 12;
+    if (format === "1nf") value += 8;
+    if (format === "1,4nf") value += 4;
+    if (Number(product.discount) > 0) value += 3;
+    return value;
+  };
+
+  const rank = (left: IProductId, right: IProductId) => {
+    const diff = score(right) - score(left);
+    if (diff !== 0) return diff;
+    return left.name.localeCompare(right.name, "ru");
+  };
+
+  const picked: IProductId[] = [];
+  const take = (predicate: (product: IProductId) => boolean) => {
+    if (picked.length >= limit) return;
+    const next = visible
+      .filter(
+        (product) =>
+          !picked.some((item) => item._id === product._id) &&
+          predicate(product),
+      )
+      .sort(rank)[0];
+    if (next) picked.push(next);
+  };
+
+  take((product) => rowIds.has(product.categoryId) && isSolid(product));
+  take((product) => facingIds.has(product.categoryId));
+  take((product) => rowIds.has(product.categoryId) && isHollow(product));
+  take(() => true);
+
+  return picked.slice(0, limit);
+};

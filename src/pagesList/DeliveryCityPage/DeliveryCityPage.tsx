@@ -15,6 +15,7 @@ import {
   LINK_DELIVERY,
   LINK_DELIVERY_CITY,
   LINK_HOME,
+  LINK_PRODUCT,
 } from "@/constants/links";
 import { CONTACTS } from "@/constants/general";
 import bannerStyles from "@/components/delivery-page/PreviewBanner/PreviewBanner.module.css";
@@ -67,6 +68,22 @@ const DeliveryCityPage = ({ city, products = [] }: Props) => {
         {!!products.length && (
           <section className={styles.section}>
             <h2>Кирпич с доставкой в {city.nameAccusative}</h2>
+            {city.slug === "nizhny-novgorod" ? (
+              <p>
+                С доставкой в Нижний Новгород чаще всего берут{" "}
+                {products.map((product, index) => (
+                  <span key={product._id}>
+                    {index > 0
+                      ? index === products.length - 1
+                        ? " и "
+                        : ", "
+                      : null}
+                    <Link href={LINK_PRODUCT(product)}>{product.name}</Link>
+                  </span>
+                ))}
+                .
+              </p>
+            ) : null}
             <div className={styles.products}>
               {products.map((product) => (
                 <ProductCard key={product._id} data={product} />

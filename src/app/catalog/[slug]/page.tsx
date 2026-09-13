@@ -1,22 +1,40 @@
 import CatalogPage from "@/pagesList/CatalogPage/CatalogPage";
 import JsonLd from "@/components/general/JsonLd/JsonLd";
-import { fetchCategories, fetchProducts } from "@/functions/serverFetch";
+import { fetchCategories, fetchProducts, CatalogCategoryRef } from "@/functions/serverFetch";
 import { createPageMetadata, SITE_URL } from "@/constants/seo";
 import { breadcrumbJsonLd, productListJsonLd } from "@/functions/jsonLd";
+import { getCategorySeo } from "@/functions/productSeo";
 import {
   CATALOG_CATEGORIES,
+  CatalogCategory,
   getCatalogCategory,
   getCatalogRedirectSlug,
   matchApiCategory,
 } from "@/constants/catalogCategories";
 import { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
+import { IProductId } from "@/types/products";
 
 export const revalidate = 60;
 
 interface IPage {
   params: Promise<{ slug: string }>;
 }
+
+const getVisibleCategoryProducts = (
+  products: IProductId[] | null,
+  category: CatalogCategory,
+  apiCategories: CatalogCategoryRef[] | null,
+) => {
+  const apiCategory = matchApiCategory(category, apiCategories ?? []);
+  if (!apiCategory) return [];
+
+  return (
+    products?.filter(
+      (product) => product.show && product.categoryId === apiCategory._id,
+    ) ?? []
+  );
+};
 
 export function generateStaticParams() {
   return CATALOG_CATEGORIES.map((category) => ({ slug: category.slug }));
@@ -34,8 +52,18 @@ export async function generateMetadata({ params }: IPage): Promise<Metadata> {
     return { title: "Категория не найдена | Кирпичный завод Ковернино" };
   }
 
+  const [allProducts, apiCategories] = await Promise.all([
+    fetchProducts(),
+    fetchCategories(),
+  ]);
+  const products = getVisibleCategoryProducts(
+    allProducts,
+    category,
+    apiCategories,
+  );
+
   return createPageMetadata(
-    { title: category.title, description: category.description },
+    getCategorySeo(category, products),
     `${SITE_URL}/catalog/${category.slug}`,
     category.h1,
   );
@@ -57,14 +85,11 @@ const Page = async ({ params }: IPage) => {
     fetchProducts(),
     fetchCategories(),
   ]);
-
-  const apiCategory = matchApiCategory(category, apiCategories ?? []);
-  const products =
-    allProducts
-      ?.filter((product) => product.show)
-      .filter((product) =>
-        apiCategory ? product.categoryId === apiCategory._id : false,
-      ) ?? [];
+  const products = getVisibleCategoryProducts(
+    allProducts,
+    category,
+    apiCategories,
+  );
 
   return (
     <>

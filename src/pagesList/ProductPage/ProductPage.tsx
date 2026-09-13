@@ -5,13 +5,18 @@ import { useRouter } from "next/navigation";
 import { useFetch } from "@/hooks/useFetch";
 import { API_PRODUCT_ID, API_PRODUCT_IMG } from "@/constants/api";
 import { Container } from "react-bootstrap";
-import { LINK_CATALOG, LINK_ERROR } from "@/constants/links";
+import Link from "next/link";
+import {
+  LINK_CATALOG,
+  LINK_CATALOG_CATEGORY,
+  LINK_ERROR,
+  LINK_HOME,
+} from "@/constants/links";
 import { IProductId, IProductImg } from "@/types/products";
 import SwiperPhoto from "@/components/product-page/SwiperPhoto/SwiperPhoto";
 import ProductInfo from "@/components/product-page/ProductInfo/ProductInfo";
 import styles from "./ProductPage.module.css";
 import { REQUEST_METHODS } from "@/types/general";
-import BackLink from "@/ui/BackLink/BackLink";
 import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
 import RandomProducts from "@/components/general/RandomProducts/RandomProducts";
 import { getEmbeddedProductImages } from "@/functions/productImages";
@@ -82,7 +87,17 @@ const ProductPage = ({
 
   return (
     <Container className={styles.main}>
-      <BackLink link={catalogHref} text={"В каталог"} />
+      <nav aria-label="Хлебные крошки" className={styles.breadcrumbs}>
+        <Link href={LINK_HOME}>Главная</Link>
+        <span aria-hidden="true"> / </span>
+        {categorySlug && categoryName ? (
+          <Link href={LINK_CATALOG_CATEGORY(categorySlug)}>{categoryName}</Link>
+        ) : (
+          <Link href={LINK_CATALOG}>Каталог</Link>
+        )}
+        <span aria-hidden="true"> / </span>
+        <span aria-current="page">{data.name}</span>
+      </nav>
 
       <div className={styles.productData}>
         <div className={styles.sliderContainer}>
@@ -98,7 +113,16 @@ const ProductPage = ({
         </div>
       </div>
 
-      <RandomProducts quantity={3} initialProducts={initialRelatedProducts} />
+      <RandomProducts
+        title={
+          categoryName
+            ? `Другой ${categoryName.toLowerCase()} кирпич`
+            : "Похожие товары"
+        }
+        quantity={3}
+        initialProducts={initialRelatedProducts}
+        moreHref={catalogHref}
+      />
     </Container>
   );
 };

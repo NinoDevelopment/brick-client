@@ -68,6 +68,7 @@
 .products > * {
   width: 100% !important;
   max-width: 100%;
+  min-width: 0;
   margin-bottom: 0;
 }
 
@@ -103,8 +104,16 @@
   .cities {
     grid-template-columns: 1fr;
   }
+}
 
+@media (min-width: 768px) {
   .products {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 992px) {
+  .products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

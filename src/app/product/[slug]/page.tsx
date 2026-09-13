@@ -3,21 +3,18 @@ import {
   fetchCategories,
   fetchProductImages,
   fetchProducts,
-  fetchProductSample,
 } from "@/functions/serverFetch";
 import { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 import JsonLd from "@/components/general/JsonLd/JsonLd";
-import {
-  createPageMetadata,
-  getProductSeo,
-  SITE_URL,
-} from "@/constants/seo";
+import { createPageMetadata, SITE_URL } from "@/constants/seo";
+import { getProductSeo } from "@/functions/productSeo";
 import { getProductSlug, resolveProductParam } from "@/functions/productSlug";
 import { breadcrumbJsonLd } from "@/functions/jsonLd";
 import { productJsonLd } from "@/functions/productJsonLd";
 import { getCategorySlugById } from "@/constants/catalogCategories";
 import { getEmbeddedProductImages } from "@/functions/productImages";
+import { getRelatedProducts } from "@/functions/relatedProducts";
 
 export const dynamicParams = true;
 export const revalidate = 60;
@@ -33,7 +30,10 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: IPage): Promise<Metadata> {
   const { slug } = await params;
-  const resolved = await resolveProductParam(slug);
+  const [resolved, categories] = await Promise.all([
+    resolveProductParam(slug),
+    fetchCategories(),
+  ]);
 
   if (!resolved) {
     return {
@@ -41,10 +41,10 @@ export async function generateMetadata({ params }: IPage): Promise<Metadata> {
     };
   }
 
-  const seo = getProductSeo(
-    resolved.product.name,
-    resolved.product.description,
-  );
+  const categoryName = categories?.find(
+    (item) => item._id === resolved.product.categoryId,
+  )?.name;
+  const seo = getProductSeo(resolved.product, categoryName);
   const canonicalSlug = getProductSlug(resolved.product);
 
   return createPageMetadata(
@@ -69,8 +69,8 @@ const Page = async ({ params }: IPage) => {
 
   const product = resolved.product;
   const embeddedImages = getEmbeddedProductImages(product);
-  const [relatedProducts, categories, fetchedImages] = await Promise.all([
-    fetchProductSample(3),
+  const [allProducts, categories, fetchedImages] = await Promise.all([
+    fetchProducts(),
     fetchCategories(),
     embeddedImages === undefined
       ? fetchProductImages(product._id)
@@ -81,10 +81,7 @@ const Page = async ({ params }: IPage) => {
       ? { _id: product._id, images: embeddedImages }
       : fetchedImages;
 
-  const related =
-    relatedProducts?.filter(
-      (item) => item.show && item._id !== product._id,
-    ) ?? [];
+  const related = getRelatedProducts(allProducts ?? [], product, 3);
   const categorySlug = getCategorySlugById(
     product.categoryId,
     categories ?? [],
@@ -110,14 +107,13 @@ const Page = async ({ params }: IPage) => {
 
       <JsonLd
         id="product-ld"
-        data={productJsonLd(product, productImages?.images)}
+        data={productJsonLd(product, productImages?.images, categoryName)}
       />
 
       <JsonLd
         id="breadcrumbs-ld"
         data={breadcrumbJsonLd([
           { name: "Главная", item: SITE_URL },
-          { name: "Каталог кирпича", item: `${SITE_URL}/catalog` },
           ...(categorySlug && categoryName
             ? [
                 {
@@ -125,7 +121,7 @@ const Page = async ({ params }: IPage) => {
                   item: `${SITE_URL}/catalog/${categorySlug}`,
                 },
               ]
-            : []),
+            : [{ name: "Каталог кирпича", item: `${SITE_URL}/catalog` }]),
           { name: product.name, item: productUrl },
         ])}
       />

@@ -1,7 +1,6 @@
 import { EShopsIds, IShopAddress } from '@/types/general';
 
-export const APP_TITLE =
-  'Купить кирпич в Нижнем Новгороде | Кирпичный завод Ковернино';
+export const APP_TITLE = 'Кирпичный завод Ковернино';
 
 // минимальная цена заказа
 export const MIN_ORDER_PRICE = 600;

@@ -1,5 +1,6 @@
 import { SITE_NAME, SITE_URL } from "@/constants/seo";
 import { parseProductSpecs } from "@/functions/parseProductSpecs";
+import { getProductSeo } from "@/functions/productSeo";
 import { getProductSlug } from "@/functions/productSlug";
 import { getSchemaImages } from "@/functions/schemaImage";
 import { IProductId } from "@/types/products";
@@ -9,15 +10,17 @@ const nextYear = () => `${new Date().getFullYear() + 1}-12-31`;
 export const productJsonLd = (
   product: IProductId,
   images?: string[] | null,
+  categoryName?: string,
 ) => {
   const specs = parseProductSpecs(product.description);
   const productUrl = `${SITE_URL}/product/${getProductSlug(product)}`;
+  const seo = getProductSeo(product, categoryName);
 
   return {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
-    description: product.description,
+    description: seo.description,
     image: getSchemaImages(images),
     sku: product._id,
     brand: {

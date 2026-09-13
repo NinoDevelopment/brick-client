@@ -72,6 +72,14 @@
   color: #ffffff;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
 }
+.secondaryLink {
+  margin: 1.25rem 0 0;
+}
+.secondaryLink a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
 
 @media (max-width: 991px) {
   .PreviewBanner h1 {

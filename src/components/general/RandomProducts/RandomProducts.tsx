@@ -15,25 +15,27 @@ interface IRandomProducts {
   title?: string;
   quantity?: number;
   initialProducts?: IProductId[];
+  moreHref?: string;
 }
 
 const RandomProducts: React.FC<IRandomProducts> = ({
   title,
   quantity,
   initialProducts,
+  moreHref = LINK_CATALOG,
 }) => {
-  const hasInitial = Boolean(initialProducts?.length);
+  const skipFetch = initialProducts !== undefined;
   const { data: fetched, load } = useFetch<IProductId[]>(
     API_PRODUCTS_SAMPLE(quantity || 6),
     REQUEST_METHODS.GET,
     {},
     false,
-    !hasInitial,
+    !skipFetch,
   );
 
-  const data = fetched ?? initialProducts;
+  const data = skipFetch ? initialProducts : fetched;
 
-  if (!hasInitial && load) {
+  if (!skipFetch && load) {
     return (
       <div className={styles.spinnerContainer}>
         <SpinnerPrimary />
@@ -53,7 +55,7 @@ const RandomProducts: React.FC<IRandomProducts> = ({
       </div>
 
       <div className={styles.btnContainer}>
-        <Link href={LINK_CATALOG} className="app-btn-outline">
+        <Link href={moreHref} className="app-btn-outline">
           Смотреть каталог
         </Link>
       </div>

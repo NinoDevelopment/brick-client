@@ -5,6 +5,7 @@ import Link from "next/link";
 import {
   DELIVERY_CITIES,
   DeliveryCity,
+  getDeliveryCityH1,
 } from "@/constants/deliveryCities";
 import {
   LINK_CALCULATOR,
@@ -13,6 +14,7 @@ import {
   LINK_CONTACTS,
   LINK_DELIVERY,
   LINK_DELIVERY_CITY,
+  LINK_HOME,
 } from "@/constants/links";
 import { CONTACTS } from "@/constants/general";
 import bannerStyles from "@/components/delivery-page/PreviewBanner/PreviewBanner.module.css";
@@ -30,10 +32,12 @@ const DeliveryCityPage = ({ city, products = [] }: Props) => {
   return (
     <div className={styles.main}>
       <PreviewBanner
-        title={`Купить кирпич в ${city.namePrepositional}`}
+        title={getDeliveryCityH1(city)}
         subtitle={`Доставка с завода Ковернино — ${city.distanceHint}`}
       >
         <p className={bannerStyles.breadcrumb}>
+          <Link href={LINK_HOME}>Главная</Link>
+          <span aria-hidden="true"> / </span>
           <Link href={LINK_DELIVERY}>Оплата и доставка</Link>
           <span aria-hidden="true"> / </span>
           <span>{city.name}</span>
@@ -48,12 +52,14 @@ const DeliveryCityPage = ({ city, products = [] }: Props) => {
           ))}
           <p>{city.districts}</p>
           <p>
-            В каталоге —{" "}
+            Кирпич с{" "}
+            <Link href={LINK_HOME}>завода Ковернино</Link>
+            . В каталоге —{" "}
             <Link href={LINK_CATALOG_CATEGORY("ryadovoy")}>рядовой</Link> и{" "}
             <Link href={LINK_CATALOG_CATEGORY("oblitsovochnyy")}>
               облицовочный
-            </Link>{" "}
-            кирпич. Цены — от производителя. Расход можно прикинуть в{" "}
+            </Link>
+            . Расход можно прикинуть в{" "}
             <Link href={LINK_CALCULATOR}>калькуляторе</Link>.
           </p>
         </section>

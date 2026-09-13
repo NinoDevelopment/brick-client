@@ -7,8 +7,10 @@ import ProductSpecs from "@/components/product-page/ProductSpecs/ProductSpecs";
 import Link from "next/link";
 import {
   LINK_CATALOG_CATEGORY,
-  LINK_DELIVERY,
+  LINK_DELIVERY_CITY,
 } from "@/constants/links";
+import { getCatalogCategory } from "@/constants/catalogCategories";
+import { getProductCopy } from "@/functions/productSeo";
 
 interface IProductInfo {
   data: IProductId;
@@ -21,6 +23,11 @@ const ProductInfo: React.FC<IProductInfo> = ({
   categoryName,
   categorySlug,
 }) => {
+  const copy = getProductCopy(data, categoryName);
+  const category = categorySlug
+    ? getCatalogCategory(categorySlug)
+    : undefined;
+
   return (
     <div className={styles.ProductInfo}>
       <header>
@@ -33,26 +40,24 @@ const ProductInfo: React.FC<IProductInfo> = ({
 
         <ProductSpecs description={data.description} />
 
+        <p className={styles.seoText}>{copy.intro}</p>
+        {copy.facts ? <p className={styles.seoText}>{copy.facts}</p> : null}
         <p className={styles.seoText}>
-          Купить {data.name.toLowerCase()} в Нижнем Новгороде с доставкой от
-          завода Ковернино.
+          {copy.offer ? `${copy.offer} ` : null}
           {categoryName && categorySlug ? (
             <>
-              {" "}
-              Это{" "}
+              Смотрите другие позиции{" "}
               <Link href={LINK_CATALOG_CATEGORY(categorySlug)}>
-                {categoryName.toLowerCase()} кирпич
+                {category?.nameGenitive ??
+                  `${categoryName.toLowerCase()} кирпича`}
               </Link>
-              : цена за штуку, отгрузка паллетами,{" "}
-              <Link href={LINK_DELIVERY}>доставка по городу и области</Link>.
+              {". "}
             </>
-          ) : (
-            <>
-              {" "}
-              Цена от производителя, отгрузка паллетами,{" "}
-              <Link href={LINK_DELIVERY}>доставка по городу и области</Link>.
-            </>
-          )}
+          ) : null}
+          <Link href={LINK_DELIVERY_CITY("nizhny-novgorod")}>
+            Доставка в Нижний Новгород
+          </Link>{" "}
+          и по области — своим транспортом завода.
         </p>
       </div>
 

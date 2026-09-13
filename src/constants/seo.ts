@@ -10,9 +10,9 @@ export const OG_IMAGE = {
 };
 
 export const SEO_DEFAULT = {
-  title: `Купить кирпич в Нижнем Новгороде | ${SITE_NAME}`,
+  title: `${SITE_NAME} | Керамический кирпич от производителя`,
   description:
-    "Купить кирпич в Нижнем Новгороде с доставкой от производителя. Красный, керамический, облицовочный и строительный — цены с завода Ковернино.",
+    "Кирпичный завод Ковернино: свой карьер, производство рядового и облицовочного кирпича. Цены производителя, доставка по Нижегородской области.",
 };
 
 export const SEO_HOME = SEO_DEFAULT;
@@ -91,18 +91,6 @@ export const SEO_REQUISITES = {
 export const NO_INDEX_ROBOTS: Metadata["robots"] = {
   index: false,
   follow: true,
-};
-
-export const getProductSeo = (name: string, description?: string) => {
-  const firstLine = description?.split("\n")[0]?.trim();
-  const productDescription = firstLine
-    ? `${name} — ${firstLine}. Купить с доставкой в Нижнем Новгороде, цена от производителя.`
-    : `Купить ${name} с доставкой в Нижнем Новгороде и области. Цена от производителя — ${SITE_NAME}.`;
-
-  return {
-    title: `${name} | Купить в Нижнем Новгороде`,
-    description: productDescription.slice(0, 160),
-  };
 };
 
 export const createPageMetadata = (

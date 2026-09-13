@@ -2,6 +2,7 @@ import DeliveryCityPage from "@/pagesList/DeliveryCityPage/DeliveryCityPage";
 import {
   DELIVERY_CITIES,
   getDeliveryCity,
+  getDeliveryCityH1,
   getDeliveryCitySeo,
 } from "@/constants/deliveryCities";
 import { createPageMetadata, SITE_URL } from "@/constants/seo";
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: IPage): Promise<Metadata> {
   return createPageMetadata(
     getDeliveryCitySeo(city),
     `${SITE_URL}/delivery/${city.slug}`,
-    `Купить кирпич в ${city.namePrepositional}`,
+    getDeliveryCityH1(city),
   );
 }
 

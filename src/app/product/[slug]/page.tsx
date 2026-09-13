@@ -17,6 +17,7 @@ import { getProductSlug, resolveProductParam } from "@/functions/productSlug";
 import { breadcrumbJsonLd } from "@/functions/jsonLd";
 import { productJsonLd } from "@/functions/productJsonLd";
 import { getCategorySlugById } from "@/constants/catalogCategories";
+import { getEmbeddedProductImages } from "@/functions/productImages";
 
 export const dynamicParams = true;
 export const revalidate = 60;
@@ -67,11 +68,18 @@ const Page = async ({ params }: IPage) => {
   }
 
   const product = resolved.product;
-  const [relatedProducts, categories, productImages] = await Promise.all([
+  const embeddedImages = getEmbeddedProductImages(product);
+  const [relatedProducts, categories, fetchedImages] = await Promise.all([
     fetchProductSample(3),
     fetchCategories(),
-    fetchProductImages(product._id),
+    embeddedImages === undefined
+      ? fetchProductImages(product._id)
+      : Promise.resolve(null),
   ]);
+  const productImages =
+    embeddedImages !== undefined
+      ? { _id: product._id, images: embeddedImages }
+      : fetchedImages;
 
   const related =
     relatedProducts?.filter(

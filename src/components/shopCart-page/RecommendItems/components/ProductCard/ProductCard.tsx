@@ -1,10 +1,8 @@
 import React from "react";
 import styles from "./ProductCard.module.css";
 import SwiperNavigation from "@/ui/SwiperNavigation/SwiperNavigation";
-import { IProductId, IProductImg } from "@/types/products";
-import { useFetch } from "@/hooks/useFetch";
-import { API_PRODUCT_IMG } from "@/constants/api";
-import { REQUEST_METHODS } from "@/types/general";
+import { IProductId } from "@/types/products";
+import { useProductImages } from "@/hooks/useProductImages";
 import ProductCardFooter from "@/components/general/ProductCard/components/ProductCardFooter/ProductCardFooter";
 import { Badge } from "react-bootstrap";
 import Link from "next/link";
@@ -15,11 +13,7 @@ interface IProductCard {
 }
 
 const ProductCard: React.FC<IProductCard> = ({ data }) => {
-  const { data: images } = useFetch<IProductImg>(
-    API_PRODUCT_IMG(data._id),
-    REQUEST_METHODS.GET,
-    {},
-  );
+  const images = useProductImages(data._id, data);
 
   return (
     <div className={styles.ProductCard}>
@@ -34,7 +28,7 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
           </Badge>
         </div>
 
-        <SwiperNavigation images={images?.images} name={data.name} />
+        <SwiperNavigation images={images} name={data.name} />
       </div>
 
       <div className={styles.content}>

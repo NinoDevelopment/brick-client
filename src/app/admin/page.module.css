@@ -1,6 +1,6 @@
 .spinnerContainer {
   min-height: 65vh;
-  margin: 1em auto;
+  margin: 4.5em auto 1em;
   max-width: 1180px;
   display: flex;
   justify-content: center;

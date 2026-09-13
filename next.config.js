@@ -6,6 +6,20 @@ const staticMediaCache = [
   },
 ];
 
+const securityHeaders = [
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "X-Frame-Options", value: "DENY" },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+  },
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=31536000; includeSubDomains",
+  },
+];
+
 const nextConfig = {
   agentRules: false,
   images: {
@@ -17,6 +31,10 @@ const nextConfig = {
   },
   async headers() {
     return [
+      {
+        source: "/(.*)",
+        headers: securityHeaders,
+      },
       { source: "/videos/:path*", headers: staticMediaCache },
       { source: "/other/:path*", headers: staticMediaCache },
       { source: "/icons/:path*", headers: staticMediaCache },

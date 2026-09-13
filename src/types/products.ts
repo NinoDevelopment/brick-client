@@ -19,6 +19,7 @@ export interface IProduct {
 export interface IProductId extends IProduct {
   _id: string;
   _v: number;
+  images?: string[] | null;
 }
 
 export interface IProductIdWithImg extends IProductId {

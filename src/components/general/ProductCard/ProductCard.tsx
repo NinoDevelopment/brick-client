@@ -1,27 +1,21 @@
 "use client";
 
 import React from "react";
-import { IProductId, IProductImg } from "@/types/products";
+import { IProductId } from "@/types/products";
 import SwiperNavigation from "@/ui/SwiperNavigation/SwiperNavigation";
 import styles from "./ProductCard.module.css";
 import { Badge } from "react-bootstrap";
 import ProductCardFooter from "@/components/general/ProductCard/components/ProductCardFooter/ProductCardFooter";
 import Link from "next/link";
 import { LINK_PRODUCT } from "@/constants/links";
-import { useFetch } from "@/hooks/useFetch";
-import { API_PRODUCT_IMG } from "@/constants/api";
-import { REQUEST_METHODS } from "@/types/general";
+import { useProductImages } from "@/hooks/useProductImages";
 
 interface IProductCard {
   data: IProductId;
 }
 
 const ProductCard: React.FC<IProductCard> = ({ data }) => {
-  const { data: images } = useFetch<IProductImg>(
-    API_PRODUCT_IMG(data._id),
-    REQUEST_METHODS.GET,
-    {},
-  );
+  const images = useProductImages(data._id, data);
 
   if (!data.show) return;
 
@@ -46,7 +40,7 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
 
       {/*swiper*/}
       <div className={styles.swiperContainer}>
-        <SwiperNavigation images={images?.images} name={data.name} />
+        <SwiperNavigation images={images} name={data.name} />
       </div>
 
       {/*content*/}

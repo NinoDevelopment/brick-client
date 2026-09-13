@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styles from "./ProductCard.module.css";
 import { Button, ButtonGroup, Card } from "react-bootstrap";
-import { IProductId, IProductImg } from "@/types/products";
+import { IProductId } from "@/types/products";
 import SwiperNavigation from "@/ui/SwiperNavigation/SwiperNavigation";
 import { handleRequest } from "@/functions/handleRequest";
-import { API_PRODUCT, API_PRODUCT_IMG } from "@/constants/api";
+import { API_PRODUCT } from "@/constants/api";
 import { TOAST_ERROR, TOAST_SUCCESS } from "@/constants/toasts";
 import { useGetProducts } from "@/hooks/useGetProducts";
 import ModalConfirm from "@/ui/ModalConfirm/ModalConfirm";
@@ -12,7 +12,7 @@ import ProductPrice from "@/components/admin-page/ProductsList/components/Produc
 import ProductRedact from "@/components/admin-page/ProductRedact/ProductRedact";
 import ProductInfo from "@/components/admin-page/ProductsList/components/ProductCard/components/ProductInfo";
 import { REQUEST_METHODS } from "@/types/general";
-import { useFetch } from "@/hooks/useFetch";
+import { useProductImages } from "@/hooks/useProductImages";
 import Link from "next/link";
 import { LINK_PRODUCT } from "@/constants/links";
 
@@ -22,11 +22,7 @@ interface IProductCard {
 
 const ProductCard: React.FC<IProductCard> = ({ data }) => {
   const { updateProducts } = useGetProducts();
-  const { data: images } = useFetch<IProductImg>(
-    API_PRODUCT_IMG(data._id),
-    REQUEST_METHODS.GET,
-    {},
-  );
+  const images = useProductImages(data._id, data);
   const [showDelete, setShowDelete] = useState(false);
   const [showRedact, setShowRedact] = useState(false);
   const [load, setLoad] = useState<boolean>(false);
@@ -48,7 +44,7 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
   return (
     <>
       <Card className={styles.ProductCard}>
-        <SwiperNavigation images={images?.images} name={data.name} />
+        <SwiperNavigation images={images} name={data.name} />
 
         <Card.Body>
           <Link href={LINK_PRODUCT(data)}>
@@ -67,7 +63,7 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
               variant="light"
               size={"sm"}
               onClick={() => setShowRedact(true)}
-              hidden={!images?.images}
+              hidden={images == null}
             >
               Изменить
             </Button>
@@ -93,9 +89,9 @@ const ProductCard: React.FC<IProductCard> = ({ data }) => {
 
       {
         //если фото загрузились то рендерим модалку для изменения
-        images?.images && (
+        images != null && (
           <ProductRedact
-            data={{ ...data, images: images?.images }}
+            data={{ ...data, images }}
             show={showRedact}
             handleClose={() => setShowRedact(false)}
           />

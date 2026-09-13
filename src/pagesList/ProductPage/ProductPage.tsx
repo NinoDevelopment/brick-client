@@ -14,6 +14,7 @@ import { REQUEST_METHODS } from "@/types/general";
 import BackLink from "@/ui/BackLink/BackLink";
 import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
 import RandomProducts from "@/components/general/RandomProducts/RandomProducts";
+import { getEmbeddedProductImages } from "@/functions/productImages";
 
 interface IProductPage {
   initialProduct?: IProductId;
@@ -43,16 +44,23 @@ const ProductPage = ({
     false,
     !hasInitialData && Boolean(productId),
   );
+  const data = fetchedProduct ?? initialProduct;
+  const embeddedImages = getEmbeddedProductImages(data);
+  const skipImageFetch =
+    initialImages != null || embeddedImages !== undefined;
   const { data: fetchedImages } = useFetch<IProductImg>(
     API_PRODUCT_IMG(productId || ""),
     REQUEST_METHODS.GET,
     {},
     false,
-    Boolean(productId) && initialImages == null,
+    Boolean(productId) && !skipImageFetch,
   );
 
-  const data = fetchedProduct ?? initialProduct;
-  const images = fetchedImages ?? initialImages ?? null;
+  const images =
+    initialImages ??
+    (embeddedImages !== undefined
+      ? { _id: data?._id ?? "", images: embeddedImages }
+      : fetchedImages);
 
   useEffect(() => {
     if (error && !data) {

@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import styles from "./ProductCard.module.css";
 import { IShopCartItem } from "@/types/shopCart";
 import { useFetch } from "@/hooks/useFetch";
-import { API_PRODUCT_ID, API_PRODUCT_IMG } from "@/constants/api";
-import { IProductId, IProductImg } from "@/types/products";
+import { API_PRODUCT_ID } from "@/constants/api";
+import { IProductId } from "@/types/products";
 import ShopCartBtn from "@/components/general/ProductCard/components/ShopCartBtn/ShopCartBtn";
 import SwiperNavigation from "@/ui/SwiperNavigation/SwiperNavigation";
 import { useAppDispatch } from "@/store/store";
@@ -13,6 +13,7 @@ import Link from "next/link";
 import { LINK_PRODUCT } from "@/constants/links";
 import AvailableTooltip from "@/components/shopCart-page/ProductCard/components/AvailableTooltip/AvailableTooltip";
 import SpinnerPrimary from "@/ui/SpinnerPrimary/SpinnerPrimary";
+import { useProductImages } from "@/hooks/useProductImages";
 
 interface IProductCard {
   data: IShopCartItem;
@@ -31,10 +32,10 @@ const ProductCard: React.FC<IProductCard> = ({ data, shopCartData }) => {
     {},
     false,
   );
-  const { data: images } = useFetch<IProductImg>(
-    API_PRODUCT_IMG(data.itemId),
-    REQUEST_METHODS.GET,
-    {},
+  const images = useProductImages(
+    data.itemId,
+    productData,
+    Boolean(productData),
   );
   const thisItem = shopCartData.find(
     (item) => item.itemId === productData?._id,
@@ -64,7 +65,7 @@ const ProductCard: React.FC<IProductCard> = ({ data, shopCartData }) => {
   return (
     <div className={styles.ProductCard}>
       <div className={styles.swiperContainer}>
-        <SwiperNavigation images={images?.images} name={productData.name} />
+        <SwiperNavigation images={images} name={productData.name} />
       </div>
 
       <div className={styles.content}>

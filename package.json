@@ -11,7 +11,7 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "eslint .",
-    "test": "node --experimental-strip-types --test src/functions/serializeJsonLd.spec.ts"
+    "test": "node --experimental-strip-types --test src/functions/*.spec.ts"
   },
   "dependencies": {
     "@pbe/react-yandex-maps": "^1.2.5",

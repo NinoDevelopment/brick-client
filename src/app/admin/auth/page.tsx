@@ -27,7 +27,12 @@ const Page = () => {
         }
         setError("Ключ не принят. Проверьте значение и попробуйте снова.");
       })
-      .catch(() => {
+      .catch((err) => {
+        const status = err?.response?.status;
+        if (status === 401 || status === 403) {
+          setError("Ключ не принят. Проверьте значение и попробуйте снова.");
+          return;
+        }
         setError("Не удалось войти. Проверьте ключ и соединение с API.");
       })
       .finally(() => {

@@ -1,6 +1,6 @@
 import { SITE_NAME, SITE_URL } from "@/constants/seo";
 import { parseProductSpecs } from "@/functions/parseProductSpecs";
-import { getProductSeo } from "@/functions/productSeo";
+import { getProductSeo, getProductUnitPrice } from "@/functions/productSeo";
 import { getProductSlug } from "@/functions/productSlug";
 import { getSchemaImages } from "@/functions/schemaImage";
 import { IProductId } from "@/types/products";
@@ -39,7 +39,7 @@ export const productJsonLd = (
     })),
     offers: {
       "@type": "Offer",
-      price: product.price,
+      price: getProductUnitPrice(product) ?? product.price,
       priceCurrency: "RUB",
       priceValidUntil: nextYear(),
       availability: product.available

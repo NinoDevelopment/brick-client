@@ -1,5 +1,9 @@
 import React from "react";
 import styles from "./WeightsBtns.module.css";
+import {
+  formatProductPrice,
+  getProductUnitPrice,
+} from "@/functions/productSeo";
 
 interface IWeightsBtns {
   data: number;
@@ -8,6 +12,8 @@ interface IWeightsBtns {
 }
 
 const WeightsBtns: React.FC<IWeightsBtns> = ({ data, discount, pack }) => {
+  const unitPrice = getProductUnitPrice({ price: data, discount });
+
   return (
     <div className={styles.WeightsBtns}>
       <div className={styles.priceContainer}>
@@ -15,7 +21,7 @@ const WeightsBtns: React.FC<IWeightsBtns> = ({ data, discount, pack }) => {
           Паллет из <span>{pack}</span>шт
         </h6>
         <h3>
-          {!!discount ? ((data / 100) * (100 - discount))?.toFixed(1) : data}
+          {unitPrice !== undefined ? formatProductPrice(unitPrice) : data}
           ₽/шт
         </h3>
         {!!discount && <p>{data}₽/шт</p>}

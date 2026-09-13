@@ -62,7 +62,9 @@ const categoryPhrase = (categoryName?: string) => {
   return "керамический кирпич";
 };
 
-export const getProductUnitPrice = (product: ProductSeoSource) => {
+export const getProductUnitPrice = (
+  product: Pick<ProductSeoSource, "price" | "discount">,
+) => {
   if (!Number.isFinite(product.price) || product.price <= 0) return undefined;
   const discount = Number(product.discount) || 0;
   const value =

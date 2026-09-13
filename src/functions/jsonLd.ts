@@ -1,5 +1,6 @@
 import { SITE_URL } from "@/constants/seo";
 import { getProductSlug } from "@/functions/productSlug";
+import { getProductUnitPrice } from "@/functions/productSeo";
 import { IProductId } from "@/types/products";
 
 type Crumb = { name: string; item: string };
@@ -28,7 +29,7 @@ export const productListJsonLd = (products: IProductId[]) => ({
       url: `${SITE_URL}/product/${getProductSlug(product)}`,
       offers: {
         "@type": "Offer",
-        price: product.price,
+        price: getProductUnitPrice(product) ?? product.price,
         priceCurrency: "RUB",
         availability: product.available
           ? "https://schema.org/InStock"

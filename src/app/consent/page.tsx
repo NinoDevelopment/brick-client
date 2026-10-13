@@ -5,7 +5,6 @@ import {
   NO_INDEX_ROBOTS,
   SEO_CONSENT,
 } from "@/constants/seo";
-import { CONTACTS } from "@/constants/general";
 import { OPERATOR } from "@/constants/operator";
 import Link from "next/link";
 import { LINK_CONTACTS, LINK_PRIVACY } from "@/constants/links";
@@ -95,9 +94,8 @@ const Page = () => {
         </p>
         <p>
           Отозвать согласие можно письмом на{" "}
-          <a href={`mailto:${OPERATOR.pdEmail}`}>{OPERATOR.pdEmail}</a> или{" "}
-          <a href={`mailto:${CONTACTS.email.value}`}>{CONTACTS.email.title}</a>{" "}
-          либо через <Link href={LINK_CONTACTS}>форму контактов</Link>. Отзыв не
+          <a href={`mailto:${OPERATOR.pdEmail}`}>{OPERATOR.pdEmail}</a> либо через{" "}
+          <Link href={LINK_CONTACTS}>форму контактов</Link>. Отзыв не
           влияет на обработку, которую Оператор обязан продолжать по закону
           или договору.
         </p>

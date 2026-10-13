@@ -46,9 +46,7 @@ const Page = () => {
           </li>
           <li>
             Контакты по вопросам персональных данных:{" "}
-            <a href={`mailto:${OPERATOR.pdEmail}`}>{OPERATOR.pdEmail}</a>,{" "}
-            <a href={`mailto:${CONTACTS.email.value}`}>{CONTACTS.email.title}</a>
-            , телефон{" "}
+            <a href={`mailto:${OPERATOR.pdEmail}`}>{OPERATOR.pdEmail}</a>, телефон{" "}
             <a href={`tel:${CONTACTS.phone.value}`}>{CONTACTS.phone.title}</a>,
             страница <Link href={LINK_CONTACTS}>контактов</Link>.
           </li>
@@ -211,9 +209,8 @@ const Page = () => {
         </p>
         <p>
           6.2. Чтобы отозвать согласие или направить запрос, напишите на{" "}
-          <a href={`mailto:${OPERATOR.pdEmail}`}>{OPERATOR.pdEmail}</a> или{" "}
-          <a href={`mailto:${CONTACTS.email.value}`}>{CONTACTS.email.title}</a>{" "}
-          либо воспользуйтесь <Link href={LINK_CONTACTS}>формой контактов</Link>
+          <a href={`mailto:${OPERATOR.pdEmail}`}>{OPERATOR.pdEmail}</a> либо
+          воспользуйтесь <Link href={LINK_CONTACTS}>формой контактов</Link>
           . Оператор отвечает в сроки, установленные ст. 14 и 21 152-ФЗ.
         </p>
         <p>

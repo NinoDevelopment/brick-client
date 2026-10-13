@@ -1,4 +1,5 @@
 import JsonLd from "@/components/general/JsonLd/JsonLd";
+import { CONTACTS } from "@/constants/general";
 import { OG_IMAGE, SEO_DEFAULT, SITE_NAME, SITE_URL } from "@/constants/seo";
 
 const LdJsonScripts = () => {
@@ -28,7 +29,7 @@ const LdJsonScripts = () => {
           logo: `${SITE_URL}/Logo-dark.svg`,
           image: OG_IMAGE.url,
           telephone: "+7-921-509-24-09",
-          email: "kzkvrn@yandex.ru",
+          email: CONTACTS.email.value,
           address: {
             "@type": "PostalAddress",
             streetAddress: "деревня Черные",
@@ -67,7 +68,7 @@ const LdJsonScripts = () => {
             "@type": "ContactPoint",
             telephone: "+7-921-509-24-09",
             contactType: "sales",
-            email: "kzkvrn@yandex.ru",
+            email: CONTACTS.email.value,
             areaServed: "RU",
             availableLanguage: "Russian",
           },

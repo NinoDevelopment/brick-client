@@ -1,4 +1,5 @@
 import { EShopsIds, IShopAddress } from '@/types/general';
+import { OPERATOR } from '@/constants/operator';
 
 export const APP_TITLE = 'Кирпичный завод Ковернино';
 
@@ -24,8 +25,8 @@ export const CONTACTS = {
     valueWS: '79215092409',
   },
   email: {
-    title: 'kzkvrn@yandex.ru',
-    value: 'kzkvrn@yandex.ru',
+    title: OPERATOR.pdEmail,
+    value: OPERATOR.pdEmail,
   },
   tg: {
     nick: 'kzkvrn',
